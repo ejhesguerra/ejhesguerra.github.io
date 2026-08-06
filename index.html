@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elvin Esguerra — Mechanical Engineering Portfolio</title>
+<meta name="description" content="Mechanical engineering student focused on thermal systems and computational fluid dynamics.">
+<style>
+  :root {
+    --bg: #fbfbf9;
+    --surface: #ffffff;
+    --ink: #1a1a1a;
+    --ink-soft: #5c5c5c;
+    --line: #e2e0da;
+    --accent: #1d4ed8;
+    --radius: 10px;
+    --max: 860px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  /* Navigation */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(251, 251, 249, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; gap: 28px; padding-top: 16px; padding-bottom: 16px; }
+  nav a {
+    color: var(--ink-soft); text-decoration: none;
+    font-size: 15px; letter-spacing: 0.01em;
+  }
+  nav a:hover { color: var(--accent); }
+
+  /* Header */
+  header { padding: 88px 0 64px; }
+  header h1 {
+    font-size: 46px; line-height: 1.1; margin: 0 0 12px;
+    font-weight: 650; letter-spacing: -0.02em;
+  }
+  header .headline {
+    font-size: 20px; color: var(--ink-soft); margin: 0 0 28px;
+  }
+  header .intro { max-width: 62ch; margin: 0 0 32px; }
+
+  .links { display: flex; flex-wrap: wrap; gap: 12px; }
+  .links a {
+    display: inline-block; padding: 9px 18px;
+    border: 1px solid var(--line); border-radius: 999px;
+    color: var(--ink); text-decoration: none; font-size: 15px;
+    background: var(--surface); transition: border-color .15s, color .15s;
+  }
+  .links a:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Sections */
+  section { padding: 52px 0; border-top: 1px solid var(--line); }
+  section h2 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 0.11em;
+    color: var(--ink-soft); font-weight: 600; margin: 0 0 28px;
+  }
+
+  /* Skills */
+  .skill-group { margin-bottom: 20px; }
+  .skill-group:last-child { margin-bottom: 0; }
+  .skill-group .label {
+    font-size: 14px; color: var(--ink-soft); margin-bottom: 9px;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 9px; }
+  .tag {
+    padding: 6px 13px; border-radius: 6px; font-size: 14px;
+    background: var(--surface); border: 1px solid var(--line); color: var(--ink);
+  }
+
+  /* Projects */
+  .project {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 26px; margin-bottom: 18px;
+  }
+  .project img {
+    width: 100%; height: auto; border-radius: 6px;
+    margin-bottom: 20px; display: block;
+  }
+  .project h3 { margin: 0 0 10px; font-size: 21px; font-weight: 620; }
+  .project p { margin: 0 0 16px; color: var(--ink-soft); }
+  .project .meta { font-size: 14px; color: var(--ink-soft); margin-bottom: 14px; }
+  .project a {
+    color: var(--accent); text-decoration: none;
+    font-size: 15px; font-weight: 550;
+  }
+  .project a:hover { text-decoration: underline; }
+
+  /* Experience and education */
+  .entry { margin-bottom: 30px; }
+  .entry:last-child { margin-bottom: 0; }
+  .entry .role { font-weight: 620; font-size: 18px; margin-bottom: 3px; }
+  .entry .org { color: var(--ink-soft); font-size: 15px; margin-bottom: 10px; }
+  .entry ul { margin: 0; padding-left: 20px; color: var(--ink-soft); }
+  .entry li { margin-bottom: 6px; }
+
+  footer {
+    padding: 44px 0 64px; border-top: 1px solid var(--line);
+    color: var(--ink-soft); font-size: 15px;
+  }
+
+  @media (max-width: 620px) {
+    header { padding: 56px 0 44px; }
+    header h1 { font-size: 34px; }
+    nav .wrap { gap: 18px; overflow-x: auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+  </div>
+</nav>
+
+<header id="about">
+  <div class="wrap">
+    <h1>Elvin Esguerra</h1>
+    <p class="headline">Mechanical Engineering Student &middot; Thermal Systems and CFD</p>
+    <p class="intro">
+      I build computational models of heat and fluid flow — aerodynamic heating on
+      rocket nose tips, airflow through occupied classrooms, transient conduction in
+      avionics bays. Most of that work has been validated against flight data,
+      textbook closed-form solutions, or both. This past summer I also ran three
+      stamping presses and 36 operators on a GM production floor, which taught me
+      what a model is worth when a real machine is down. Currently seeking internships
+      in thermal engineering and CFD.
+    </p>
+    <div class="links">
+      <a href="mailto:ejhesguerra@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/elvinesguerra">LinkedIn</a>
+      <a href="{{ GITHUB URL }}">GitHub</a>
+      <a href="resume.pdf">Resume</a>
+    </div>
+  </div>
+</header>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills and Tools</h2>
+
+    <div class="skill-group">
+      <div class="label">Simulation and analysis</div>
+      <div class="tags">
+        <span class="tag">ANSYS Fluent</span>
+        <span class="tag">ANSYS Mechanical</span>
+        <span class="tag">PyANSYS</span>
+        <span class="tag">Mesh sensitivity studies</span>
+        <span class="tag">SST k-&omega; turbulence modeling</span>
+        <span class="tag">Transient thermal analysis</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="label">CAD and manufacturing</div>
+      <div class="tags">
+        <span class="tag">SolidWorks</span>
+        <span class="tag">Siemens NX</span>
+        <span class="tag">Design for Manufacturing</span>
+        <span class="tag">3D printing</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="label">Programming</div>
+      <div class="tags">
+        <span class="tag">MATLAB</span>
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Arduino</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="label">Certifications</div>
+      <div class="tags">
+        <span class="tag">CSWA</span>
+        <span class="tag">CSWA-Simulation</span>
+        <span class="tag">Oracle Database Foundations</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+
+    <div class="project">
+      <img src="{{ PROJECT 1 IMAGE }}" alt="Stagnation-region heat flux contour from the axisymmetric ascent heating model">
+      <h3>Quantifying Convective Aerodynamic Heating During Ascent</h3>
+      <div class="meta">ANSYS Fluent &middot; Axisymmetric CFD &middot; Mesh sensitivity study &middot; AIAA Region V Conference</div>
+      <p>
+        Built a 72,000-cell axisymmetric model to predict aerodynamic heating across
+        five flight conditions from Mach 0.54 to 1.91, with boundary conditions derived
+        from prior flight data. Peak stagnation-region heat flux reached
+        2.46 &times; 10<sup>6</sup> W/m&sup2;. Comparing those results against the
+        Sutton&ndash;Graves correlation showed it underpredicts by 183% to 452% in this
+        regime &mdash; a gap wide enough to change which nose-tip material a collegiate
+        rocket team should be selecting.
+      </p>
+      <a href="{{ PROJECT 1 LINK }}">Read the paper &rarr;</a>
+    </div>
+
+    <div class="project">
+      <h3>Classroom HVAC Diffuser Optimization</h3>
+      <div class="meta">PyANSYS &middot; ANSYS Fluent &middot; Python &middot; Freelance, Foundation Academy</div>
+      <p>
+        Modeled a 600 ft&sup2; childcare classroom and a commercial diffuser from
+        manufacturer specifications to analyze indoor airflow. Currently building a
+        PyANSYS workflow that sweeps 15 diffuser configurations across louver angle
+        and spacing, scripting the parameter study so each geometry solves and
+        post-processes without manual setup, to identify the design that minimizes
+        airflow dead zones.
+      </p>
+      <a href="{{ PROJECT 2 LINK }}">View project &rarr;</a>
+    </div>
+
+    <div class="project">
+      <h3>IREC Nose Cone Aerodynamic Analysis</h3>
+      <div class="meta">ANSYS Fluent &middot; SST k-&omega; &middot; MATLAB validation</div>
+      <p>
+        Predicted a drag coefficient of 0.1228 and 245.5 N of drag under maximum
+        dynamic-pressure conditions using a 500,000-cell SST k-&omega; model. Validated
+        both figures against textbook closed-form solutions implemented in MATLAB and
+        landed within 2%.
+      </p>
+      <a href="{{ PROJECT 3 LINK }}">View project &rarr;</a>
+    </div>
+
+    <div class="project">
+      <h3>Electronics Bay Thermal Model &mdash; Argonia Cup</h3>
+      <div class="meta">MATLAB &middot; 1D transient conduction</div>
+      <p>
+        Developing a 1D transient thermal model to predict electronics bay temperatures
+        through ascent and verify that avionics components survive the aerodynamic
+        heating environment. The model feeds directly into component selection for a
+        rocket the team is building and flying.
+      </p>
+      <a href="{{ PROJECT 4 LINK }}">View project &rarr;</a>
+    </div>
+
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2>Experience</h2>
+
+    <div class="entry">
+      <div class="role">Manufacturing Group Leader</div>
+      <div class="org">General Motors, Wentzville Stamping &middot; Jun 2026 &ndash; Aug 2026</div>
+      <ul>
+        <li>Led 36 operators across 3 stamping presses to daily production targets exceeding 5,200 parts while holding quality and safety requirements</li>
+        <li>Built a downtime-tracking sheet and ran root-cause analysis on a recurring process bottleneck, eliminating 40 minutes of recurring press downtime</li>
+        <li>Worked alongside engineers, die makers, and electricians to diagnose press failures and correct process issues on the floor</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="role">Project Manager, Argonia Cup</div>
+      <div class="org">Mizzou Space Program &middot; May 2026 &ndash; Present</div>
+      <ul>
+        <li>Leading 30+ members through design, manufacturing, and testing of a high-powered student rocket</li>
+        <li>Developing a 1D transient thermal model in MATLAB to verify component survivability under aerodynamic heating</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="role">Undergraduate Research Assistant</div>
+      <div class="org">Semiconductor Lab, University of Missouri &middot; Jan 2026 &ndash; Present</div>
+      <ul>
+        <li>Built an Arduino-controlled 3-point bending system for under $40 to automate load testing on mechanoluminescent materials</li>
+        <li>Modeled and 3D printed a custom 60 &times; 60 mm fixture to hold samples securely through repeated test cycles</li>
+        <li>Programmed stepper motor control and wired the supporting electronics</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="role">Bachelor of Science, Mechanical Engineering</div>
+      <div class="org">University of Missouri&ndash;Columbia &middot; Expected May 2029</div>
+      <ul>
+        <li>GPA 4.00 / 4.00</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    &copy; <span id="year"></span> Elvin Esguerra &middot; Waynesville, MO
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
