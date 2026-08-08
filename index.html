@@ -3,122 +3,560 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elvin Esguerra — Mechanical Engineering Portfolio</title>
-<meta name="description" content="Mechanical engineering student focused on thermal systems and computational fluid dynamics.">
+<title>Elvin Esguerra &mdash; Mechanical Engineering Portfolio</title>
+<meta name="description" content="Mechanical engineering student at the University of Missouri focused on thermal systems and computational fluid dynamics.">
 <style>
+  /* ============================================================
+     Design tokens — light green background fading to deeper green,
+     white cards, clay status accent. Edit here to recolor the site.
+     ============================================================ */
   :root {
-    --bg: #fbfbf9;
+    --bg-top: #eaf5df;
+    --bg-mid: #dfeecf;
+    --bg-bottom: #c6ddb1;
     --surface: #ffffff;
-    --ink: #1a1a1a;
-    --ink-soft: #5c5c5c;
-    --line: #e2e0da;
-    --accent: #1d4ed8;
-    --radius: 10px;
-    --max: 860px;
+    --border-light: #dcebd0;
+    --border-dark: #c3ddb2;
+    --text-primary: #2f3a29;
+    --text-secondary: #56654f;
+    --text-muted: #6f7d68;
+    --green: #4d7935;
+    --green-hover: #3f6629;
+    --green-accent: #8fb877;
+    --green-soft: #e6f3d9;
+    --green-fill: #dcedcb;
+    --ring: rgba(109, 154, 82, 0.18);
+    --ring-strong: rgba(109, 154, 82, 0.32);
+    --card: #ffffff;
+    --card-hover: #ffffff;
+    --card-border: #dceace;
+    --card-border-hover: #b7d5a2;
+    --card-text: #2b3526;
+    --card-body: #55634e;
+    --card-muted: #6f7d68;
+    --card-heading: #3d6329;
+    --clay: #a85f33;
+    --clay-soft: rgba(168, 95, 51, 0.07);
+    --shadow-soft: 0 1px 2px rgba(47, 58, 41, 0.05);
+    --shadow-lift: 0 14px 34px -16px rgba(47, 58, 41, 0.26);
+    --nav-bg: rgba(234, 245, 223, 0.88);
+    --radius: 14px;
+    --max: 900px;
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
   }
 
   * { box-sizing: border-box; }
 
+  html { scroll-behavior: smooth; }
+
   body {
     margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    min-height: 100%;
+    background-color: var(--bg-top);
+    background-image: linear-gradient(180deg,
+      var(--bg-top) 0%,
+      var(--bg-mid) 38%,
+      var(--bg-bottom) 100%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     font-size: 17px;
-    line-height: 1.65;
+    line-height: 1.68;
+    letter-spacing: -0.005em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
 
-  /* Navigation */
+  ::selection { background: var(--green-soft); color: var(--text-primary); }
+
+  /* ============ Navigation ============ */
   nav {
-    position: sticky; top: 0; z-index: 10;
-    background: rgba(251, 251, 249, 0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
+    position: sticky; top: 0; z-index: 20;
+    background: var(--nav-bg);
+    backdrop-filter: saturate(160%) blur(10px);
+    -webkit-backdrop-filter: saturate(160%) blur(10px);
+    border-bottom: 1px solid var(--border-light);
   }
-  nav .wrap { display: flex; gap: 28px; padding-top: 16px; padding-bottom: 16px; }
-  nav a {
-    color: var(--ink-soft); text-decoration: none;
-    font-size: 15px; letter-spacing: 0.01em;
+  nav .wrap {
+    display: flex; align-items: center; gap: 26px;
+    padding-top: 15px; padding-bottom: 15px;
   }
-  nav a:hover { color: var(--accent); }
+  nav a.nav-link {
+    position: relative;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14.5px;
+    padding: 2px 0;
+    white-space: nowrap;
+    transition: color .3s var(--ease);
+  }
+  nav a.nav-link::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -3px;
+    height: 1.5px; background: var(--green);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .38s var(--ease);
+  }
+  nav a.nav-link:hover { color: var(--text-primary); }
+  nav a.nav-link:hover::after,
+  nav a.nav-link.active::after { transform: scaleX(1); }
+  nav a.nav-link.active { color: var(--green); }
 
-  /* Header */
-  header { padding: 88px 0 64px; }
+  .nav-email {
+    margin-left: auto;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: "SF Mono", "IBM Plex Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 12px; letter-spacing: 0.03em;
+    color: var(--text-secondary);
+    text-decoration: none; white-space: nowrap;
+    transition: color .3s var(--ease);
+  }
+  .nav-email svg { width: 14px; height: 14px; flex: 0 0 auto; }
+  .nav-email:hover { color: var(--green); }
+
+  /* ============ Header ============ */
+  header { padding: 88px 0 70px; }
+
+  .identity {
+    display: flex; align-items: center; gap: 26px;
+    margin-bottom: 28px;
+  }
+
+  .avatar {
+    position: relative; flex: 0 0 auto;
+    width: 118px; height: 118px; border-radius: 50%;
+    background: var(--green-soft);
+    border: 1px solid var(--border-dark);
+    box-shadow: 0 0 0 6px var(--ring);
+    display: grid; place-items: center;
+    overflow: hidden;
+    transition: box-shadow .5s var(--ease), transform .5s var(--ease);
+  }
+  .avatar:hover { box-shadow: 0 0 0 9px var(--ring); transform: translateY(-2px); }
+  .avatar .initials {
+    font-family: "SF Mono", "IBM Plex Mono", Consolas, monospace;
+    font-size: 26px; letter-spacing: 0.06em; font-weight: 500;
+    color: var(--green);
+  }
+  .avatar img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    display: block;
+  }
+
+  .identity-text { min-width: 0; }
+
   header h1 {
-    font-size: 46px; line-height: 1.1; margin: 0 0 12px;
-    font-weight: 650; letter-spacing: -0.02em;
+    font-size: clamp(2.3rem, 6vw, 3.5rem);
+    line-height: 1.02;
+    margin: 0 0 11px;
+    font-weight: 300;
+    letter-spacing: -0.03em;
   }
   header .headline {
-    font-size: 20px; color: var(--ink-soft); margin: 0 0 28px;
+    font-family: "SF Mono", "IBM Plex Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 12.5px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-secondary);
+    margin: 0; line-height: 1.75;
   }
-  header .intro { max-width: 62ch; margin: 0 0 32px; }
+  header .headline .sep { color: var(--green); padding: 0 5px; }
 
-  .links { display: flex; flex-wrap: wrap; gap: 12px; }
+  header .intro {
+    max-width: 64ch; margin: 0 0 34px;
+    color: var(--text-secondary);
+    font-size: 17.5px;
+  }
+  header .intro strong { color: var(--text-primary); font-weight: 550; }
+
+  /* ============ Link pills ============ */
+  .links { display: flex; flex-wrap: wrap; gap: 11px; }
   .links a {
-    display: inline-block; padding: 9px 18px;
-    border: 1px solid var(--line); border-radius: 999px;
-    color: var(--ink); text-decoration: none; font-size: 15px;
-    background: var(--surface); transition: border-color .15s, color .15s;
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 10px 20px;
+    border: 1px solid var(--border-dark);
+    border-radius: 999px;
+    color: var(--text-primary);
+    background: var(--surface);
+    text-decoration: none; font-size: 14.5px;
+    box-shadow: var(--shadow-soft);
+    transition: border-color .35s var(--ease), color .35s var(--ease),
+                transform .35s var(--ease), box-shadow .35s var(--ease),
+                background .35s var(--ease);
   }
-  .links a:hover { border-color: var(--accent); color: var(--accent); }
+  .links a:hover {
+    border-color: var(--green);
+    color: var(--green);
+    background: var(--green-soft);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lift);
+  }
+  .links a.primary {
+    background: var(--surface);
+    border-color: var(--green-accent);
+    color: var(--green-hover);
+    font-weight: 550;
+  }
+  .links a.primary:hover {
+    background: var(--surface);
+    border-color: var(--green);
+    color: var(--green-hover);
+  }
+  .links a svg { width: 15px; height: 15px; flex: 0 0 auto; }
+  .links a .filetag {
+    font-family: "SF Mono", "IBM Plex Mono", Consolas, monospace;
+    font-size: 10px; letter-spacing: 0.1em;
+    opacity: .72;
+  }
+  .links a.primary svg.dl { transition: transform .35s var(--ease); }
+  .links a.primary:hover svg.dl { transform: translateY(2px); }
 
-  /* Sections */
-  section { padding: 52px 0; border-top: 1px solid var(--line); }
+  /* ============ Sections ============ */
+  section {
+    padding: 62px 0;
+    border-top: 1px solid var(--border-light);
+    scroll-margin-top: 76px;
+  }
   section h2 {
-    font-size: 13px; text-transform: uppercase; letter-spacing: 0.11em;
-    color: var(--ink-soft); font-weight: 600; margin: 0 0 28px;
+    font-family: "SF Mono", "IBM Plex Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--text-muted); font-weight: 500;
+    margin: 0 0 40px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  section h2::after {
+    content: ""; flex: 1 1 auto; height: 1px;
+    background: var(--border-light);
   }
 
-  /* Skills */
-  .skill-group { margin-bottom: 20px; }
+  /* ============ Engineering work: rail + dark green cards ============ */
+  .project-list {
+    position: relative;
+    display: flex; flex-direction: column;
+    gap: 104px;
+    padding-left: 38px;
+  }
+
+  .rail {
+    position: absolute; left: 7px; top: 10px; bottom: 10px;
+    width: 2px; border-radius: 2px;
+    background: var(--border-dark);
+    pointer-events: none;
+  }
+  .rail-stroke {
+    position: absolute; left: 0; top: 0;
+    width: 100%; height: 0;
+    border-radius: 2px;
+    background: linear-gradient(to bottom, var(--green-accent), var(--green));
+    transition: height .2s linear;
+  }
+
+  .project::before {
+    content: "";
+    position: absolute; left: -37px; top: 34px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--surface);
+    border: 2px solid var(--border-dark);
+    z-index: 1;
+    transition: border-color .5s var(--ease), background .5s var(--ease),
+                box-shadow .5s var(--ease), transform .5s var(--ease);
+  }
+  .project.in::before {
+    border-color: var(--green-accent);
+    box-shadow: 0 0 0 5px var(--ring);
+  }
+  .project.in:hover::before {
+    background: var(--clay);
+    border-color: var(--clay);
+    transform: scale(1.12);
+  }
+
+  .project {
+    position: relative;
+    background: var(--card);
+    color: var(--card-text);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 30px 34px 32px;
+    box-shadow: var(--shadow-soft);
+    transition: background .4s var(--ease), border-color .4s var(--ease),
+                transform .4s var(--ease), box-shadow .4s var(--ease);
+  }
+  .project:hover {
+    border-color: var(--card-border-hover);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lift);
+  }
+
+  .project-inner {
+    display: grid;
+    grid-template-columns: 132px minmax(0, 1fr);
+    gap: 24px;
+    align-items: center;
+  }
+  /* Thumbnail centers on the left; text keeps its own top alignment */
+  .project-inner > .thumb { align-self: center; }
+  .project-body { align-self: center; }
+
+  .thumb {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--green-soft);
+    border: 1px solid var(--card-border);
+    display: grid; place-items: center;
+    transition: border-color .4s var(--ease);
+  }
+  .project:hover .thumb { border-color: var(--card-border-hover); }
+  .thumb img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    display: block;
+    transition: transform .6s var(--ease);
+  }
+  .project:hover .thumb img { transform: scale(1.04); }
+  .thumb .thumb-fallback {
+    font-family: "SF Mono", "IBM Plex Mono", Consolas, monospace;
+    font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--card-muted);
+    text-align: center; padding: 10px; line-height: 1.5;
+  }
+
+  .title-row {
+    display: flex; align-items: baseline; flex-wrap: wrap; gap: 12px;
+    margin-bottom: 11px;
+  }
+  .project h3 {
+    margin: 0; font-size: 21px; font-weight: 550;
+    letter-spacing: -0.015em; line-height: 1.3;
+    color: var(--card-heading);
+  }
+  .project .meta {
+    font-family: "SF Mono", "IBM Plex Mono", Consolas, monospace;
+    font-size: 11.5px; letter-spacing: 0.07em; text-transform: uppercase;
+    color: var(--card-muted);
+    margin: 0 0 15px;
+  }
+  .project h3 a {
+    color: inherit; text-decoration: none;
+    background-image: linear-gradient(var(--card-heading), var(--card-heading));
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size .4s var(--ease);
+  }
+  .project h3 a:hover { background-size: 100% 1px; }
+  .project h3 a .ext {
+    display: inline-block; width: 12px; height: 12px;
+    margin-left: 6px; vertical-align: baseline;
+    opacity: .55;
+    transition: opacity .3s var(--ease), transform .3s var(--ease);
+  }
+  .project h3 a:hover .ext { opacity: 1; transform: translate(1px, -1px); }
+
+  .project .desc {
+    margin: 0 0 16px;
+    color: var(--card-body);
+    font-size: 16.5px;
+    max-width: 68ch;
+  }
+
+  .more-link {
+    display: inline-flex; align-items: center; gap: 7px;
+    color: var(--green); text-decoration: none;
+    font-family: "SF Mono", "IBM Plex Mono", Consolas, monospace;
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 6px 12px 6px 10px;
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    background: transparent;
+    transition: background .35s var(--ease), border-color .35s var(--ease),
+                color .35s var(--ease), gap .35s var(--ease);
+  }
+  .more-link svg { width: 13px; height: 13px; flex: 0 0 auto; }
+  .more-link .arrow { width: 11px; height: 11px; transition: transform .35s var(--ease); }
+  .more-link:hover {
+    background: var(--green-soft);
+    border-color: var(--green-accent);
+    color: var(--green-hover);
+    gap: 10px;
+  }
+  .more-link:hover .arrow { transform: translateX(2px); }
+
+  .badge {
+    flex: 0 0 auto;
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 11px 4px 9px;
+    border-radius: 999px;
+    background: var(--clay-soft);
+    border: 1px solid var(--clay);
+    color: var(--clay);
+    font-family: "SF Mono", "IBM Plex Mono", Consolas, monospace;
+    font-size: 10px; letter-spacing: 0.11em; text-transform: uppercase;
+    white-space: nowrap;
+    transform: translateY(-1px);
+  }
+  .badge .pip {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--clay);
+    box-shadow: 0 0 0 0 rgba(168, 95, 51, 0.32);
+    animation: pip 2.4s var(--ease) infinite;
+  }
+  @keyframes pip {
+    0%   { box-shadow: 0 0 0 0 rgba(168, 95, 51, 0.32); }
+    70%  { box-shadow: 0 0 0 6px rgba(168, 95, 51, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(168, 95, 51, 0); }
+  }
+
+  /* ============ Resume ============ */
+  .resume-frame {
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow-soft);
+    transition: border-color .4s var(--ease), box-shadow .4s var(--ease);
+  }
+  .resume-frame:hover {
+    border-color: var(--border-dark);
+    box-shadow: var(--shadow-lift);
+  }
+  .resume-frame img {
+    width: 100%; height: auto; display: block;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+  }
+  .resume-placeholder {
+    aspect-ratio: 8.5 / 11;
+    border: 1px dashed var(--border-dark);
+    border-radius: 8px;
+    background: var(--green-soft);
+    display: grid; place-content: center; gap: 8px;
+    text-align: center; padding: 30px;
+  }
+  .resume-placeholder .ph-title {
+    font-family: "SF Mono", "IBM Plex Mono", Consolas, monospace;
+    font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .resume-placeholder .ph-note {
+    font-size: 14.5px; color: var(--text-secondary);
+    max-width: 42ch; margin: 0 auto;
+  }
+
+  /* ============ Skills ============ */
+  .skill-group { margin-bottom: 26px; }
   .skill-group:last-child { margin-bottom: 0; }
   .skill-group .label {
-    font-size: 14px; color: var(--ink-soft); margin-bottom: 9px;
+    font-family: "SF Mono", "IBM Plex Mono", Consolas, monospace;
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 11px;
   }
   .tags { display: flex; flex-wrap: wrap; gap: 9px; }
   .tag {
-    padding: 6px 13px; border-radius: 6px; font-size: 14px;
-    background: var(--surface); border: 1px solid var(--line); color: var(--ink);
+    padding: 7px 14px; border-radius: 8px; font-size: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-soft);
+    transition: border-color .3s var(--ease), background .3s var(--ease),
+                transform .3s var(--ease), color .3s var(--ease);
+  }
+  .tag:hover {
+    border-color: var(--green);
+    background: var(--green-soft);
+    color: var(--green-hover);
+    transform: translateY(-2px);
   }
 
-  /* Projects */
-  .project {
-    background: var(--surface); border: 1px solid var(--line);
-    border-radius: var(--radius); padding: 26px; margin-bottom: 18px;
-  }
-  .project img {
-    width: 100%; height: auto; border-radius: 6px;
-    margin-bottom: 20px; display: block;
-  }
-  .project h3 { margin: 0 0 10px; font-size: 21px; font-weight: 620; }
-  .project p { margin: 0 0 16px; color: var(--ink-soft); }
-  .project .meta { font-size: 14px; color: var(--ink-soft); margin-bottom: 14px; }
-  .project a {
-    color: var(--accent); text-decoration: none;
-    font-size: 15px; font-weight: 550;
-  }
-  .project a:hover { text-decoration: underline; }
-
-  /* Experience and education */
-  .entry { margin-bottom: 30px; }
-  .entry:last-child { margin-bottom: 0; }
-  .entry .role { font-weight: 620; font-size: 18px; margin-bottom: 3px; }
-  .entry .org { color: var(--ink-soft); font-size: 15px; margin-bottom: 10px; }
-  .entry ul { margin: 0; padding-left: 20px; color: var(--ink-soft); }
-  .entry li { margin-bottom: 6px; }
-
+  /* ============ Footer ============ */
   footer {
-    padding: 44px 0 64px; border-top: 1px solid var(--line);
-    color: var(--ink-soft); font-size: 15px;
+    padding: 46px 0 74px;
+    border-top: 1px solid var(--border-light);
+    color: var(--text-muted); font-size: 14.5px;
   }
 
-  @media (max-width: 620px) {
-    header { padding: 56px 0 44px; }
-    header h1 { font-size: 34px; }
+  /* ============ Motion ============ */
+  .rise { opacity: 0; transform: translateY(16px); }
+  .loaded .rise {
+    opacity: 1; transform: none;
+    transition: opacity .85s var(--ease), transform .85s var(--ease);
+  }
+  .loaded .d1 { transition-delay: .06s; }
+  .loaded .d2 { transition-delay: .14s; }
+  .loaded .d3 { transition-delay: .22s; }
+
+  .reveal { opacity: 0; transform: translateY(20px); }
+  .reveal.in {
+    opacity: 1; transform: none;
+    transition: opacity .8s var(--ease), transform .8s var(--ease);
+  }
+  .reveal.s1 { transition-delay: .05s; }
+  .reveal.s2 { transition-delay: .12s; }
+  .reveal.s3 { transition-delay: .19s; }
+  .reveal.s4 { transition-delay: .26s; }
+
+  a:focus-visible, .tag:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 3px; border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .rise, .reveal { opacity: 1 !important; transform: none !important; }
+    .badge .pip { animation: none !important; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+
+  /* ============ Responsive ============ */
+  @media (max-width: 680px) {
+    body { font-size: 16.5px; background-attachment: scroll; }
+    header { padding: 54px 0 46px; }
+    .identity { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .avatar { width: 96px; height: 96px; }
     nav .wrap { gap: 18px; overflow-x: auto; }
+    .nav-email { display: none; }
+    .project-list { gap: 64px; padding-left: 26px; }
+    .rail { left: 5px; }
+    .project { padding: 24px 22px; }
+    .project-inner { grid-template-columns: 1fr; gap: 18px; align-items: start; }
+    .thumb { max-width: 180px; }
+    .project::before { left: -27px; top: 28px; width: 12px; height: 12px; }
+  }
+
+  /* ============ Print ============ */
+  @media print {
+    body { margin: 0; padding: 0.4in 0.6in; background: #fff !important;
+           background-image: none !important; color: #111;
+           print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .wrap { max-width: 100% !important; width: 100% !important; padding: 0 !important; }
+    nav { display: none !important; position: static !important; }
+    header { padding: 0 0 24px !important; }
+    section { padding: 22px 0 !important; break-inside: avoid; border-color: #ddd; }
+    .project-list { gap: 12px !important; padding-left: 0 !important; }
+    .rail { display: none !important; }
+    .project::before { display: none !important; }
+    .project, .resume-frame {
+      break-inside: avoid; box-shadow: none !important;
+      background: #fff !important; color: #111 !important;
+      border: 1px solid rgba(0,0,0,0.18) !important;
+      padding: 14px 16px !important;
+    }
+    .project h3 { color: #111 !important; }
+    .project .meta { color: #444 !important; }
+    .project .desc { color: #222 !important; }
+    .project-inner { grid-template-columns: 90px minmax(0, 1fr) !important; gap: 14px !important; }
+    .thumb { border: 1px solid rgba(0,0,0,0.18) !important; }
+    .project h3 a { background-image: none !important; }
+    .more-link { display: none !important; }
+    .badge { background: transparent !important; color: #111 !important;
+             border-color: rgba(0,0,0,0.28) !important; }
+    .badge .pip { background: #111 !important; }
+    .links a { box-shadow: none !important; }
+    .rise, .reveal { opacity: 1 !important; transform: none !important; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
   }
 </style>
 </head>
@@ -126,41 +564,251 @@
 
 <nav>
   <div class="wrap">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
+    <a class="nav-link" href="#about">About</a>
+    <a class="nav-link" href="#work">Engineering Experience</a>
+    <a class="nav-link" href="#resume">Resume</a>
+    <a class="nav-link" href="#skills">Skills</a>
+    <a class="nav-email" href="mailto:ejhesguerra@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 6 9-6"/></svg>
+      ejhesguerra@gmail.com
+    </a>
   </div>
 </nav>
 
 <header id="about">
   <div class="wrap">
-    <h1>Elvin Esguerra</h1>
-    <p class="headline">Mechanical Engineering Student &middot; Thermal Systems and CFD</p>
-    <p class="intro">
-      I build computational models of heat and fluid flow — aerodynamic heating on
+    <div class="identity rise d1">
+      <div class="avatar">
+        <span class="initials">EE</span>
+        <!-- Save your photo as profile.jpg next to index.html -->
+        <img src="profile.jpg" alt="Elvin Esguerra" onerror="this.style.display='none'">
+      </div>
+      <div class="identity-text">
+        <h1>Elvin Esguerra</h1>
+        <p class="headline">
+          Mechanical Engineering<span class="sep">&middot;</span>University of Missouri&ndash;Columbia<span class="sep">&middot;</span>Graduating May 2029
+        </p>
+      </div>
+    </div>
+
+    <p class="intro rise d2">
+      I build computational models of heat and fluid flow &mdash; aerodynamic heating on
       rocket nose tips, airflow through occupied classrooms, transient conduction in
       avionics bays. Most of that work has been validated against flight data,
       textbook closed-form solutions, or both. This past summer I also ran three
       stamping presses and 36 operators on a GM production floor, which taught me
-      what a model is worth when a real machine is down. Currently seeking internships
-      in thermal engineering and CFD.
+      <strong>what a model is worth when a real machine is down</strong>. Currently seeking
+      internships in thermal engineering and CFD.
     </p>
-    <div class="links">
-      <a href="mailto:ejhesguerra@gmail.com">Email</a>
-      <a href="https://linkedin.com/in/elvinesguerra">LinkedIn</a>
-      <a href="{{ GITHUB URL }}">GitHub</a>
-      <a href="resume.pdf">Resume</a>
+
+    <div class="links rise d3">
+      <a href="https://linkedin.com/in/elvinesguerra" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3-.02-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21h-4z"/></svg>
+        LinkedIn
+      </a>
+      <!-- Place resume.pdf next to index.html; download attribute saves it directly -->
+      <a class="primary" href="resume.pdf" download="Elvin-Esguerra-Resume.pdf">
+        <svg class="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="M7 12l5 5 5-5"/><path d="M4 21h16"/></svg>
+        Download Resume <span class="filetag">PDF</span>
+      </a>
     </div>
   </div>
 </header>
 
+<section id="work">
+  <div class="wrap">
+    <h2 class="reveal">Engineering Experience</h2>
+
+    <div class="project-list">
+      <div class="rail" aria-hidden="true"><div class="rail-stroke" id="railStroke"></div></div>
+
+      <div class="project reveal s1">
+        <div class="project-inner">
+          <div class="thumb">
+            <span class="thumb-fallback">Add<br>gm-stamping.jpg</span>
+            <img src="images/gm-stamping.jpg" alt="Manufacturing Group Leader &mdash; General Motors" onerror="this.style.display='none'">
+          </div>
+          <div class="project-body">
+            <div class="title-row">
+              <h3>Manufacturing Group Leader &mdash; General Motors</h3>
+            </div>
+            <p class="meta">Wentzville Stamping &middot; Production leadership &middot; Root-cause analysis &middot; Jun 2026 &ndash; Aug 2026</p>
+            <p class="desc">
+              Led operators across three stamping presses to daily production targets while
+              holding quality and safety requirements. Built a downtime-tracking sheet and
+              ran root-cause analysis on a recurring process bottleneck, eliminating
+              recurring press downtime, and worked alongside engineers, die makers, and
+              electricians to diagnose press failures on the floor.
+            </p>
+            <a class="more-link" href="{{ GM_STAMPING_GALLERY }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-6.5 8.5"/></svg>More images<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project reveal s1">
+        <div class="project-inner">
+          <div class="thumb">
+            <span class="thumb-fallback">Add<br>aiaa-heating.jpg</span>
+            <img src="images/aiaa-heating.jpg" alt="Quantifying Convective Aerodynamic Heating During Ascent" onerror="this.style.display='none'">
+          </div>
+          <div class="project-body">
+            <div class="title-row">
+              <h3><a href="https://arc.aiaa.org/doi/pdf/10.2514/6.2026-111868" target="_blank" rel="noopener">Quantifying Convective Aerodynamic Heating During Ascent<svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></a></h3>
+            </div>
+            <p class="meta">ANSYS Fluent &middot; Axisymmetric CFD &middot; Mesh sensitivity study &middot; AIAA Region V Conference</p>
+            <p class="desc">
+              Built an axisymmetric model to predict aerodynamic heating across five flight
+              conditions from subsonic through supersonic, with boundary conditions derived
+              from prior flight data. Comparing the results against the Sutton&ndash;Graves
+              correlation showed it substantially underpredicts heating in this regime
+              &mdash; a gap wide enough to change which nose-tip material a collegiate
+              rocket team should be selecting.
+            </p>
+            <a class="more-link" href="{{ AIAA_HEATING_GALLERY }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-6.5 8.5"/></svg>More images<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project reveal s1">
+        <div class="project-inner">
+          <div class="thumb">
+            <span class="thumb-fallback">Add<br>classroom-hvac.jpg</span>
+            <img src="images/classroom-hvac.jpg" alt="Classroom HVAC Diffuser Optimization" onerror="this.style.display='none'">
+          </div>
+          <div class="project-body">
+            <div class="title-row">
+              <h3>Classroom HVAC Diffuser Optimization</h3>
+              <span class="badge"><span class="pip"></span>In progress</span>
+            </div>
+            <p class="meta">PyANSYS &middot; ANSYS Fluent &middot; Python &middot; Freelance, Foundation Academy</p>
+            <p class="desc">
+              Modeled a childcare classroom and a commercial diffuser from manufacturer
+              specifications to analyze indoor airflow. Building a PyANSYS workflow that
+              sweeps diffuser configurations across louver angle and spacing, scripting the
+              parameter study so each geometry solves and post-processes without manual
+              setup, to identify the design that minimizes airflow dead zones.
+            </p>
+            <a class="more-link" href="{{ CLASSROOM_HVAC_GALLERY }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-6.5 8.5"/></svg>More images<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project reveal s1">
+        <div class="project-inner">
+          <div class="thumb">
+            <span class="thumb-fallback">Add<br>nose-cone.jpg</span>
+            <img src="images/nose-cone.jpg" alt="IREC Nose Cone Aerodynamic Analysis" onerror="this.style.display='none'">
+          </div>
+          <div class="project-body">
+            <div class="title-row">
+              <h3>IREC Nose Cone Aerodynamic Analysis</h3>
+            </div>
+            <p class="meta">ANSYS Fluent &middot; SST k-&omega; turbulence modeling &middot; MATLAB validation</p>
+            <p class="desc">
+              Predicted drag coefficient and total drag on the competition nose cone under
+              maximum dynamic-pressure conditions using an SST k-&omega; model, then validated
+              both figures against textbook closed-form solutions implemented in MATLAB and
+              landed within a few percent.
+            </p>
+            <a class="more-link" href="{{ NOSE_CONE_GALLERY }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-6.5 8.5"/></svg>More images<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project reveal s1">
+        <div class="project-inner">
+          <div class="thumb">
+            <span class="thumb-fallback">Add<br>argonia.jpg</span>
+            <img src="images/argonia.jpg" alt="Argonia Project Manager" onerror="this.style.display='none'">
+          </div>
+          <div class="project-body">
+            <div class="title-row">
+              <h3>Argonia Project Manager</h3>
+              <span class="badge"><span class="pip"></span>In progress</span>
+            </div>
+            <p class="meta">Mizzou Space Program &middot; MATLAB &middot; 1D transient conduction &middot; Project management</p>
+            <p class="desc">
+              Leading the team through design, manufacturing, and testing of a high-powered
+              rocket for the Argonia Cup competition. Alongside the program management, I am
+              developing a 1D transient thermal model in MATLAB that predicts electronics bay
+              temperatures through ascent, verifying that avionics components survive the
+              aerodynamic heating environment and feeding directly into component selection.
+            </p>
+            <a class="more-link" href="{{ ARGONIA_GALLERY }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-6.5 8.5"/></svg>More images<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project reveal s1">
+        <div class="project-inner">
+          <div class="thumb">
+            <span class="thumb-fallback">Add<br>irec-payload.jpg</span>
+            <img src="images/irec-payload.jpg" alt="IREC Competition Payload" onerror="this.style.display='none'">
+          </div>
+          <div class="project-body">
+            <div class="title-row">
+              <h3>IREC Competition Payload</h3>
+            </div>
+            <p class="meta">SolidWorks &middot; 3D printing &middot; Integration and assembly</p>
+            <p class="desc">
+              Designed and manufactured a competition payload for the Intercollegiate Rocket
+              Engineering Competition as part of the Mizzou Space Program payload team.
+              Modeled and 3D printed electronic mounts and enclosure panels, then troubleshot
+              fit and clearance issues discovered during integration and assembly &mdash; the
+              first time I saw how quickly a tolerance decision made in CAD becomes a problem
+              on the bench.
+            </p>
+            <a class="more-link" href="{{ IREC_PAYLOAD_GALLERY }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-6.5 8.5"/></svg>More images<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project reveal s1">
+        <div class="project-inner">
+          <div class="thumb">
+            <span class="thumb-fallback">Add<br>level1-rocket.jpg</span>
+            <img src="images/level1-rocket.jpg" alt="Level 1 Certification Rocket" onerror="this.style.display='none'">
+          </div>
+          <div class="project-body">
+            <div class="title-row">
+              <h3>Level 1 Certification Rocket</h3>
+            </div>
+            <p class="meta">High-powered rocketry &middot; Airframe and recovery design &middot; Stability analysis</p>
+            <p class="desc">
+              Designed, built, and flew a single-stage high-powered rocket to earn Level 1
+              certification &mdash; sizing the airframe and recovery system, selecting the
+              motor, and verifying stability margin before flight, then recovering the
+              vehicle successfully.
+            </p>
+            <a class="more-link" href="{{ LEVEL1_ROCKET_GALLERY }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-6.5 8.5"/></svg>More images<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="resume">
+  <div class="wrap">
+    <h2 class="reveal">Resume</h2>
+    <div class="resume-frame reveal s1">
+      <!-- Replace the placeholder below with: <img src="resume.png" alt="Elvin Esguerra resume"> -->
+      <div class="resume-placeholder">
+        <div class="ph-title">Resume &mdash; PNG placeholder</div>
+        <p class="ph-note">
+          Save your resume image as <strong>resume.png</strong> next to index.html, then
+          swap this block for an img tag pointing at it.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="skills">
   <div class="wrap">
-    <h2>Skills and Tools</h2>
+    <h2 class="reveal">Skills and Tools</h2>
 
-    <div class="skill-group">
+    <div class="skill-group reveal s1">
       <div class="label">Simulation and analysis</div>
       <div class="tags">
         <span class="tag">ANSYS Fluent</span>
@@ -172,7 +820,7 @@
       </div>
     </div>
 
-    <div class="skill-group">
+    <div class="skill-group reveal s2">
       <div class="label">CAD and manufacturing</div>
       <div class="tags">
         <span class="tag">SolidWorks</span>
@@ -182,7 +830,7 @@
       </div>
     </div>
 
-    <div class="skill-group">
+    <div class="skill-group reveal s3">
       <div class="label">Programming</div>
       <div class="tags">
         <span class="tag">MATLAB</span>
@@ -192,7 +840,7 @@
       </div>
     </div>
 
-    <div class="skill-group">
+    <div class="skill-group reveal s4">
       <div class="label">Certifications</div>
       <div class="tags">
         <span class="tag">CSWA</span>
@@ -203,124 +851,83 @@
   </div>
 </section>
 
-<section id="projects">
-  <div class="wrap">
-    <h2>Projects</h2>
-
-    <div class="project">
-      <img src="{{ PROJECT 1 IMAGE }}" alt="Stagnation-region heat flux contour from the axisymmetric ascent heating model">
-      <h3>Quantifying Convective Aerodynamic Heating During Ascent</h3>
-      <div class="meta">ANSYS Fluent &middot; Axisymmetric CFD &middot; Mesh sensitivity study &middot; AIAA Region V Conference</div>
-      <p>
-        Built a 72,000-cell axisymmetric model to predict aerodynamic heating across
-        five flight conditions from Mach 0.54 to 1.91, with boundary conditions derived
-        from prior flight data. Peak stagnation-region heat flux reached
-        2.46 &times; 10<sup>6</sup> W/m&sup2;. Comparing those results against the
-        Sutton&ndash;Graves correlation showed it underpredicts by 183% to 452% in this
-        regime &mdash; a gap wide enough to change which nose-tip material a collegiate
-        rocket team should be selecting.
-      </p>
-      <a href="{{ PROJECT 1 LINK }}">Read the paper &rarr;</a>
-    </div>
-
-    <div class="project">
-      <h3>Classroom HVAC Diffuser Optimization</h3>
-      <div class="meta">PyANSYS &middot; ANSYS Fluent &middot; Python &middot; Freelance, Foundation Academy</div>
-      <p>
-        Modeled a 600 ft&sup2; childcare classroom and a commercial diffuser from
-        manufacturer specifications to analyze indoor airflow. Currently building a
-        PyANSYS workflow that sweeps 15 diffuser configurations across louver angle
-        and spacing, scripting the parameter study so each geometry solves and
-        post-processes without manual setup, to identify the design that minimizes
-        airflow dead zones.
-      </p>
-      <a href="{{ PROJECT 2 LINK }}">View project &rarr;</a>
-    </div>
-
-    <div class="project">
-      <h3>IREC Nose Cone Aerodynamic Analysis</h3>
-      <div class="meta">ANSYS Fluent &middot; SST k-&omega; &middot; MATLAB validation</div>
-      <p>
-        Predicted a drag coefficient of 0.1228 and 245.5 N of drag under maximum
-        dynamic-pressure conditions using a 500,000-cell SST k-&omega; model. Validated
-        both figures against textbook closed-form solutions implemented in MATLAB and
-        landed within 2%.
-      </p>
-      <a href="{{ PROJECT 3 LINK }}">View project &rarr;</a>
-    </div>
-
-    <div class="project">
-      <h3>Electronics Bay Thermal Model &mdash; Argonia Cup</h3>
-      <div class="meta">MATLAB &middot; 1D transient conduction</div>
-      <p>
-        Developing a 1D transient thermal model to predict electronics bay temperatures
-        through ascent and verify that avionics components survive the aerodynamic
-        heating environment. The model feeds directly into component selection for a
-        rocket the team is building and flying.
-      </p>
-      <a href="{{ PROJECT 4 LINK }}">View project &rarr;</a>
-    </div>
-
-  </div>
-</section>
-
-<section id="experience">
-  <div class="wrap">
-    <h2>Experience</h2>
-
-    <div class="entry">
-      <div class="role">Manufacturing Group Leader</div>
-      <div class="org">General Motors, Wentzville Stamping &middot; Jun 2026 &ndash; Aug 2026</div>
-      <ul>
-        <li>Led 36 operators across 3 stamping presses to daily production targets exceeding 5,200 parts while holding quality and safety requirements</li>
-        <li>Built a downtime-tracking sheet and ran root-cause analysis on a recurring process bottleneck, eliminating 40 minutes of recurring press downtime</li>
-        <li>Worked alongside engineers, die makers, and electricians to diagnose press failures and correct process issues on the floor</li>
-      </ul>
-    </div>
-
-    <div class="entry">
-      <div class="role">Project Manager, Argonia Cup</div>
-      <div class="org">Mizzou Space Program &middot; May 2026 &ndash; Present</div>
-      <ul>
-        <li>Leading 30+ members through design, manufacturing, and testing of a high-powered student rocket</li>
-        <li>Developing a 1D transient thermal model in MATLAB to verify component survivability under aerodynamic heating</li>
-      </ul>
-    </div>
-
-    <div class="entry">
-      <div class="role">Undergraduate Research Assistant</div>
-      <div class="org">Semiconductor Lab, University of Missouri &middot; Jan 2026 &ndash; Present</div>
-      <ul>
-        <li>Built an Arduino-controlled 3-point bending system for under $40 to automate load testing on mechanoluminescent materials</li>
-        <li>Modeled and 3D printed a custom 60 &times; 60 mm fixture to hold samples securely through repeated test cycles</li>
-        <li>Programmed stepper motor control and wired the supporting electronics</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-<section id="education">
-  <div class="wrap">
-    <h2>Education</h2>
-    <div class="entry">
-      <div class="role">Bachelor of Science, Mechanical Engineering</div>
-      <div class="org">University of Missouri&ndash;Columbia &middot; Expected May 2029</div>
-      <ul>
-        <li>GPA 4.00 / 4.00</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
 <footer>
   <div class="wrap">
-    &copy; <span id="year"></span> Elvin Esguerra &middot; Waynesville, MO
+    &copy; <span id="year"></span> Elvin Esguerra
   </div>
 </footer>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* Hero entrance */
+  requestAnimationFrame(function () { document.body.classList.add('loaded'); });
+
+  /* Scroll reveal */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* Scroll-driven rail stroke */
+  var rail = document.querySelector('.rail');
+  var railStroke = document.getElementById('railStroke');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function drawRail() {
+    if (!rail || !railStroke) return;
+    if (reduceMotion) { railStroke.style.height = '100%'; return; }
+    var r = rail.getBoundingClientRect();
+    var anchor = window.innerHeight * 0.62;
+    var progress = (anchor - r.top) / r.height;
+    progress = Math.max(0, Math.min(1, progress));
+    railStroke.style.height = (progress * 100).toFixed(2) + '%';
+  }
+
+  /* Active nav link tracking */
+  var sections = ['about', 'work', 'resume', 'skills'].map(function (id) {
+    return document.getElementById(id);
+  }).filter(Boolean);
+  var navLinks = document.querySelectorAll('nav a.nav-link');
+
+  function setActive() {
+    var pos = window.scrollY + 120;
+    var current = sections[0];
+    sections.forEach(function (s) { if (s.offsetTop <= pos) current = s; });
+    navLinks.forEach(function (l) {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + current.id);
+    });
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(function () { setActive(); drawRail(); ticking = false; });
+    }
+  }, { passive: true });
+  window.addEventListener('resize', drawRail, { passive: true });
+  setActive();
+  drawRail();
+
+  /* Optional Glean host integration - inert on GitHub Pages */
+  if (window.GleanBridge) {
+    window.GleanBridge.postMessage({
+      actionId: 'export-pdf',
+      type: 'glean-add-menu',
+      metadata: { label: 'Export as PDF', icon: 'export' }
+    });
+    window.GleanBridge.onMessage('action', function (data) {
+      if (data.actionId === 'export-pdf') window.print();
+    });
+  }
 </script>
 
 </body>
