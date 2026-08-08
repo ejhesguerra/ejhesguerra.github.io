@@ -167,7 +167,18 @@
     color: var(--text-secondary);
     font-size: 17.5px;
   }
-  header .intro strong { color: var(--text-primary); font-weight: 550; }
+  header .intro p { margin: 0 0 17px; }
+  header .intro p:last-child { margin-bottom: 0; }
+  header .intro a {
+    color: var(--green);
+    text-decoration: none;
+    background-image: linear-gradient(var(--green-accent), var(--green-accent));
+    background-size: 100% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size .35s var(--ease), color .35s var(--ease);
+  }
+  header .intro a:hover { color: var(--green-hover); background-size: 100% 2px; }
 
   /* ============ Link pills ============ */
   .links { display: flex; flex-wrap: wrap; gap: 11px; }
@@ -591,12 +602,19 @@
       </div>
     </div>
 
-    <p class="intro rise d2">
-      I’m a Mechanical Engineering student at the University of Missouri–Columbia, expecting to graduate in May 2029.
-      My interests include thermal engineering, aerodynamics, and structures, with a particular interest in applying 
-      engineering principles to real-world problems through analysis, simulation, and hands-on design.
-      I’m always open to new experiences that allow me to learn and grow, as well as questions, conversations, and new opportunities. Feel free to reach out by email!
-    </p>
+    <div class="intro rise d2">
+      <p>
+        I&rsquo;m a Mechanical Engineering student at the University of Missouri&ndash;Columbia,
+        expecting to graduate in May 2029. My interests include thermal engineering,
+        aerodynamics, and structures, with a particular interest in applying engineering
+        principles to real-world problems through analysis, simulation, and hands-on design.
+      </p>
+      <p>
+        I&rsquo;m always open to new experiences that allow me to learn and grow, as well as
+        questions, conversations, and new opportunities. Feel free to reach out by
+        <a href="mailto:ejhesguerra@gmail.com">email</a>!
+      </p>
+    </div>
 
     <div class="links rise d3">
       <a href="https://linkedin.com/in/elvinesguerra" target="_blank" rel="noopener">
