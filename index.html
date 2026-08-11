@@ -229,15 +229,18 @@
     scroll-margin-top: 76px;
   }
   section h2 {
-    font-family: "SF Mono", "IBM Plex Mono", "Cascadia Code", Consolas, monospace;
-    font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.15em;
-    color: var(--text-muted); font-weight: 500;
+    font-size: clamp(1.5rem, 3.6vw, 2.05rem);
+    line-height: 1.15;
+    text-transform: none;
+    letter-spacing: -0.025em;
+    color: var(--text-primary);
+    font-weight: 300;
     margin: 0 0 40px;
-    display: flex; align-items: center; gap: 12px;
+    display: flex; align-items: center; gap: 18px;
   }
   section h2::after {
     content: ""; flex: 1 1 auto; height: 1px;
-    background: var(--border-light);
+    background: var(--border-dark);
   }
 
   /* ============ Engineering work: rail + dark green cards ============ */
@@ -458,12 +461,21 @@
   }
 
   /* ============ Skills ============ */
-  .skill-group { margin-bottom: 26px; }
-  .skill-group:last-child { margin-bottom: 0; }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 44px;
+    row-gap: 36px;
+    align-items: start;
+  }
+  .skill-group { min-width: 0; }
   .skill-group .label {
     font-family: "SF Mono", "IBM Plex Mono", Consolas, monospace;
     font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--text-muted); margin-bottom: 11px;
+    color: var(--text-muted);
+    margin: 0 0 14px;
+    padding-top: 13px;
+    border-top: 1px solid var(--border-dark);
   }
   .tags { display: flex; flex-wrap: wrap; gap: 9px; }
   .tag {
@@ -508,6 +520,8 @@
   .reveal.s2 { transition-delay: .12s; }
   .reveal.s3 { transition-delay: .19s; }
   .reveal.s4 { transition-delay: .26s; }
+  .reveal.s5 { transition-delay: .33s; }
+  .reveal.s6 { transition-delay: .40s; }
 
   a:focus-visible, .tag:focus-visible {
     outline: 2px solid var(--green);
@@ -535,6 +549,7 @@
     .project-inner { grid-template-columns: 1fr; gap: 18px; align-items: start; }
     .thumb { max-width: 180px; }
     .project::before { left: -27px; top: 28px; width: 12px; height: 12px; }
+    .skills-grid { grid-template-columns: minmax(0, 1fr); row-gap: 28px; column-gap: 0; }
   }
 
   /* ============ Print ============ */
@@ -546,6 +561,7 @@
     nav { display: none !important; position: static !important; }
     header { padding: 0 0 24px !important; }
     section { padding: 22px 0 !important; break-inside: avoid; border-color: #ddd; }
+    section h2 { font-size: 1.25rem !important; color: #111 !important; margin-bottom: 16px !important; }
     .project-list { gap: 12px !important; padding-left: 0 !important; }
     .rail { display: none !important; }
     .project::before { display: none !important; }
@@ -566,6 +582,8 @@
              border-color: rgba(0,0,0,0.28) !important; }
     .badge .pip { background: #111 !important; }
     .links a { box-shadow: none !important; }
+    .skills-grid { column-gap: 26px !important; row-gap: 16px !important; }
+    .skill-group { break-inside: avoid; }
     .rise, .reveal { opacity: 1 !important; transform: none !important; }
     *, *::before, *::after { animation: none !important; transition: none !important; }
   }
@@ -621,8 +639,8 @@
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3-.02-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21h-4z"/></svg>
         LinkedIn
       </a>
-      <!-- Place resume.pdf next to index.html; download attribute saves it directly -->
-      <a class="primary" href="resume.pdf" download="Elvin-Esguerra-Resume.pdf">
+      <!-- Place Elvin-Esguerra-Resume.pdf next to index.html; download attribute saves it directly -->
+      <a class="primary" href="Elvin-Esguerra-Resume.pdf" download="Elvin-Esguerra-Resume.pdf">
         <svg class="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="M7 12l5 5 5-5"/><path d="M4 21h16"/></svg>
         Download Resume <span class="filetag">PDF</span>
       </a>
@@ -640,22 +658,23 @@
       <div class="project reveal s1">
         <div class="project-inner">
           <div class="thumb">
-            <span class="thumb-fallback">Add<br>gm-stamping.jpg</span>
-            <img src="images/gm-stamping.jpg" alt="Manufacturing Group Leader &mdash; General Motors" onerror="this.style.display='none'">
+            <span class="thumb-fallback">Add<br>argonia.jpg</span>
+            <img src="images/argonia.jpg" alt="Argonia Project Manager" onerror="this.style.display='none'">
           </div>
           <div class="project-body">
             <div class="title-row">
-              <h3>Manufacturing Group Leader &mdash; General Motors</h3>
+              <h3>Argonia Project Manager</h3>
+              <span class="badge"><span class="pip"></span>In progress</span>
             </div>
-            <p class="meta">Wentzville Stamping &middot; Production leadership &middot; Root-cause analysis &middot; Jun 2026 &ndash; Aug 2026</p>
+            <p class="meta">Project management &middot; Leadership &middot; MATLAB &middot; Technical documentation</p>
             <p class="desc">
-              Led operators across three stamping presses to daily production targets while
-              holding quality and safety requirements. Built a downtime-tracking sheet and
-              ran root-cause analysis on a recurring process bottleneck, eliminating
-              recurring press downtime, and worked alongside engineers, die makers, and
-              electricians to diagnose press failures on the floor.
+              Leading the team through design, manufacturing, and testing of a high-powered
+              rocket for the Argonia Cup competition. Alongside the program management, I am
+              developing a 1D transient thermal model in MATLAB that predicts electronics bay
+              temperatures through ascent, verifying that avionics components survive the
+              aerodynamic heating environment and feeding directly into component selection.
             </p>
-            <a class="more-link" href="{{ GM_STAMPING_GALLERY }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-6.5 8.5"/></svg>More images<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg></a>
+            <a class="more-link" href="{{ ARGONIA_GALLERY }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-6.5 8.5"/></svg>More images<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
       </div>
@@ -670,7 +689,7 @@
             <div class="title-row">
               <h3><a href="https://arc.aiaa.org/doi/pdf/10.2514/6.2026-111868" target="_blank" rel="noopener">Quantifying Convective Aerodynamic Heating During Ascent<svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></a></h3>
             </div>
-            <p class="meta">ANSYS Fluent &middot; Axisymmetric CFD &middot; Mesh sensitivity study &middot; AIAA Region V Conference</p>
+            <p class="meta">ANSYS Fluent &middot; MATLAB &middot; Technical documentation</p>
             <p class="desc">
               Built an axisymmetric model to predict aerodynamic heating across five flight
               conditions from subsonic through supersonic, with boundary conditions derived
@@ -687,23 +706,22 @@
       <div class="project reveal s1">
         <div class="project-inner">
           <div class="thumb">
-            <span class="thumb-fallback">Add<br>classroom-hvac.jpg</span>
-            <img src="images/classroom-hvac.jpg" alt="Classroom HVAC Diffuser Optimization" onerror="this.style.display='none'">
+            <span class="thumb-fallback">Add<br>gm-stamping.jpg</span>
+            <img src="images/gm-stamping.jpg" alt="Manufacturing Group Leader &mdash; General Motors" onerror="this.style.display='none'">
           </div>
           <div class="project-body">
             <div class="title-row">
-              <h3>Classroom HVAC Diffuser Optimization</h3>
-              <span class="badge"><span class="pip"></span>In progress</span>
+              <h3>Manufacturing Group Leader &mdash; General Motors</h3>
             </div>
-            <p class="meta">PyANSYS &middot; ANSYS Fluent &middot; Python &middot; Freelance, Foundation Academy</p>
+            <p class="meta">Leadership &middot; Root cause analysis &middot; Project management &middot; Technical documentation</p>
             <p class="desc">
-              Modeled a childcare classroom and a commercial diffuser from manufacturer
-              specifications to analyze indoor airflow. Building a PyANSYS workflow that
-              sweeps diffuser configurations across louver angle and spacing, scripting the
-              parameter study so each geometry solves and post-processes without manual
-              setup, to identify the design that minimizes airflow dead zones.
+              Led operators across three stamping presses to daily production targets while
+              holding quality and safety requirements. Built a downtime-tracking sheet and
+              ran root-cause analysis on a recurring process bottleneck, eliminating
+              recurring press downtime, and worked alongside engineers, die makers, and
+              electricians to diagnose press failures on the floor.
             </p>
-            <a class="more-link" href="{{ CLASSROOM_HVAC_GALLERY }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-6.5 8.5"/></svg>More images<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg></a>
+            <a class="more-link" href="{{ GM_STAMPING_GALLERY }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-6.5 8.5"/></svg>More images<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
       </div>
@@ -718,7 +736,7 @@
             <div class="title-row">
               <h3>IREC Nose Cone Aerodynamic Analysis</h3>
             </div>
-            <p class="meta">ANSYS Fluent &middot; SST k-&omega; turbulence modeling &middot; MATLAB validation</p>
+            <p class="meta">ANSYS Fluent &middot; SolidWorks &middot; MATLAB</p>
             <p class="desc">
               Predicted drag coefficient and total drag on the competition nose cone under
               maximum dynamic-pressure conditions using an SST k-&omega; model, then validated
@@ -733,30 +751,6 @@
       <div class="project reveal s1">
         <div class="project-inner">
           <div class="thumb">
-            <span class="thumb-fallback">Add<br>argonia.jpg</span>
-            <img src="images/argonia.jpg" alt="Argonia Project Manager" onerror="this.style.display='none'">
-          </div>
-          <div class="project-body">
-            <div class="title-row">
-              <h3>Argonia Project Manager</h3>
-              <span class="badge"><span class="pip"></span>In progress</span>
-            </div>
-            <p class="meta">Mizzou Space Program &middot; MATLAB &middot; 1D transient conduction &middot; Project management</p>
-            <p class="desc">
-              Leading the team through design, manufacturing, and testing of a high-powered
-              rocket for the Argonia Cup competition. Alongside the program management, I am
-              developing a 1D transient thermal model in MATLAB that predicts electronics bay
-              temperatures through ascent, verifying that avionics components survive the
-              aerodynamic heating environment and feeding directly into component selection.
-            </p>
-            <a class="more-link" href="{{ ARGONIA_GALLERY }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-6.5 8.5"/></svg>More images<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project reveal s1">
-        <div class="project-inner">
-          <div class="thumb">
             <span class="thumb-fallback">Add<br>irec-payload.jpg</span>
             <img src="images/irec-payload.jpg" alt="IREC Competition Payload" onerror="this.style.display='none'">
           </div>
@@ -764,7 +758,7 @@
             <div class="title-row">
               <h3>IREC Competition Payload</h3>
             </div>
-            <p class="meta">SolidWorks &middot; 3D printing &middot; Integration and assembly</p>
+            <p class="meta">SolidWorks &middot; Tolerance analysis &middot; Rapid prototyping &middot; 3D printing &middot; Soldering</p>
             <p class="desc">
               Designed and manufactured a competition payload for the Intercollegiate Rocket
               Engineering Competition as part of the Mizzou Space Program payload team.
@@ -781,6 +775,30 @@
       <div class="project reveal s1">
         <div class="project-inner">
           <div class="thumb">
+            <span class="thumb-fallback">Add<br>research-lab.jpg</span>
+            <img src="images/research-lab.jpg" alt="Undergraduate Research Assistant &mdash; Semiconductor Lab" onerror="this.style.display='none'">
+          </div>
+          <div class="project-body">
+            <div class="title-row">
+              <h3>Undergraduate Research Assistant &mdash; Semiconductor Lab</h3>
+              <span class="badge"><span class="pip"></span>In progress</span>
+            </div>
+            <p class="meta">Arduino &middot; SolidWorks &middot; Test fixture design &middot; 3D printing</p>
+            <p class="desc">
+              Built an Arduino-controlled three-point bending system to automate load testing
+              on mechanoluminescent materials, replacing a manual process with a repeatable
+              one for a fraction of the cost of a commercial rig. Modeled and 3D printed a
+              custom fixture that holds samples securely through repeated test cycles, and
+              programmed the stepper motor control on a breadboarded circuit.
+            </p>
+            <a class="more-link" href="{{ RESEARCH_LAB_GALLERY }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-6.5 8.5"/></svg>More images<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project reveal s1">
+        <div class="project-inner">
+          <div class="thumb">
             <span class="thumb-fallback">Add<br>level1-rocket.jpg</span>
             <img src="images/level1-rocket.jpg" alt="Level 1 Certification Rocket" onerror="this.style.display='none'">
           </div>
@@ -788,7 +806,7 @@
             <div class="title-row">
               <h3>Level 1 Certification Rocket</h3>
             </div>
-            <p class="meta">High-powered rocketry &middot; Airframe and recovery design &middot; Stability analysis</p>
+            <p class="meta">Design for manufacturing &middot; Rapid prototyping &middot; Band saw &middot; Belt and disk sander</p>
             <p class="desc">
               Designed, built, and flew a single-stage high-powered rocket to earn Level 1
               certification &mdash; sizing the airframe and recovery system, selecting the
@@ -807,12 +825,12 @@
   <div class="wrap">
     <h2 class="reveal">Resume</h2>
     <div class="resume-frame reveal s1">
-      <!-- Replace the placeholder below with: <img src="resume.png" alt="Elvin Esguerra resume"> -->
-      <div class="resume-placeholder">
-        <div class="ph-title">Resume &mdash; PNG placeholder</div>
+      <!-- Elvin-Esguerra-Resume.png sits next to index.html; the PDF is the download target -->
+      <img src="Elvin-Esguerra-Resume.png" alt="Elvin Esguerra resume" loading="lazy">
+      <div class="resume-placeholder" hidden>
+        <div class="ph-title">Resume &mdash; add Elvin-Esguerra-Resume.png</div>
         <p class="ph-note">
-          Save your resume image as <strong>resume.png</strong> next to index.html, then
-          swap this block for an img tag pointing at it.
+          Save your resume image as Elvin-Esguerra-Resume.png next to index.html.
         </p>
       </div>
     </div>
@@ -821,46 +839,76 @@
 
 <section id="skills">
   <div class="wrap">
-    <h2 class="reveal">Skills and Tools</h2>
+    <h2 class="reveal">Skills</h2>
 
-    <div class="skill-group reveal s1">
-      <div class="label">Simulation and analysis</div>
-      <div class="tags">
-        <span class="tag">ANSYS Fluent</span>
-        <span class="tag">ANSYS Mechanical</span>
-        <span class="tag">PyANSYS</span>
-        <span class="tag">Mesh sensitivity studies</span>
-        <span class="tag">SST k-&omega; turbulence modeling</span>
-        <span class="tag">Transient thermal analysis</span>
+    <div class="skills-grid">
+
+      <div class="skill-group reveal s1">
+        <div class="label">Simulation and analysis</div>
+        <div class="tags">
+          <span class="tag">ANSYS Fluent</span>
+          <span class="tag">ANSYS Mechanical</span>
+          <span class="tag">SolidWorks Flow Simulation</span>
+          <span class="tag">SolidWorks Simulation</span>
+        </div>
       </div>
-    </div>
 
-    <div class="skill-group reveal s2">
-      <div class="label">CAD and manufacturing</div>
-      <div class="tags">
-        <span class="tag">SolidWorks</span>
-        <span class="tag">Siemens NX</span>
-        <span class="tag">Design for Manufacturing</span>
-        <span class="tag">3D printing</span>
+      <div class="skill-group reveal s2">
+        <div class="label">CAD</div>
+        <div class="tags">
+          <span class="tag">SolidWorks</span>
+          <span class="tag">AutoCAD</span>
+          <span class="tag">FreeCAD</span>
+          <span class="tag">Fusion 360</span>
+        </div>
       </div>
-    </div>
 
-    <div class="skill-group reveal s3">
-      <div class="label">Programming</div>
-      <div class="tags">
-        <span class="tag">MATLAB</span>
-        <span class="tag">Python</span>
-        <span class="tag">SQL</span>
-        <span class="tag">Arduino</span>
+      <div class="skill-group reveal s3">
+        <div class="label">Programming</div>
+        <div class="tags">
+          <span class="tag">MATLAB</span>
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Arduino</span>
+        </div>
       </div>
-    </div>
 
-    <div class="skill-group reveal s4">
-      <div class="label">Certifications</div>
-      <div class="tags">
-        <span class="tag">CSWA</span>
-        <span class="tag">CSWA-Simulation</span>
-        <span class="tag">Oracle Database Foundations</span>
+      <div class="skill-group reveal s4">
+        <div class="label">Certifications</div>
+        <div class="tags">
+          <span class="tag">CSWA</span>
+          <span class="tag">CSWA-Simulation</span>
+          <span class="tag">Oracle Database Foundations</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal s5">
+        <div class="label">Design and process</div>
+        <div class="tags">
+          <span class="tag">Rapid prototyping</span>
+          <span class="tag">Design for manufacturing</span>
+          <span class="tag">GD&amp;T</span>
+          <span class="tag">Tolerance analysis</span>
+          <span class="tag">Test fixture design</span>
+          <span class="tag">Root cause analysis</span>
+          <span class="tag">Technical documentation</span>
+          <span class="tag">Project management</span>
+          <span class="tag">Leadership</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal s6">
+        <div class="label">Shop and fabrication</div>
+        <div class="tags">
+          <span class="tag">Water jet</span>
+          <span class="tag">Table saw</span>
+          <span class="tag">Band saw</span>
+          <span class="tag">Miter saw</span>
+          <span class="tag">Drill press</span>
+          <span class="tag">Belt and disk sander</span>
+          <span class="tag">Soldering</span>
+          <span class="tag">3D printing</span>
+        </div>
       </div>
     </div>
   </div>
