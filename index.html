@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
-<meta name="theme-color" content="#f6ead8">
+<meta name="theme-color" content="#e4eef9">
 <title>Elvin's Portfolio</title>
 <meta name="description" content="Elvin Esguerra — portfolio.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,20 +12,69 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f6ead8;
-    --bg-2: #fdf4e6;
-    --ink: #3b2f26;
-    --ink-soft: #6b5b4d;
-    --ink-dim: #93806f;
-    --line: rgba(92,68,48,0.14);
-    --line-2: rgba(92,68,48,0.26);
-    --accent: #a8501f;
-    --accent-2: #c98a2e;
-    --accent-3: #b0603a;
-    --card-bg: rgba(255,253,248,0.78);
-    --glow: rgba(168,80,31,0.30);
+    --bg: #e4eef9;
+    --bg-2: #f2f8fd;
+    --bg-deep: #cfe0f2;
+    --shadow: rgba(28,56,92,0.16);
+    --ink: #23303f;
+    --ink-soft: #40536b;
+    --ink-dim: #4e6076;
+    --line: rgba(40,72,112,0.14);
+    --line-2: rgba(40,72,112,0.26);
+    --accent: #1a5c93;
+    --accent-2: #3f8cc4;
+    --accent-3: #26719f;
+
+    /* Background scenery — swap the url to change the photo.
+       Options shipped: bg-fuji.jpg, bg-fuji-lake.jpg, bg-mountains.jpg, bg-sky.jpg, bg-dunes.jpg
+       Or drop in your own file and point this at it. */
+    --scenery: url("bg-fuji.jpg");
+    --scenery-strength: 0.22;
+    --card-bg: rgba(252,254,255,0.80);
+    --accent-rgb: 26,92,147;
+    --line-rgb: 40,72,112;
+    --glow: rgba(26,92,147,0.28);
     --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
   }
+
+  /* ---- Per-card themes. The whole page fades into the front card's color. ---- */
+  html[data-theme="about"] {
+    --bg:#e4eef9; --bg-2:#f2f8fd; --bg-deep:#cfe0f2;
+    --ink:#23303f; --ink-soft:#40536b; --ink-dim:#4e6076;
+    --line:rgba(var(--line-rgb), 0.14); --line-2:rgba(var(--line-rgb), 0.26);
+    --accent:#1a5c93; --accent-2:#3f8cc4; --accent-3:#26719f;
+    --accent-rgb:26,92,147; --line-rgb:40,72,112;
+    --glow:rgba(var(--accent-rgb), 0.28);
+    --shadow:rgba(28,56,92,0.16);
+  }
+  html[data-theme="exp"] {
+    --bg:#e3f2e8; --bg-2:#f1faf3; --bg-deep:#cee6d6;
+    --ink:#1f3528; --ink-soft:#3a5844; --ink-dim:#476552;
+    --line:rgba(28,84,52,0.15); --line-2:rgba(28,84,52,0.28);
+    --accent:#1c6b41; --accent-2:#3f9c68; --accent-3:#247d4d;
+    --accent-rgb:28,107,65; --line-rgb:28,84,52;
+    --glow:rgba(28,107,65,0.26);
+    --shadow:rgba(26,66,44,0.16);
+  }
+  html[data-theme="resume"] {
+    --bg:#ebe9f9; --bg-2:#f5f3fd; --bg-deep:#dad5f0;
+    --ink:#2b2740; --ink-soft:#4a4468; --ink-dim:#575074;
+    --line:rgba(64,52,124,0.15); --line-2:rgba(64,52,124,0.28);
+    --accent:#4a3b96; --accent-2:#7a68c4; --accent-3:#5a49a8;
+    --accent-rgb:74,59,150; --line-rgb:64,52,124;
+    --glow:rgba(74,59,150,0.26);
+    --shadow:rgba(52,42,96,0.16);
+  }
+  html[data-theme="pets"] {
+    --bg:#fbeedb; --bg-2:#fef8ef; --bg-deep:#f2ddc0;
+    --ink:#3a2d1c; --ink-soft:#5c4830; --ink-dim:#6b5438;
+    --line:rgba(120,80,28,0.16); --line-2:rgba(120,80,28,0.30);
+    --accent:#8a4f12; --accent-2:#c4813a; --accent-3:#9d5c18;
+    --accent-rgb:138,79,18; --line-rgb:120,80,28;
+    --glow:rgba(138,79,18,0.26);
+    --shadow:rgba(96,64,28,0.16);
+  }
+
 
   * { box-sizing: border-box; }
 
@@ -35,37 +84,56 @@
     margin: 0;
     background: var(--bg);
     color: var(--ink);
+    transition: background-color 1.05s var(--ease), color 1.05s var(--ease);
     font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     overflow: hidden;
   }
 
-  /* Ambient backdrop */
+  /* Ambient backdrop — scenic photo + cream scrim + warm washes */
   .backdrop {
     position: fixed; inset: 0; z-index: 0; pointer-events: none;
     background:
-      radial-gradient(1200px 680px at 20% 6%, rgba(255,214,150,0.62), transparent 64%),
-      radial-gradient(1000px 620px at 84% 94%, rgba(240,176,140,0.42), transparent 66%),
-      radial-gradient(760px 520px at 92% 12%, rgba(255,236,196,0.55), transparent 62%),
-      linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 52%, #f1dfc6 100%);
+      radial-gradient(1200px 680px at 20% 6%, var(--glow), transparent 64%),
+      radial-gradient(1000px 620px at 84% 94%, var(--glow), transparent 66%),
+      radial-gradient(760px 520px at 92% 12%, var(--bg-2), transparent 62%),
+      linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 52%, var(--bg-deep) 100%);
+    transition: background 1.05s var(--ease);
+  }
+  /* Photo layer: swap --scenery to change the image */
+  .backdrop::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: var(--scenery, url("bg-fuji.jpg"));
+    background-size: cover;
+    background-position: center 58%;
+    background-repeat: no-repeat;
+    opacity: var(--scenery-strength, 0.18);
+    filter: saturate(0.90) contrast(0.96);
+    transform: scale(1.04);
+    animation: driftBg 46s ease-in-out infinite alternate;
+    transition: opacity 1.05s var(--ease);
+  }
+  @keyframes driftBg {
+    0%   { transform: scale(1.04) translate3d(0, 0, 0); }
+    100% { transform: scale(1.09) translate3d(-1.2%, -1.4%, 0); }
   }
   .backdrop::after {
     content: ""; position: absolute; inset: 0;
     background-image:
       radial-gradient(1.6px 1.6px at 12% 18%, rgba(255,255,255,0.85), transparent 62%),
-      radial-gradient(1.3px 1.3px at 34% 62%, rgba(255,248,232,0.70), transparent 62%),
+      radial-gradient(1.3px 1.3px at 34% 62%, rgba(228,242,255,0.70), transparent 62%),
       radial-gradient(1.8px 1.8px at 58% 26%, rgba(255,255,255,0.78), transparent 62%),
-      radial-gradient(1.3px 1.3px at 76% 71%, rgba(255,246,226,0.62), transparent 62%),
+      radial-gradient(1.3px 1.3px at 76% 71%, rgba(220,238,255,0.62), transparent 62%),
       radial-gradient(1.7px 1.7px at 89% 34%, rgba(255,255,255,0.72), transparent 62%),
-      radial-gradient(1.2px 1.2px at 47% 86%, rgba(255,244,222,0.58), transparent 62%),
+      radial-gradient(1.2px 1.2px at 47% 86%, rgba(216,236,255,0.58), transparent 62%),
       radial-gradient(1.5px 1.5px at 7% 74%, rgba(255,255,255,0.55), transparent 62%),
-      radial-gradient(1.3px 1.3px at 66% 9%, rgba(255,250,236,0.60), transparent 62%);
+      radial-gradient(1.3px 1.3px at 66% 9%, rgba(230,244,255,0.60), transparent 62%);
     background-repeat: repeat;
     background-size: 620px 480px;
-    opacity: .55;
-    animation: twinkle 7s ease-in-out infinite;
+    opacity: .34;
+    animation: twinkle 9s ease-in-out infinite;
   }
-  @keyframes twinkle { 0%,100% { opacity: .40; } 50% { opacity: .68; } }
+  @keyframes twinkle { 0%,100% { opacity: .24; } 50% { opacity: .44; } }
 
   /* Shell */
   .stage-wrap {
@@ -147,14 +215,14 @@
     background: var(--card-bg);
     backdrop-filter: blur(10px) saturate(130%);
     -webkit-backdrop-filter: blur(10px) saturate(130%);
-    box-shadow: 0 20px 46px -22px rgba(120,78,44,0.30), 0 2px 8px -3px rgba(120,78,44,0.14);
+    box-shadow: 0 20px 46px -22px rgba(44,78,122,0.30), 0 2px 8px -3px rgba(44,78,122,0.14);
     display: flex; flex-direction: column; justify-content: flex-end;
     text-decoration: none; color: inherit;
     transition: border-color .5s var(--ease), box-shadow .5s var(--ease);
   }
   .card3d.front .card-face {
-    border-color: rgba(168,80,31,0.40);
-    box-shadow: 0 28px 62px -24px rgba(120,78,44,0.34), 0 0 44px -14px var(--glow);
+    border-color: rgba(var(--accent-rgb), 0.40);
+    box-shadow: 0 28px 62px -24px rgba(44,78,122,0.34), 0 0 44px -14px var(--glow);
   }
 
   /* Faded imagery layer */
@@ -170,26 +238,26 @@
 
   .card-art.gen-exp {
     background-image:
-      radial-gradient(circle at 30% 22%, rgba(240,158,90,0.62), transparent 56%),
-      radial-gradient(circle at 74% 78%, rgba(255,206,130,0.58), transparent 58%),
-      repeating-linear-gradient(90deg, rgba(140,92,54,0.07) 0 1px, transparent 1px 7px),
-      linear-gradient(160deg, #ffeed6, #fbdcb6);
+      radial-gradient(circle at 30% 22%, rgba(63,156,104,0.55), transparent 56%),
+      radial-gradient(circle at 74% 78%, rgba(140,206,168,0.52), transparent 58%),
+      repeating-linear-gradient(90deg, rgba(28,84,52,0.07) 0 1px, transparent 1px 7px),
+      linear-gradient(160deg, #dcf2e4, #b8ddc7);
   }
   .card-art.gen-pets {
     background-image:
-      radial-gradient(circle at 68% 26%, rgba(255,196,116,0.66), transparent 56%),
-      radial-gradient(circle at 24% 80%, rgba(226,142,110,0.50), transparent 58%),
-      repeating-linear-gradient(48deg, rgba(140,92,54,0.06) 0 1px, transparent 1px 9px),
-      linear-gradient(160deg, #fff0da, #fbdfc4);
+      radial-gradient(circle at 68% 26%, rgba(196,129,58,0.55), transparent 56%),
+      radial-gradient(circle at 24% 80%, rgba(222,168,98,0.48), transparent 58%),
+      repeating-linear-gradient(48deg, rgba(120,80,28,0.07) 0 1px, transparent 1px 9px),
+      linear-gradient(160deg, #fdf0dc, #f2d8b4);
   }
 
   .card-scrim {
     position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(255,253,248,0.96) 0%, rgba(255,252,245,0.80) 36%, rgba(255,252,245,0.24) 74%, transparent 100%);
+    background: linear-gradient(to top, rgba(252,254,255,0.96) 0%, rgba(250,253,255,0.80) 36%, rgba(250,253,255,0.24) 74%, transparent 100%);
   }
   .card-hair {
     position: absolute; left: 0; right: 0; top: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(168,80,31,0.60), transparent);
+    background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb), 0.60), transparent);
     opacity: 0; transition: opacity .5s var(--ease);
   }
   .card3d.front .card-hair { opacity: 1; }
@@ -238,8 +306,8 @@
   }
   .navbtn svg { width: 16px; height: 16px; }
   .navbtn:hover {
-    color: var(--accent); border-color: rgba(168,80,31,0.45);
-    background: rgba(168,80,31,0.09); transform: translateY(-1px);
+    color: var(--accent); border-color: rgba(var(--accent-rgb), 0.45);
+    background: rgba(var(--accent-rgb), 0.09); transform: translateY(-1px);
   }
   .navbtn:active { transform: translateY(0) scale(0.96); }
 
@@ -255,7 +323,7 @@
   .pip:hover { border-color: var(--accent); transform: scale(1.2); }
   .pip.on {
     background: var(--accent); border-color: var(--accent);
-    box-shadow: 0 0 0 4px rgba(168,80,31,0.15);
+    box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.15);
     transform: scale(1.15);
   }
 
@@ -316,7 +384,7 @@
 
   .sheet-scrim {
     position: absolute; inset: 0;
-    background: rgba(74,52,34,0.42);
+    background: rgba(34,60,96,0.42);
     backdrop-filter: blur(7px) saturate(120%);
     -webkit-backdrop-filter: blur(7px) saturate(120%);
     opacity: 0; transition: opacity .42s var(--ease);
@@ -328,10 +396,10 @@
     width: min(860px, 100%);
     max-height: min(88vh, 860px);
     display: flex; flex-direction: column;
-    background: linear-gradient(178deg, #fffdf7 0%, #fdf5e8 100%);
+    background: linear-gradient(178deg, #fcfeff 0%, #f2f8fd 100%);
     border: 1px solid var(--line-2);
     border-radius: 20px;
-    box-shadow: 0 44px 96px -34px rgba(96,62,34,0.44), 0 0 60px -22px var(--glow);
+    box-shadow: 0 44px 96px -34px rgba(34,64,104,0.44), 0 0 60px -22px var(--glow);
     overflow: hidden;
     opacity: 0; transform: translateY(22px) scale(0.976);
     transition: opacity .46s var(--ease), transform .52s var(--ease);
@@ -343,7 +411,7 @@
     display: flex; align-items: flex-start; gap: 16px;
     padding: clamp(20px, 3vw, 30px) clamp(20px, 3.4vw, 34px) 18px;
     border-bottom: 1px solid var(--line);
-    background: linear-gradient(180deg, rgba(255,245,226,0.9), rgba(255,253,247,0));
+    background: linear-gradient(180deg, rgba(238,246,254,0.9), rgba(252,254,255,0));
   }
   .sheet-kicker {
     font-family: "JetBrains Mono", monospace;
@@ -368,8 +436,8 @@
   }
   .sheet-x svg { width: 17px; height: 17px; }
   .sheet-x:hover {
-    color: var(--accent); border-color: rgba(168,80,31,0.45);
-    background: rgba(255,240,220,0.9); transform: rotate(90deg);
+    color: var(--accent); border-color: rgba(var(--accent-rgb), 0.45);
+    background: rgba(234,244,253,0.9); transform: rotate(90deg);
   }
 
   .sheet-body {
@@ -378,19 +446,19 @@
     overscroll-behavior: contain;
     padding: clamp(20px, 3vw, 30px) clamp(20px, 3.4vw, 34px) clamp(26px, 4vw, 38px);
     scrollbar-width: thin;
-    scrollbar-color: rgba(168,80,31,0.4) transparent;
+    scrollbar-color: rgba(var(--accent-rgb), 0.4) transparent;
   }
   .sheet-body::-webkit-scrollbar { width: 9px; }
   .sheet-body::-webkit-scrollbar-track { background: transparent; }
   .sheet-body::-webkit-scrollbar-thumb {
-    background: rgba(168,80,31,0.32); border-radius: 99px;
+    background: rgba(var(--accent-rgb), 0.32); border-radius: 99px;
     border: 2px solid transparent; background-clip: padding-box;
   }
-  .sheet-body::-webkit-scrollbar-thumb:hover { background: rgba(168,80,31,0.5); background-clip: padding-box; }
+  .sheet-body::-webkit-scrollbar-thumb:hover { background: rgba(var(--accent-rgb), 0.5); background-clip: padding-box; }
 
   .sheet-body p { margin: 0 0 15px; color: var(--ink-soft); line-height: 1.72; font-size: 16px; max-width: 68ch; }
   .sheet-body p:last-child { margin-bottom: 0; }
-  .sheet-body a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(168,80,31,0.35); transition: border-color .3s var(--ease); }
+  .sheet-body a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(var(--accent-rgb), 0.35); transition: border-color .3s var(--ease); }
   .sheet-body a:hover { border-bottom-color: var(--accent); }
   .sheet-body strong { color: var(--ink); font-weight: 500; }
 
@@ -415,7 +483,7 @@
     font-size: 10px; letter-spacing: 0.16em; color: var(--accent-2);
   }
   .entry h3 { margin: 0; font-size: 17.5px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
-  .entry h3 a { color: inherit; border-bottom-color: rgba(168,80,31,0.3); }
+  .entry h3 a { color: inherit; border-bottom-color: rgba(var(--accent-rgb), 0.3); }
   .entry h3 a:hover { color: var(--accent); }
   .entry-org {
     font-family: "JetBrains Mono", monospace;
@@ -428,10 +496,99 @@
     font-family: "JetBrains Mono", monospace;
     font-size: 10px; letter-spacing: 0.07em;
     padding: 4.5px 9px; border-radius: 6px;
-    background: rgba(255,240,218,0.8);
-    border: 1px solid rgba(168,80,31,0.16);
+    background: rgba(234,244,253,0.8);
+    border: 1px solid rgba(var(--accent-rgb), 0.16);
     color: var(--ink-soft);
   }
+
+  /* Project list (clickable rows) */
+  .plist { display: flex; flex-direction: column; gap: 10px; }
+  .prow {
+    display: grid; grid-template-columns: auto minmax(0,1fr) auto;
+    align-items: center; gap: 14px;
+    width: 100%; text-align: left;
+    padding: 15px 16px;
+    background: rgba(255,255,255,0.72);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    font: inherit; color: inherit; cursor: pointer;
+    transition: border-color .3s var(--ease), background .3s var(--ease),
+                transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .prow:hover, .prow:focus-visible {
+    border-color: rgba(var(--accent-rgb), 0.42);
+    background: rgba(255,255,255,0.94);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px -16px rgba(44,78,122,0.34);
+    outline: none;
+  }
+  .prow-n {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px; letter-spacing: 0.14em; color: var(--accent-2);
+  }
+  .prow-t { min-width: 0; }
+  .prow-t h3 {
+    margin: 0 0 3px; font-size: 16.5px; font-weight: 600;
+    letter-spacing: -0.01em; color: var(--ink); line-height: 1.35;
+  }
+  .prow-t .o {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .prow-go {
+    display: grid; place-items: center;
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 1px solid var(--line-2); color: var(--accent);
+    transition: background .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease);
+  }
+  .prow-go svg { width: 13px; height: 13px; }
+  .prow:hover .prow-go { background: rgba(var(--accent-rgb), 0.1); border-color: var(--accent); transform: translateX(2px); }
+
+  /* Project detail: What / How / Results */
+  .pd-org {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-dim); margin: 0 0 20px;
+  }
+  .wh { margin: 0 0 26px; }
+  .wh:last-of-type { margin-bottom: 0; }
+  .wh-h {
+    display: flex; align-items: center; gap: 11px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 12px;
+  }
+  .wh-h::before {
+    content: ""; flex: 0 0 auto; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.14);
+  }
+  .wh-h::after { content: ""; flex: 1 1 auto; height: 1px; background: var(--line); }
+  .wh ul { margin: 0; padding: 0; list-style: none; }
+  .wh li {
+    position: relative; padding-left: 20px; margin-bottom: 10px;
+    color: var(--ink-soft); font-size: 15.4px; line-height: 1.7; max-width: 66ch;
+  }
+  .wh li:last-child { margin-bottom: 0; }
+  .wh li::before {
+    content: ""; position: absolute; left: 3px; top: 0.66em;
+    width: 5px; height: 5px; border-radius: 50%; background: var(--accent-2);
+  }
+  .wh li strong { color: var(--ink); font-weight: 600; }
+  .wh.res li::before { background: var(--accent); box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.12); }
+
+  /* Back button in sheet header */
+  .sheet-back {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: none; border: 0; padding: 0; margin-bottom: 7px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-dim); cursor: pointer;
+    transition: color .3s var(--ease), gap .3s var(--ease);
+  }
+  .sheet-back svg { width: 12px; height: 12px; }
+  .sheet-back:hover { color: var(--accent); gap: 10px; }
+  .sheet-back[hidden] { display: none; }
 
   /* Skills grid */
   .sk-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px 26px; }
@@ -445,12 +602,12 @@
   /* Resume block */
   .res-doc {
     background: #fff; border: 1px solid var(--line-2); border-radius: 12px;
-    padding: 12px; box-shadow: 0 14px 34px -18px rgba(120,78,44,0.3);
+    padding: 12px; box-shadow: 0 14px 34px -18px rgba(44,78,122,0.3);
   }
   .res-doc img { width: 100%; height: auto; display: block; border-radius: 7px; border: 1px solid var(--line); }
   .res-ph {
     aspect-ratio: 8.5 / 11; border: 1px dashed var(--line-2); border-radius: 7px;
-    background: rgba(255,244,224,0.7);
+    background: rgba(237,246,254,0.7);
     display: grid; place-content: center; gap: 8px; text-align: center; padding: 26px;
   }
   .res-ph .m {
@@ -461,12 +618,12 @@
     display: inline-flex; align-items: center; gap: 10px;
     margin-top: 18px; padding: 12px 22px; border-radius: 999px;
     font-size: 14.5px; font-weight: 500; text-decoration: none;
-    color: var(--accent); background: rgba(255,241,220,0.9);
-    border: 1px solid rgba(168,80,31,0.4);
+    color: var(--accent); background: rgba(235,244,253,0.9);
+    border: 1px solid rgba(var(--accent-rgb), 0.4);
     transition: background .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease);
   }
   .dl:hover {
-    background: rgba(255,232,201,1); transform: translateY(-2px);
+    background: rgba(226,238,252,1); transform: translateY(-2px);
     box-shadow: 0 14px 30px -14px var(--glow);
   }
   .dl svg { width: 16px; height: 16px; transition: transform .35s var(--ease); }
@@ -483,9 +640,9 @@
   .fig-box {
     position: relative; aspect-ratio: 4 / 3; overflow: hidden;
     border-radius: 11px; border: 1px solid var(--line);
-    background: rgba(255,243,222,0.9);
+    background: rgba(236,245,253,0.9);
     display: grid; place-items: center;
-    box-shadow: 0 10px 26px -18px rgba(120,78,44,0.42);
+    box-shadow: 0 10px 26px -18px rgba(44,78,122,0.42);
     transition: border-color .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease);
   }
   .fig-box img {
@@ -494,7 +651,7 @@
     cursor: zoom-in;
     transition: transform .5s var(--ease), filter .35s var(--ease);
   }
-  .fig-box:has(img):hover { border-color: rgba(168,80,31,0.42); transform: translateY(-2px); box-shadow: 0 18px 34px -18px rgba(120,78,44,0.5); }
+  .fig-box:has(img):hover { border-color: rgba(var(--accent-rgb), 0.42); transform: translateY(-2px); box-shadow: 0 18px 34px -18px rgba(44,78,122,0.5); }
   .fig-box:has(img):hover img { transform: scale(1.035); }
   .fig-box .m {
     font-family: "JetBrains Mono", monospace;
@@ -508,7 +665,7 @@
     position: absolute; right: 9px; bottom: 9px; z-index: 2;
     width: 26px; height: 26px; border-radius: 50%;
     display: none; place-items: center;
-    background: rgba(255,250,240,0.9); border: 1px solid var(--line-2);
+    background: rgba(242,249,255,0.9); border: 1px solid var(--line-2);
     color: var(--accent); pointer-events: none;
   }
   .fig-box:has(img) .zoom { display: grid; }
@@ -518,7 +675,7 @@
   .lb {
     position: fixed; inset: 0; z-index: 90;
     display: grid; place-items: center; padding: clamp(16px, 4vw, 54px);
-    background: rgba(58,36,18,0.62);
+    background: rgba(24,48,80,0.62);
     backdrop-filter: blur(9px); -webkit-backdrop-filter: blur(9px);
     opacity: 0; transition: opacity .32s var(--ease);
   }
@@ -527,20 +684,20 @@
   .lb-in { max-width: 100%; max-height: 100%; display: flex; flex-direction: column; gap: 12px; align-items: center; }
   .lb img {
     max-width: 100%; max-height: 80vh; display: block;
-    border-radius: 12px; border: 1px solid rgba(255,247,232,0.55);
-    box-shadow: 0 40px 90px -30px rgba(48,28,12,0.7);
+    border-radius: 12px; border: 1px solid rgba(240,248,255,0.55);
+    box-shadow: 0 40px 90px -30px rgba(18,40,70,0.7);
     transform: scale(0.965); transition: transform .34s var(--ease);
   }
   .lb.on img { transform: scale(1); }
   .lb-cap {
-    font-size: 13.4px; color: rgba(255,248,236,0.86); text-align: center;
+    font-size: 13.4px; color: rgba(241,248,255,0.86); text-align: center;
     max-width: 62ch; line-height: 1.6;
   }
   .lb-x {
     position: absolute; top: 18px; right: 18px;
     width: 42px; height: 42px; border-radius: 50%; cursor: pointer;
     display: grid; place-items: center;
-    background: rgba(255,250,240,0.9); border: 1px solid rgba(255,247,232,0.5);
+    background: rgba(242,249,255,0.9); border: 1px solid rgba(240,248,255,0.5);
     color: var(--ink); transition: transform .3s var(--ease), background .3s var(--ease);
   }
   .lb-x:hover { transform: rotate(90deg); background: #fff; }
@@ -552,7 +709,7 @@
     display: flex; align-items: center; gap: 14px;
     padding: 15px clamp(20px, 3.4vw, 34px);
     border-top: 1px solid var(--line);
-    background: linear-gradient(0deg, rgba(255,243,224,0.86), rgba(255,253,247,0));
+    background: linear-gradient(0deg, rgba(237,246,254,0.86), rgba(252,254,255,0));
   }
   .sheet-nav {
     display: inline-flex; align-items: center; gap: 8px;
@@ -564,7 +721,7 @@
     transition: color .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease), transform .3s var(--ease);
   }
   .sheet-nav svg { width: 13px; height: 13px; }
-  .sheet-nav:hover { color: var(--accent); border-color: rgba(168,80,31,0.45); background: rgba(255,240,220,0.9); }
+  .sheet-nav:hover { color: var(--accent); border-color: rgba(var(--accent-rgb), 0.45); background: rgba(234,244,253,0.9); }
   .sheet-nav.n { margin-left: auto; }
   .sheet-dots { display: flex; gap: 9px; }
   .sdot {
@@ -573,7 +730,7 @@
     transition: background .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease);
   }
   .sdot:hover { border-color: var(--accent); transform: scale(1.2); }
-  .sdot.on { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px rgba(168,80,31,0.13); }
+  .sdot.on { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.13); }
 
   @media (max-width: 720px) {
     .sk-grid { grid-template-columns: 1fr; gap: 18px; }
@@ -583,6 +740,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .backdrop::before { animation: none !important; }
     .backdrop::after { animation: none !important; }
     .fade { opacity: 1 !important; transform: none !important; }
     .sheet, .sheet-scrim { opacity: 1 !important; transform: none !important; }
@@ -623,6 +781,10 @@
   <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
     <div class="sheet-top">
       <div>
+        <button class="sheet-back" id="sheetBack" type="button" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6"/><path d="M11 6l-6 6 6 6"/></svg>
+          All projects
+        </button>
         <div class="sheet-kicker" id="sheetKicker">01 / 04</div>
         <h2 class="sheet-title" id="sheetTitle">About Me</h2>
       </div>
@@ -679,9 +841,193 @@
       list.map(function (f) { return fig(f[0], f[1]); }).join('') + '</div>';
   }
 
+  /* ---------------- Projects: What / How / Results ---------------- */
+  var PROJECTS = [
+    {
+      title: 'Argonia Cup Project Manager',
+      org: 'Mizzou Space Program \u00b7 May 2026 \u2013 Present',
+      what: [
+        'Project Manager leading <strong>30+ members</strong> through the design, manufacturing, and testing of a competition rocket targeting a <strong>7,000 ft apogee</strong>, integrating an active air-braking system and a 10-golf-ball payload.',
+        'The team needed a faster way to iterate on fin geometry, and real confidence that the vehicle would land inside its target altitude window before committing to a build.'
+      ],
+      how: [
+        'Built a Python tool that drives OpenRocket programmatically through JPype, so fin geometry could be swept automatically instead of adjusted by hand one simulation at a time.',
+        'Post-processed the sweep output with NumPy to rank geometries against predicted apogee.',
+        'Ran <strong>250 Monte Carlo simulations</strong> across varied wind and launch-angle conditions to characterize the spread rather than trusting a single nominal run.'
+      ],
+      results: [
+        'Reduced fin optimization sweeps from <strong>2 weeks to 4 hours</strong>.',
+        'Found that <strong>99.2% of simulated flights</strong> met the criteria for second-stage motor ignition.',
+        'Characterized flight-condition uncertainty rather than trusting a single nominal run.'
+      ],
+      chips: ['Python', 'OpenRocket', 'JPype', 'NumPy', 'Leadership', 'Project management'],
+      figs: [['argonia-1.jpg', 'Argonia Cup airframe during assembly.'],
+             ['argonia-2.jpg', 'OpenRocket output from the Python sweep tool.']]
+    },
+    {
+      title: 'Manufacturing Group Leader',
+      org: 'General Motors, Wentzville \u00b7 Jun 2026 \u2013 Aug 2026',
+      what: [
+        'Ran three stamping presses and <strong>36 operators</strong> on an active production floor, accountable for hitting daily output while holding quality and safety requirements.',
+        'One recurring process bottleneck kept pulling the line down, and nobody had the data to say exactly where it came from.'
+      ],
+      how: [
+        'Built a downtime-tracking sheet so stoppages were recorded consistently instead of anecdotally.',
+        'Ran root-cause analysis on the logged data to isolate the recurring bottleneck.',
+        'Worked directly alongside engineers, die makers, and electricians to diagnose press failures and correct the process on the floor.'
+      ],
+      results: [
+        'Exceeded <strong>3,700 parts per day</strong> while meeting quality and safety quotas.',
+        'Eliminated <strong>40 minutes</strong> of recurring weekly downtime by standardizing robot-programming procedures, enabling <strong>200 more parts weekly</strong>.',
+        'Learned what an analysis is actually worth when a real machine is down and the line is waiting.'
+      ],
+      chips: ['Leadership', 'Root cause analysis', 'Project management', 'Technical documentation'],
+      figs: []
+    },
+    {
+      title: 'Quantifying Convective Aerodynamic Heating During Ascent',
+      org: 'AIAA Region V Student Conference \u00b7 Published \u00b7 Jan\u2013Mar 2026',
+      link: 'https://arc.aiaa.org/doi/epdf/10.2514/6.2026-111868',
+      what: [
+        'Collegiate rocket teams routinely pick nose-tip materials using the Sutton\u2013Graves heating correlation, but it was never intended for the subsonic-through-supersonic ascent regime those vehicles actually fly.',
+        'I set out to quantify how far off it is, so teams would know whether they could trust it.'
+      ],
+      how: [
+        'Built a <strong>72,000-cell axisymmetric CFD model</strong> in ANSYS Fluent.',
+        'Ran a mesh sensitivity study to confirm the solution was grid-independent before drawing conclusions from it.',
+        'Evaluated heating across <strong>five flight conditions from Mach 0.54 to 1.91</strong>, with boundary conditions derived from prior flight data rather than assumed.'
+      ],
+      results: [
+        'Predicted peak stagnation-region heat flux of <strong>2.46 \u00d7 10\u2076 W/m\u00b2</strong>.',
+        'Quantified a <strong>183% to 452% underprediction</strong> from Sutton\u2013Graves in this regime \u2014 wide enough to change which nose-tip material a team should select.',
+        'Published and presented at the AIAA Region V Student Conference.'
+      ],
+      chips: ['ANSYS Fluent', 'MATLAB', 'Technical documentation'],
+      figs: [['aiaa-1.jpg', 'Stagnation-region heat flux contour from the axisymmetric model.'],
+             ['aiaa-2.jpg', 'Mesh refinement near the nose tip.']]
+    },
+    {
+      title: 'IREC Nose Cone Aerodynamic Analysis',
+      org: 'Mizzou Space Program \u00b7 Apr\u2013May 2026',
+      what: [
+        'The competition vehicle needed a trustworthy drag prediction at maximum dynamic pressure to feed trajectory work and structural sizing.',
+        'A CFD number is only useful if you can show it agrees with something independent, so validation was part of the scope from the start.'
+      ],
+      how: [
+        'Simulated <strong>Mach 2.12</strong> compressible supersonic flow in ANSYS Fluent, applying OpenRocket trajectory and atmospheric data for Max-Q analysis.',
+        'Generated a <strong>474k-cell structured mesh</strong> with near-wall inflation layers and a Body of Influence, achieving <strong>y+ of 1.6</strong> using the SST k-\u03c9 turbulence model.',
+        'Implemented the closed-form drag solutions in MATLAB as an independent check.',
+        'Compared both approaches rather than reporting the solver output on its own.'
+      ],
+      results: [
+        'Calculated <strong>245 N</strong> of total drag with a drag coefficient of <strong>0.123</strong>.',
+        'Validated against hand calculations to within <strong>2%</strong>.'
+      ],
+      chips: ['ANSYS Fluent', 'SolidWorks', 'MATLAB'],
+      figs: [['nosecone-1.jpg', 'Pressure field around the nose cone at max dynamic pressure.'],
+             ['nosecone-2.jpg', 'SST k-\u03c9 mesh around the forebody.']]
+    },
+    {
+      title: 'IREC Payload',
+      org: 'Mizzou Space Program \u00b7 Aug 2025 \u2013 May 2026',
+      what: [
+        'Design a <strong>5.75 lb</strong> payload using engineered load paths to isolate electronics from a <strong>20 ft/s impact</strong>, while meeting strength, weight, and manufacturability requirements.',
+        'It also had to secure <strong>6 LiPo batteries</strong>, microcontrollers, and a camera inside a <strong>3.85 inch diameter</strong> envelope.'
+      ],
+      how: [
+        'Modeled the structure in SolidWorks, selecting <strong>PLA, aluminum, and fiberglass</strong> where each material earned its place on strength, weight, or ease of manufacture.',
+        'Modeled and 3D printed custom mounts and panels to secure the electronics and block dust and moisture.',
+        'Troubleshot fit and clearance issues discovered during physical integration and assembly.'
+      ],
+      results: [
+        'Structure met the 20 ft/s impact requirement with all electronics mounted and retained.',
+        'Drafted <strong>8 GD&amp;T drawings</strong> for disks, mounts, and panels to guide fabrication and assembly.',
+        'First time I saw how quickly a tolerance decision made in CAD becomes a problem on the bench.'
+      ],
+      chips: ['SolidWorks', 'Tolerance analysis', 'Rapid prototyping', '3D printing', 'Soldering'],
+      figs: [['payload-cad.jpg', 'CAD model \u2014 full payload assembly.'],
+             ['payload-wip.jpg', 'In progress \u2014 payload during assembly.']]
+    },
+    {
+      title: 'Undergraduate Research Assistant',
+      org: 'Semiconductor Lab, University of Missouri \u00b7 Jan 2026 \u2013 Present',
+      what: [
+        'The lab needed repeatable load testing on mechanoluminescent materials, but the process was manual and commercial bending rigs are expensive.',
+        'Goal was an automated setup that could run identical cycles on sample after sample.'
+      ],
+      how: [
+        'Designed a <strong>three-point bending system</strong> in SolidWorks for <strong>under $40</strong>, with custom 3D-printed components and stepper-motor loading.',
+        'Programmed the stepper motor control and wired the supporting electronics on a breadboarded circuit.',
+        'Modeled and 3D printed a custom <strong>60 \u00d7 60 mm fixture</strong> to hold samples securely through repeated cycles.'
+      ],
+      results: [
+        'Total build cost <strong>under $40</strong>, a fraction of a commercial rig.',
+        'Replaced a manual process with one that runs repeated cycles unattended.',
+        'Fixture holds samples in consistent alignment test after test, so results are comparable.'
+      ],
+      chips: ['Arduino', 'SolidWorks', 'Test fixture design', '3D printing'],
+      figs: [['research-1.jpg', 'Arduino-controlled three-point bending rig.'],
+             ['research-2.jpg', '3D printed 60 \u00d7 60 mm sample fixture.']]
+    },
+    {
+      title: 'Level 1 Certification Rocket',
+      org: 'High-powered rocketry',
+      what: [
+        'Earn Level 1 high-power rocketry certification, which requires designing, building, and successfully flying and recovering a single-stage vehicle.'
+      ],
+      how: [
+        'Sized the airframe and recovery system for the target motor and expected altitude.',
+        'Selected the motor and verified stability margin before the vehicle was cleared to fly.',
+        'Fabricated the airframe using band saw and belt and disk sander work.'
+      ],
+      results: [
+        'Successful flight and recovery on the certification attempt.',
+        'Level 1 certification earned.'
+      ],
+      chips: ['Design for manufacturing', 'Rapid prototyping', 'Band saw', 'Belt and disk sander'],
+      figs: [['level1-1.jpg', 'Level 1 rocket on the pad before flight.']]
+    }
+  ];
+
+  var GO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg>';
+
+  /* Clickable list of every project */
+  function plist() {
+    return '<div class="plist">' + PROJECTS.map(function (p, i) {
+      return '<button class="prow" type="button" data-p="' + i + '">' +
+        '<span class="prow-n">0' + (i + 1) + '</span>' +
+        '<span class="prow-t"><h3>' + p.title + '</h3><span class="o">' + p.org + '</span></span>' +
+        '<span class="prow-go">' + GO + '</span></button>';
+    }).join('') + '</div>';
+  }
+
+  function whBlock(cls, label, items) {
+    if (!items || !items.length) return '';
+    return '<div class="wh ' + cls + '"><div class="wh-h">' + label + '</div><ul>' +
+      items.map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul></div>';
+  }
+
+  /* One project's full detail view */
+  function projBody(p) {
+    var h = '<p class="pd-org">' + p.org + '</p>';
+    if (p.link) {
+      h += '<p><a href="' + p.link + '" target="_blank" rel="noopener">Read the published paper &rarr;</a></p>';
+    }
+    h += whBlock('', 'What', p.what);
+    h += whBlock('', 'How', p.how);
+    h += whBlock('res', 'Results', p.results);
+    if (p.figs && p.figs.length) h += figs(p.figs);
+    if (p.chips && p.chips.length) {
+      h += '<div class="lbl">Skills used</div><div class="chips">' +
+        p.chips.map(function (c) { return '<span class="chip">' + c + '</span>'; }).join('') + '</div>';
+    }
+    return h;
+  }
+
   var CARDS = [
     {
       title: 'About Me',
+      theme: 'about',
       note: 'Mechanical engineering at Mizzou, thermal systems and CFD.',
       cta: 'Read more',
       art: { image: 'profile.jpg' },
@@ -707,115 +1053,15 @@
         '&middot; <a href="mailto:ejhesguerra@gmail.com">ejhesguerra@gmail.com</a></p>'
     },
     {
-      title: 'Resume',
-      note: 'Education, experience, skills, and certifications.',
-      cta: 'View resume',
-      art: { image: 'ElvinEsguerra2026_Resume.png' },
-      body:
-        '<p>Bachelor of Science in Mechanical Engineering, University of Missouri\u2013Columbia, ' +
-        'expected May 2029.</p>' +
-        '<div class="res-doc">' +
-        '<img src="ElvinEsguerra2026_Resume.png" alt="Elvin Esguerra resume" loading="lazy" ' +
-        'onerror="this.outerHTML=\'<div class=&quot;res-ph&quot;><div class=&quot;m&quot;>Resume preview</div><p>Add ElvinEsguerra2026_Resume.png next to index.html</p></div>\'">' +
-        '</div>' +
-        '<a class="dl" href="ElvinEsguerra2026_Resume.pdf" download>' +
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="M7 12l5 5 5-5"/><path d="M4 21h16"/></svg>' +
-        'Download resume <span class="tag">PDF</span></a>'
-    },
-    {
       title: 'Experience',
+      theme: 'exp',
       note: 'Simulation, rocketry, research, and manufacturing work.',
       cta: 'See the work',
       art: { gen: 'gen-exp' },
       body:
-        '<div class="entry"><div class="entry-head"><span class="entry-n">01</span>' +
-        '<h3>Argonia Cup Project Manager</h3></div>' +
-        '<p class="entry-org">Mizzou Space Program &middot; May 2026 \u2013 Present</p>' +
-        '<p>Leading the team through design, manufacturing, and testing of a high-powered rocket. ' +
-        'Built a Python tool that drives OpenRocket programmatically, cutting testing and optimization ' +
-        'time by <strong>95%</strong> and finding a fin geometry that gained 1.6% apogee. Ran 250 Monte Carlo ' +
-        'simulations across wind and launch-angle conditions, predicting a 19,769\u201320,796 ft altitude ' +
-        'range and 99.2% eligibility for mid-flight ignition.</p>' +
-        '<div class="chips"><span class="chip">Python</span><span class="chip">OpenRocket</span>' +
-        '<span class="chip">JPype</span><span class="chip">NumPy</span><span class="chip">Leadership</span></div></div>' +
-
-        figs([['argonia-1.jpg', 'Argonia Cup airframe during assembly.'],
-              ['argonia-2.jpg', 'OpenRocket simulation output from the Python sweep tool.']]) +
-
-        '<div class="entry"><div class="entry-head"><span class="entry-n">02</span>' +
-        '<h3>Manufacturing Group Leader</h3></div>' +
-        '<p class="entry-org">General Motors &middot; Jun 2026 \u2013 Aug 2026</p>' +
-        '<p>Led <strong>36 operators</strong> across three stamping presses to daily targets exceeding 5,200 parts ' +
-        'while holding quality and safety requirements. Built a downtime-tracking sheet and ran root-cause ' +
-        'analysis on a recurring bottleneck, eliminating 40 minutes of recurring press downtime, and worked ' +
-        'alongside engineers, die makers, and electricians to diagnose failures on the floor.</p>' +
-        '<div class="chips"><span class="chip">Leadership</span><span class="chip">Root cause analysis</span>' +
-        '<span class="chip">Project management</span><span class="chip">Technical documentation</span></div></div>' +
-
-        '<div class="entry"><div class="entry-head"><span class="entry-n">03</span>' +
-        '<h3><a href="https://arc.aiaa.org/doi/epdf/10.2514/6.2026-111868" target="_blank" rel="noopener">Quantifying Convective Aerodynamic Heating During Ascent</a></h3></div>' +
-        '<p class="entry-org">AIAA Region V Student Conference &middot; Published</p>' +
-        '<p>Built a 72,000-cell axisymmetric CFD model predicting aerodynamic heating across five flight ' +
-        'conditions from Mach 0.54 to 1.91, with boundary conditions derived from prior flight data. Peak ' +
-        'stagnation-region heat flux reached <strong>2.46 \u00d7 10\u2076 W/m\u00b2</strong>. The Sutton\u2013Graves ' +
-        'correlation underpredicts by 183% to 452% in this regime \u2014 wide enough to change which nose-tip ' +
-        'material a collegiate team should select.</p>' +
-        '<div class="chips"><span class="chip">ANSYS Fluent</span><span class="chip">MATLAB</span>' +
-        '<span class="chip">Technical documentation</span></div></div>' +
-
-        figs([['aiaa-1.jpg', 'Stagnation-region heat flux contour from the axisymmetric model.'],
-              ['aiaa-2.jpg', 'Mesh refinement near the nose tip.']]) +
-
-        '<div class="entry"><div class="entry-head"><span class="entry-n">04</span>' +
-        '<h3>IREC Nose Cone Aerodynamic Analysis</h3></div>' +
-        '<p class="entry-org">Mizzou Space Program</p>' +
-        '<p>Predicted a drag coefficient of <strong>0.1228</strong> and 245.5 N of drag under maximum ' +
-        'dynamic-pressure conditions using a 500,000-cell SST k-\u03c9 model, then validated both figures ' +
-        'against textbook closed-form solutions implemented in MATLAB and landed within 2%.</p>' +
-        '<div class="chips"><span class="chip">ANSYS Fluent</span><span class="chip">SolidWorks</span>' +
-        '<span class="chip">MATLAB</span></div></div>' +
-
-        figs([['nosecone-1.jpg', 'Pressure field around the nose cone at max dynamic pressure.'],
-              ['nosecone-2.jpg', 'SST k-\u03c9 mesh around the forebody.']]) +
-
-        '<div class="entry"><div class="entry-head"><span class="entry-n">05</span>' +
-        '<h3>IREC Payload</h3></div>' +
-        '<p class="entry-org">Mizzou Space Program &middot; Aug 2025 \u2013 Present</p>' +
-        '<p>Designed a modular payload structure in PLA, aluminum, and fiberglass to survive 20 fps impact ' +
-        'conditions, and a mounting sled integrating LiPo batteries, a Raspberry Pi, camera, and ballast. ' +
-        'Troubleshot fit and clearance issues during integration \u2014 the first time I saw how quickly a ' +
-        'tolerance decision made in CAD becomes a problem on the bench.</p>' +
-        '<div class="chips"><span class="chip">SolidWorks</span><span class="chip">Tolerance analysis</span>' +
-        '<span class="chip">Rapid prototyping</span><span class="chip">3D printing</span>' +
-        '<span class="chip">Soldering</span></div></div>' +
-
-        figs([['payload-cad.jpg', 'CAD model \u2014 full payload assembly.'],
-              ['payload-wip.jpg', 'In progress \u2014 payload during assembly.']]) +
-
-        '<div class="entry"><div class="entry-head"><span class="entry-n">06</span>' +
-        '<h3>Undergraduate Research Assistant</h3></div>' +
-        '<p class="entry-org">Semiconductor Lab, University of Missouri &middot; Jan 2026 \u2013 Present</p>' +
-        '<p>Built an Arduino-controlled three-point bending system for <strong>under $40</strong> to automate ' +
-        'load testing on mechanoluminescent materials, replacing a manual process with a repeatable one. ' +
-        'Modeled and 3D printed a custom 60 \u00d7 60 mm fixture that holds samples securely through repeated ' +
-        'cycles, and programmed the stepper motor control on a breadboarded circuit.</p>' +
-        '<div class="chips"><span class="chip">Arduino</span><span class="chip">SolidWorks</span>' +
-        '<span class="chip">Test fixture design</span><span class="chip">3D printing</span></div></div>' +
-
-        figs([['research-1.jpg', 'Arduino-controlled three-point bending rig.'],
-              ['research-2.jpg', '3D printed 60 \u00d7 60 mm sample fixture.']]) +
-
-        '<div class="entry"><div class="entry-head"><span class="entry-n">07</span>' +
-        '<h3>Level 1 Certification Rocket</h3></div>' +
-        '<p class="entry-org">High-powered rocketry</p>' +
-        '<p>Designed, built, and flew a single-stage high-powered rocket to earn Level 1 certification \u2014 ' +
-        'sizing the airframe and recovery system, selecting the motor, and verifying stability margin before ' +
-        'flight, then recovering the vehicle successfully.</p>' +
-        '<div class="chips"><span class="chip">Design for manufacturing</span><span class="chip">Rapid prototyping</span>' +
-        '<span class="chip">Band saw</span><span class="chip">Belt and disk sander</span></div></div>' +
-
-        figs([['level1-1.jpg', 'Level 1 rocket on the pad before flight.']]) +
-
+        '<p>Seven projects across CFD, rocketry, research, and manufacturing. ' +
+        'Tap any one to see <strong>what</strong> it was, <strong>how</strong> I did it, and the <strong>results</strong>.</p>' +
+        plist() +
         '<div class="lbl">Skills</div>' +
         '<div class="sk-grid">' +
         '<div><div class="sk-h">Simulation and analysis</div><div class="chips">' +
@@ -845,7 +1091,25 @@
         '</div>'
     },
     {
+      title: 'Resume',
+      theme: 'resume',
+      note: 'Education, experience, skills, and certifications.',
+      cta: 'View resume',
+      art: { image: 'ElvinEsguerra2026_Resume.png' },
+      body:
+        '<p>Bachelor of Science in Mechanical Engineering, University of Missouri\u2013Columbia, ' +
+        'expected May 2029.</p>' +
+        '<div class="res-doc">' +
+        '<img src="ElvinEsguerra2026_Resume.png" alt="Elvin Esguerra resume" loading="lazy" ' +
+        'onerror="this.outerHTML=\'<div class=&quot;res-ph&quot;><div class=&quot;m&quot;>Resume preview</div><p>Add ElvinEsguerra2026_Resume.png next to index.html</p></div>\'">' +
+        '</div>' +
+        '<a class="dl" href="ElvinEsguerra2026_Resume.pdf" download>' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="M7 12l5 5 5-5"/><path d="M4 21h16"/></svg>' +
+        'Download resume <span class="tag">PDF</span></a>'
+    },
+    {
       title: 'Pets',
+      theme: 'pets',
       note: 'The best part of the portfolio.',
       cta: 'Meet them',
       art: { gen: 'gen-pets' },
@@ -1002,6 +1266,20 @@
   }
 
   /* ---------------- Layout ---------------- */
+  /* ---------------- Per-card colour theme ---------------- */
+  var themeNow = null;
+  function applyTheme(i) {
+    var key = (CARDS[i] && CARDS[i].theme) || 'about';
+    if (key === themeNow) return;
+    themeNow = key;
+    document.documentElement.setAttribute('data-theme', key);
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (m) {
+      var cs = getComputedStyle(document.documentElement);
+      m.setAttribute('content', (cs.getPropertyValue('--bg') || '#e4eef9').trim());
+    }
+  }
+
   function layout() {
     ring.style.transform = 'translateZ(-' + radius + 'px) rotateY(' + rotation + 'deg)';
 
@@ -1023,6 +1301,9 @@
       slot.classList.toggle('front', isFront);
       slot.setAttribute('aria-hidden', off > 90 ? 'true' : 'false');
     });
+
+    /* Fade the whole page into the front card's colour. */
+    applyTheme(frontIndex);
 
     for (var k = 0; k < pips.length; k++) {
       var on = k === frontIndex;
@@ -1153,6 +1434,7 @@
   var sheetPrev = document.getElementById('sheetPrev');
   var sheetNext = document.getElementById('sheetNext');
   var sheetDots = document.getElementById('sheetDots');
+  var sheetBack = document.getElementById('sheetBack');
 
   var sheetOpen = false;
   var sheetIndex = 0;
@@ -1169,17 +1451,43 @@
   });
   var sdots = sheetDots.querySelectorAll('.sdot');
 
+  var projIndex = -1;   /* -1 = showing the card itself, else a project detail */
+
   function showSheet(i) {
     sheetIndex = ((i % CARDS.length) + CARDS.length) % CARDS.length;
+    projIndex = -1;
     var c = CARDS[sheetIndex];
     sheetTitle.textContent = c.title;
     sheetKicker.textContent = '0' + (sheetIndex + 1) + ' / 0' + CARDS.length;
     sheetBody.innerHTML = c.body || '';
     sheetBody.scrollTop = 0;
+    sheetBack.hidden = true;
     for (var k = 0; k < sdots.length; k++) {
       sdots[k].classList.toggle('on', k === sheetIndex);
     }
     goTo(sheetIndex);
+  }
+
+  /* Drill into one project's What / How / Results */
+  function showProj(n) {
+    projIndex = ((n % PROJECTS.length) + PROJECTS.length) % PROJECTS.length;
+    var p = PROJECTS[projIndex];
+    sheetTitle.textContent = p.title;
+    sheetKicker.textContent = '0' + (projIndex + 1) + ' / 0' + PROJECTS.length + ' \u00b7 Project';
+    sheetBody.innerHTML = projBody(p);
+    sheetBody.scrollTop = 0;
+    sheetBack.hidden = false;
+  }
+
+  /* Back to the project list */
+  function backToList() {
+    var c = CARDS[sheetIndex];
+    projIndex = -1;
+    sheetTitle.textContent = c.title;
+    sheetKicker.textContent = '0' + (sheetIndex + 1) + ' / 0' + CARDS.length;
+    sheetBody.innerHTML = c.body || '';
+    sheetBody.scrollTop = 0;
+    sheetBack.hidden = true;
   }
 
   function openSheet(i) {
@@ -1211,8 +1519,20 @@
 
   sheetX.addEventListener('click', closeSheet);
   sheetScrim.addEventListener('click', closeSheet);
-  sheetPrev.addEventListener('click', function () { showSheet(sheetIndex - 1); });
-  sheetNext.addEventListener('click', function () { showSheet(sheetIndex + 1); });
+  sheetBack.addEventListener('click', backToList);
+  sheetPrev.addEventListener('click', function () {
+    if (projIndex >= 0) showProj(projIndex - 1); else showSheet(sheetIndex - 1);
+  });
+  sheetNext.addEventListener('click', function () {
+    if (projIndex >= 0) showProj(projIndex + 1); else showSheet(sheetIndex + 1);
+  });
+
+  /* Clicking a project row opens its detail view */
+  sheetBody.addEventListener('click', function (e) {
+    var row = e.target.closest ? e.target.closest('.prow') : null;
+    if (!row) return;
+    showProj(parseInt(row.getAttribute('data-p'), 10) || 0);
+  });
 
   /* ---------------- Lightbox ---------------- */
   var lb = document.getElementById('lb');
@@ -1265,9 +1585,18 @@
 
   document.addEventListener('keydown', function (e) {
     if (!sheetOpen || lbOpen) return;
-    if (e.key === 'Escape') { e.preventDefault(); closeSheet(); }
-    else if (e.key === 'ArrowLeft') { e.preventDefault(); showSheet(sheetIndex - 1); }
-    else if (e.key === 'ArrowRight') { e.preventDefault(); showSheet(sheetIndex + 1); }
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      if (projIndex >= 0) backToList(); else closeSheet();
+    }
+    else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      if (projIndex >= 0) showProj(projIndex - 1); else showSheet(sheetIndex - 1);
+    }
+    else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      if (projIndex >= 0) showProj(projIndex + 1); else showSheet(sheetIndex + 1);
+    }
     else if (e.key === 'Tab') {
       /* keep focus inside the dialog */
       var f = sheetWrap.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])');
@@ -1290,7 +1619,8 @@
     var dy = e.changedTouches[0].clientY - swY;
     if (Date.now() - swT > 700) return;
     if (Math.abs(dx) > 62 && Math.abs(dx) > Math.abs(dy) * 1.7) {
-      showSheet(sheetIndex + (dx < 0 ? 1 : -1));
+      var d = dx < 0 ? 1 : -1;
+      if (projIndex >= 0) showProj(projIndex + d); else showSheet(sheetIndex + d);
     }
   }, { passive: true });
 
