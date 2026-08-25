@@ -1,1658 +1,1682 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light">
-<meta name="theme-color" content="#e4eef9">
-<title>Elvin's Portfolio</title>
-<meta name="description" content="Elvin Esguerra — portfolio.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #e4eef9;
-    --bg-2: #f2f8fd;
-    --bg-deep: #cfe0f2;
-    --shadow: rgba(28,56,92,0.16);
-    --ink: #23303f;
-    --ink-soft: #40536b;
-    --ink-dim: #4e6076;
-    --line: rgba(40,72,112,0.14);
-    --line-2: rgba(40,72,112,0.26);
-    --accent: #1a5c93;
-    --accent-2: #3f8cc4;
-    --accent-3: #26719f;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    /* Background scenery — swap the url to change the photo.
-       Options shipped: bg-fuji.jpg, bg-fuji-lake.jpg, bg-mountains.jpg, bg-sky.jpg, bg-dunes.jpg
-       Or drop in your own file and point this at it. */
-    --scenery: url("bg-fuji.jpg");
-    --scenery-strength: 0.22;
-    --card-bg: rgba(252,254,255,0.80);
-    --accent-rgb: 26,92,147;
-    --line-rgb: 40,72,112;
-    --glow: rgba(26,92,147,0.28);
-    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
-  }
+  <title>Elvin Esguerra | Mechanical Engineering</title>
 
-  /* ---- Per-card themes. The whole page fades into the front card's color. ---- */
-  html[data-theme="about"] {
-    --bg:#e4eef9; --bg-2:#f2f8fd; --bg-deep:#cfe0f2;
-    --ink:#23303f; --ink-soft:#40536b; --ink-dim:#4e6076;
-    --line:rgba(var(--line-rgb), 0.14); --line-2:rgba(var(--line-rgb), 0.26);
-    --accent:#1a5c93; --accent-2:#3f8cc4; --accent-3:#26719f;
-    --accent-rgb:26,92,147; --line-rgb:40,72,112;
-    --glow:rgba(var(--accent-rgb), 0.28);
-    --shadow:rgba(28,56,92,0.16);
-  }
-  html[data-theme="exp"] {
-    --bg:#e3f2e8; --bg-2:#f1faf3; --bg-deep:#cee6d6;
-    --ink:#1f3528; --ink-soft:#3a5844; --ink-dim:#476552;
-    --line:rgba(28,84,52,0.15); --line-2:rgba(28,84,52,0.28);
-    --accent:#1c6b41; --accent-2:#3f9c68; --accent-3:#247d4d;
-    --accent-rgb:28,107,65; --line-rgb:28,84,52;
-    --glow:rgba(28,107,65,0.26);
-    --shadow:rgba(26,66,44,0.16);
-  }
-  html[data-theme="resume"] {
-    --bg:#ebe9f9; --bg-2:#f5f3fd; --bg-deep:#dad5f0;
-    --ink:#2b2740; --ink-soft:#4a4468; --ink-dim:#575074;
-    --line:rgba(64,52,124,0.15); --line-2:rgba(64,52,124,0.28);
-    --accent:#4a3b96; --accent-2:#7a68c4; --accent-3:#5a49a8;
-    --accent-rgb:74,59,150; --line-rgb:64,52,124;
-    --glow:rgba(74,59,150,0.26);
-    --shadow:rgba(52,42,96,0.16);
-  }
-  html[data-theme="pets"] {
-    --bg:#fbeedb; --bg-2:#fef8ef; --bg-deep:#f2ddc0;
-    --ink:#3a2d1c; --ink-soft:#5c4830; --ink-dim:#6b5438;
-    --line:rgba(120,80,28,0.16); --line-2:rgba(120,80,28,0.30);
-    --accent:#8a4f12; --accent-2:#c4813a; --accent-3:#9d5c18;
-    --accent-rgb:138,79,18; --line-rgb:120,80,28;
-    --glow:rgba(138,79,18,0.26);
-    --shadow:rgba(96,64,28,0.16);
-  }
+  <style>
+    :root {
+      --bg: #f7f7f5;
+      --white: #ffffff;
+      --text: #171717;
+      --text-soft: #5f5f5f;
+      --text-light: #858585;
+      --border: #d8d8d4;
+      --border-dark: #bcbcb8;
+    }
 
+    * {
+      box-sizing: border-box;
+    }
 
-  * { box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    transition: background-color 1.05s var(--ease), color 1.05s var(--ease);
-    font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    overflow: hidden;
-  }
+    button,
+    a {
+      font: inherit;
+    }
 
-  /* Ambient backdrop — scenic photo + cream scrim + warm washes */
-  .backdrop {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    background:
-      radial-gradient(1200px 680px at 20% 6%, var(--glow), transparent 64%),
-      radial-gradient(1000px 620px at 84% 94%, var(--glow), transparent 66%),
-      radial-gradient(760px 520px at 92% 12%, var(--bg-2), transparent 62%),
-      linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 52%, var(--bg-deep) 100%);
-    transition: background 1.05s var(--ease);
-  }
-  /* Photo layer: swap --scenery to change the image */
-  .backdrop::before {
-    content: ""; position: absolute; inset: 0;
-    background-image: var(--scenery, url("bg-fuji.jpg"));
-    background-size: cover;
-    background-position: center 58%;
-    background-repeat: no-repeat;
-    opacity: var(--scenery-strength, 0.18);
-    filter: saturate(0.90) contrast(0.96);
-    transform: scale(1.04);
-    animation: driftBg 46s ease-in-out infinite alternate;
-    transition: opacity 1.05s var(--ease);
-  }
-  @keyframes driftBg {
-    0%   { transform: scale(1.04) translate3d(0, 0, 0); }
-    100% { transform: scale(1.09) translate3d(-1.2%, -1.4%, 0); }
-  }
-  .backdrop::after {
-    content: ""; position: absolute; inset: 0;
-    background-image:
-      radial-gradient(1.6px 1.6px at 12% 18%, rgba(255,255,255,0.85), transparent 62%),
-      radial-gradient(1.3px 1.3px at 34% 62%, rgba(228,242,255,0.70), transparent 62%),
-      radial-gradient(1.8px 1.8px at 58% 26%, rgba(255,255,255,0.78), transparent 62%),
-      radial-gradient(1.3px 1.3px at 76% 71%, rgba(220,238,255,0.62), transparent 62%),
-      radial-gradient(1.7px 1.7px at 89% 34%, rgba(255,255,255,0.72), transparent 62%),
-      radial-gradient(1.2px 1.2px at 47% 86%, rgba(216,236,255,0.58), transparent 62%),
-      radial-gradient(1.5px 1.5px at 7% 74%, rgba(255,255,255,0.55), transparent 62%),
-      radial-gradient(1.3px 1.3px at 66% 9%, rgba(230,244,255,0.60), transparent 62%);
-    background-repeat: repeat;
-    background-size: 620px 480px;
-    opacity: .34;
-    animation: twinkle 9s ease-in-out infinite;
-  }
-  @keyframes twinkle { 0%,100% { opacity: .24; } 50% { opacity: .44; } }
+    button {
+      color: inherit;
+    }
 
-  /* Shell */
-  .stage-wrap {
-    position: relative; z-index: 1;
-    height: 100vh; height: 100dvh;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    padding: 22px 20px 26px;
-    gap: clamp(10px, 2.2vh, 26px);
-  }
+    img {
+      max-width: 100%;
+    }
 
-  /* Title */
-  .masthead { text-align: center; flex: 0 0 auto; }
-  .masthead h1 {
-    margin: 0;
-    font-size: clamp(2rem, 6.2vw, 4.4rem);
-    line-height: 0.98;
-    font-weight: 300;
-    letter-spacing: -0.035em;
-  }
-  .masthead h1 .strong {
-    display: block;
-    font-weight: 700;
-    background: linear-gradient(96deg, var(--accent), var(--accent-3) 46%, var(--accent-2) 100%);
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent; color: transparent;
-  }
-  .masthead .sub {
-    margin: clamp(8px, 1.4vh, 16px) 0 0;
-    font-family: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
-    font-size: clamp(10px, 1.15vw, 12.5px);
-    letter-spacing: 0.34em; text-transform: uppercase;
-    color: var(--ink-dim);
-    display: inline-flex; align-items: center; gap: 12px;
-  }
-  .masthead .sub .glyph {
-    display: inline-block; width: 18px; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent));
-  }
-  .masthead .sub .glyph.r {
-    background: linear-gradient(90deg, var(--accent), transparent);
-  }
+    /* =========================
+       MAIN LAYOUT
+    ========================== */
 
-  /* Ring stage */
-  .stage {
-    flex: 1 1 auto;
-    width: 100%;
-    max-width: 1240px;
-    min-height: 0;
-    display: flex; align-items: center; justify-content: center;
-    perspective: 2000px;
-    touch-action: pan-y;
-    cursor: grab;
-    outline: none;
-  }
-  .stage.dragging { cursor: grabbing; }
-  .stage:focus-visible { outline: none; }
-  .stage:focus-visible .ring3d { filter: drop-shadow(0 0 0 rgba(0,0,0,0)); }
+    .site {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
 
-  .ring3d {
-    position: relative;
-    width: 1px; height: 1px;
-    transform-style: preserve-3d;
-    will-change: transform;
-  }
+    /* =========================
+       NAVIGATION
+    ========================== */
 
-  .card3d {
-    position: absolute; left: 0; top: 0;
-    transform-style: preserve-3d;
-    will-change: transform, opacity;
-  }
+    .navbar {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
 
-  .card-face {
-    position: relative;
-    width: 100%; height: 100%;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid var(--line);
-    background: var(--card-bg);
-    backdrop-filter: blur(10px) saturate(130%);
-    -webkit-backdrop-filter: blur(10px) saturate(130%);
-    box-shadow: 0 20px 46px -22px rgba(44,78,122,0.30), 0 2px 8px -3px rgba(44,78,122,0.14);
-    display: flex; flex-direction: column; justify-content: flex-end;
-    text-decoration: none; color: inherit;
-    transition: border-color .5s var(--ease), box-shadow .5s var(--ease);
-  }
-  .card3d.front .card-face {
-    border-color: rgba(var(--accent-rgb), 0.40);
-    box-shadow: 0 28px 62px -24px rgba(44,78,122,0.34), 0 0 44px -14px var(--glow);
-  }
+    .brand {
+      font-size: 17px;
+      font-weight: 700;
+    }
 
-  /* Faded imagery layer */
-  .card-art {
-    position: absolute; inset: 0;
-    background-size: cover; background-position: center;
-    filter: saturate(0.72) contrast(1.02);
-    opacity: .30;
-    transform: scale(1.02);
-    transition: opacity .6s var(--ease), transform .8s var(--ease), filter .6s var(--ease);
-  }
-  .card3d.front .card-art { opacity: .40; filter: saturate(0.95); transform: scale(1.06); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
 
-  .card-art.gen-exp {
-    background-image:
-      radial-gradient(circle at 30% 22%, rgba(63,156,104,0.55), transparent 56%),
-      radial-gradient(circle at 74% 78%, rgba(140,206,168,0.52), transparent 58%),
-      repeating-linear-gradient(90deg, rgba(28,84,52,0.07) 0 1px, transparent 1px 7px),
-      linear-gradient(160deg, #dcf2e4, #b8ddc7);
-  }
-  .card-art.gen-pets {
-    background-image:
-      radial-gradient(circle at 68% 26%, rgba(196,129,58,0.55), transparent 56%),
-      radial-gradient(circle at 24% 80%, rgba(222,168,98,0.48), transparent 58%),
-      repeating-linear-gradient(48deg, rgba(120,80,28,0.07) 0 1px, transparent 1px 9px),
-      linear-gradient(160deg, #fdf0dc, #f2d8b4);
-  }
+    .nav-link {
+      background: none;
+      border: 0;
+      padding: 10px 0;
+      color: var(--text-soft);
+      font-size: 14px;
+      cursor: pointer;
+      border-bottom: 1px solid transparent;
+    }
 
-  .card-scrim {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(252,254,255,0.96) 0%, rgba(250,253,255,0.80) 36%, rgba(250,253,255,0.24) 74%, transparent 100%);
-  }
-  .card-hair {
-    position: absolute; left: 0; right: 0; top: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb), 0.60), transparent);
-    opacity: 0; transition: opacity .5s var(--ease);
-  }
-  .card3d.front .card-hair { opacity: 1; }
+    .nav-link:hover {
+      color: var(--text);
+    }
 
-  .card-body {
-    position: relative;
-    padding: var(--pad, 20px);
-    display: flex; flex-direction: column; gap: 6px;
-  }
-  .card-num {
-    font-family: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
-    font-size: var(--fs-num, 10px);
-    letter-spacing: 0.24em;
-    color: var(--accent);
-    opacity: .85;
-  }
-  .card-title {
-    margin: 0;
-    font-size: var(--fs-title, 22px);
-    line-height: 1.12;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-  }
-  .card-note {
-    margin: 0;
-    font-size: var(--fs-note, 13px);
-    line-height: 1.45;
-    color: var(--ink-soft);
-  }
+    .nav-link.active {
+      color: var(--text);
+      border-bottom-color: var(--text);
+    }
 
-  /* Controls */
-  .controls {
-    flex: 0 0 auto;
-    display: flex; align-items: center; justify-content: center;
-    gap: 18px;
-  }
-  .navbtn {
-    width: 40px; height: 40px; flex: 0 0 auto;
-    display: grid; place-items: center;
-    border-radius: 50%;
-    border: 1px solid var(--line-2);
-    background: rgba(255,255,255,0.62);
-    color: var(--ink-soft);
-    cursor: pointer;
-    transition: color .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease), transform .3s var(--ease);
-  }
-  .navbtn svg { width: 16px; height: 16px; }
-  .navbtn:hover {
-    color: var(--accent); border-color: rgba(var(--accent-rgb), 0.45);
-    background: rgba(var(--accent-rgb), 0.09); transform: translateY(-1px);
-  }
-  .navbtn:active { transform: translateY(0) scale(0.96); }
+    /* =========================
+       PAGES
+    ========================== */
 
-  .pips { display: flex; align-items: center; gap: 9px; }
-  .pip {
-    width: 7px; height: 7px; padding: 0;
-    border-radius: 50%;
-    border: 1px solid var(--line-2);
-    background: transparent;
-    cursor: pointer;
-    transition: background .35s var(--ease), border-color .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease);
-  }
-  .pip:hover { border-color: var(--accent); transform: scale(1.2); }
-  .pip.on {
-    background: var(--accent); border-color: var(--accent);
-    box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.15);
-    transform: scale(1.15);
-  }
+    .page {
+      display: none;
+      padding: 70px 0 90px;
+    }
 
-  .navbtn:focus-visible, .pip:focus-visible {
-    outline: 2px solid var(--accent); outline-offset: 3px;
-  }
+    .page.active {
+      display: block;
+    }
 
-  /* Entrance */
-  .fade { opacity: 0; transform: translateY(14px); }
-  body.ready .fade {
-    opacity: 1; transform: none;
-    transition: opacity .9s var(--ease), transform .9s var(--ease);
-  }
-  body.ready .f1 { transition-delay: .05s; }
-  body.ready .f2 { transition-delay: .16s; }
-  body.ready .f3 { transition-delay: .30s; }
+    .section-label {
+      margin-bottom: 13px;
+      color: var(--text-light);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
 
-  @media (max-width: 640px) {
-    .stage-wrap { padding: 18px 14px 20px; }
-    .masthead .sub { letter-spacing: 0.24em; }
-    .controls { gap: 14px; }
-    .navbtn { width: 36px; height: 36px; }
-  }
+    .page-header {
+      margin-bottom: 42px;
+    }
 
+    .page-header h1 {
+      margin: 0;
+      font-size: clamp(40px, 6vw, 58px);
+      line-height: 1;
+      letter-spacing: -0.045em;
+    }
 
-  /* ---------------- Clickable card face ---------------- */
-  .card-face {
-    appearance: none; -webkit-appearance: none;
-    font: inherit; color: inherit; text-align: left;
-    padding: 0; margin: 0; cursor: pointer;
-  }
-  .card3d:not(.front) .card-face { cursor: grab; }
-  .card-face:focus-visible {
-    outline: 2px solid var(--accent); outline-offset: 4px;
-  }
-  .card-cta {
-    display: inline-flex; align-items: center; gap: 7px;
-    margin-top: calc(var(--pad, 20px) * 0.55);
-    font-family: "JetBrains Mono", monospace;
-    font-size: var(--fs-num, 10px);
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--accent);
-    opacity: 0; transform: translateY(4px);
-    transition: opacity .5s var(--ease), transform .5s var(--ease), gap .3s var(--ease);
-  }
-  .card3d.front .card-cta { opacity: 1; transform: none; }
-  .card-face:hover .card-cta { gap: 12px; }
-  .card-cta svg { width: 1.05em; height: 1.05em; }
+    .page-header p {
+      max-width: 650px;
+      margin: 18px 0 0;
+      color: var(--text-soft);
+      font-size: 16px;
+      line-height: 1.7;
+    }
 
-  /* ---------------- Sheet ---------------- */
-  .sheet-wrap {
-    position: fixed; inset: 0; z-index: 90;
-    display: grid; place-items: center;
-    padding: clamp(12px, 3vw, 40px);
-  }
-  .sheet-wrap[hidden] { display: none; }
-  body.locked .stage-wrap { pointer-events: none; }
+    /* =========================
+       HOME
+    ========================== */
 
-  .sheet-scrim {
-    position: absolute; inset: 0;
-    background: rgba(34,60,96,0.42);
-    backdrop-filter: blur(7px) saturate(120%);
-    -webkit-backdrop-filter: blur(7px) saturate(120%);
-    opacity: 0; transition: opacity .42s var(--ease);
-  }
-  .sheet-wrap.on .sheet-scrim { opacity: 1; }
+    .home-hero {
+      min-height: 560px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+      gap: 80px;
+      align-items: center;
+    }
 
-  .sheet {
-    position: relative;
-    width: min(860px, 100%);
-    max-height: min(88vh, 860px);
-    display: flex; flex-direction: column;
-    background: linear-gradient(178deg, #fcfeff 0%, #f2f8fd 100%);
-    border: 1px solid var(--line-2);
-    border-radius: 20px;
-    box-shadow: 0 44px 96px -34px rgba(34,64,104,0.44), 0 0 60px -22px var(--glow);
-    overflow: hidden;
-    opacity: 0; transform: translateY(22px) scale(0.976);
-    transition: opacity .46s var(--ease), transform .52s var(--ease);
-  }
-  .sheet-wrap.on .sheet { opacity: 1; transform: none; }
+    .home-copy h1 {
+      margin: 0;
+      font-size: clamp(60px, 9vw, 105px);
+      line-height: 0.88;
+      letter-spacing: -0.065em;
+      font-weight: 700;
+    }
 
-  .sheet-top {
-    flex: 0 0 auto;
-    display: flex; align-items: flex-start; gap: 16px;
-    padding: clamp(20px, 3vw, 30px) clamp(20px, 3.4vw, 34px) 18px;
-    border-bottom: 1px solid var(--line);
-    background: linear-gradient(180deg, rgba(238,246,254,0.9), rgba(252,254,255,0));
-  }
-  .sheet-kicker {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 7px;
-  }
-  .sheet-title {
-    margin: 0; font-size: clamp(1.45rem, 3.6vw, 2.1rem);
-    font-weight: 700; letter-spacing: -0.02em; line-height: 1.08;
-    background: linear-gradient(96deg, var(--accent), var(--accent-3) 52%, var(--accent-2));
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent; color: transparent;
-  }
-  .sheet-x {
-    margin-left: auto; flex: 0 0 auto;
-    width: 38px; height: 38px; border-radius: 50%;
-    display: grid; place-items: center; cursor: pointer;
-    background: rgba(255,255,255,0.7);
-    border: 1px solid var(--line-2);
-    color: var(--ink-soft);
-    transition: color .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease), background .3s var(--ease);
-  }
-  .sheet-x svg { width: 17px; height: 17px; }
-  .sheet-x:hover {
-    color: var(--accent); border-color: rgba(var(--accent-rgb), 0.45);
-    background: rgba(234,244,253,0.9); transform: rotate(90deg);
-  }
+    .home-copy .intro {
+      max-width: 650px;
+      margin-top: 30px;
+      color: var(--text-soft);
+      font-size: 18px;
+      line-height: 1.7;
+    }
 
-  .sheet-body {
-    flex: 1 1 auto; min-height: 0;
-    overflow-y: auto; -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-    padding: clamp(20px, 3vw, 30px) clamp(20px, 3.4vw, 34px) clamp(26px, 4vw, 38px);
-    scrollbar-width: thin;
-    scrollbar-color: rgba(var(--accent-rgb), 0.4) transparent;
-  }
-  .sheet-body::-webkit-scrollbar { width: 9px; }
-  .sheet-body::-webkit-scrollbar-track { background: transparent; }
-  .sheet-body::-webkit-scrollbar-thumb {
-    background: rgba(var(--accent-rgb), 0.32); border-radius: 99px;
-    border: 2px solid transparent; background-clip: padding-box;
-  }
-  .sheet-body::-webkit-scrollbar-thumb:hover { background: rgba(var(--accent-rgb), 0.5); background-clip: padding-box; }
+    .home-side {
+      min-width: 0;
+    }
 
-  .sheet-body p { margin: 0 0 15px; color: var(--ink-soft); line-height: 1.72; font-size: 16px; max-width: 68ch; }
-  .sheet-body p:last-child { margin-bottom: 0; }
-  .sheet-body a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(var(--accent-rgb), 0.35); transition: border-color .3s var(--ease); }
-  .sheet-body a:hover { border-bottom-color: var(--accent); }
-  .sheet-body strong { color: var(--ink); font-weight: 500; }
+    /*
+      HOME PHOTO
+      Replace images/profile.jpg with your actual picture.
+    */
 
-  .lbl {
-    display: flex; align-items: center; gap: 12px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--ink-dim); margin: 30px 0 15px;
-  }
-  .lbl:first-child { margin-top: 0; }
-  .lbl::after { content: ""; flex: 1 1 auto; height: 1px; background: var(--line); }
+    .profile-photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display: block;
+      background: #deded9;
+    }
 
-  /* Entry list (Experience) */
-  .entry {
-    padding: 18px 0 20px;
-    border-top: 1px solid var(--line);
-  }
-  .entry:first-of-type { border-top: 0; padding-top: 4px; }
-  .entry-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px; margin-bottom: 4px; }
-  .entry-n {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10px; letter-spacing: 0.16em; color: var(--accent-2);
-  }
-  .entry h3 { margin: 0; font-size: 17.5px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
-  .entry h3 a { color: inherit; border-bottom-color: rgba(var(--accent-rgb), 0.3); }
-  .entry h3 a:hover { color: var(--accent); }
-  .entry-org {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--ink-dim); margin: 0 0 9px;
-  }
-  .entry p { font-size: 15.2px; margin: 0 0 11px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 7px; }
-  .chip {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10px; letter-spacing: 0.07em;
-    padding: 4.5px 9px; border-radius: 6px;
-    background: rgba(234,244,253,0.8);
-    border: 1px solid rgba(var(--accent-rgb), 0.16);
-    color: var(--ink-soft);
-  }
+    .about-me {
+      margin-top: 26px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
 
-  /* Project list (clickable rows) */
-  .plist { display: flex; flex-direction: column; gap: 10px; }
-  .prow {
-    display: grid; grid-template-columns: auto minmax(0,1fr) auto;
-    align-items: center; gap: 14px;
-    width: 100%; text-align: left;
-    padding: 15px 16px;
-    background: rgba(255,255,255,0.72);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    font: inherit; color: inherit; cursor: pointer;
-    transition: border-color .3s var(--ease), background .3s var(--ease),
-                transform .3s var(--ease), box-shadow .3s var(--ease);
-  }
-  .prow:hover, .prow:focus-visible {
-    border-color: rgba(var(--accent-rgb), 0.42);
-    background: rgba(255,255,255,0.94);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 26px -16px rgba(44,78,122,0.34);
-    outline: none;
-  }
-  .prow-n {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10px; letter-spacing: 0.14em; color: var(--accent-2);
-  }
-  .prow-t { min-width: 0; }
-  .prow-t h3 {
-    margin: 0 0 3px; font-size: 16.5px; font-weight: 600;
-    letter-spacing: -0.01em; color: var(--ink); line-height: 1.35;
-  }
-  .prow-t .o {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--ink-dim);
-  }
-  .prow-go {
-    display: grid; place-items: center;
-    width: 28px; height: 28px; border-radius: 50%;
-    border: 1px solid var(--line-2); color: var(--accent);
-    transition: background .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease);
-  }
-  .prow-go svg { width: 13px; height: 13px; }
-  .prow:hover .prow-go { background: rgba(var(--accent-rgb), 0.1); border-color: var(--accent); transform: translateX(2px); }
+    .about-me h2 {
+      margin: 0 0 12px;
+      font-size: 23px;
+      letter-spacing: -0.025em;
+    }
 
-  /* Project detail: What / How / Results */
-  .pd-org {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--ink-dim); margin: 0 0 20px;
-  }
-  .wh { margin: 0 0 26px; }
-  .wh:last-of-type { margin-bottom: 0; }
-  .wh-h {
-    display: flex; align-items: center; gap: 11px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 12px;
-  }
-  .wh-h::before {
-    content: ""; flex: 0 0 auto; width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent); box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.14);
-  }
-  .wh-h::after { content: ""; flex: 1 1 auto; height: 1px; background: var(--line); }
-  .wh ul { margin: 0; padding: 0; list-style: none; }
-  .wh li {
-    position: relative; padding-left: 20px; margin-bottom: 10px;
-    color: var(--ink-soft); font-size: 15.4px; line-height: 1.7; max-width: 66ch;
-  }
-  .wh li:last-child { margin-bottom: 0; }
-  .wh li::before {
-    content: ""; position: absolute; left: 3px; top: 0.66em;
-    width: 5px; height: 5px; border-radius: 50%; background: var(--accent-2);
-  }
-  .wh li strong { color: var(--ink); font-weight: 600; }
-  .wh.res li::before { background: var(--accent); box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.12); }
+    .about-me p {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 15px;
+      line-height: 1.7;
+    }
 
-  /* Back button in sheet header */
-  .sheet-back {
-    display: inline-flex; align-items: center; gap: 7px;
-    background: none; border: 0; padding: 0; margin-bottom: 7px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--ink-dim); cursor: pointer;
-    transition: color .3s var(--ease), gap .3s var(--ease);
-  }
-  .sheet-back svg { width: 12px; height: 12px; }
-  .sheet-back:hover { color: var(--accent); gap: 10px; }
-  .sheet-back[hidden] { display: none; }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
 
-  /* Skills grid */
-  .sk-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px 26px; }
-  .sk-h {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--accent); padding-top: 11px; border-top: 1px solid var(--line);
-    margin-bottom: 10px;
-  }
+    .skill {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 6px 9px;
+      color: var(--text-soft);
+      font-size: 12px;
+    }
 
-  /* Resume block */
-  .res-doc {
-    background: #fff; border: 1px solid var(--line-2); border-radius: 12px;
-    padding: 12px; box-shadow: 0 14px 34px -18px rgba(44,78,122,0.3);
-  }
-  .res-doc img { width: 100%; height: auto; display: block; border-radius: 7px; border: 1px solid var(--line); }
-  .res-ph {
-    aspect-ratio: 8.5 / 11; border: 1px dashed var(--line-2); border-radius: 7px;
-    background: rgba(237,246,254,0.7);
-    display: grid; place-content: center; gap: 8px; text-align: center; padding: 26px;
-  }
-  .res-ph .m {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-dim);
-  }
-  .dl {
-    display: inline-flex; align-items: center; gap: 10px;
-    margin-top: 18px; padding: 12px 22px; border-radius: 999px;
-    font-size: 14.5px; font-weight: 500; text-decoration: none;
-    color: var(--accent); background: rgba(235,244,253,0.9);
-    border: 1px solid rgba(var(--accent-rgb), 0.4);
-    transition: background .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease);
-  }
-  .dl:hover {
-    background: rgba(226,238,252,1); transform: translateY(-2px);
-    box-shadow: 0 14px 30px -14px var(--glow);
-  }
-  .dl svg { width: 16px; height: 16px; transition: transform .35s var(--ease); }
-  .dl:hover svg { transform: translateY(2px); }
-  .dl .tag { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.1em; opacity: 0.7; }
+    /* =========================
+       RESUME
+    ========================== */
 
-  /* Figures inside panels */
-  .figs {
-    display: grid; gap: 14px; margin: 4px 0 20px;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  }
-  .figs.one { grid-template-columns: minmax(0, 1fr); max-width: 560px; }
-  .fig { margin: 0; }
-  .fig-box {
-    position: relative; aspect-ratio: 4 / 3; overflow: hidden;
-    border-radius: 11px; border: 1px solid var(--line);
-    background: rgba(236,245,253,0.9);
-    display: grid; place-items: center;
-    box-shadow: 0 10px 26px -18px rgba(44,78,122,0.42);
-    transition: border-color .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease);
-  }
-  .fig-box img {
-    position: absolute; inset: 0; z-index: 1;
-    width: 100%; height: 100%; object-fit: cover; display: block;
-    cursor: zoom-in;
-    transition: transform .5s var(--ease), filter .35s var(--ease);
-  }
-  .fig-box:has(img):hover { border-color: rgba(var(--accent-rgb), 0.42); transform: translateY(-2px); box-shadow: 0 18px 34px -18px rgba(44,78,122,0.5); }
-  .fig-box:has(img):hover img { transform: scale(1.035); }
-  .fig-box .m {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 9px; letter-spacing: 0.11em; text-transform: uppercase;
-    color: var(--ink-dim); text-align: center; padding: 10px; line-height: 1.6;
-  }
-  .fig figcaption {
-    margin-top: 8px; font-size: 12.8px; color: var(--ink-dim); line-height: 1.55;
-  }
-  .zoom {
-    position: absolute; right: 9px; bottom: 9px; z-index: 2;
-    width: 26px; height: 26px; border-radius: 50%;
-    display: none; place-items: center;
-    background: rgba(242,249,255,0.9); border: 1px solid var(--line-2);
-    color: var(--accent); pointer-events: none;
-  }
-  .fig-box:has(img) .zoom { display: grid; }
-  .zoom svg { width: 13px; height: 13px; }
+    .resume-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-  /* Lightbox */
-  .lb {
-    position: fixed; inset: 0; z-index: 90;
-    display: grid; place-items: center; padding: clamp(16px, 4vw, 54px);
-    background: rgba(24,48,80,0.62);
-    backdrop-filter: blur(9px); -webkit-backdrop-filter: blur(9px);
-    opacity: 0; transition: opacity .32s var(--ease);
-  }
-  .lb[hidden] { display: none; }
-  .lb.on { opacity: 1; }
-  .lb-in { max-width: 100%; max-height: 100%; display: flex; flex-direction: column; gap: 12px; align-items: center; }
-  .lb img {
-    max-width: 100%; max-height: 80vh; display: block;
-    border-radius: 12px; border: 1px solid rgba(240,248,255,0.55);
-    box-shadow: 0 40px 90px -30px rgba(18,40,70,0.7);
-    transform: scale(0.965); transition: transform .34s var(--ease);
-  }
-  .lb.on img { transform: scale(1); }
-  .lb-cap {
-    font-size: 13.4px; color: rgba(241,248,255,0.86); text-align: center;
-    max-width: 62ch; line-height: 1.6;
-  }
-  .lb-x {
-    position: absolute; top: 18px; right: 18px;
-    width: 42px; height: 42px; border-radius: 50%; cursor: pointer;
-    display: grid; place-items: center;
-    background: rgba(242,249,255,0.9); border: 1px solid rgba(240,248,255,0.5);
-    color: var(--ink); transition: transform .3s var(--ease), background .3s var(--ease);
-  }
-  .lb-x:hover { transform: rotate(90deg); background: #fff; }
-  .lb-x svg { width: 17px; height: 17px; }
+    /*
+      RESUME IMAGE
+      Export your resume as a PNG/JPG and name it:
+      images/resume.png
+    */
 
-  /* Sheet footer */
-  .sheet-foot {
-    flex: 0 0 auto;
-    display: flex; align-items: center; gap: 14px;
-    padding: 15px clamp(20px, 3.4vw, 34px);
-    border-top: 1px solid var(--line);
-    background: linear-gradient(0deg, rgba(237,246,254,0.86), rgba(252,254,255,0));
-  }
-  .sheet-nav {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 9px 15px; border-radius: 999px; cursor: pointer;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase;
-    background: rgba(255,255,255,0.72); border: 1px solid var(--line-2);
-    color: var(--ink-soft);
-    transition: color .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease), transform .3s var(--ease);
-  }
-  .sheet-nav svg { width: 13px; height: 13px; }
-  .sheet-nav:hover { color: var(--accent); border-color: rgba(var(--accent-rgb), 0.45); background: rgba(234,244,253,0.9); }
-  .sheet-nav.n { margin-left: auto; }
-  .sheet-dots { display: flex; gap: 9px; }
-  .sdot {
-    width: 8px; height: 8px; border-radius: 50%; cursor: pointer; padding: 0;
-    background: transparent; border: 1px solid var(--line-2);
-    transition: background .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease);
-  }
-  .sdot:hover { border-color: var(--accent); transform: scale(1.2); }
-  .sdot.on { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.13); }
+    .resume-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: white;
+      border: 1px solid var(--border);
+    }
 
-  @media (max-width: 720px) {
-    .sk-grid { grid-template-columns: 1fr; gap: 18px; }
-    .sheet { max-height: 90vh; border-radius: 16px; }
-    .sheet-foot .sheet-nav span { display: none; }
-    .sheet-body p { font-size: 15.4px; }
-  }
+    .resume-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 22px;
+    }
 
-  @media (prefers-reduced-motion: reduce) {
-    .backdrop::before { animation: none !important; }
-    .backdrop::after { animation: none !important; }
-    .fade { opacity: 1 !important; transform: none !important; }
-    .sheet, .sheet-scrim { opacity: 1 !important; transform: none !important; }
-    .card-cta { opacity: 1 !important; transform: none !important; }
-    *, *::before, *::after { transition: none !important; }
-  }
-</style>
+    .simple-button {
+      display: inline-block;
+      border: 1px solid var(--border-dark);
+      background: var(--white);
+      color: var(--text);
+      padding: 11px 17px;
+      border-radius: 4px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .simple-button:hover {
+      border-color: var(--text);
+    }
+
+    /* =========================
+       EXPERIENCE
+    ========================== */
+
+    .experience-group {
+      margin-top: 58px;
+    }
+
+    .experience-group:first-of-type {
+      margin-top: 0;
+    }
+
+    .group-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .group-heading h2 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .group-count {
+      color: var(--text-light);
+      font-size: 12px;
+    }
+
+    .group-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px 18px;
+    }
+
+    .experience-card {
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: none;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .experience-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      display: block;
+      object-fit: cover;
+      background: #deded9;
+      transition: opacity 0.25s ease;
+    }
+
+    .experience-card:hover .experience-image {
+      opacity: 0.82;
+    }
+
+    .experience-card h3 {
+      margin: 13px 0 5px;
+      font-size: 17px;
+      line-height: 1.3;
+    }
+
+    .experience-card p {
+      margin: 0;
+      color: var(--text-light);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* =========================
+       DOGS
+    ========================== */
+
+    .dog-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 30px;
+    }
+
+    .dog-card {
+      background: var(--white);
+    }
+
+    .dog-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      background: #deded9;
+    }
+
+    .dog-info {
+      padding: 16px 0 0;
+    }
+
+    .dog-info h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    /* =========================
+       EXPERIENCE MODAL
+    ========================== */
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.55);
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal {
+      width: min(760px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      background: var(--white);
+      border-radius: 6px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 26px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-type {
+      color: var(--text-light);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .modal-title {
+      margin: 6px 0 5px;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+    }
+
+    .modal-org {
+      margin: 0;
+      color: var(--text-light);
+      font-size: 13px;
+    }
+
+    .modal-close {
+      margin-left: auto;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: var(--text-soft);
+      font-size: 30px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .modal-content {
+      padding: 28px;
+    }
+
+    .step-tabs {
+      display: flex;
+      gap: 28px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step-tab {
+      padding: 0 0 12px;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      background: none;
+      color: var(--text-light);
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .step-tab.active {
+      color: var(--text);
+      border-bottom-color: var(--text);
+    }
+
+    .step-content {
+      min-height: 190px;
+    }
+
+    .step-content h3 {
+      margin: 0 0 14px;
+      color: var(--text-soft);
+      font-size: 12px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .step-content ul {
+      margin: 0;
+      padding-left: 20px;
+      color: #414141;
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .step-content li + li {
+      margin-top: 10px;
+    }
+
+    .modal-navigation {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .modal-navigation button {
+      border: 1px solid var(--border-dark);
+      border-radius: 4px;
+      background: var(--white);
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    .modal-navigation button:hover:not(:disabled) {
+      border-color: var(--text);
+    }
+
+    .modal-navigation button:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      padding: 26px 0 36px;
+      border-top: 1px solid var(--border);
+      color: var(--text-light);
+      font-size: 12px;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 900px) {
+      .home-hero {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .home-side {
+        max-width: 500px;
+      }
+
+      .experience-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 650px) {
+      .site {
+        padding: 0 18px;
+      }
+
+      .navbar {
+        height: auto;
+        padding: 18px 0;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav-links {
+        width: 100%;
+        gap: 18px;
+        overflow-x: auto;
+      }
+
+      .page {
+        padding: 48px 0 70px;
+      }
+
+      .home-copy h1 {
+        font-size: 60px;
+      }
+
+      .experience-grid,
+      .dog-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-overlay {
+        padding: 10px;
+      }
+
+      .modal-header,
+      .modal-content {
+        padding: 20px;
+      }
+
+      .step-tabs {
+        gap: 20px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="backdrop" aria-hidden="true"></div>
+<div class="site">
 
-<div class="stage-wrap">
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
 
-  <div class="masthead">
-    <h1 class="fade f1">Elvin's<span class="strong">Portfolio</span></h1>
-    <p class="sub fade f2"><span class="glyph"></span>Swipe to spin<span class="glyph r"></span></p>
-  </div>
+  <nav class="navbar">
 
-  <div class="stage fade f3" id="stage" tabindex="0" role="region" aria-label="Portfolio gallery — swipe or use arrow keys to spin">
-    <div class="ring3d" id="ring"></div>
-  </div>
+    <div class="brand">
+      Elvin Esguerra
+    </div>
 
-  <div class="controls fade f3">
-    <button class="navbtn" id="prev" type="button" aria-label="Previous card">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-    </button>
-    <div class="pips" id="pips" role="tablist" aria-label="Select card"></div>
-    <button class="navbtn" id="next" type="button" aria-label="Next card">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-    </button>
-  </div>
+    <div class="nav-links">
 
-</div>
+      <button class="nav-link active" data-page="home">
+        Home
+      </button>
 
-<div class="sheet-wrap" id="sheetWrap" hidden>
-  <div class="sheet-scrim" id="sheetScrim"></div>
-  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
-    <div class="sheet-top">
-      <div>
-        <button class="sheet-back" id="sheetBack" type="button" hidden>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6"/><path d="M11 6l-6 6 6 6"/></svg>
-          All projects
-        </button>
-        <div class="sheet-kicker" id="sheetKicker">01 / 04</div>
-        <h2 class="sheet-title" id="sheetTitle">About Me</h2>
+      <button class="nav-link" data-page="resume">
+        Resume
+      </button>
+
+      <button class="nav-link" data-page="experience">
+        Experience
+      </button>
+
+      <button class="nav-link" data-page="dogs">
+        Dogs
+      </button>
+
+    </div>
+
+  </nav>
+
+
+  <main>
+
+    <!-- =========================
+         HOME
+    ========================== -->
+
+    <section id="home" class="page active">
+
+      <div class="home-hero">
+
+        <div class="home-copy">
+
+          <div class="section-label">
+            Mechanical Engineering Portfolio
+          </div>
+
+          <h1>
+            Elvin<br>
+            Esguerra
+          </h1>
+
+          <p class="intro">
+            Mechanical Engineering student at the University of
+            Missouri–Columbia interested in thermal engineering,
+            CFD, aerodynamics, structures, and hands-on engineering.
+          </p>
+
+        </div>
+
+
+        <div class="home-side">
+
+          <!--
+            CHANGE THIS FILE TO YOUR PHOTO
+          -->
+
+          <img
+            class="profile-photo"
+            src="images/profile.jpg"
+            alt="Elvin Esguerra"
+          >
+
+          <div class="about-me">
+
+            <h2>About Me</h2>
+
+            <p>
+              I enjoy solving engineering problems through a mix of
+              analysis, simulation, design, manufacturing, and testing.
+              My experience includes aerospace projects, CFD research,
+              manufacturing leadership, programming, and hands-on
+              engineering work.
+            </p>
+
+            <div class="skills">
+              <span class="skill">CFD</span>
+              <span class="skill">Thermal Engineering</span>
+              <span class="skill">SolidWorks</span>
+              <span class="skill">Python</span>
+              <span class="skill">MATLAB</span>
+              <span class="skill">ANSYS Fluent</span>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
-      <button class="sheet-x" id="sheetX" type="button" aria-label="Close">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-      </button>
-    </div>
-    <div class="sheet-body" id="sheetBody" tabindex="-1"></div>
-    <div class="sheet-foot">
-      <button class="sheet-nav p" id="sheetPrev" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-        <span>Prev</span>
-      </button>
-      <div class="sheet-dots" id="sheetDots"></div>
-      <button class="sheet-nav n" id="sheetNext" type="button">
-        <span>Next</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-      </button>
-    </div>
-  </div>
+
+    </section>
+
+
+    <!-- =========================
+         RESUME
+    ========================== -->
+
+    <section id="resume" class="page">
+
+      <div class="page-header">
+
+        <div class="section-label">
+          Resume
+        </div>
+
+        <h1>Resume</h1>
+
+        <p>
+          Education, professional experience, engineering projects,
+          technical skills, and certifications.
+        </p>
+
+      </div>
+
+
+      <div class="resume-wrapper">
+
+        <!--
+          EXPORT YOUR RESUME AS:
+          images/resume.png
+        -->
+
+        <img
+          class="resume-image"
+          src="images/resume.png"
+          alt="Elvin Esguerra Resume"
+        >
+
+        <div class="resume-actions">
+
+          <!--
+            PUT YOUR PDF AT:
+            files/ElvinEsguerra2026_Resume.pdf
+          -->
+
+          <a
+            class="simple-button"
+            href="files/ElvinEsguerra2026_Resume.pdf"
+            target="_blank"
+          >
+            Open PDF Resume
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         EXPERIENCE
+    ========================== -->
+
+    <section id="experience" class="page">
+
+      <div class="page-header">
+
+        <div class="section-label">
+          Experience
+        </div>
+
+        <h1>Experience & Projects</h1>
+
+        <p>
+          Select any item to see what I worked on, how I approached
+          the problem, and the results.
+        </p>
+
+      </div>
+
+
+      <!-- INTERNSHIP EXPERIENCE -->
+
+      <section class="experience-group">
+
+        <div class="group-heading">
+
+          <h2>Internship Experience</h2>
+
+          <span class="group-count">1</span>
+
+          <span class="group-line"></span>
+
+        </div>
+
+        <div class="experience-grid" id="internship-grid"></div>
+
+      </section>
+
+
+      <!-- RESEARCH -->
+
+      <section class="experience-group">
+
+        <div class="group-heading">
+
+          <h2>Research</h2>
+
+          <span class="group-count">2</span>
+
+          <span class="group-line"></span>
+
+        </div>
+
+        <div class="experience-grid" id="research-grid"></div>
+
+      </section>
+
+
+      <!-- ENGINEERING PROJECTS -->
+
+      <section class="experience-group">
+
+        <div class="group-heading">
+
+          <h2>Engineering Projects</h2>
+
+          <span class="group-count">4</span>
+
+          <span class="group-line"></span>
+
+        </div>
+
+        <div class="experience-grid" id="project-grid"></div>
+
+      </section>
+
+    </section>
+
+
+    <!-- =========================
+         DOGS
+    ========================== -->
+
+    <section id="dogs" class="page">
+
+      <div class="page-header">
+
+        <div class="section-label">
+          Dogs
+        </div>
+
+        <h1>Dogs</h1>
+
+      </div>
+
+
+      <div class="dog-grid">
+
+        <article class="dog-card">
+
+          <img
+            class="dog-image"
+            src="images/cosmo.jpg"
+            alt="Cosmo"
+          >
+
+          <div class="dog-info">
+            <h2>Cosmo</h2>
+          </div>
+
+        </article>
+
+
+        <article class="dog-card">
+
+          <img
+            class="dog-image"
+            src="images/pluto.jpg"
+            alt="Pluto"
+          >
+
+          <div class="dog-info">
+            <h2>Pluto</h2>
+          </div>
+
+        </article>
+
+
+        <article class="dog-card">
+
+          <img
+            class="dog-image"
+            src="images/winston.jpg"
+            alt="Winston"
+          >
+
+          <div class="dog-info">
+            <h2>Winston</h2>
+          </div>
+
+        </article>
+
+
+        <article class="dog-card">
+
+          <img
+            class="dog-image"
+            src="images/rey.jpg"
+            alt="Rey"
+          >
+
+          <div class="dog-info">
+            <h2>Rey</h2>
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    Elvin Esguerra · Mechanical Engineering Portfolio
+  </footer>
+
 </div>
 
-<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
-  <button class="lb-x" id="lbX" type="button" aria-label="Close image">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-  </button>
-  <div class="lb-in">
-    <img id="lbImg" src="" alt="">
-    <div class="lb-cap" id="lbCap"></div>
+
+<!-- =========================
+     EXPERIENCE MODAL
+========================== -->
+
+<div
+  class="modal-overlay"
+  id="experience-modal"
+  aria-hidden="true"
+>
+
+  <div
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+  >
+
+    <div class="modal-header">
+
+      <div>
+
+        <div
+          class="modal-type"
+          id="modal-type"
+        ></div>
+
+        <h2
+          class="modal-title"
+          id="modal-title"
+        ></h2>
+
+        <p
+          class="modal-org"
+          id="modal-org"
+        ></p>
+
+      </div>
+
+      <button
+        class="modal-close"
+        id="modal-close"
+        type="button"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="modal-content">
+
+      <div class="step-tabs">
+
+        <button
+          class="step-tab active"
+          type="button"
+          data-step="0"
+        >
+          What
+        </button>
+
+        <button
+          class="step-tab"
+          type="button"
+          data-step="1"
+        >
+          How
+        </button>
+
+        <button
+          class="step-tab"
+          type="button"
+          data-step="2"
+        >
+          Results
+        </button>
+
+      </div>
+
+
+      <div
+        class="step-content"
+        id="step-content"
+      ></div>
+
+
+      <div class="modal-navigation">
+
+        <button
+          id="previous-step"
+          type="button"
+        >
+          Previous
+        </button>
+
+        <button
+          id="next-step"
+          type="button"
+        >
+          Next
+        </button>
+
+      </div>
+
+    </div>
+
   </div>
+
 </div>
+
 
 <script>
-(function () {
-  'use strict';
 
-  /* ---------------- Cards ---------------- */
-  var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg>';
+  /* =========================
+     EXPERIENCE DATA
 
-  var ZOOM = '<span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/><path d="M11 8v6"/><path d="M8 11h6"/></svg></span>';
+     IMAGE FILES NEEDED:
 
-  /* One image slot. Shows a labeled placeholder until the file exists. */
-  function fig(file, cap) {
-    return '<figure class="fig"><div class="fig-box">' +
-      '<img src="' + file + '" alt="' + cap.replace(/"/g, '&quot;') + '" loading="lazy" ' +
-      'data-cap="' + cap.replace(/"/g, '&quot;') + '" onerror="this.remove()">' +
-      ZOOM + '<div class="m">' + file + '</div></div>' +
-      '<figcaption>' + cap + '</figcaption></figure>';
-  }
+     images/gm.jpg
+     images/aiaa-heating.jpg
+     images/research.jpg
+     images/argonia.jpg
+     images/nosecone.jpg
+     images/payload.jpg
+     images/level1.jpg
+  ========================== */
 
-  /* Row of image slots. Pass [[file, caption], ...] */
-  function figs(list) {
-    return '<div class="figs' + (list.length === 1 ? ' one' : '') + '">' +
-      list.map(function (f) { return fig(f[0], f[1]); }).join('') + '</div>';
-  }
+  const experiences = [
 
-  /* ---------------- Projects: What / How / Results ---------------- */
-  var PROJECTS = [
+    /* =====================
+       INTERNSHIP
+    ====================== */
+
     {
-      title: 'Argonia Cup Project Manager',
-      org: 'Mizzou Space Program \u00b7 May 2026 \u2013 Present',
+      category: "internship",
+
+      type: "Internship Experience",
+
+      title: "Manufacturing Group Leader",
+
+      organization:
+        "General Motors · Wentzville · June 2026 – August 2026",
+
+      image: "images/gm.jpg",
+
       what: [
-        'Project Manager leading <strong>30+ members</strong> through the design, manufacturing, and testing of a competition rocket targeting a <strong>7,000 ft apogee</strong>, integrating an active air-braking system and a 10-golf-ball payload.',
-        'The team needed a faster way to iterate on fin geometry, and real confidence that the vehicle would land inside its target altitude window before committing to a build.'
+        "Led three stamping presses and 36 operators on an active automotive production floor.",
+        "Managed daily production while maintaining safety, quality, and operational requirements."
       ],
+
       how: [
-        'Built a Python tool that drives OpenRocket programmatically through JPype, so fin geometry could be swept automatically instead of adjusted by hand one simulation at a time.',
-        'Post-processed the sweep output with NumPy to rank geometries against predicted apogee.',
-        'Ran <strong>250 Monte Carlo simulations</strong> across varied wind and launch-angle conditions to characterize the spread rather than trusting a single nominal run.'
+        "Built a downtime-tracking system to consistently document production interruptions.",
+        "Performed root-cause analysis on recurring equipment and process issues.",
+        "Worked directly with engineers, die makers, electricians, and production employees to resolve problems on the floor."
       ],
+
       results: [
-        'Reduced fin optimization sweeps from <strong>2 weeks to 4 hours</strong>.',
-        'Found that <strong>99.2% of simulated flights</strong> met the criteria for second-stage motor ignition.',
-        'Characterized flight-condition uncertainty rather than trusting a single nominal run.'
-      ],
-      chips: ['Python', 'OpenRocket', 'JPype', 'NumPy', 'Leadership', 'Project management'],
-      figs: [['argonia-1.jpg', 'Argonia Cup airframe during assembly.'],
-             ['argonia-2.jpg', 'OpenRocket output from the Python sweep tool.']]
+        "Supported production exceeding daily output targets while meeting safety and quality requirements.",
+        "Eliminated approximately 40 minutes of recurring weekly downtime by helping standardize robot-programming procedures."
+      ]
     },
+
+
+    /* =====================
+       RESEARCH
+    ====================== */
+
     {
-      title: 'Manufacturing Group Leader',
-      org: 'General Motors, Wentzville \u00b7 Jun 2026 \u2013 Aug 2026',
+      category: "research",
+
+      type: "Research Publication",
+
+      title:
+        "Quantifying Convective Aerodynamic Heating During Ascent",
+
+      organization:
+        "AIAA Region V Student Conference · Published & Presented · 2026",
+
+      image: "images/aiaa-heating.jpg",
+
       what: [
-        'Ran three stamping presses and <strong>36 operators</strong> on an active production floor, accountable for hitting daily output while holding quality and safety requirements.',
-        'One recurring process bottleneck kept pulling the line down, and nobody had the data to say exactly where it came from.'
+        "Investigated the accuracy of the Sutton–Graves heating correlation when applied to collegiate rocket ascent.",
+        "Focused on the subsonic-through-supersonic flight regime experienced during ascent."
       ],
+
       how: [
-        'Built a downtime-tracking sheet so stoppages were recorded consistently instead of anecdotally.',
-        'Ran root-cause analysis on the logged data to isolate the recurring bottleneck.',
-        'Worked directly alongside engineers, die makers, and electricians to diagnose press failures and correct the process on the floor.'
+        "Developed a 72,000-cell axisymmetric CFD model in ANSYS Fluent.",
+        "Performed a mesh sensitivity study to verify grid independence.",
+        "Evaluated five flight conditions ranging from Mach 0.54 to Mach 1.91.",
+        "Used atmospheric and trajectory conditions derived from flight data."
       ],
+
       results: [
-        'Exceeded <strong>3,700 parts per day</strong> while meeting quality and safety quotas.',
-        'Eliminated <strong>40 minutes</strong> of recurring weekly downtime by standardizing robot-programming procedures, enabling <strong>200 more parts weekly</strong>.',
-        'Learned what an analysis is actually worth when a real machine is down and the line is waiting.'
-      ],
-      chips: ['Leadership', 'Root cause analysis', 'Project management', 'Technical documentation'],
-      figs: []
+        "Predicted peak stagnation-region heat flux of approximately 2.46 × 10⁶ W/m².",
+        "Measured Sutton–Graves underprediction ranging from approximately 183% to 452% across the evaluated conditions.",
+        "Published and presented the research at the AIAA Region V Student Conference."
+      ]
     },
+
+
     {
-      title: 'Quantifying Convective Aerodynamic Heating During Ascent',
-      org: 'AIAA Region V Student Conference \u00b7 Published \u00b7 Jan\u2013Mar 2026',
-      link: 'https://arc.aiaa.org/doi/epdf/10.2514/6.2026-111868',
+      category: "research",
+
+      type: "Undergraduate Research",
+
+      title:
+        "Undergraduate Research Assistant",
+
+      organization:
+        "University of Missouri Semiconductor Laboratory · January 2026 – Present",
+
+      image: "images/research.jpg",
+
       what: [
-        'Collegiate rocket teams routinely pick nose-tip materials using the Sutton\u2013Graves heating correlation, but it was never intended for the subsonic-through-supersonic ascent regime those vehicles actually fly.',
-        'I set out to quantify how far off it is, so teams would know whether they could trust it.'
+        "Developed a low-cost automated testing system for repeated mechanical loading of mechanoluminescent material samples.",
+        "The laboratory needed a repeatable alternative to expensive commercial bending equipment."
       ],
+
       how: [
-        'Built a <strong>72,000-cell axisymmetric CFD model</strong> in ANSYS Fluent.',
-        'Ran a mesh sensitivity study to confirm the solution was grid-independent before drawing conclusions from it.',
-        'Evaluated heating across <strong>five flight conditions from Mach 0.54 to 1.91</strong>, with boundary conditions derived from prior flight data rather than assumed.'
+        "Designed a three-point bending system in SolidWorks.",
+        "Programmed stepper-motor control for automated loading cycles.",
+        "Designed and 3D printed a custom 60 × 60 mm sample fixture.",
+        "Integrated the mechanical components and supporting electronics."
       ],
+
       results: [
-        'Predicted peak stagnation-region heat flux of <strong>2.46 \u00d7 10\u2076 W/m\u00b2</strong>.',
-        'Quantified a <strong>183% to 452% underprediction</strong> from Sutton\u2013Graves in this regime \u2014 wide enough to change which nose-tip material a team should select.',
-        'Published and presented at the AIAA Region V Student Conference.'
-      ],
-      chips: ['ANSYS Fluent', 'MATLAB', 'Technical documentation'],
-      figs: [['aiaa-1.jpg', 'Stagnation-region heat flux contour from the axisymmetric model.'],
-             ['aiaa-2.jpg', 'Mesh refinement near the nose tip.']]
+        "Built the complete testing system for under $40.",
+        "Converted a manual test procedure into an automated repeated-cycle process.",
+        "Improved sample positioning consistency between tests."
+      ]
     },
+
+
+    /* =====================
+       ENGINEERING PROJECTS
+    ====================== */
+
     {
-      title: 'IREC Nose Cone Aerodynamic Analysis',
-      org: 'Mizzou Space Program \u00b7 Apr\u2013May 2026',
+      category: "project",
+
+      type: "Engineering Project",
+
+      title:
+        "Argonia Cup Project Manager",
+
+      organization:
+        "Mizzou Space Program · May 2026 – Present",
+
+      image: "images/argonia.jpg",
+
       what: [
-        'The competition vehicle needed a trustworthy drag prediction at maximum dynamic pressure to feed trajectory work and structural sizing.',
-        'A CFD number is only useful if you can show it agrees with something independent, so validation was part of the scope from the start.'
+        "Lead a team of more than 30 members designing, manufacturing, and testing a competition rocket targeting a 7,000 ft apogee.",
+        "The vehicle incorporates an active air-braking system and a ten-golf-ball payload."
       ],
+
       how: [
-        'Simulated <strong>Mach 2.12</strong> compressible supersonic flow in ANSYS Fluent, applying OpenRocket trajectory and atmospheric data for Max-Q analysis.',
-        'Generated a <strong>474k-cell structured mesh</strong> with near-wall inflation layers and a Body of Influence, achieving <strong>y+ of 1.6</strong> using the SST k-\u03c9 turbulence model.',
-        'Implemented the closed-form drag solutions in MATLAB as an independent check.',
-        'Compared both approaches rather than reporting the solver output on its own.'
+        "Built a Python program that controls OpenRocket programmatically through JPype.",
+        "Automated fin-geometry sweeps and post-processed simulation results with NumPy.",
+        "Ran 250 Monte Carlo simulations using varying wind and launch-angle conditions.",
+        "Coordinate design, manufacturing, testing, and integration activities across the team."
       ],
+
       results: [
-        'Calculated <strong>245 N</strong> of total drag with a drag coefficient of <strong>0.123</strong>.',
-        'Validated against hand calculations to within <strong>2%</strong>.'
-      ],
-      chips: ['ANSYS Fluent', 'SolidWorks', 'MATLAB'],
-      figs: [['nosecone-1.jpg', 'Pressure field around the nose cone at max dynamic pressure.'],
-             ['nosecone-2.jpg', 'SST k-\u03c9 mesh around the forebody.']]
+        "Reduced fin optimization work from approximately two weeks to four hours.",
+        "Found that 99.2% of simulated flights met the criteria for second-stage motor ignition.",
+        "Created a repeatable workflow for evaluating vehicle performance across uncertain flight conditions."
+      ]
     },
+
+
     {
-      title: 'IREC Payload',
-      org: 'Mizzou Space Program \u00b7 Aug 2025 \u2013 May 2026',
+      category: "project",
+
+      type: "Engineering Project",
+
+      title:
+        "IREC Nose Cone Aerodynamic Analysis",
+
+      organization:
+        "Mizzou Space Program · April 2026 – May 2026",
+
+      image: "images/nosecone.jpg",
+
       what: [
-        'Design a <strong>5.75 lb</strong> payload using engineered load paths to isolate electronics from a <strong>20 ft/s impact</strong>, while meeting strength, weight, and manufacturability requirements.',
-        'It also had to secure <strong>6 LiPo batteries</strong>, microcontrollers, and a camera inside a <strong>3.85 inch diameter</strong> envelope.'
+        "Developed an aerodynamic drag prediction for the rocket nose cone at maximum dynamic pressure.",
+        "The analysis was used to support trajectory and structural design work."
       ],
+
       how: [
-        'Modeled the structure in SolidWorks, selecting <strong>PLA, aluminum, and fiberglass</strong> where each material earned its place on strength, weight, or ease of manufacture.',
-        'Modeled and 3D printed custom mounts and panels to secure the electronics and block dust and moisture.',
-        'Troubleshot fit and clearance issues discovered during physical integration and assembly.'
+        "Simulated Mach 2.12 compressible supersonic flow in ANSYS Fluent.",
+        "Generated a 474,000-cell structured mesh with near-wall inflation layers and a Body of Influence.",
+        "Used the SST k-ω turbulence model.",
+        "Implemented independent analytical drag calculations in MATLAB."
       ],
+
       results: [
-        'Structure met the 20 ft/s impact requirement with all electronics mounted and retained.',
-        'Drafted <strong>8 GD&amp;T drawings</strong> for disks, mounts, and panels to guide fabrication and assembly.',
-        'First time I saw how quickly a tolerance decision made in CAD becomes a problem on the bench.'
-      ],
-      chips: ['SolidWorks', 'Tolerance analysis', 'Rapid prototyping', '3D printing', 'Soldering'],
-      figs: [['payload-cad.jpg', 'CAD model \u2014 full payload assembly.'],
-             ['payload-wip.jpg', 'In progress \u2014 payload during assembly.']]
+        "Calculated approximately 245 N of total aerodynamic drag.",
+        "Calculated a drag coefficient of approximately 0.123.",
+        "Validated the CFD prediction against independent calculations to within approximately 2%."
+      ]
     },
+
+
     {
-      title: 'Undergraduate Research Assistant',
-      org: 'Semiconductor Lab, University of Missouri \u00b7 Jan 2026 \u2013 Present',
+      category: "project",
+
+      type: "Engineering Project",
+
+      title:
+        "IREC Payload",
+
+      organization:
+        "Mizzou Space Program · August 2025 – May 2026",
+
+      image: "images/payload.jpg",
+
       what: [
-        'The lab needed repeatable load testing on mechanoluminescent materials, but the process was manual and commercial bending rigs are expensive.',
-        'Goal was an automated setup that could run identical cycles on sample after sample.'
+        "Designed a 5.75 lb rocket payload intended to protect electronics during a 20 ft/s impact.",
+        "The design packaged six LiPo batteries, microcontrollers, and a camera inside a 3.85-inch-diameter envelope."
       ],
+
       how: [
-        'Designed a <strong>three-point bending system</strong> in SolidWorks for <strong>under $40</strong>, with custom 3D-printed components and stepper-motor loading.',
-        'Programmed the stepper motor control and wired the supporting electronics on a breadboarded circuit.',
-        'Modeled and 3D printed a custom <strong>60 \u00d7 60 mm fixture</strong> to hold samples securely through repeated cycles.'
+        "Designed the structure and component mounting system in SolidWorks.",
+        "Selected PLA, aluminum, and fiberglass based on strength, weight, and manufacturability requirements.",
+        "Designed and 3D printed custom electronics mounts and panels.",
+        "Resolved fit and clearance issues during physical integration."
       ],
+
       results: [
-        'Total build cost <strong>under $40</strong>, a fraction of a commercial rig.',
-        'Replaced a manual process with one that runs repeated cycles unattended.',
-        'Fixture holds samples in consistent alignment test after test, so results are comparable.'
-      ],
-      chips: ['Arduino', 'SolidWorks', 'Test fixture design', '3D printing'],
-      figs: [['research-1.jpg', 'Arduino-controlled three-point bending rig.'],
-             ['research-2.jpg', '3D printed 60 \u00d7 60 mm sample fixture.']]
+        "Completed the payload structure with electronics securely mounted.",
+        "Designed the system around the required 20 ft/s impact condition.",
+        "Produced eight GD&T drawings to support fabrication and assembly."
+      ]
     },
+
+
     {
-      title: 'Level 1 Certification Rocket',
-      org: 'High-powered rocketry',
+      category: "project",
+
+      type: "Engineering Project",
+
+      title:
+        "Level 1 Certification Rocket",
+
+      organization:
+        "High-Power Rocketry",
+
+      image: "images/level1.jpg",
+
       what: [
-        'Earn Level 1 high-power rocketry certification, which requires designing, building, and successfully flying and recovering a single-stage vehicle.'
+        "Designed and built a single-stage rocket for Level 1 high-power rocketry certification."
       ],
+
       how: [
-        'Sized the airframe and recovery system for the target motor and expected altitude.',
-        'Selected the motor and verified stability margin before the vehicle was cleared to fly.',
-        'Fabricated the airframe using band saw and belt and disk sander work.'
+        "Sized the airframe and recovery system for the selected motor and expected flight conditions.",
+        "Verified vehicle stability before launch.",
+        "Manufactured and assembled the vehicle using common fabrication equipment."
       ],
+
       results: [
-        'Successful flight and recovery on the certification attempt.',
-        'Level 1 certification earned.'
-      ],
-      chips: ['Design for manufacturing', 'Rapid prototyping', 'Band saw', 'Belt and disk sander'],
-      figs: [['level1-1.jpg', 'Level 1 rocket on the pad before flight.']]
+        "Completed a successful certification flight and recovery.",
+        "Earned Level 1 high-power rocketry certification."
+      ]
     }
+
   ];
 
-  var GO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg>';
 
-  /* Clickable list of every project */
-  function plist() {
-    return '<div class="plist">' + PROJECTS.map(function (p, i) {
-      return '<button class="prow" type="button" data-p="' + i + '">' +
-        '<span class="prow-n">0' + (i + 1) + '</span>' +
-        '<span class="prow-t"><h3>' + p.title + '</h3><span class="o">' + p.org + '</span></span>' +
-        '<span class="prow-go">' + GO + '</span></button>';
-    }).join('') + '</div>';
-  }
+  /* =========================
+     PAGE NAVIGATION
+  ========================== */
 
-  function whBlock(cls, label, items) {
-    if (!items || !items.length) return '';
-    return '<div class="wh ' + cls + '"><div class="wh-h">' + label + '</div><ul>' +
-      items.map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul></div>';
-  }
+  const navButtons =
+    document.querySelectorAll(".nav-link");
 
-  /* One project's full detail view */
-  function projBody(p) {
-    var h = '<p class="pd-org">' + p.org + '</p>';
-    if (p.link) {
-      h += '<p><a href="' + p.link + '" target="_blank" rel="noopener">Read the published paper &rarr;</a></p>';
+  const pages =
+    document.querySelectorAll(".page");
+
+
+  navButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const pageName =
+        button.dataset.page;
+
+
+      navButtons.forEach(item =>
+        item.classList.remove("active")
+      );
+
+
+      pages.forEach(page =>
+        page.classList.remove("active")
+      );
+
+
+      button.classList.add("active");
+
+
+      document
+        .getElementById(pageName)
+        .classList.add("active");
+
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    });
+
+  });
+
+
+  /* =========================
+     BUILD EXPERIENCE CARDS
+  ========================== */
+
+  const internshipGrid =
+    document.getElementById("internship-grid");
+
+  const researchGrid =
+    document.getElementById("research-grid");
+
+  const projectGrid =
+    document.getElementById("project-grid");
+
+
+  experiences.forEach((experience, index) => {
+
+    const card =
+      document.createElement("button");
+
+
+    card.type = "button";
+
+    card.className =
+      "experience-card";
+
+
+    card.innerHTML = `
+
+      <img
+        class="experience-image"
+        src="${experience.image}"
+        alt="${experience.title}"
+      >
+
+      <h3>
+        ${experience.title}
+      </h3>
+
+      <p>
+        ${experience.organization}
+      </p>
+
+    `;
+
+
+    card.addEventListener(
+      "click",
+      () => openExperience(index)
+    );
+
+
+    if (experience.category === "internship") {
+
+      internshipGrid.appendChild(card);
+
     }
-    h += whBlock('', 'What', p.what);
-    h += whBlock('', 'How', p.how);
-    h += whBlock('res', 'Results', p.results);
-    if (p.figs && p.figs.length) h += figs(p.figs);
-    if (p.chips && p.chips.length) {
-      h += '<div class="lbl">Skills used</div><div class="chips">' +
-        p.chips.map(function (c) { return '<span class="chip">' + c + '</span>'; }).join('') + '</div>';
-    }
-    return h;
-  }
 
-  var CARDS = [
-    {
-      title: 'About Me',
-      theme: 'about',
-      note: 'Mechanical engineering at Mizzou, thermal systems and CFD.',
-      cta: 'Read more',
-      art: { image: 'profile.jpg' },
-      body:
-        '<p>I\u2019m a Mechanical Engineering student at the University of Missouri\u2013Columbia, ' +
-        'expecting to graduate in <strong>May 2029</strong>. My interests include thermal engineering, ' +
-        'aerodynamics, and structures, with a particular interest in applying engineering principles ' +
-        'to real-world problems through analysis, simulation, and hands-on design.</p>' +
-        '<p>I\u2019m always open to new experiences that allow me to learn and grow, as well as ' +
-        'questions, conversations, and new opportunities. Feel free to reach out by ' +
-        '<a href="mailto:ejhesguerra@gmail.com">email</a>!</p>' +
-        '<div class="lbl">Right now</div>' +
-        '<p>Project Manager for the Mizzou Space Program\u2019s Argonia Cup team, where I built a Python ' +
-        'tool that automates OpenRocket to cut design iteration time, and an undergraduate research ' +
-        'assistant in a semiconductor lab. This past summer I ran three stamping presses and 36 operators ' +
-        'as a Manufacturing Group Leader at GM Wentzville \u2014 which taught me what a model is actually ' +
-        'worth when a real machine is down.</p>' +
+    else if (experience.category === "research") {
 
-        figs([['about-1.jpg', 'On the floor at Wentzville.'],
-              ['about-2.jpg', 'Working on the Argonia airframe.']]) +
-        '<div class="lbl">Elsewhere</div>' +
-        '<p><a href="https://linkedin.com/in/elvinesguerra" target="_blank" rel="noopener">LinkedIn</a> ' +
-        '&middot; <a href="mailto:ejhesguerra@gmail.com">ejhesguerra@gmail.com</a></p>'
-    },
-    {
-      title: 'Experience',
-      theme: 'exp',
-      note: 'Simulation, rocketry, research, and manufacturing work.',
-      cta: 'See the work',
-      art: { gen: 'gen-exp' },
-      body:
-        '<p>Seven projects across CFD, rocketry, research, and manufacturing. ' +
-        'Tap any one to see <strong>what</strong> it was, <strong>how</strong> I did it, and the <strong>results</strong>.</p>' +
-        plist() +
-        '<div class="lbl">Skills</div>' +
-        '<div class="sk-grid">' +
-        '<div><div class="sk-h">Simulation and analysis</div><div class="chips">' +
-        '<span class="chip">ANSYS Fluent</span><span class="chip">ANSYS Mechanical</span>' +
-        '<span class="chip">SolidWorks Flow Simulation</span><span class="chip">SolidWorks Simulation</span>' +
-        '<span class="chip">OpenRocket</span></div></div>' +
-        '<div><div class="sk-h">CAD</div><div class="chips">' +
-        '<span class="chip">SolidWorks</span><span class="chip">AutoCAD</span>' +
-        '<span class="chip">FreeCAD</span><span class="chip">Fusion 360</span></div></div>' +
-        '<div><div class="sk-h">Programming</div><div class="chips">' +
-        '<span class="chip">MATLAB</span><span class="chip">Python</span><span class="chip">NumPy</span>' +
-        '<span class="chip">JPype</span><span class="chip">SQL</span><span class="chip">Arduino</span></div></div>' +
-        '<div><div class="sk-h">Design and process</div><div class="chips">' +
-        '<span class="chip">Rapid prototyping</span><span class="chip">Design for manufacturing</span>' +
-        '<span class="chip">GD&amp;T</span><span class="chip">Tolerance analysis</span>' +
-        '<span class="chip">Test fixture design</span><span class="chip">Root cause analysis</span>' +
-        '<span class="chip">Technical documentation</span><span class="chip">Project management</span>' +
-        '<span class="chip">Leadership</span></div></div>' +
-        '<div><div class="sk-h">Certifications</div><div class="chips">' +
-        '<span class="chip">CSWA</span><span class="chip">CSWA-Simulation</span>' +
-        '<span class="chip">Oracle Database Foundations</span></div></div>' +
-        '<div><div class="sk-h">Shop and fabrication</div><div class="chips">' +
-        '<span class="chip">Water jet</span><span class="chip">Table saw</span><span class="chip">Band saw</span>' +
-        '<span class="chip">Miter saw</span><span class="chip">Drill press</span>' +
-        '<span class="chip">Belt and disk sander</span><span class="chip">Soldering</span>' +
-        '<span class="chip">3D printing</span></div></div>' +
-        '</div>'
-    },
-    {
-      title: 'Resume',
-      theme: 'resume',
-      note: 'Education, experience, skills, and certifications.',
-      cta: 'View resume',
-      art: { image: 'ElvinEsguerra2026_Resume.png' },
-      body:
-        '<p>Bachelor of Science in Mechanical Engineering, University of Missouri\u2013Columbia, ' +
-        'expected May 2029.</p>' +
-        '<div class="res-doc">' +
-        '<img src="ElvinEsguerra2026_Resume.png" alt="Elvin Esguerra resume" loading="lazy" ' +
-        'onerror="this.outerHTML=\'<div class=&quot;res-ph&quot;><div class=&quot;m&quot;>Resume preview</div><p>Add ElvinEsguerra2026_Resume.png next to index.html</p></div>\'">' +
-        '</div>' +
-        '<a class="dl" href="ElvinEsguerra2026_Resume.pdf" download>' +
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="M7 12l5 5 5-5"/><path d="M4 21h16"/></svg>' +
-        'Download resume <span class="tag">PDF</span></a>'
-    },
-    {
-      title: 'Pets',
-      theme: 'pets',
-      note: 'The best part of the portfolio.',
-      cta: 'Meet them',
-      art: { gen: 'gen-pets' },
-      body:
-        '<p>Arguably the most important section.</p>' +
-        figs([['pet-1.jpg', 'Name \u2014 a line about this one.'],
-              ['pet-2.jpg', 'Name \u2014 a line about this one.'],
-              ['pet-3.jpg', 'Name \u2014 a line about this one.']])
+      researchGrid.appendChild(card);
+
     }
+
+    else {
+
+      projectGrid.appendChild(card);
+
+    }
+
+  });
+
+
+  /* =========================
+     EXPERIENCE MODAL
+  ========================== */
+
+  const modal =
+    document.getElementById("experience-modal");
+
+  const modalType =
+    document.getElementById("modal-type");
+
+  const modalTitle =
+    document.getElementById("modal-title");
+
+  const modalOrg =
+    document.getElementById("modal-org");
+
+  const modalClose =
+    document.getElementById("modal-close");
+
+  const stepContent =
+    document.getElementById("step-content");
+
+  const stepTabs =
+    document.querySelectorAll(".step-tab");
+
+  const previousButton =
+    document.getElementById("previous-step");
+
+  const nextButton =
+    document.getElementById("next-step");
+
+
+  let currentExperience = 0;
+
+  let currentStep = 0;
+
+
+  const stepKeys = [
+    "what",
+    "how",
+    "results"
   ];
 
-  var PERSPECTIVE = 2000;
-  var ASPECT = 0.75;          /* card width / height */
-  var AUTO_DELAY = 3400;      /* idle ms before drift resumes */
-  var AUTO_SPEED = 0.028;     /* degrees per frame */
 
-  var stage = document.getElementById('stage');
-  var ring = document.getElementById('ring');
-  var pipsWrap = document.getElementById('pips');
-  var prevBtn = document.getElementById('prev');
-  var nextBtn = document.getElementById('next');
+  const stepTitles = [
+    "What",
+    "How",
+    "Results"
+  ];
 
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var step = 360 / CARDS.length;
 
-  var rotation = 0;      /* current, degrees */
-  var target = 0;        /* eased toward */
-  var radius = 420;
-  var cardW = 300, cardH = 400;
-  var dragging = false, pointerId = null;
-  var dragStartX = 0, dragStartRot = 0, dragMoved = 0;
-  var pressFace = null;
-  var lastMoveX = 0, lastMoveT = 0, velocity = 0;
-  var idleAt = Date.now() + AUTO_DELAY;
-  var faces = [];
+  function openExperience(index) {
 
-  /* ---------------- Build ---------------- */
-  CARDS.forEach(function (c, i) {
-    var slot = document.createElement('div');
-    slot.className = 'card3d';
+    currentExperience = index;
 
-    var face = document.createElement('button');
-    face.type = 'button';
-    face.className = 'card-face';
-    face.setAttribute('aria-label', 'Open ' + c.title);
+    currentStep = 0;
 
-    var art = document.createElement('div');
-    art.className = 'card-art' + (c.art.gen ? ' ' + c.art.gen : '');
-    if (c.art.image) {
-      art.style.backgroundImage = 'url("' + c.art.image + '")';
+
+    const experience =
+      experiences[currentExperience];
+
+
+    modalType.textContent =
+      experience.type;
+
+    modalTitle.textContent =
+      experience.title;
+
+    modalOrg.textContent =
+      experience.organization;
+
+
+    renderStep();
+
+
+    modal.classList.add("open");
+
+    modal.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+
+    document.body.style.overflow =
+      "hidden";
+
+  }
+
+
+  function closeExperience() {
+
+    modal.classList.remove("open");
+
+    modal.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+
+    document.body.style.overflow =
+      "";
+
+  }
+
+
+  function renderStep() {
+
+    const experience =
+      experiences[currentExperience];
+
+
+    const key =
+      stepKeys[currentStep];
+
+
+    const items =
+      experience[key];
+
+
+    stepContent.innerHTML = `
+
+      <h3>
+        ${stepTitles[currentStep]}
+      </h3>
+
+      <ul>
+
+        ${items
+          .map(item => `<li>${item}</li>`)
+          .join("")}
+
+      </ul>
+
+    `;
+
+
+    stepTabs.forEach(
+      (tab, index) => {
+
+        tab.classList.toggle(
+          "active",
+          index === currentStep
+        );
+
+      }
+    );
+
+
+    previousButton.disabled =
+      currentStep === 0;
+
+
+    if (currentStep === 2) {
+
+      nextButton.textContent =
+        "Done";
+
     }
 
-    var scrim = document.createElement('div');
-    scrim.className = 'card-scrim';
+    else {
 
-    var hair = document.createElement('div');
-    hair.className = 'card-hair';
+      nextButton.textContent =
+        "Next";
 
-    var body = document.createElement('div');
-    body.className = 'card-body';
-
-    var num = document.createElement('div');
-    num.className = 'card-num';
-    num.textContent = '0' + (i + 1) + ' / 0' + CARDS.length;
-
-    var h = document.createElement('h2');
-    h.className = 'card-title';
-    h.textContent = c.title;
-
-    var p = document.createElement('p');
-    p.className = 'card-note';
-    p.textContent = c.note;
-
-    var cta = document.createElement('span');
-    cta.className = 'card-cta';
-    cta.innerHTML = (c.cta || 'Read more') + ARROW;
-
-    body.appendChild(num);
-    body.appendChild(h);
-    body.appendChild(p);
-    body.appendChild(cta);
-    face.appendChild(art);
-    face.appendChild(scrim);
-    face.appendChild(hair);
-    face.appendChild(body);
-    slot.appendChild(face);
-    ring.appendChild(slot);
-
-    face.dataset.idx = String(i);
-
-    /* Pointer taps are handled in endDrag(). This handler exists for
-       keyboard activation only (Enter/Space on a button reports detail 0). */
-    face.addEventListener('click', function (e) {
-      if (e.detail !== 0) return;
-      activate(i);
-    });
-
-    faces.push(slot);
-
-    var pip = document.createElement('button');
-    pip.type = 'button';
-    pip.className = 'pip';
-    pip.setAttribute('role', 'tab');
-    pip.setAttribute('aria-label', c.title);
-    pip.addEventListener('click', function () { goTo(i); });
-    pipsWrap.appendChild(pip);
-  });
-
-  var pips = pipsWrap.querySelectorAll('.pip');
-
-  /* ---------------- Sizing ----------------
-     Perspective magnifies the front card by p/(p-r). Divide that back out
-     so the RENDERED card fits the stage on any viewport.
-  ------------------------------------------ */
-  function measure() {
-    var box = stage.getBoundingClientRect();
-    var w = box.width, h = box.height;
-    if (!w || !h) return;
-
-    radius = Math.max(210, Math.min(w * 0.40, 560));
-    var scale = PERSPECTIVE / (PERSPECTIVE - radius);
-
-    /* Fit by height first */
-    var hR = h * 0.86;
-    /* Then clamp by width. Narrow screens give the front card more room,
-       since the flanking cards are mostly off-stage anyway. */
-    var widthShare = w < 560 ? 0.78 : (w < 900 ? 0.56 : 0.42);
-    var wR = Math.min(w * widthShare, 430);
-
-    var byH = { h: hR, w: hR * ASPECT };
-    var byW = { h: wR / ASPECT, w: wR };
-    var pick = byH.w <= byW.w ? byH : byW;
-
-    cardH = Math.max(180, pick.h / scale);
-    cardW = cardH * ASPECT;
-
-    var pad = Math.max(14, Math.round(cardW * 0.075));
-    var fsTitle = Math.max(15, Math.round(cardW * 0.098));
-    var fsNote = Math.max(11, Math.round(cardW * 0.052));
-    var fsNum = Math.max(8.5, Math.round(cardW * 0.036) * 10) / 10;
-
-    faces.forEach(function (slot) {
-      slot.style.width = cardW + 'px';
-      slot.style.height = cardH + 'px';
-      slot.style.marginLeft = (-cardW / 2) + 'px';
-      slot.style.marginTop = (-cardH / 2) + 'px';
-      slot.style.setProperty('--pad', pad + 'px');
-      slot.style.setProperty('--fs-title', fsTitle + 'px');
-      slot.style.setProperty('--fs-note', fsNote + 'px');
-      slot.style.setProperty('--fs-num', fsNum + 'px');
-    });
-
-    layout();
-  }
-
-  /* ---------------- Layout ---------------- */
-  /* ---------------- Per-card colour theme ---------------- */
-  var themeNow = null;
-  function applyTheme(i) {
-    var key = (CARDS[i] && CARDS[i].theme) || 'about';
-    if (key === themeNow) return;
-    themeNow = key;
-    document.documentElement.setAttribute('data-theme', key);
-    var m = document.querySelector('meta[name="theme-color"]');
-    if (m) {
-      var cs = getComputedStyle(document.documentElement);
-      m.setAttribute('content', (cs.getPropertyValue('--bg') || '#e4eef9').trim());
-    }
-  }
-
-  function layout() {
-    ring.style.transform = 'translateZ(-' + radius + 'px) rotateY(' + rotation + 'deg)';
-
-    var frontIndex = ((Math.round(-rotation / step) % CARDS.length) + CARDS.length) % CARDS.length;
-
-    faces.forEach(function (slot, i) {
-      var angle = i * step;
-      slot.style.transform = 'rotateY(' + angle + 'deg) translateZ(' + radius + 'px)';
-
-      /* angular distance from facing the viewer */
-      var rel = (angle + rotation) % 360;
-      if (rel < 0) rel += 360;
-      var off = rel > 180 ? 360 - rel : rel;
-
-      slot.style.opacity = Math.max(0.16, 1 - (off / 180) * 1.15).toFixed(3);
-      slot.style.zIndex = String(Math.round(1000 - off));
-
-      var isFront = i === frontIndex;
-      slot.classList.toggle('front', isFront);
-      slot.setAttribute('aria-hidden', off > 90 ? 'true' : 'false');
-    });
-
-    /* Fade the whole page into the front card's colour. */
-    applyTheme(frontIndex);
-
-    for (var k = 0; k < pips.length; k++) {
-      var on = k === frontIndex;
-      pips[k].classList.toggle('on', on);
-      pips[k].setAttribute('aria-selected', on ? 'true' : 'false');
-    }
-  }
-
-  /* ---------------- Navigation ---------------- */
-  function nudge(dir) {
-    target = Math.round(target / step) * step - dir * step;
-    idleAt = Date.now() + AUTO_DELAY;
-  }
-
-  function goTo(i) {
-    var current = -target / step;
-    var laps = Math.round((current - i) / CARDS.length);
-    target = -(i + laps * CARDS.length) * step;
-    idleAt = Date.now() + AUTO_DELAY;
-  }
-
-  prevBtn.addEventListener('click', function () { nudge(-1); });
-  nextBtn.addEventListener('click', function () { nudge(1); });
-
-  stage.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowLeft') { e.preventDefault(); nudge(-1); }
-    else if (e.key === 'ArrowRight') { e.preventDefault(); nudge(1); }
-  });
-
-  /* ---------------- Drag / swipe ---------------- */
-  stage.addEventListener('pointerdown', function (e) {
-    if (e.button !== undefined && e.button !== 0) return;
-    dragging = true;
-    pointerId = e.pointerId;
-    dragStartX = e.clientX;
-    dragStartRot = target;
-    dragMoved = 0;
-    lastMoveX = e.clientX;
-    lastMoveT = e.timeStamp || Date.now();
-    velocity = 0;
-    stage.classList.add('dragging');
-
-    /* Remember the pressed card so a tap can be resolved on pointerup.
-       NOTE: do NOT call setPointerCapture here — capturing on the stage
-       retargets the click event away from the card button, which makes
-       the cards unclickable. Window-level move/up listeners cover the
-       case of the pointer leaving the stage mid-drag. */
-    var t = e.target;
-    pressFace = (t && t.closest) ? t.closest('.card-face') : null;
-  });
-
-  window.addEventListener('pointermove', function (e) {
-    if (!dragging || (pointerId !== null && e.pointerId !== pointerId)) return;
-    var dx = e.clientX - dragStartX;
-    dragMoved = Math.max(dragMoved, Math.abs(dx));
-
-    var box = stage.getBoundingClientRect();
-    var perPx = 150 / Math.max(240, box.width * 0.55);
-    target = dragStartRot + dx * perPx;
-
-    var t = e.timeStamp || Date.now();
-    var dt = t - lastMoveT;
-    if (dt > 0) velocity = ((e.clientX - lastMoveX) * perPx) / dt;
-    lastMoveX = e.clientX;
-    lastMoveT = t;
-
-    idleAt = Date.now() + AUTO_DELAY;
-  });
-
-  function frontIndex() {
-    return ((Math.round(-rotation / step) % CARDS.length) + CARDS.length) % CARDS.length;
-  }
-
-  /* Front card opens; any other card rotates to the front first. */
-  function activate(i) {
-    if (i !== frontIndex()) { goTo(i); return; }
-    openSheet(i);
-  }
-
-  function endDrag(e) {
-    if (!dragging) return;
-    dragging = false;
-    pointerId = null;
-    stage.classList.remove('dragging');
-
-    var tapped = pressFace;
-    pressFace = null;
-
-    /* A press that barely moved is a tap, not a drag. Snap from `rotation`
-       (what the user actually sees) rather than the eased `target`, so a tap
-       during auto-drift resolves to the card that looks front. */
-    if (tapped && dragMoved <= 6) {
-      target = Math.round(rotation / step) * step;
-      velocity = 0;
-      idleAt = Date.now() + AUTO_DELAY;
-      var idx = parseInt(tapped.dataset.idx, 10);
-      if (!isNaN(idx)) activate(idx);
-      return;
     }
 
-    /* carry a little momentum, then snap to nearest card */
-    var flung = target + velocity * 130;
-    target = Math.round(flung / step) * step;
-    velocity = 0;
-    idleAt = Date.now() + AUTO_DELAY;
   }
 
-  window.addEventListener('pointerup', endDrag);
-  window.addEventListener('pointercancel', endDrag);
-  stage.addEventListener('dragstart', function (e) { e.preventDefault(); });
 
-  /* Wheel: horizontal or shift+vertical spins the ring */
-  stage.addEventListener('wheel', function (e) {
-    var d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : (e.shiftKey ? e.deltaY : 0);
-    if (!d) return;
-    e.preventDefault();
-    target += d * 0.22;
-    idleAt = Date.now() + AUTO_DELAY;
-  }, { passive: false });
+  stepTabs.forEach(
+    (tab, index) => {
 
-  /* ---------------- Sheet ---------------- */
-  var sheetWrap = document.getElementById('sheetWrap');
-  var sheetScrim = document.getElementById('sheetScrim');
-  var sheetTitle = document.getElementById('sheetTitle');
-  var sheetKicker = document.getElementById('sheetKicker');
-  var sheetBody = document.getElementById('sheetBody');
-  var sheetX = document.getElementById('sheetX');
-  var sheetPrev = document.getElementById('sheetPrev');
-  var sheetNext = document.getElementById('sheetNext');
-  var sheetDots = document.getElementById('sheetDots');
-  var sheetBack = document.getElementById('sheetBack');
+      tab.addEventListener(
+        "click",
+        () => {
 
-  var sheetOpen = false;
-  var sheetIndex = 0;
-  var lastFocus = null;
-  var closeTimer = null;
+          currentStep = index;
 
-  CARDS.forEach(function (c, i) {
-    var d = document.createElement('button');
-    d.type = 'button';
-    d.className = 'sdot';
-    d.setAttribute('aria-label', c.title);
-    d.addEventListener('click', function () { showSheet(i); });
-    sheetDots.appendChild(d);
-  });
-  var sdots = sheetDots.querySelectorAll('.sdot');
+          renderStep();
 
-  var projIndex = -1;   /* -1 = showing the card itself, else a project detail */
+        }
+      );
 
-  function showSheet(i) {
-    sheetIndex = ((i % CARDS.length) + CARDS.length) % CARDS.length;
-    projIndex = -1;
-    var c = CARDS[sheetIndex];
-    sheetTitle.textContent = c.title;
-    sheetKicker.textContent = '0' + (sheetIndex + 1) + ' / 0' + CARDS.length;
-    sheetBody.innerHTML = c.body || '';
-    sheetBody.scrollTop = 0;
-    sheetBack.hidden = true;
-    for (var k = 0; k < sdots.length; k++) {
-      sdots[k].classList.toggle('on', k === sheetIndex);
     }
-    goTo(sheetIndex);
-  }
+  );
 
-  /* Drill into one project's What / How / Results */
-  function showProj(n) {
-    projIndex = ((n % PROJECTS.length) + PROJECTS.length) % PROJECTS.length;
-    var p = PROJECTS[projIndex];
-    sheetTitle.textContent = p.title;
-    sheetKicker.textContent = '0' + (projIndex + 1) + ' / 0' + PROJECTS.length + ' \u00b7 Project';
-    sheetBody.innerHTML = projBody(p);
-    sheetBody.scrollTop = 0;
-    sheetBack.hidden = false;
-  }
 
-  /* Back to the project list */
-  function backToList() {
-    var c = CARDS[sheetIndex];
-    projIndex = -1;
-    sheetTitle.textContent = c.title;
-    sheetKicker.textContent = '0' + (sheetIndex + 1) + ' / 0' + CARDS.length;
-    sheetBody.innerHTML = c.body || '';
-    sheetBody.scrollTop = 0;
-    sheetBack.hidden = true;
-  }
+  previousButton.addEventListener(
+    "click",
+    () => {
 
-  function openSheet(i) {
-    if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
-    lastFocus = document.activeElement;
-    sheetWrap.hidden = false;
-    showSheet(i);
-    document.body.classList.add('locked');
-    requestAnimationFrame(function () {
-      sheetWrap.classList.add('on');
-      sheetOpen = true;
-      sheetBody.focus({ preventScroll: true });
-    });
-  }
+      if (currentStep > 0) {
 
-  function closeSheet() {
-    if (!sheetOpen) return;
-    if (lbOpen) closeLb();
-    sheetOpen = false;
-    sheetWrap.classList.remove('on');
-    document.body.classList.remove('locked');
-    closeTimer = setTimeout(function () {
-      sheetWrap.hidden = true;
-      closeTimer = null;
-    }, reduce ? 0 : 460);
-    if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (err) {} }
-    idleAt = Date.now() + AUTO_DELAY;
-  }
+        currentStep--;
 
-  sheetX.addEventListener('click', closeSheet);
-  sheetScrim.addEventListener('click', closeSheet);
-  sheetBack.addEventListener('click', backToList);
-  sheetPrev.addEventListener('click', function () {
-    if (projIndex >= 0) showProj(projIndex - 1); else showSheet(sheetIndex - 1);
-  });
-  sheetNext.addEventListener('click', function () {
-    if (projIndex >= 0) showProj(projIndex + 1); else showSheet(sheetIndex + 1);
-  });
+        renderStep();
 
-  /* Clicking a project row opens its detail view */
-  sheetBody.addEventListener('click', function (e) {
-    var row = e.target.closest ? e.target.closest('.prow') : null;
-    if (!row) return;
-    showProj(parseInt(row.getAttribute('data-p'), 10) || 0);
-  });
+      }
 
-  /* ---------------- Lightbox ---------------- */
-  var lb = document.getElementById('lb');
-  var lbImg = document.getElementById('lbImg');
-  var lbCap = document.getElementById('lbCap');
-  var lbX = document.getElementById('lbX');
-  var lbOpen = false, lbTimer = null, lbLastFocus = null;
-
-  function openLb(src, cap) {
-    if (lbTimer) { clearTimeout(lbTimer); lbTimer = null; }
-    lbLastFocus = document.activeElement;
-    lbImg.src = src;
-    lbImg.alt = cap || '';
-    lbCap.textContent = cap || '';
-    lb.hidden = false;
-    requestAnimationFrame(function () {
-      lb.classList.add('on');
-      lbOpen = true;
-      lbX.focus({ preventScroll: true });
-    });
-  }
-
-  function closeLb() {
-    if (!lbOpen) return;
-    lbOpen = false;
-    lb.classList.remove('on');
-    lbTimer = setTimeout(function () {
-      lb.hidden = true;
-      lbImg.src = '';
-      lbTimer = null;
-    }, reduce ? 0 : 340);
-    if (lbLastFocus && lbLastFocus.focus) { try { lbLastFocus.focus({ preventScroll: true }); } catch (err) {} }
-  }
-
-  /* Any figure image inside a panel opens full size */
-  sheetBody.addEventListener('click', function (e) {
-    var img = e.target.closest ? e.target.closest('.fig-box img') : null;
-    if (!img) return;
-    openLb(img.getAttribute('src'), img.getAttribute('data-cap') || '');
-  });
-
-  lbX.addEventListener('click', closeLb);
-  lb.addEventListener('click', function (e) { if (e.target === lb || e.target.className === 'lb-in') closeLb(); });
-
-  document.addEventListener('keydown', function (e) {
-    if (!lbOpen) return;
-    if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); closeLb(); }
-    else if (e.key === 'Tab') { e.preventDefault(); lbX.focus(); }
-  }, true);
-
-  document.addEventListener('keydown', function (e) {
-    if (!sheetOpen || lbOpen) return;
-    if (e.key === 'Escape') {
-      e.preventDefault();
-      if (projIndex >= 0) backToList(); else closeSheet();
     }
-    else if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      if (projIndex >= 0) showProj(projIndex - 1); else showSheet(sheetIndex - 1);
-    }
-    else if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      if (projIndex >= 0) showProj(projIndex + 1); else showSheet(sheetIndex + 1);
-    }
-    else if (e.key === 'Tab') {
-      /* keep focus inside the dialog */
-      var f = sheetWrap.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])');
-      if (!f.length) return;
-      var first = f[0], last = f[f.length - 1];
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-    }
-  });
+  );
 
-  /* Horizontal swipe inside the sheet steps between cards; vertical scrolls */
-  var swX = 0, swY = 0, swT = 0;
-  sheetWrap.addEventListener('touchstart', function (e) {
-    if (e.touches.length !== 1) return;
-    swX = e.touches[0].clientX; swY = e.touches[0].clientY; swT = Date.now();
-  }, { passive: true });
-  sheetWrap.addEventListener('touchend', function (e) {
-    if (!e.changedTouches.length) return;
-    var dx = e.changedTouches[0].clientX - swX;
-    var dy = e.changedTouches[0].clientY - swY;
-    if (Date.now() - swT > 700) return;
-    if (Math.abs(dx) > 62 && Math.abs(dx) > Math.abs(dy) * 1.7) {
-      var d = dx < 0 ? 1 : -1;
-      if (projIndex >= 0) showProj(projIndex + d); else showSheet(sheetIndex + d);
+
+  nextButton.addEventListener(
+    "click",
+    () => {
+
+      if (currentStep < 2) {
+
+        currentStep++;
+
+        renderStep();
+
+      }
+
+      else {
+
+        closeExperience();
+
+      }
+
     }
-  }, { passive: true });
+  );
 
-  /* ---------------- Render loop ---------------- */
-  function frame() {
-    if (!dragging && !reduce && !sheetOpen && Date.now() > idleAt) {
-      target += AUTO_SPEED;
+
+  modalClose.addEventListener(
+    "click",
+    closeExperience
+  );
+
+
+  modal.addEventListener(
+    "click",
+    event => {
+
+      if (event.target === modal) {
+
+        closeExperience();
+
+      }
+
     }
-    rotation += (target - rotation) * (dragging ? 0.34 : 0.10);
-    if (Math.abs(target - rotation) < 0.0008) rotation = target;
-    layout();
-    requestAnimationFrame(frame);
-  }
+  );
 
-  /* ---------------- Boot ---------------- */
-  var resizeTimer = null;
-  window.addEventListener('resize', function () {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(measure, 90);
-  }, { passive: true });
 
-  measure();
-  requestAnimationFrame(function () {
-    document.body.classList.add('ready');
-    measure();
-    frame();
-  });
+  document.addEventListener(
+    "keydown",
+    event => {
 
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(measure).catch(function () {});
-  }
-})();
+      if (
+        event.key === "Escape" &&
+        modal.classList.contains("open")
+      ) {
+
+        closeExperience();
+
+      }
+
+    }
+  );
+
 </script>
 
 </body>
