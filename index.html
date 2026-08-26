@@ -171,11 +171,6 @@
       min-width: 0;
     }
 
-    /*
-      HOME PHOTO
-      Replace images/profile.jpg with your actual picture.
-    */
-
     .profile-photo {
       width: 100%;
       aspect-ratio: 4 / 5;
@@ -226,12 +221,6 @@
       max-width: 900px;
       margin: 0 auto;
     }
-
-    /*
-      RESUME IMAGE
-      Export your resume as a PNG/JPG and name it:
-      images/resume.png
-    */
 
     .resume-image {
       width: 100%;
@@ -593,9 +582,7 @@
 
 <div class="site">
 
-  <!-- =========================
-       NAVIGATION
-  ========================== -->
+  <!-- NAVIGATION -->
 
   <nav class="navbar">
 
@@ -625,12 +612,9 @@
 
   </nav>
 
-
   <main>
 
-    <!-- =========================
-         HOME
-    ========================== -->
+    <!-- HOME -->
 
     <section id="home" class="page active">
 
@@ -655,12 +639,7 @@
 
         </div>
 
-
         <div class="home-side">
-
-          <!--
-            CHANGE THIS FILE TO YOUR PHOTO
-          -->
 
           <img
             class="profile-photo"
@@ -697,10 +676,7 @@
 
     </section>
 
-
-    <!-- =========================
-         RESUME
-    ========================== -->
+    <!-- RESUME -->
 
     <section id="resume" class="page">
 
@@ -719,13 +695,7 @@
 
       </div>
 
-
       <div class="resume-wrapper">
-
-        <!--
-          EXPORT YOUR RESUME AS:
-          images/resume.png
-        -->
 
         <img
           class="resume-image"
@@ -734,11 +704,6 @@
         >
 
         <div class="resume-actions">
-
-          <!--
-            PUT YOUR PDF AT:
-            files/ElvinEsguerra2026_Resume.pdf
-          -->
 
           <a
             class="simple-button"
@@ -754,10 +719,7 @@
 
     </section>
 
-
-    <!-- =========================
-         EXPERIENCE
-    ========================== -->
+    <!-- EXPERIENCE -->
 
     <section id="experience" class="page">
 
@@ -776,57 +738,42 @@
 
       </div>
 
-
       <!-- INTERNSHIP EXPERIENCE -->
 
       <section class="experience-group">
 
         <div class="group-heading">
-
           <h2>Internship Experience</h2>
-
           <span class="group-count">1</span>
-
           <span class="group-line"></span>
-
         </div>
 
         <div class="experience-grid" id="internship-grid"></div>
 
       </section>
 
-
       <!-- RESEARCH -->
 
       <section class="experience-group">
 
         <div class="group-heading">
-
           <h2>Research</h2>
-
           <span class="group-count">2</span>
-
           <span class="group-line"></span>
-
         </div>
 
         <div class="experience-grid" id="research-grid"></div>
 
       </section>
 
-
       <!-- ENGINEERING PROJECTS -->
 
       <section class="experience-group">
 
         <div class="group-heading">
-
           <h2>Engineering Projects</h2>
-
           <span class="group-count">4</span>
-
           <span class="group-line"></span>
-
         </div>
 
         <div class="experience-grid" id="project-grid"></div>
@@ -835,10 +782,7 @@
 
     </section>
 
-
-    <!-- =========================
-         DOGS
-    ========================== -->
+    <!-- DOGS -->
 
     <section id="dogs" class="page">
 
@@ -852,66 +796,50 @@
 
       </div>
 
-
       <div class="dog-grid">
 
         <article class="dog-card">
-
           <img
             class="dog-image"
             src="images/cosmo.jpg"
             alt="Cosmo"
           >
-
           <div class="dog-info">
             <h2>Cosmo</h2>
           </div>
-
         </article>
 
-
         <article class="dog-card">
-
           <img
             class="dog-image"
             src="images/pluto.jpg"
             alt="Pluto"
           >
-
           <div class="dog-info">
             <h2>Pluto</h2>
           </div>
-
         </article>
 
-
         <article class="dog-card">
-
           <img
             class="dog-image"
             src="images/winston.jpg"
             alt="Winston"
           >
-
           <div class="dog-info">
             <h2>Winston</h2>
           </div>
-
         </article>
 
-
         <article class="dog-card">
-
           <img
             class="dog-image"
             src="images/rey.jpg"
             alt="Rey"
           >
-
           <div class="dog-info">
             <h2>Rey</h2>
           </div>
-
         </article>
 
       </div>
@@ -920,17 +848,13 @@
 
   </main>
 
-
   <footer>
     Elvin Esguerra · Mechanical Engineering Portfolio
   </footer>
 
 </div>
 
-
-<!-- =========================
-     EXPERIENCE MODAL
-========================== -->
+<!-- EXPERIENCE MODAL -->
 
 <div
   class="modal-overlay"
@@ -977,7 +901,6 @@
 
     </div>
 
-
     <div class="modal-content">
 
       <div class="step-tabs">
@@ -1008,12 +931,10 @@
 
       </div>
 
-
       <div
         class="step-content"
         id="step-content"
       ></div>
-
 
       <div class="modal-navigation">
 
@@ -1039,27 +960,16 @@
 
 </div>
 
-
 <script>
 
   /* =========================
      EXPERIENCE DATA
-
-     IMAGE FILES NEEDED:
-
-     images/gm.jpg
-     images/aiaa-heating.jpg
-     images/research.jpg
-     images/argonia.jpg
-     images/nosecone.jpg
-     images/payload.jpg
-     images/level1.jpg
   ========================== */
 
   const experiences = [
 
     /* =====================
-       INTERNSHIP
+       GENERAL MOTORS
     ====================== */
 
     {
@@ -1091,9 +1001,8 @@
       ]
     },
 
-
     /* =====================
-       RESEARCH
+       AIAA RESEARCH
     ====================== */
 
     {
@@ -1128,6 +1037,9 @@
       ]
     },
 
+    /* =====================
+       UNDERGRADUATE RESEARCH
+    ====================== */
 
     {
       category: "research",
@@ -1161,9 +1073,8 @@
       ]
     },
 
-
     /* =====================
-       ENGINEERING PROJECTS
+       ARGONIA CUP
     ====================== */
 
     {
@@ -1198,6 +1109,9 @@
       ]
     },
 
+    /* =====================
+       IREC NOSE CONE
+    ====================== */
 
     {
       category: "project",
@@ -1210,7 +1124,7 @@
       organization:
         "Mizzou Space Program · April 2026 – May 2026",
 
-      image: "images/nosecone.jpg",
+      image: "images/nose-cone.jpg",
 
       what: [
         "Developed an aerodynamic drag prediction for the rocket nose cone at maximum dynamic pressure.",
@@ -1231,6 +1145,9 @@
       ]
     },
 
+    /* =====================
+       IREC PAYLOAD
+    ====================== */
 
     {
       category: "project",
@@ -1264,6 +1181,9 @@
       ]
     },
 
+    /* =====================
+       LEVEL 1 ROCKET
+    ====================== */
 
     {
       category: "project",
@@ -1296,7 +1216,6 @@
 
   ];
 
-
   /* =========================
      PAGE NAVIGATION
   ========================== */
@@ -1307,7 +1226,6 @@
   const pages =
     document.querySelectorAll(".page");
 
-
   navButtons.forEach(button => {
 
     button.addEventListener("click", () => {
@@ -1315,24 +1233,19 @@
       const pageName =
         button.dataset.page;
 
-
       navButtons.forEach(item =>
         item.classList.remove("active")
       );
-
 
       pages.forEach(page =>
         page.classList.remove("active")
       );
 
-
       button.classList.add("active");
-
 
       document
         .getElementById(pageName)
         .classList.add("active");
-
 
       window.scrollTo({
         top: 0,
@@ -1342,7 +1255,6 @@
     });
 
   });
-
 
   /* =========================
      BUILD EXPERIENCE CARDS
@@ -1357,18 +1269,15 @@
   const projectGrid =
     document.getElementById("project-grid");
 
-
   experiences.forEach((experience, index) => {
 
     const card =
       document.createElement("button");
 
-
     card.type = "button";
 
     card.className =
       "experience-card";
-
 
     card.innerHTML = `
 
@@ -1388,12 +1297,10 @@
 
     `;
 
-
     card.addEventListener(
       "click",
       () => openExperience(index)
     );
-
 
     if (experience.category === "internship") {
 
@@ -1414,7 +1321,6 @@
     }
 
   });
-
 
   /* =========================
      EXPERIENCE MODAL
@@ -1447,11 +1353,9 @@
   const nextButton =
     document.getElementById("next-step");
 
-
   let currentExperience = 0;
 
   let currentStep = 0;
-
 
   const stepKeys = [
     "what",
@@ -1459,13 +1363,11 @@
     "results"
   ];
 
-
   const stepTitles = [
     "What",
     "How",
     "Results"
   ];
-
 
   function openExperience(index) {
 
@@ -1473,10 +1375,8 @@
 
     currentStep = 0;
 
-
     const experience =
       experiences[currentExperience];
-
 
     modalType.textContent =
       experience.type;
@@ -1487,9 +1387,7 @@
     modalOrg.textContent =
       experience.organization;
 
-
     renderStep();
-
 
     modal.classList.add("open");
 
@@ -1498,12 +1396,10 @@
       "false"
     );
 
-
     document.body.style.overflow =
       "hidden";
 
   }
-
 
   function closeExperience() {
 
@@ -1514,26 +1410,21 @@
       "true"
     );
 
-
     document.body.style.overflow =
       "";
 
   }
-
 
   function renderStep() {
 
     const experience =
       experiences[currentExperience];
 
-
     const key =
       stepKeys[currentStep];
 
-
     const items =
       experience[key];
-
 
     stepContent.innerHTML = `
 
@@ -1551,7 +1442,6 @@
 
     `;
 
-
     stepTabs.forEach(
       (tab, index) => {
 
@@ -1563,10 +1453,8 @@
       }
     );
 
-
     previousButton.disabled =
       currentStep === 0;
-
 
     if (currentStep === 2) {
 
@@ -1583,7 +1471,6 @@
     }
 
   }
-
 
   stepTabs.forEach(
     (tab, index) => {
@@ -1602,7 +1489,6 @@
     }
   );
 
-
   previousButton.addEventListener(
     "click",
     () => {
@@ -1617,7 +1503,6 @@
 
     }
   );
-
 
   nextButton.addEventListener(
     "click",
@@ -1640,12 +1525,10 @@
     }
   );
 
-
   modalClose.addEventListener(
     "click",
     closeExperience
   );
-
 
   modal.addEventListener(
     "click",
@@ -1659,7 +1542,6 @@
 
     }
   );
-
 
   document.addEventListener(
     "keydown",
