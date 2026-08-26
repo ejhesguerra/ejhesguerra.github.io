@@ -1,5 +1,7 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +16,7 @@
       --text-soft: #5f5f5f;
       --text-light: #858585;
       --border: #d8d8d4;
-      --border-dark: #bcbcb8;
+      --border-dark: #aaa;
     }
 
     * {
@@ -33,6 +35,10 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    img {
+      max-width: 100%;
+    }
+
     button,
     a {
       font: inherit;
@@ -42,60 +48,69 @@
       color: inherit;
     }
 
-    img {
-      max-width: 100%;
-    }
-
-    /* =========================
-       MAIN LAYOUT
-    ========================== */
-
     .site {
-      max-width: 1180px;
+      max-width: 1220px;
       margin: 0 auto;
-      padding: 0 30px;
+      padding: 0 32px;
     }
 
     /* =========================
        NAVIGATION
     ========================== */
 
-    .navbar {
-      height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(247, 247, 245, 0.96);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
     }
 
+    .navbar {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 0 32px;
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
     .brand {
-      font-size: 17px;
+      font-size: 19px;
       font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: 12px;
     }
 
     .nav-link {
-      background: none;
       border: 0;
-      padding: 10px 0;
+      background: none;
       color: var(--text-soft);
-      font-size: 14px;
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-size: 15px;
       cursor: pointer;
-      border-bottom: 1px solid transparent;
+      transition: 0.2s ease;
     }
 
     .nav-link:hover {
+      background: #ececea;
       color: var(--text);
     }
 
     .nav-link.active {
+      background: #e5e5e1;
       color: var(--text);
-      border-bottom-color: var(--text);
+      font-weight: 600;
     }
 
     /* =========================
@@ -104,7 +119,7 @@
 
     .page {
       display: none;
-      padding: 70px 0 90px;
+      padding: 70px 0 100px;
     }
 
     .page.active {
@@ -112,7 +127,7 @@
     }
 
     .section-label {
-      margin-bottom: 13px;
+      margin-bottom: 12px;
       color: var(--text-light);
       font-size: 11px;
       font-weight: 700;
@@ -121,19 +136,19 @@
     }
 
     .page-header {
-      margin-bottom: 42px;
+      margin-bottom: 46px;
     }
 
     .page-header h1 {
       margin: 0;
-      font-size: clamp(40px, 6vw, 58px);
+      font-size: clamp(42px, 6vw, 64px);
       line-height: 1;
       letter-spacing: -0.045em;
     }
 
     .page-header p {
-      max-width: 650px;
-      margin: 18px 0 0;
+      max-width: 700px;
+      margin-top: 18px;
       color: var(--text-soft);
       font-size: 16px;
       line-height: 1.7;
@@ -144,31 +159,26 @@
     ========================== */
 
     .home-hero {
-      min-height: 560px;
+      min-height: calc(100vh - 82px);
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
-      gap: 80px;
+      grid-template-columns: minmax(0, 1.2fr) minmax(310px, 0.8fr);
       align-items: center;
+      gap: 85px;
     }
 
     .home-copy h1 {
       margin: 0;
-      font-size: clamp(60px, 9vw, 105px);
+      font-size: clamp(64px, 9vw, 108px);
       line-height: 0.88;
       letter-spacing: -0.065em;
-      font-weight: 700;
     }
 
     .home-copy .intro {
-      max-width: 650px;
+      max-width: 660px;
       margin-top: 30px;
       color: var(--text-soft);
-      font-size: 18px;
+      font-size: 19px;
       line-height: 1.7;
-    }
-
-    .home-side {
-      min-width: 0;
     }
 
     .profile-photo {
@@ -176,19 +186,18 @@
       aspect-ratio: 4 / 5;
       object-fit: cover;
       display: block;
-      background: #deded9;
+      background: #ddd;
     }
 
     .about-me {
-      margin-top: 26px;
-      padding-top: 24px;
+      margin-top: 25px;
+      padding-top: 23px;
       border-top: 1px solid var(--border);
     }
 
     .about-me h2 {
       margin: 0 0 12px;
       font-size: 23px;
-      letter-spacing: -0.025em;
     }
 
     .about-me p {
@@ -208,7 +217,7 @@
     .skill {
       border: 1px solid var(--border);
       border-radius: 4px;
-      padding: 6px 9px;
+      padding: 7px 10px;
       color: var(--text-soft);
       font-size: 12px;
     }
@@ -224,30 +233,29 @@
 
     .resume-image {
       width: 100%;
-      height: auto;
       display: block;
-      background: white;
       border: 1px solid var(--border);
+      background: white;
     }
 
     .resume-actions {
+      margin-top: 22px;
       display: flex;
       justify-content: center;
-      margin-top: 22px;
     }
 
-    .simple-button {
+    .button {
       display: inline-block;
+      padding: 12px 18px;
       border: 1px solid var(--border-dark);
-      background: var(--white);
+      background: white;
       color: var(--text);
-      padding: 11px 17px;
-      border-radius: 4px;
+      border-radius: 5px;
       text-decoration: none;
       cursor: pointer;
     }
 
-    .simple-button:hover {
+    .button:hover {
       border-color: var(--text);
     }
 
@@ -256,7 +264,7 @@
     ========================== */
 
     .experience-group {
-      margin-top: 58px;
+      margin-top: 65px;
     }
 
     .experience-group:first-of-type {
@@ -266,14 +274,13 @@
     .group-heading {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
+      gap: 14px;
+      margin-bottom: 22px;
     }
 
     .group-heading h2 {
       margin: 0;
-      font-size: 18px;
-      letter-spacing: -0.02em;
+      font-size: 19px;
     }
 
     .group-count {
@@ -290,7 +297,7 @@
     .experience-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px 18px;
+      gap: 34px 20px;
     }
 
     .experience-card {
@@ -298,27 +305,50 @@
       padding: 0;
       border: 0;
       background: none;
-      text-align: left;
       cursor: pointer;
+      text-align: left;
+    }
+
+    .experience-image-wrap {
+      overflow: hidden;
+      background: #e3e3de;
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .experience-image {
       width: 100%;
-      aspect-ratio: 4 / 3;
-      display: block;
+      height: 100%;
       object-fit: cover;
-      background: #deded9;
-      transition: opacity 0.25s ease;
+      display: block;
+      transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
     .experience-card:hover .experience-image {
-      opacity: 0.82;
+      transform: scale(1.025);
+      opacity: 0.88;
+    }
+
+    .placeholder-cover {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      text-align: center;
+      color: var(--text-light);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .experience-card h3 {
-      margin: 13px 0 5px;
-      font-size: 17px;
-      line-height: 1.3;
+      margin: 14px 0 6px;
+      font-size: 18px;
+      line-height: 1.25;
     }
 
     .experience-card p {
@@ -328,6 +358,171 @@
       line-height: 1.5;
     }
 
+    .view-project {
+      display: inline-block;
+      margin-top: 9px;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    /* =========================
+       PROJECT VIEW
+    ========================== */
+
+    .project-view {
+      display: none;
+      min-height: calc(100vh - 82px);
+      background: var(--bg);
+      padding: 48px 0 100px;
+    }
+
+    .project-view.active {
+      display: block;
+    }
+
+    .back-button {
+      border: 0;
+      background: none;
+      padding: 8px 0;
+      margin-bottom: 38px;
+      font-size: 14px;
+      color: var(--text-soft);
+      cursor: pointer;
+    }
+
+    .back-button:hover {
+      color: var(--text);
+    }
+
+    .project-header {
+      max-width: 930px;
+      margin-bottom: 45px;
+    }
+
+    .project-type {
+      color: var(--text-light);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .project-title {
+      margin: 0;
+      font-size: clamp(42px, 7vw, 72px);
+      letter-spacing: -0.05em;
+      line-height: 0.98;
+    }
+
+    .project-org {
+      margin-top: 18px;
+      color: var(--text-soft);
+      font-size: 16px;
+    }
+
+    .project-cover {
+      width: 100%;
+      max-height: 680px;
+      object-fit: contain;
+      display: block;
+      background: #e4e4df;
+      margin-bottom: 60px;
+    }
+
+    .project-cover-placeholder {
+      width: 100%;
+      min-height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #e3e3de;
+      color: var(--text-light);
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 60px;
+    }
+
+    .project-body {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .project-section {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 40px;
+      padding: 38px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .project-section h2 {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .project-section-content {
+      color: #414141;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .project-section-content ul {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .project-section-content li + li {
+      margin-top: 9px;
+    }
+
+    /* =========================
+       PROJECT GALLERY
+    ========================== */
+
+    .project-gallery {
+      margin-top: 65px;
+    }
+
+    .project-gallery-header {
+      margin-bottom: 25px;
+    }
+
+    .project-gallery-header h2 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+    }
+
+    .gallery-item {
+      margin: 0;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      object-fit: contain;
+      background: #e6e6e1;
+      max-height: 650px;
+    }
+
+    .gallery-item figcaption {
+      margin-top: 10px;
+      color: var(--text-light);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .gallery-item.full {
+      grid-column: 1 / -1;
+    }
+
     /* =========================
        DOGS
     ========================== */
@@ -335,169 +530,19 @@
     .dog-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 30px;
+      gap: 35px;
     }
 
-    .dog-card {
-      background: var(--white);
-    }
-
-    .dog-image {
+    .dog-card img {
       width: 100%;
       aspect-ratio: 4 / 3;
       object-fit: cover;
       display: block;
-      background: #deded9;
     }
 
-    .dog-info {
-      padding: 16px 0 0;
-    }
-
-    .dog-info h2 {
-      margin: 0;
+    .dog-card h2 {
+      margin: 14px 0 0;
       font-size: 20px;
-    }
-
-    /* =========================
-       EXPERIENCE MODAL
-    ========================== */
-
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 30px;
-      background: rgba(0, 0, 0, 0.55);
-    }
-
-    .modal-overlay.open {
-      display: flex;
-    }
-
-    .modal {
-      width: min(760px, 100%);
-      max-height: 90vh;
-      overflow-y: auto;
-      background: var(--white);
-      border-radius: 6px;
-      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
-    }
-
-    .modal-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      padding: 26px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .modal-type {
-      color: var(--text-light);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .modal-title {
-      margin: 6px 0 5px;
-      font-size: 28px;
-      letter-spacing: -0.03em;
-    }
-
-    .modal-org {
-      margin: 0;
-      color: var(--text-light);
-      font-size: 13px;
-    }
-
-    .modal-close {
-      margin-left: auto;
-      padding: 0;
-      border: 0;
-      background: none;
-      color: var(--text-soft);
-      font-size: 30px;
-      line-height: 1;
-      cursor: pointer;
-    }
-
-    .modal-content {
-      padding: 28px;
-    }
-
-    .step-tabs {
-      display: flex;
-      gap: 28px;
-      margin-bottom: 28px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .step-tab {
-      padding: 0 0 12px;
-      border: 0;
-      border-bottom: 2px solid transparent;
-      background: none;
-      color: var(--text-light);
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    .step-tab.active {
-      color: var(--text);
-      border-bottom-color: var(--text);
-    }
-
-    .step-content {
-      min-height: 190px;
-    }
-
-    .step-content h3 {
-      margin: 0 0 14px;
-      color: var(--text-soft);
-      font-size: 12px;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
-
-    .step-content ul {
-      margin: 0;
-      padding-left: 20px;
-      color: #414141;
-      font-size: 15px;
-      line-height: 1.75;
-    }
-
-    .step-content li + li {
-      margin-top: 10px;
-    }
-
-    .modal-navigation {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .modal-navigation button {
-      border: 1px solid var(--border-dark);
-      border-radius: 4px;
-      background: var(--white);
-      padding: 10px 15px;
-      cursor: pointer;
-    }
-
-    .modal-navigation button:hover:not(:disabled) {
-      border-color: var(--text);
-    }
-
-    .modal-navigation button:disabled {
-      opacity: 0.35;
-      cursor: default;
     }
 
     /* =========================
@@ -505,7 +550,7 @@
     ========================== */
 
     footer {
-      padding: 26px 0 36px;
+      padding: 30px 0 40px;
       border-top: 1px solid var(--border);
       color: var(--text-light);
       font-size: 12px;
@@ -516,63 +561,66 @@
     ========================== */
 
     @media (max-width: 900px) {
+
       .home-hero {
         grid-template-columns: 1fr;
         gap: 45px;
+        padding: 60px 0;
       }
 
       .home-side {
-        max-width: 500px;
+        max-width: 520px;
       }
 
       .experience-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .project-section {
+        grid-template-columns: 1fr;
+        gap: 15px;
       }
     }
 
     @media (max-width: 650px) {
-      .site {
-        padding: 0 18px;
+
+      .site,
+      .navbar {
+        padding-left: 18px;
+        padding-right: 18px;
       }
 
       .navbar {
-        height: auto;
-        padding: 18px 0;
+        min-height: auto;
+        padding-top: 15px;
+        padding-bottom: 15px;
         align-items: flex-start;
         flex-direction: column;
-        gap: 15px;
       }
 
       .nav-links {
         width: 100%;
-        gap: 18px;
         overflow-x: auto;
+        gap: 5px;
       }
 
-      .page {
-        padding: 48px 0 70px;
-      }
-
-      .home-copy h1 {
-        font-size: 60px;
+      .nav-link {
+        padding: 10px 12px;
+        white-space: nowrap;
       }
 
       .experience-grid,
+      .gallery-grid,
       .dog-grid {
         grid-template-columns: 1fr;
       }
 
-      .modal-overlay {
-        padding: 10px;
+      .gallery-item.full {
+        grid-column: auto;
       }
 
-      .modal-header,
-      .modal-content {
-        padding: 20px;
-      }
-
-      .step-tabs {
-        gap: 20px;
+      .project-title {
+        font-size: 42px;
       }
     }
   </style>
@@ -580,986 +628,1279 @@
 
 <body>
 
-<div class="site">
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
 
-  <!-- NAVIGATION -->
+  <div class="nav-wrap">
 
-  <nav class="navbar">
+    <nav class="navbar">
 
-    <div class="brand">
-      Elvin Esguerra
-    </div>
+      <div class="brand" id="brand">
+        Elvin Esguerra
+      </div>
 
-    <div class="nav-links">
+      <div class="nav-links">
 
-      <button class="nav-link active" data-page="home">
-        Home
-      </button>
+        <button class="nav-link active" data-page="home">
+          Home
+        </button>
 
-      <button class="nav-link" data-page="resume">
-        Resume
-      </button>
+        <button class="nav-link" data-page="resume">
+          Resume
+        </button>
 
-      <button class="nav-link" data-page="experience">
-        Experience
-      </button>
+        <button class="nav-link" data-page="experience">
+          Experience
+        </button>
 
-      <button class="nav-link" data-page="dogs">
-        Dogs
-      </button>
+        <button class="nav-link" data-page="dogs">
+          Dogs
+        </button>
 
-    </div>
+      </div>
 
-  </nav>
+    </nav>
 
-  <main>
+  </div>
 
-    <!-- HOME -->
 
-    <section id="home" class="page active">
+  <div class="site">
 
-      <div class="home-hero">
+    <main id="main-pages">
 
-        <div class="home-copy">
+      <!-- =========================
+           HOME
+      ========================== -->
 
-          <div class="section-label">
-            Mechanical Engineering Portfolio
-          </div>
+      <section id="home" class="page active">
 
-          <h1>
-            Elvin<br>
-            Esguerra
-          </h1>
+        <div class="home-hero">
 
-          <p class="intro">
-            Mechanical Engineering student at the University of
-            Missouri–Columbia interested in thermal engineering,
-            CFD, aerodynamics, structures, and hands-on engineering.
-          </p>
+          <div class="home-copy">
 
-        </div>
+            <div class="section-label">
+              Mechanical Engineering Portfolio
+            </div>
 
-        <div class="home-side">
+            <h1>
+              Elvin<br>
+              Esguerra
+            </h1>
 
-          <img
-            class="profile-photo"
-            src="images/profile.jpg"
-            alt="Elvin Esguerra"
-          >
-
-          <div class="about-me">
-
-            <h2>About Me</h2>
-
-            <p>
-              I enjoy solving engineering problems through a mix of
-              analysis, simulation, design, manufacturing, and testing.
-              My experience includes aerospace projects, CFD research,
-              manufacturing leadership, programming, and hands-on
-              engineering work.
+            <p class="intro">
+              Mechanical Engineering student at the University of
+              Missouri–Columbia interested in thermal engineering,
+              CFD, aerodynamics, structures, and hands-on engineering.
             </p>
 
-            <div class="skills">
-              <span class="skill">CFD</span>
-              <span class="skill">Thermal Engineering</span>
-              <span class="skill">SolidWorks</span>
-              <span class="skill">Python</span>
-              <span class="skill">MATLAB</span>
-              <span class="skill">ANSYS Fluent</span>
+          </div>
+
+          <div class="home-side">
+
+            <img
+              class="profile-photo"
+              src="images/profile.jpg"
+              alt="Elvin Esguerra"
+            >
+
+            <div class="about-me">
+
+              <h2>About Me</h2>
+
+              <p>
+                I enjoy solving engineering problems through a combination
+                of simulation, design, manufacturing, programming, testing,
+                and hands-on problem solving.
+              </p>
+
+              <div class="skills">
+
+                <span class="skill">CFD</span>
+                <span class="skill">Thermal Engineering</span>
+                <span class="skill">SolidWorks</span>
+                <span class="skill">Python</span>
+                <span class="skill">MATLAB</span>
+                <span class="skill">ANSYS Fluent</span>
+
+              </div>
+
             </div>
 
           </div>
 
         </div>
 
-      </div>
-
-    </section>
-
-    <!-- RESUME -->
-
-    <section id="resume" class="page">
-
-      <div class="page-header">
-
-        <div class="section-label">
-          Resume
-        </div>
-
-        <h1>Resume</h1>
-
-        <p>
-          Education, professional experience, engineering projects,
-          technical skills, and certifications.
-        </p>
-
-      </div>
-
-      <div class="resume-wrapper">
-
-        <img
-          class="resume-image"
-          src="images/resume.png"
-          alt="Elvin Esguerra Resume"
-        >
-
-        <div class="resume-actions">
-
-          <a
-            class="simple-button"
-            href="files/ElvinEsguerra2026_Resume.pdf"
-            target="_blank"
-          >
-            Open PDF Resume
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- EXPERIENCE -->
-
-    <section id="experience" class="page">
-
-      <div class="page-header">
-
-        <div class="section-label">
-          Experience
-        </div>
-
-        <h1>Experience & Projects</h1>
-
-        <p>
-          Select any item to see what I worked on, how I approached
-          the problem, and the results.
-        </p>
-
-      </div>
-
-      <!-- INTERNSHIP EXPERIENCE -->
-
-      <section class="experience-group">
-
-        <div class="group-heading">
-          <h2>Internship Experience</h2>
-          <span class="group-count">1</span>
-          <span class="group-line"></span>
-        </div>
-
-        <div class="experience-grid" id="internship-grid"></div>
-
       </section>
 
-      <!-- RESEARCH -->
 
-      <section class="experience-group">
+      <!-- =========================
+           RESUME
+      ========================== -->
 
-        <div class="group-heading">
-          <h2>Research</h2>
-          <span class="group-count">2</span>
-          <span class="group-line"></span>
+      <section id="resume" class="page">
+
+        <div class="page-header">
+
+          <div class="section-label">
+            Resume
+          </div>
+
+          <h1>Resume</h1>
+
+          <p>
+            Education, professional experience, engineering projects,
+            technical skills, publications, and certifications.
+          </p>
+
         </div>
 
-        <div class="experience-grid" id="research-grid"></div>
+        <div class="resume-wrapper">
 
-      </section>
-
-      <!-- ENGINEERING PROJECTS -->
-
-      <section class="experience-group">
-
-        <div class="group-heading">
-          <h2>Engineering Projects</h2>
-          <span class="group-count">4</span>
-          <span class="group-line"></span>
-        </div>
-
-        <div class="experience-grid" id="project-grid"></div>
-
-      </section>
-
-    </section>
-
-    <!-- DOGS -->
-
-    <section id="dogs" class="page">
-
-      <div class="page-header">
-
-        <div class="section-label">
-          Dogs
-        </div>
-
-        <h1>Dogs</h1>
-
-      </div>
-
-      <div class="dog-grid">
-
-        <article class="dog-card">
           <img
-            class="dog-image"
-            src="images/cosmo.jpg"
-            alt="Cosmo"
+            class="resume-image"
+            src="images/resume.png"
+            alt="Elvin Esguerra Resume"
           >
-          <div class="dog-info">
+
+          <div class="resume-actions">
+
+            <a
+              class="button"
+              href="files/ElvinEsguerra2026_Resume.pdf"
+              target="_blank"
+            >
+              Open PDF Resume
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           EXPERIENCE
+      ========================== -->
+
+      <section id="experience" class="page">
+
+        <div class="page-header">
+
+          <div class="section-label">
+            Experience
+          </div>
+
+          <h1>
+            Experience & Projects
+          </h1>
+
+          <p>
+            Select an experience or engineering project to explore the
+            problem, my approach, results, and supporting project images.
+          </p>
+
+        </div>
+
+        <section class="experience-group">
+
+          <div class="group-heading">
+
+            <h2>
+              Internship Experience
+            </h2>
+
+            <span class="group-count">
+              1
+            </span>
+
+            <span class="group-line"></span>
+
+          </div>
+
+          <div
+            class="experience-grid"
+            id="internship-grid"
+          ></div>
+
+        </section>
+
+
+        <section class="experience-group">
+
+          <div class="group-heading">
+
+            <h2>
+              Research
+            </h2>
+
+            <span class="group-count">
+              2
+            </span>
+
+            <span class="group-line"></span>
+
+          </div>
+
+          <div
+            class="experience-grid"
+            id="research-grid"
+          ></div>
+
+        </section>
+
+
+        <section class="experience-group">
+
+          <div class="group-heading">
+
+            <h2>
+              Engineering Projects
+            </h2>
+
+            <span class="group-count">
+              4
+            </span>
+
+            <span class="group-line"></span>
+
+          </div>
+
+          <div
+            class="experience-grid"
+            id="project-grid"
+          ></div>
+
+        </section>
+
+      </section>
+
+
+      <!-- =========================
+           DOGS
+      ========================== -->
+
+      <section id="dogs" class="page">
+
+        <div class="page-header">
+
+          <div class="section-label">
+            Dogs
+          </div>
+
+          <h1>Dogs</h1>
+
+        </div>
+
+        <div class="dog-grid">
+
+          <article class="dog-card">
+
+            <img
+              src="images/cosmo.jpg"
+              alt="Cosmo"
+            >
+
             <h2>Cosmo</h2>
-          </div>
-        </article>
 
-        <article class="dog-card">
-          <img
-            class="dog-image"
-            src="images/pluto.jpg"
-            alt="Pluto"
-          >
-          <div class="dog-info">
+          </article>
+
+
+          <article class="dog-card">
+
+            <img
+              src="images/pluto.jpg"
+              alt="Pluto"
+            >
+
             <h2>Pluto</h2>
-          </div>
-        </article>
 
-        <article class="dog-card">
-          <img
-            class="dog-image"
-            src="images/winston.jpg"
-            alt="Winston"
-          >
-          <div class="dog-info">
+          </article>
+
+
+          <article class="dog-card">
+
+            <img
+              src="images/winston.jpg"
+              alt="Winston"
+            >
+
             <h2>Winston</h2>
-          </div>
-        </article>
 
-        <article class="dog-card">
-          <img
-            class="dog-image"
-            src="images/rey.jpg"
-            alt="Rey"
-          >
-          <div class="dog-info">
+          </article>
+
+
+          <article class="dog-card">
+
+            <img
+              src="images/rey.jpg"
+              alt="Rey"
+            >
+
             <h2>Rey</h2>
-          </div>
-        </article>
 
-      </div>
+          </article>
 
-    </section>
+        </div>
 
-  </main>
+      </section>
 
-  <footer>
-    Elvin Esguerra · Mechanical Engineering Portfolio
-  </footer>
+    </main>
 
-</div>
 
-<!-- EXPERIENCE MODAL -->
+    <!-- =========================
+         FULL PROJECT VIEW
+    ========================== -->
 
-<div
-  class="modal-overlay"
-  id="experience-modal"
-  aria-hidden="true"
->
-
-  <div
-    class="modal"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="modal-title"
-  >
-
-    <div class="modal-header">
-
-      <div>
-
-        <div
-          class="modal-type"
-          id="modal-type"
-        ></div>
-
-        <h2
-          class="modal-title"
-          id="modal-title"
-        ></h2>
-
-        <p
-          class="modal-org"
-          id="modal-org"
-        ></p>
-
-      </div>
+    <section
+      id="project-view"
+      class="project-view"
+    >
 
       <button
-        class="modal-close"
-        id="modal-close"
-        type="button"
-        aria-label="Close"
+        class="back-button"
+        id="back-to-experience"
       >
-        ×
+        ← Back to Experience
       </button>
 
-    </div>
+      <div class="project-header">
 
-    <div class="modal-content">
+        <div
+          class="project-type"
+          id="project-type"
+        ></div>
 
-      <div class="step-tabs">
+        <h1
+          class="project-title"
+          id="project-title"
+        ></h1>
 
-        <button
-          class="step-tab active"
-          type="button"
-          data-step="0"
-        >
-          What
-        </button>
-
-        <button
-          class="step-tab"
-          type="button"
-          data-step="1"
-        >
-          How
-        </button>
-
-        <button
-          class="step-tab"
-          type="button"
-          data-step="2"
-        >
-          Results
-        </button>
+        <div
+          class="project-org"
+          id="project-org"
+        ></div>
 
       </div>
 
-      <div
-        class="step-content"
-        id="step-content"
-      ></div>
+      <div id="project-cover-container"></div>
 
-      <div class="modal-navigation">
+      <div class="project-body">
 
-        <button
-          id="previous-step"
-          type="button"
+        <section class="project-section">
+
+          <h2>
+            What I Did
+          </h2>
+
+          <div
+            class="project-section-content"
+            id="project-what"
+          ></div>
+
+        </section>
+
+        <section class="project-section">
+
+          <h2>
+            My Approach
+          </h2>
+
+          <div
+            class="project-section-content"
+            id="project-how"
+          ></div>
+
+        </section>
+
+        <section class="project-section">
+
+          <h2>
+            Results
+          </h2>
+
+          <div
+            class="project-section-content"
+            id="project-results"
+          ></div>
+
+        </section>
+
+        <section
+          class="project-gallery"
+          id="project-gallery-section"
         >
-          Previous
-        </button>
 
-        <button
-          id="next-step"
-          type="button"
-        >
-          Next
-        </button>
+          <div class="project-gallery-header">
+
+            <h2>
+              Project Gallery
+            </h2>
+
+          </div>
+
+          <div
+            class="gallery-grid"
+            id="project-gallery"
+          ></div>
+
+        </section>
 
       </div>
 
-    </div>
+    </section>
+
+
+    <footer>
+      Elvin Esguerra · Mechanical Engineering Portfolio
+    </footer>
 
   </div>
 
-</div>
 
-<script>
+  <script>
 
-  /* =========================
-     EXPERIENCE DATA
-  ========================== */
+    /* =========================================================
+       PROJECT DATA
+    ========================================================== */
 
-  const experiences = [
+    const experiences = [
 
-    /* =====================
-       GENERAL MOTORS
-    ====================== */
+      /* =========================
+         GENERAL MOTORS
+      ========================== */
 
-    {
-      category: "internship",
+      {
+        category: "internship",
 
-      type: "Internship Experience",
+        type: "Internship Experience",
 
-      title: "Manufacturing Group Leader",
+        title:
+          "Manufacturing Group Leader",
 
-      organization:
-        "General Motors · Wentzville · June 2026 – August 2026",
+        organization:
+          "General Motors · Wentzville Assembly · Summer 2026",
 
-      image: "images/gm.jpg",
+        cover:
+          "images/gm.png",
 
-      what: [
-        "Led three stamping presses and 36 operators on an active automotive production floor.",
-        "Managed daily production while maintaining safety, quality, and operational requirements."
-      ],
+        what: [
+          "Led 36 union-represented operators across three automotive stamping presses.",
+          "Supported daily production exceeding 3,700 parts while maintaining quality, safety, and production requirements.",
+          "For one week, independently led the department during my shift while three other members of department leadership were on vacation."
+        ],
 
-      how: [
-        "Built a downtime-tracking system to consistently document production interruptions.",
-        "Performed root-cause analysis on recurring equipment and process issues.",
-        "Worked directly with engineers, die makers, electricians, and production employees to resolve problems on the floor."
-      ],
+        how: [
+          "Responded to production calls, equipment problems, quality concerns, and employee issues throughout each shift.",
+          "Performed root-cause analysis on stamping defects including slugs, die contamination, cushion shut-height variation, and excessive robot force.",
+          "Coordinated corrective actions with operators, maintenance, controls, quality, and production teams.",
+          "Provided detailed shift handoffs explaining what occurred, the largest remaining problems, corrective actions completed, and what the next shift should prioritize."
+        ],
 
-      results: [
-        "Supported production exceeding daily output targets while meeting safety and quality requirements.",
-        "Eliminated approximately 40 minutes of recurring weekly downtime by helping standardize robot-programming procedures."
-      ]
-    },
+        results: [
+          "Developed standardized robot-programming procedures that eliminated approximately 40 minutes of recurring weekly downtime.",
+          "The improvement enabled approximately 200 additional parts to be manufactured each week.",
+          "Successfully maintained department operations during a week of reduced leadership coverage while coordinating technical and workforce issues across multiple groups."
+        ],
 
-    /* =====================
-       AIAA RESEARCH
-    ====================== */
+        gallery: [
 
-    {
-      category: "research",
+          {
+            src:
+              "images/gm-recognition.png",
 
-      type: "Research Publication",
+            caption:
+              "Recognition received during my General Motors internship for my contributions to the organization.",
 
-      title:
-        "Quantifying Convective Aerodynamic Heating During Ascent",
+            full:
+              true
+          }
 
-      organization:
-        "AIAA Region V Student Conference · Published & Presented · 2026",
+        ]
+      },
 
-      image: "images/aiaa-heating.jpg",
 
-      what: [
-        "Investigated the accuracy of the Sutton–Graves heating correlation when applied to collegiate rocket ascent.",
-        "Focused on the subsonic-through-supersonic flight regime experienced during ascent."
-      ],
+      /* =========================
+         AIAA RESEARCH
+      ========================== */
 
-      how: [
-        "Developed a 72,000-cell axisymmetric CFD model in ANSYS Fluent.",
-        "Performed a mesh sensitivity study to verify grid independence.",
-        "Evaluated five flight conditions ranging from Mach 0.54 to Mach 1.91.",
-        "Used atmospheric and trajectory conditions derived from flight data."
-      ],
+      {
+        category: "research",
 
-      results: [
-        "Predicted peak stagnation-region heat flux of approximately 2.46 × 10⁶ W/m².",
-        "Measured Sutton–Graves underprediction ranging from approximately 183% to 452% across the evaluated conditions.",
-        "Published and presented the research at the AIAA Region V Student Conference."
-      ]
-    },
+        type: "Published Research",
 
-    /* =====================
-       UNDERGRADUATE RESEARCH
-    ====================== */
+        title:
+          "Quantifying Convective Aerodynamic Heating During Ascent",
 
-    {
-      category: "research",
+        organization:
+          "AIAA Region V Student Conference · 2026",
 
-      type: "Undergraduate Research",
+        cover:
+          null,
 
-      title:
-        "Undergraduate Research Assistant",
+        what: [
+          "Investigated convective aerodynamic heating experienced by a collegiate launch vehicle during ascent.",
+          "Evaluated the accuracy of the Sutton–Graves heating correlation across subsonic through supersonic flight conditions."
+        ],
 
-      organization:
-        "University of Missouri Semiconductor Laboratory · January 2026 – Present",
+        how: [
+          "Developed a 72,000-cell axisymmetric CFD model in ANSYS Fluent.",
+          "Used flight-derived atmospheric and trajectory conditions across five operating points.",
+          "Performed mesh-sensitivity work to evaluate numerical independence.",
+          "Compared CFD-predicted heat flux against Sutton–Graves analytical estimates."
+        ],
 
-      image: "images/research.jpg",
+        results: [
+          "Calculated a peak stagnation-region convective heat flux of approximately 2.46 MW/m² at Max-Q.",
+          "Found CFD predictions approximately 183%–452% higher than Sutton–Graves estimates across the analyzed conditions.",
+          "Published the research and presented it at the AIAA Region V Student Conference.",
+          "Presented the work before technical judges from aerospace and defense companies and fellow students, answering technical questions from both groups regarding the methodology, assumptions, analysis, and conclusions."
+        ],
 
-      what: [
-        "Developed a low-cost automated testing system for repeated mechanical loading of mechanoluminescent material samples.",
-        "The laboratory needed a repeatable alternative to expensive commercial bending equipment."
-      ],
+        gallery: [
 
-      how: [
-        "Designed a three-point bending system in SolidWorks.",
-        "Programmed stepper-motor control for automated loading cycles.",
-        "Designed and 3D printed a custom 60 × 60 mm sample fixture.",
-        "Integrated the mechanical components and supporting electronics."
-      ],
+          {
+            src:
+              "images/aiaa-presentation.jpg",
 
-      results: [
-        "Built the complete testing system for under $40.",
-        "Converted a manual test procedure into an automated repeated-cycle process.",
-        "Improved sample positioning consistency between tests."
-      ]
-    },
-
-    /* =====================
-       ARGONIA CUP
-    ====================== */
-
-    {
-      category: "project",
-
-      type: "Engineering Project",
-
-      title:
-        "Argonia Cup Project Manager",
-
-      organization:
-        "Mizzou Space Program · May 2026 – Present",
-
-      image: "images/argonia.jpg",
-
-      what: [
-        "Lead a team of more than 30 members designing, manufacturing, and testing a competition rocket targeting a 7,000 ft apogee.",
-        "The vehicle incorporates an active air-braking system and a ten-golf-ball payload."
-      ],
+            caption:
+              "Presenting and defending my aerodynamic-heating research at the AIAA Region V Student Conference.",
 
-      how: [
-        "Built a Python program that controls OpenRocket programmatically through JPype.",
-        "Automated fin-geometry sweeps and post-processed simulation results with NumPy.",
-        "Ran 250 Monte Carlo simulations using varying wind and launch-angle conditions.",
-        "Coordinate design, manufacturing, testing, and integration activities across the team."
-      ],
+            full:
+              true
+          }
 
-      results: [
-        "Reduced fin optimization work from approximately two weeks to four hours.",
-        "Found that 99.2% of simulated flights met the criteria for second-stage motor ignition.",
-        "Created a repeatable workflow for evaluating vehicle performance across uncertain flight conditions."
-      ]
-    },
+        ]
+      },
 
-    /* =====================
-       IREC NOSE CONE
-    ====================== */
-
-    {
-      category: "project",
-
-      type: "Engineering Project",
 
-      title:
-        "IREC Nose Cone Aerodynamic Analysis",
+      /* =========================
+         UNDERGRADUATE RESEARCH
+      ========================== */
 
-      organization:
-        "Mizzou Space Program · April 2026 – May 2026",
+      {
+        category: "research",
 
-      image: "images/nose-cone.jpg",
+        type: "Undergraduate Research",
 
-      what: [
-        "Developed an aerodynamic drag prediction for the rocket nose cone at maximum dynamic pressure.",
-        "The analysis was used to support trajectory and structural design work."
-      ],
+        title:
+          "Undergraduate Research Assistant",
 
-      how: [
-        "Simulated Mach 2.12 compressible supersonic flow in ANSYS Fluent.",
-        "Generated a 474,000-cell structured mesh with near-wall inflation layers and a Body of Influence.",
-        "Used the SST k-ω turbulence model.",
-        "Implemented independent analytical drag calculations in MATLAB."
-      ],
+        organization:
+          "University of Missouri Semiconductor Laboratory",
 
-      results: [
-        "Calculated approximately 245 N of total aerodynamic drag.",
-        "Calculated a drag coefficient of approximately 0.123.",
-        "Validated the CFD prediction against independent calculations to within approximately 2%."
-      ]
-    },
+        cover:
+          null,
 
-    /* =====================
-       IREC PAYLOAD
-    ====================== */
+        what: [
+          "Developed a low-cost automated mechanical testing system for repeated loading of mechanoluminescent material samples."
+        ],
 
-    {
-      category: "project",
+        how: [
+          "Designed the three-point bending mechanism in SolidWorks.",
+          "Designed and 3D printed custom components and sample fixtures.",
+          "Integrated a stepper motor, electronics, and Arduino-based controls.",
+          "Programmed automated loading sequences for repeated material testing."
+        ],
 
-      type: "Engineering Project",
+        results: [
+          "Built the full testing system for under $40.",
+          "Converted a manual bending procedure into an automated repeated-cycle testing system."
+        ],
 
-      title:
-        "IREC Payload",
+        gallery: []
+      },
 
-      organization:
-        "Mizzou Space Program · August 2025 – May 2026",
 
-      image: "images/payload.jpg",
+      /* =========================
+         ARGONIA
+      ========================== */
 
-      what: [
-        "Designed a 5.75 lb rocket payload intended to protect electronics during a 20 ft/s impact.",
-        "The design packaged six LiPo batteries, microcontrollers, and a camera inside a 3.85-inch-diameter envelope."
-      ],
+      {
+        category: "project",
 
-      how: [
-        "Designed the structure and component mounting system in SolidWorks.",
-        "Selected PLA, aluminum, and fiberglass based on strength, weight, and manufacturability requirements.",
-        "Designed and 3D printed custom electronics mounts and panels.",
-        "Resolved fit and clearance issues during physical integration."
-      ],
+        type: "Engineering Project",
 
-      results: [
-        "Completed the payload structure with electronics securely mounted.",
-        "Designed the system around the required 20 ft/s impact condition.",
-        "Produced eight GD&T drawings to support fabrication and assembly."
-      ]
-    },
+        title:
+          "Argonia Cup Project Manager",
 
-    /* =====================
-       LEVEL 1 ROCKET
-    ====================== */
+        organization:
+          "Mizzou Space Program · May 2026 – Present",
 
-    {
-      category: "project",
+        cover:
+          null,
 
-      type: "Engineering Project",
+        what: [
+          "Lead a multidisciplinary team of more than 30 members through the design, manufacturing, integration, and testing of a competition rocket.",
+          "The vehicle is being designed for a target apogee near 7,000 ft and incorporates active air braking and a ten-golf-ball payload."
+        ],
 
-      title:
-        "Level 1 Certification Rocket",
+        how: [
+          "Developed a Python wrapper around OpenRocket using JPype.",
+          "Automated aerodynamic fin-geometry sweeps and simulation analysis.",
+          "Automated Monte Carlo flight simulations using varying wind and launch-angle conditions.",
+          "Coordinate design decisions and integration work across multiple technical subteams."
+        ],
 
-      organization:
-        "High-Power Rocketry",
+        results: [
+          "Reduced aerodynamic optimization work from approximately two weeks to four hours.",
+          "Automated 250 Monte Carlo flight simulations.",
+          "Found that 99.2% of simulated flights satisfied the required second-stage ignition criteria."
+        ],
 
-      image: "images/level1.jpg",
+        gallery: []
+      },
 
-      what: [
-        "Designed and built a single-stage rocket for Level 1 high-power rocketry certification."
-      ],
 
-      how: [
-        "Sized the airframe and recovery system for the selected motor and expected flight conditions.",
-        "Verified vehicle stability before launch.",
-        "Manufactured and assembled the vehicle using common fabrication equipment."
-      ],
+      /* =========================
+         IREC NOSE CONE CFD
+      ========================== */
 
-      results: [
-        "Completed a successful certification flight and recovery.",
-        "Earned Level 1 high-power rocketry certification."
-      ]
-    }
+      {
+        category: "project",
 
-  ];
+        type: "Engineering Project",
 
-  /* =========================
-     PAGE NAVIGATION
-  ========================== */
+        title:
+          "IREC Nose Cone Aerodynamic Analysis",
 
-  const navButtons =
-    document.querySelectorAll(".nav-link");
+        organization:
+          "Mizzou Space Program · April 2026 – May 2026",
 
-  const pages =
-    document.querySelectorAll(".page");
+        cover:
+          null,
 
-  navButtons.forEach(button => {
+        what: [
+          "Performed aerodynamic analysis of the launch vehicle nose cone near maximum dynamic pressure.",
+          "The analysis supported prediction of aerodynamic loading and vehicle drag during supersonic flight."
+        ],
 
-    button.addEventListener("click", () => {
+        how: [
+          "Simulated Mach 2.12 compressible flow using ANSYS Fluent.",
+          "Generated a structured mesh containing approximately 474,000 cells.",
+          "Used near-wall inflation and a Body of Influence to improve resolution around the nose cone.",
+          "Achieved a y+ value near 1.6 and used the SST k-ω turbulence model.",
+          "Performed an independent MATLAB calculation to validate the CFD drag prediction."
+        ],
 
-      const pageName =
-        button.dataset.page;
+        results: [
+          "Calculated approximately 245 N of aerodynamic drag.",
+          "Calculated a drag coefficient of approximately 0.123.",
+          "Matched independent MATLAB calculations within approximately 2%."
+        ],
 
-      navButtons.forEach(item =>
-        item.classList.remove("active")
+        gallery: [
+
+          {
+            src:
+              "images/irec-cfd-table.png",
+
+            caption:
+              "IREC CFD analysis table summarizing the aerodynamic nose-cone analysis.",
+
+            full:
+              true
+          }
+
+        ]
+      },
+
+
+      /* =========================
+         IREC PAYLOAD
+      ========================== */
+
+      {
+        category: "project",
+
+        type: "Engineering Project",
+
+        title:
+          "IREC Payload",
+
+        organization:
+          "Mizzou Space Program · August 2025 – May 2026",
+
+        cover:
+          null,
+
+        what: [
+          "Designed and fabricated a 5.75 lb competition rocket payload.",
+          "The payload packaged batteries, microcontrollers, sensors, and a camera within a 3.85-inch diameter assembly.",
+          "The structure was designed around a 20 ft/s impact requirement."
+        ],
+
+        how: [
+          "Designed the structural architecture and electronics mounting system in SolidWorks.",
+          "Used PLA, aluminum, and fiberglass components based on structural and manufacturing requirements.",
+          "Designed custom 3D-printed electronics mounts.",
+          "Designed external payload panels to protect the internal electronics from debris and moisture.",
+          "Produced eight GD&T drawings used during fabrication and assembly."
+        ],
+
+        results: [
+          "Integrated six LiPo batteries, microcontrollers, and a camera into the constrained payload envelope.",
+          "Manufactured and assembled the complete payload structure.",
+          "Developed protective structural panels and internal mounting systems to secure the electronics."
+        ],
+
+        gallery: [
+
+          {
+            src:
+              "images/payload-in-progress.jpg",
+
+            caption:
+              "Payload partially manufactured during mechanical integration."
+          },
+
+          {
+            src:
+              "images/irec-payload.jpg",
+
+            caption:
+              "IREC payload display showing the electronics and internal components."
+          },
+
+          {
+            src:
+              "images/payload-panels.jpg",
+
+            caption:
+              "Completed payload showing the protective panels I designed.",
+
+            full:
+              true
+          }
+
+        ]
+      },
+
+
+      /* =========================
+         LEVEL 1 ROCKET
+      ========================== */
+
+      {
+        category: "project",
+
+        type: "Engineering Project",
+
+        title:
+          "Level 1 Certification Rocket",
+
+        organization:
+          "High-Power Rocketry",
+
+        cover:
+          null,
+
+        what: [
+          "Designed and built a single-stage high-power rocket for Level 1 certification.",
+          "Developed the vehicle configuration around the selected motor, stability requirements, expected altitude, velocity, and recovery requirements."
+        ],
+
+        how: [
+          "Modeled the vehicle in OpenRocket.",
+          "Evaluated center of gravity and center of pressure to verify vehicle stability.",
+          "Predicted altitude, maximum velocity, and acceleration prior to flight.",
+          "Designed and assembled the airframe and recovery system.",
+          "Manufactured and integrated the completed rocket."
+        ],
+
+        results: [
+          "Created a complete flight model before physical testing.",
+          "Predicted the rocket trajectory and performance using OpenRocket.",
+          "Used altitude and velocity data to evaluate expected vehicle behavior throughout flight."
+        ],
+
+        gallery: [
+
+          {
+            src:
+              "images/minion-rocket.jpg",
+
+            caption:
+              "My completed Level 1 high-power rocket."
+          },
+
+          {
+            src:
+              "images/openrocket-rocket.png",
+
+            caption:
+              "OpenRocket model showing center of gravity, center of pressure, predicted altitude, maximum velocity, and acceleration."
+          },
+
+          {
+            src:
+              "images/altitude-vs-velocity.png",
+
+            caption:
+              "Predicted altitude and velocity performance for the Level 1 rocket.",
+
+            full:
+              true
+          }
+
+        ]
+      }
+
+    ];
+
+
+    /* =========================================================
+       PAGE NAVIGATION
+    ========================================================== */
+
+    const pages =
+      document.querySelectorAll(".page");
+
+    const navButtons =
+      document.querySelectorAll(".nav-link");
+
+    const mainPages =
+      document.getElementById("main-pages");
+
+    const projectView =
+      document.getElementById("project-view");
+
+
+    function showPage(pageName) {
+
+      projectView.classList.remove(
+        "active"
       );
 
-      pages.forEach(page =>
-        page.classList.remove("active")
-      );
+      mainPages.style.display =
+        "block";
 
-      button.classList.add("active");
 
-      document
-        .getElementById(pageName)
-        .classList.add("active");
+      pages.forEach(page => {
+
+        page.classList.toggle(
+          "active",
+          page.id === pageName
+        );
+
+      });
+
+
+      navButtons.forEach(button => {
+
+        button.classList.toggle(
+          "active",
+          button.dataset.page === pageName
+        );
+
+      });
+
 
       window.scrollTo({
         top: 0,
         behavior: "smooth"
       });
 
-    });
-
-  });
-
-  /* =========================
-     BUILD EXPERIENCE CARDS
-  ========================== */
-
-  const internshipGrid =
-    document.getElementById("internship-grid");
-
-  const researchGrid =
-    document.getElementById("research-grid");
-
-  const projectGrid =
-    document.getElementById("project-grid");
-
-  experiences.forEach((experience, index) => {
-
-    const card =
-      document.createElement("button");
-
-    card.type = "button";
-
-    card.className =
-      "experience-card";
-
-    card.innerHTML = `
-
-      <img
-        class="experience-image"
-        src="${experience.image}"
-        alt="${experience.title}"
-      >
-
-      <h3>
-        ${experience.title}
-      </h3>
-
-      <p>
-        ${experience.organization}
-      </p>
-
-    `;
-
-    card.addEventListener(
-      "click",
-      () => openExperience(index)
-    );
-
-    if (experience.category === "internship") {
-
-      internshipGrid.appendChild(card);
-
     }
 
-    else if (experience.category === "research") {
 
-      researchGrid.appendChild(card);
+    navButtons.forEach(button => {
 
-    }
-
-    else {
-
-      projectGrid.appendChild(card);
-
-    }
-
-  });
-
-  /* =========================
-     EXPERIENCE MODAL
-  ========================== */
-
-  const modal =
-    document.getElementById("experience-modal");
-
-  const modalType =
-    document.getElementById("modal-type");
-
-  const modalTitle =
-    document.getElementById("modal-title");
-
-  const modalOrg =
-    document.getElementById("modal-org");
-
-  const modalClose =
-    document.getElementById("modal-close");
-
-  const stepContent =
-    document.getElementById("step-content");
-
-  const stepTabs =
-    document.querySelectorAll(".step-tab");
-
-  const previousButton =
-    document.getElementById("previous-step");
-
-  const nextButton =
-    document.getElementById("next-step");
-
-  let currentExperience = 0;
-
-  let currentStep = 0;
-
-  const stepKeys = [
-    "what",
-    "how",
-    "results"
-  ];
-
-  const stepTitles = [
-    "What",
-    "How",
-    "Results"
-  ];
-
-  function openExperience(index) {
-
-    currentExperience = index;
-
-    currentStep = 0;
-
-    const experience =
-      experiences[currentExperience];
-
-    modalType.textContent =
-      experience.type;
-
-    modalTitle.textContent =
-      experience.title;
-
-    modalOrg.textContent =
-      experience.organization;
-
-    renderStep();
-
-    modal.classList.add("open");
-
-    modal.setAttribute(
-      "aria-hidden",
-      "false"
-    );
-
-    document.body.style.overflow =
-      "hidden";
-
-  }
-
-  function closeExperience() {
-
-    modal.classList.remove("open");
-
-    modal.setAttribute(
-      "aria-hidden",
-      "true"
-    );
-
-    document.body.style.overflow =
-      "";
-
-  }
-
-  function renderStep() {
-
-    const experience =
-      experiences[currentExperience];
-
-    const key =
-      stepKeys[currentStep];
-
-    const items =
-      experience[key];
-
-    stepContent.innerHTML = `
-
-      <h3>
-        ${stepTitles[currentStep]}
-      </h3>
-
-      <ul>
-
-        ${items
-          .map(item => `<li>${item}</li>`)
-          .join("")}
-
-      </ul>
-
-    `;
-
-    stepTabs.forEach(
-      (tab, index) => {
-
-        tab.classList.toggle(
-          "active",
-          index === currentStep
-        );
-
-      }
-    );
-
-    previousButton.disabled =
-      currentStep === 0;
-
-    if (currentStep === 2) {
-
-      nextButton.textContent =
-        "Done";
-
-    }
-
-    else {
-
-      nextButton.textContent =
-        "Next";
-
-    }
-
-  }
-
-  stepTabs.forEach(
-    (tab, index) => {
-
-      tab.addEventListener(
+      button.addEventListener(
         "click",
-        () => {
-
-          currentStep = index;
-
-          renderStep();
-
-        }
+        () =>
+          showPage(
+            button.dataset.page
+          )
       );
 
-    }
-  );
+    });
 
-  previousButton.addEventListener(
-    "click",
-    () => {
 
-      if (currentStep > 0) {
+    document
+      .getElementById("brand")
+      .addEventListener(
+        "click",
+        () =>
+          showPage("home")
+      );
 
-        currentStep--;
 
-        renderStep();
+    /* =========================================================
+       EXPERIENCE CARDS
+    ========================================================== */
+
+    const internshipGrid =
+      document.getElementById(
+        "internship-grid"
+      );
+
+    const researchGrid =
+      document.getElementById(
+        "research-grid"
+      );
+
+    const projectGrid =
+      document.getElementById(
+        "project-grid"
+      );
+
+
+    experiences.forEach(
+      (experience, index) => {
+
+        const card =
+          document.createElement(
+            "button"
+          );
+
+        card.className =
+          "experience-card";
+
+        card.type =
+          "button";
+
+
+        let coverHTML;
+
+
+        if (experience.cover) {
+
+          coverHTML = `
+
+            <img
+              class="experience-image"
+              src="${experience.cover}"
+              alt="${experience.title}"
+            >
+
+          `;
+
+        }
+
+        else {
+
+          coverHTML = `
+
+            <div class="placeholder-cover">
+              Cover image coming soon
+            </div>
+
+          `;
+
+        }
+
+
+        card.innerHTML = `
+
+          <div class="experience-image-wrap">
+
+            ${coverHTML}
+
+          </div>
+
+          <h3>
+            ${experience.title}
+          </h3>
+
+          <p>
+            ${experience.organization}
+          </p>
+
+          <span class="view-project">
+            View project →
+          </span>
+
+        `;
+
+
+        card.addEventListener(
+          "click",
+          () =>
+            openProject(index)
+        );
+
+
+        if (
+          experience.category ===
+          "internship"
+        ) {
+
+          internshipGrid.appendChild(
+            card
+          );
+
+        }
+
+        else if (
+          experience.category ===
+          "research"
+        ) {
+
+          researchGrid.appendChild(
+            card
+          );
+
+        }
+
+        else {
+
+          projectGrid.appendChild(
+            card
+          );
+
+        }
 
       }
+    );
+
+
+    /* =========================================================
+       FULL PROJECT VIEW
+    ========================================================== */
+
+    const projectType =
+      document.getElementById(
+        "project-type"
+      );
+
+    const projectTitle =
+      document.getElementById(
+        "project-title"
+      );
+
+    const projectOrg =
+      document.getElementById(
+        "project-org"
+      );
+
+    const projectCoverContainer =
+      document.getElementById(
+        "project-cover-container"
+      );
+
+    const projectWhat =
+      document.getElementById(
+        "project-what"
+      );
+
+    const projectHow =
+      document.getElementById(
+        "project-how"
+      );
+
+    const projectResults =
+      document.getElementById(
+        "project-results"
+      );
+
+    const projectGallery =
+      document.getElementById(
+        "project-gallery"
+      );
+
+    const projectGallerySection =
+      document.getElementById(
+        "project-gallery-section"
+      );
+
+
+    function buildList(items) {
+
+      return `
+
+        <ul>
+
+          ${items
+            .map(
+              item =>
+                `<li>${item}</li>`
+            )
+            .join("")}
+
+        </ul>
+
+      `;
 
     }
-  );
 
-  nextButton.addEventListener(
-    "click",
-    () => {
 
-      if (currentStep < 2) {
+    function openProject(index) {
 
-        currentStep++;
+      const project =
+        experiences[index];
 
-        renderStep();
+
+      mainPages.style.display =
+        "none";
+
+      projectView.classList.add(
+        "active"
+      );
+
+
+      projectType.textContent =
+        project.type;
+
+      projectTitle.textContent =
+        project.title;
+
+      projectOrg.textContent =
+        project.organization;
+
+
+      if (project.cover) {
+
+        projectCoverContainer.innerHTML = `
+
+          <img
+            class="project-cover"
+            src="${project.cover}"
+            alt="${project.title}"
+          >
+
+        `;
 
       }
 
       else {
 
-        closeExperience();
+        projectCoverContainer.innerHTML = `
+
+          <div class="project-cover-placeholder">
+            Cover image coming soon
+          </div>
+
+        `;
 
       }
 
-    }
-  );
 
-  modalClose.addEventListener(
-    "click",
-    closeExperience
-  );
+      projectWhat.innerHTML =
+        buildList(
+          project.what
+        );
 
-  modal.addEventListener(
-    "click",
-    event => {
+      projectHow.innerHTML =
+        buildList(
+          project.how
+        );
 
-      if (event.target === modal) {
+      projectResults.innerHTML =
+        buildList(
+          project.results
+        );
 
-        closeExperience();
 
-      }
+      projectGallery.innerHTML =
+        "";
 
-    }
-  );
-
-  document.addEventListener(
-    "keydown",
-    event => {
 
       if (
-        event.key === "Escape" &&
-        modal.classList.contains("open")
+        project.gallery &&
+        project.gallery.length > 0
       ) {
 
-        closeExperience();
+        projectGallerySection.style.display =
+          "block";
+
+
+        project.gallery.forEach(
+          image => {
+
+            const figure =
+              document.createElement(
+                "figure"
+              );
+
+
+            figure.className =
+              "gallery-item";
+
+
+            if (image.full) {
+
+              figure.classList.add(
+                "full"
+              );
+
+            }
+
+
+            figure.innerHTML = `
+
+              <img
+                src="${image.src}"
+                alt="${image.caption}"
+              >
+
+              <figcaption>
+                ${image.caption}
+              </figcaption>
+
+            `;
+
+
+            projectGallery.appendChild(
+              figure
+            );
+
+          }
+        );
 
       }
 
-    }
-  );
+      else {
 
-</script>
+        projectGallerySection.style.display =
+          "none";
+
+      }
+
+
+      navButtons.forEach(
+        button =>
+          button.classList.remove(
+            "active"
+          )
+      );
+
+
+      document
+        .querySelector(
+          '[data-page="experience"]'
+        )
+        .classList.add(
+          "active"
+        );
+
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* =========================================================
+       BACK TO EXPERIENCE
+    ========================================================== */
+
+    document
+      .getElementById(
+        "back-to-experience"
+      )
+      .addEventListener(
+        "click",
+        () =>
+          showPage("experience")
+      );
+
+  </script>
 
 </body>
+
 </html>
+```
