@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,7 +54,6 @@
       padding: 0 32px;
     }
 
-
     /* =============================
        ANIMATIONS
     ============================= */
@@ -82,7 +80,6 @@
       }
     }
 
-
     /* =============================
        NAVIGATION
     ============================= */
@@ -91,20 +88,24 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+
       background: rgba(247, 247, 245, 0.95);
       backdrop-filter: blur(14px);
+
       border-bottom: 1px solid var(--border);
     }
 
     .navbar {
       max-width: 1220px;
       min-height: 78px;
+
       margin: 0 auto;
       padding: 0 32px;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       gap: 30px;
     }
 
@@ -112,7 +113,9 @@
       font-size: 19px;
       font-weight: 700;
       letter-spacing: -0.02em;
+
       cursor: pointer;
+
       transition: opacity 0.2s ease;
     }
 
@@ -123,17 +126,20 @@
     .nav-links {
       display: flex;
       align-items: center;
+
       gap: 5px;
     }
 
     .nav-link {
       border: 0;
       border-radius: 7px;
+
       background: none;
 
       padding: 11px 17px;
 
       color: var(--text-soft);
+
       font-size: 15px;
 
       cursor: pointer;
@@ -156,9 +162,9 @@
     .nav-link.active {
       background: #e1e1dd;
       color: var(--text);
+
       font-weight: 600;
     }
-
 
     /* =============================
        GENERAL PAGES
@@ -166,43 +172,54 @@
 
     .page {
       display: none;
+
       padding: 72px 0 105px;
     }
 
     .page.active {
       display: block;
+
       animation: fadeUp 0.4s ease both;
     }
 
     .section-label {
       margin-bottom: 13px;
+
       color: var(--text-light);
+
       font-size: 11px;
       font-weight: 700;
+
       letter-spacing: 0.16em;
+
       text-transform: uppercase;
     }
 
     .page-header {
       max-width: 760px;
+
       margin-bottom: 50px;
     }
 
     .page-header h1 {
       margin: 0;
+
       font-size: clamp(43px, 6vw, 64px);
+
       line-height: 0.98;
       letter-spacing: -0.05em;
     }
 
     .page-header p {
       max-width: 680px;
+
       margin: 18px 0 0;
+
       color: var(--text-soft);
+
       font-size: 16px;
       line-height: 1.7;
     }
-
 
     /* =============================
        HOME
@@ -212,11 +229,13 @@
       min-height: calc(100vh - 78px);
 
       display: grid;
+
       grid-template-columns:
         minmax(0, 1.2fr)
         minmax(320px, 0.8fr);
 
       align-items: center;
+
       gap: 90px;
 
       padding: 55px 0;
@@ -228,13 +247,17 @@
 
     .home-copy h1 {
       margin: 0;
+
       font-size: clamp(68px, 9vw, 108px);
+
       line-height: 0.88;
+
       letter-spacing: -0.065em;
     }
 
     .intro {
-      max-width: 660px;
+      max-width: 690px;
+
       margin: 30px 0 0;
 
       color: var(--text-soft);
@@ -244,42 +267,130 @@
     }
 
     .about-me {
-      max-width: 680px;
+      max-width: 690px;
+
       margin-top: 34px;
       padding-top: 29px;
+
       border-top: 1px solid var(--border);
     }
 
     .about-me h2 {
       margin: 0 0 13px;
+
       font-size: 22px;
+
       letter-spacing: -0.025em;
     }
 
     .about-me p {
       margin: 0;
+
       color: var(--text-soft);
+
       font-size: 15px;
       line-height: 1.75;
     }
 
-    .skills {
+    /* =============================
+       HOME BUTTONS
+    ============================= */
+
+    .home-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 22px;
+
+      gap: 10px;
+
+      margin-top: 30px;
     }
 
-    .skill {
-      padding: 7px 11px;
+    .home-action-button,
+    .contact-button,
+    .resume-download,
+    .project-link {
+      display: inline-flex;
 
-      border: 1px solid var(--border);
-      border-radius: 5px;
+      align-items: center;
+      justify-content: center;
 
-      background: rgba(255, 255, 255, 0.35);
+      padding: 11px 16px;
 
+      border: 1px solid var(--border-dark);
+      border-radius: 6px;
+
+      background: var(--white);
+
+      color: var(--text);
+
+      font-size: 13px;
+
+      text-decoration: none;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .home-action-button:hover,
+    .contact-button:hover,
+    .resume-download:hover,
+    .project-link:hover {
+      transform: translateY(-2px);
+
+      border-color: var(--text);
+
+      box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    .contact-area {
+      max-width: 690px;
+
+      margin-top: 28px;
+      padding-top: 24px;
+
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-label {
+      margin-bottom: 12px;
+
+      color: var(--text-light);
+
+      font-size: 11px;
+      font-weight: 700;
+
+      letter-spacing: 0.14em;
+
+      text-transform: uppercase;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+
+      align-items: center;
+
+      gap: 12px;
+    }
+
+    .contact-email {
       color: var(--text-soft);
-      font-size: 12px;
+
+      font-size: 14px;
+
+      text-decoration: none;
+
+      transition: color 0.2s ease;
+    }
+
+    .contact-email:hover {
+      color: var(--text);
     }
 
     .home-photo {
@@ -289,17 +400,20 @@
     .profile-photo {
       width: 100%;
       max-height: 650px;
+
       aspect-ratio: 4 / 5;
 
       display: block;
+
       object-fit: cover;
 
       background: #ddd;
+
       border-radius: 4px;
 
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+      box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.08);
     }
-
 
     /* =============================
        RESUME
@@ -307,6 +421,7 @@
 
     .resume-wrapper {
       max-width: 950px;
+
       margin: 0 auto;
     }
 
@@ -317,11 +432,19 @@
       display: block;
 
       background: white;
+
       border: 1px solid var(--border);
 
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
+      box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.06);
     }
 
+    .resume-download-wrap {
+      display: flex;
+      justify-content: center;
+
+      margin-top: 26px;
+    }
 
     /* =============================
        EXPERIENCE
@@ -338,41 +461,54 @@
     .group-heading {
       display: flex;
       align-items: center;
+
       gap: 14px;
+
       margin-bottom: 24px;
     }
 
     .group-heading h2 {
       margin: 0;
+
       font-size: 19px;
+
       letter-spacing: -0.02em;
     }
 
     .group-count {
       color: var(--text-light);
+
       font-size: 12px;
     }
 
     .group-line {
       flex: 1;
+
       height: 1px;
+
       background: var(--border);
     }
 
     .experience-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
       gap: 40px 22px;
     }
 
     .experience-card {
       width: 100%;
+
       padding: 0;
 
       border: 0;
+
       background: none;
 
       text-align: left;
+
       cursor: pointer;
 
       transition: transform 0.25s ease;
@@ -384,15 +520,18 @@
 
     .experience-image-wrap {
       width: 100%;
+
       aspect-ratio: 4 / 3;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
       overflow: hidden;
 
       background: #e5e5e1;
+
       border-radius: 4px;
     }
 
@@ -401,6 +540,7 @@
       height: 100%;
 
       display: block;
+
       object-fit: cover;
 
       transition:
@@ -410,6 +550,7 @@
 
     .experience-card:hover .experience-image {
       transform: scale(1.035);
+
       opacity: 0.9;
     }
 
@@ -418,6 +559,7 @@
       height: 100%;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
@@ -426,30 +568,41 @@
       color: var(--text-light);
 
       text-align: center;
+
       font-size: 12px;
+
       letter-spacing: 0.09em;
+
       text-transform: uppercase;
     }
 
     .experience-card h3 {
       margin: 15px 0 6px;
+
       font-size: 18px;
+
       line-height: 1.3;
+
       letter-spacing: -0.015em;
     }
 
     .experience-card p {
       margin: 0;
+
       color: var(--text-light);
+
       font-size: 12px;
+
       line-height: 1.5;
     }
 
     .view-project {
       display: inline-block;
+
       margin-top: 10px;
 
       color: var(--text-soft);
+
       font-size: 12px;
 
       transition: transform 0.2s ease;
@@ -459,9 +612,8 @@
       transform: translateX(4px);
     }
 
-
     /* =============================
-       FULL PROJECT VIEW
+       PROJECT PAGE
     ============================= */
 
     .project-view {
@@ -474,17 +626,21 @@
 
     .project-view.active {
       display: block;
+
       animation: fadeUp 0.4s ease both;
     }
 
     .back-button {
       border: 0;
+
       background: none;
 
       padding: 8px 0;
+
       margin-bottom: 42px;
 
       color: var(--text-soft);
+
       font-size: 14px;
 
       cursor: pointer;
@@ -496,11 +652,13 @@
 
     .back-button:hover {
       transform: translateX(-4px);
+
       color: var(--text);
     }
 
     .project-header {
       max-width: 940px;
+
       margin-bottom: 55px;
     }
 
@@ -511,6 +669,7 @@
 
       font-size: 11px;
       font-weight: 700;
+
       letter-spacing: 0.15em;
 
       text-transform: uppercase;
@@ -522,6 +681,7 @@
       font-size: clamp(43px, 7vw, 72px);
 
       line-height: 0.98;
+
       letter-spacing: -0.05em;
     }
 
@@ -539,40 +699,19 @@
       width: fit-content;
 
       margin-top: 22px;
-      padding: 10px 15px;
-
-      border: 1px solid var(--border-dark);
-      border-radius: 6px;
-
-      background: var(--white);
-
-      color: var(--text);
-
-      font-size: 13px;
-      text-decoration: none;
-
-      transition:
-        transform 0.2s ease,
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
-    }
-
-    .project-link:hover {
-      transform: translateY(-2px);
-
-      border-color: var(--text);
-
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
     }
 
     .project-body {
       max-width: 1000px;
+
       margin: 0 auto;
     }
 
     .project-section {
       display: grid;
-      grid-template-columns: 180px 1fr;
+
+      grid-template-columns:
+        180px 1fr;
 
       gap: 40px;
 
@@ -583,18 +722,23 @@
 
     .project-section h2 {
       margin: 0;
+
       font-size: 15px;
+
       letter-spacing: -0.015em;
     }
 
     .project-section-content {
       color: #41413f;
+
       font-size: 16px;
+
       line-height: 1.8;
     }
 
     .project-section-content ul {
       margin: 0;
+
       padding-left: 20px;
     }
 
@@ -602,14 +746,15 @@
       margin-top: 9px;
     }
 
-
     /* =============================
        PROJECT GALLERY
     ============================= */
 
     .project-gallery {
       margin-top: 75px;
+
       padding-top: 44px;
+
       border-top: 1px solid var(--border);
     }
 
@@ -619,43 +764,44 @@
 
     .project-gallery-header h2 {
       margin: 0;
+
       font-size: 30px;
+
       letter-spacing: -0.03em;
     }
 
     .project-gallery-header p {
       margin: 10px 0 0;
+
       color: var(--text-soft);
+
       font-size: 14px;
     }
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
 
       gap: 42px 30px;
+
       align-items: start;
     }
 
     .gallery-item {
       width: 100%;
+
       margin: 0;
+
       min-width: 0;
-    }
-
-    /*
-      Images displayed beside another image use
-      the same visual height.
-    */
-
-    .gallery-item:not(.wide) .gallery-image-wrap {
-      height: 360px;
     }
 
     .gallery-image-wrap {
       width: 100%;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
@@ -667,6 +813,10 @@
       border-radius: 5px;
     }
 
+    .gallery-item:not(.wide) .gallery-image-wrap {
+      height: 360px;
+    }
+
     .gallery-item:not(.wide) img {
       width: 100%;
       height: 100%;
@@ -675,11 +825,6 @@
 
       object-fit: contain;
     }
-
-    /*
-      Anything on its own row is centered
-      and does not become unnecessarily huge.
-    */
 
     .gallery-item.wide {
       grid-column: 1 / -1;
@@ -691,6 +836,7 @@
 
     .gallery-item.wide .gallery-image-wrap {
       width: 100%;
+
       min-height: 220px;
       max-height: 650px;
 
@@ -716,9 +862,9 @@
       color: var(--text-light);
 
       font-size: 12px;
+
       line-height: 1.55;
     }
-
 
     /* =============================
        DOGS
@@ -726,11 +872,14 @@
 
     .dog-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
 
       gap: 42px 30px;
 
       max-width: 1000px;
+
       margin: 0 auto;
     }
 
@@ -760,9 +909,9 @@
 
     .dog-card h2 {
       margin: 14px 0 0;
+
       font-size: 20px;
     }
-
 
     /* =============================
        FOOTER
@@ -778,7 +927,6 @@
       font-size: 12px;
     }
 
-
     /* =============================
        RESPONSIVE
     ============================= */
@@ -787,7 +935,9 @@
 
       .home-hero {
         grid-template-columns: 1fr;
+
         gap: 50px;
+
         padding: 65px 0;
       }
 
@@ -796,11 +946,13 @@
       }
 
       .experience-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+          repeat(2, 1fr);
       }
 
       .project-section {
         grid-template-columns: 1fr;
+
         gap: 15px;
       }
 
@@ -808,7 +960,6 @@
         height: 330px;
       }
     }
-
 
     @media (max-width: 650px) {
 
@@ -825,17 +976,21 @@
         padding-bottom: 14px;
 
         flex-direction: column;
+
         align-items: flex-start;
       }
 
       .nav-links {
         width: 100%;
+
         overflow-x: auto;
+
         gap: 4px;
       }
 
       .nav-link {
         padding: 9px 12px;
+
         white-space: nowrap;
       }
 
@@ -851,11 +1006,13 @@
 
       .gallery-item:not(.wide) .gallery-image-wrap {
         height: auto;
+
         min-height: 260px;
       }
 
       .gallery-item:not(.wide) img {
         height: auto;
+
         max-height: 500px;
       }
 
@@ -908,7 +1065,6 @@
           Home
         </button>
 
-
         <button
           class="nav-link"
           data-page="resume"
@@ -916,14 +1072,12 @@
           Resume
         </button>
 
-
         <button
           class="nav-link"
           data-page="experience"
         >
           Experience
         </button>
-
 
         <button
           class="nav-link"
@@ -972,9 +1126,9 @@
 
 
             <p class="intro">
-              Mechanical Engineering student at the University of
-              Missouri–Columbia interested in thermal engineering,
-              CFD, aerodynamics, structures, and hands-on engineering.
+              Sophomore Mechanical Engineering student at Mizzou interested in
+              thermal engineering, computational methods, mechanical design,
+              aerodynamics, structures, and artificial intelligence.
             </p>
 
 
@@ -986,27 +1140,70 @@
 
 
               <p>
-                I enjoy solving engineering problems through a combination
-                of simulation, design, manufacturing, programming, and
-                hands-on testing. My experience includes aerospace projects,
-                CFD research, automotive manufacturing, mechanical design,
-                and technical leadership.
+                I enjoy taking a problem, figuring out how it works, and then
+                asking how I can make it faster, simpler, or better. That mindset
+                is a big part of what draws me to engineering and why I enjoy
+                everything from simulation and mechanical design to hands-on
+                projects. Outside of academics, I’m into tennis, playing with my
+                dogs, and my favorite food is pho.
               </p>
 
 
-              <div class="skills">
+              <div class="home-actions">
 
-                <span class="skill">CFD</span>
+                <button
+                  class="home-action-button"
+                  data-home-page="resume"
+                >
+                  View Resume
+                </button>
 
-                <span class="skill">Thermal Engineering</span>
 
-                <span class="skill">SolidWorks</span>
+                <button
+                  class="home-action-button"
+                  data-home-page="experience"
+                >
+                  View Experience
+                </button>
 
-                <span class="skill">Python</span>
 
-                <span class="skill">MATLAB</span>
+                <button
+                  class="home-action-button"
+                  data-home-page="dogs"
+                >
+                  Meet My Dogs
+                </button>
 
-                <span class="skill">ANSYS Fluent</span>
+              </div>
+
+
+              <div class="contact-area">
+
+                <div class="contact-label">
+                  Contact
+                </div>
+
+
+                <div class="contact-links">
+
+                  <a
+                    class="contact-email"
+                    href="mailto:ejhesguerra@gmail.com"
+                  >
+                    ejhesguerra@gmail.com
+                  </a>
+
+
+                  <a
+                    class="contact-button"
+                    href="https://www.linkedin.com/in/elvinesguerra"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    LinkedIn ↗
+                  </a>
+
+                </div>
 
               </div>
 
@@ -1069,6 +1266,19 @@
             src="images/ElvinEsguerra-Resume.png"
             alt="Elvin Esguerra Resume"
           >
+
+
+          <div class="resume-download-wrap">
+
+            <a
+              class="resume-download"
+              href="files/ElvinEsguerra2026_Resume.pdf"
+              download
+            >
+              Download Resume ↓
+            </a>
+
+          </div>
 
         </div>
 
@@ -1756,7 +1966,7 @@
 
 
 
-      /* IREC NOSE CONE CFD */
+      /* IREC NOSE CONE */
 
       {
 
@@ -2129,6 +2339,33 @@
 
 
     /* =============================
+       HOME BUTTONS
+    ============================= */
+
+    const homeActionButtons =
+      document.querySelectorAll(
+        "[data-home-page]"
+      );
+
+
+    homeActionButtons.forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          showPage(
+            button.dataset.homePage
+          );
+
+        }
+      );
+
+    });
+
+
+
+    /* =============================
        EXPERIENCE CARDS
     ============================= */
 
@@ -2194,13 +2431,16 @@
 
           </div>
 
+
           <h3>
             ${experience.title}
           </h3>
 
+
           <p>
             ${experience.organization}
           </p>
+
 
           <span class="view-project">
             View project →
@@ -2323,7 +2563,7 @@
           project.link;
 
         projectLink.style.display =
-          "inline-block";
+          "inline-flex";
 
       }
 
@@ -2390,6 +2630,7 @@
                 >
 
               </div>
+
 
               <figcaption>
                 ${image.caption}
@@ -2470,4 +2711,3 @@
 </body>
 
 </html>
-```
