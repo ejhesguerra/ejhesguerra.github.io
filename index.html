@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,16 +9,15 @@
   <title>Elvin Esguerra | Mechanical Engineering</title>
 
   <style>
-
     :root {
       --bg: #f7f7f5;
       --white: #ffffff;
       --text: #171717;
-      --text-soft: #62625f;
-      --text-light: #8a8a85;
+      --text-soft: #60605d;
+      --text-light: #898984;
       --border: #d9d9d4;
-      --border-dark: #b8b8b2;
-      --card-bg: #e9e9e5;
+      --border-dark: #b6b6b0;
+      --image-bg: #ecece8;
     }
 
     * {
@@ -30,12 +30,9 @@
 
     body {
       margin: 0;
-
       background: var(--bg);
       color: var(--text);
-
       font-family: Arial, Helvetica, sans-serif;
-
       -webkit-font-smoothing: antialiased;
     }
 
@@ -52,13 +49,18 @@
       color: inherit;
     }
 
+    .site {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
 
-    /* ======================================================
+
+    /* =============================
        ANIMATIONS
-    ====================================================== */
+    ============================= */
 
     @keyframes fadeUp {
-
       from {
         opacity: 0;
         transform: translateY(14px);
@@ -68,12 +70,9 @@
         opacity: 1;
         transform: translateY(0);
       }
-
     }
 
-
     @keyframes fadeIn {
-
       from {
         opacity: 0;
       }
@@ -81,101 +80,60 @@
       to {
         opacity: 1;
       }
-
     }
 
 
-
-    /* ======================================================
-       MAIN LAYOUT
-    ====================================================== */
-
-    .site {
-      max-width: 1220px;
-
-      margin: 0 auto;
-
-      padding: 0 32px;
-    }
-
-
-
-    /* ======================================================
+    /* =============================
        NAVIGATION
-    ====================================================== */
+    ============================= */
 
     .nav-wrap {
       position: sticky;
-
       top: 0;
-
       z-index: 1000;
-
       background: rgba(247, 247, 245, 0.95);
-
       backdrop-filter: blur(14px);
-
       border-bottom: 1px solid var(--border);
     }
 
-
     .navbar {
       max-width: 1220px;
-
       min-height: 78px;
-
       margin: 0 auto;
-
       padding: 0 32px;
 
       display: flex;
-
       align-items: center;
-
       justify-content: space-between;
-
       gap: 30px;
     }
 
-
     .brand {
       font-size: 19px;
-
       font-weight: 700;
-
       letter-spacing: -0.02em;
-
       cursor: pointer;
-
       transition: opacity 0.2s ease;
     }
-
 
     .brand:hover {
       opacity: 0.65;
     }
 
-
     .nav-links {
       display: flex;
-
       align-items: center;
-
       gap: 5px;
     }
 
-
     .nav-link {
       border: 0;
-
       border-radius: 7px;
-
       background: none;
 
       padding: 11px 17px;
 
       color: var(--text-soft);
-
       font-size: 15px;
 
       cursor: pointer;
@@ -186,361 +144,263 @@
         transform 0.2s ease;
     }
 
-
     .nav-link:hover {
       background: #e9e9e5;
-
       color: var(--text);
     }
-
 
     .nav-link:active {
       transform: scale(0.97);
     }
 
-
     .nav-link.active {
       background: #e1e1dd;
-
       color: var(--text);
-
       font-weight: 600;
     }
 
 
-
-    /* ======================================================
-       PAGES
-    ====================================================== */
+    /* =============================
+       GENERAL PAGES
+    ============================= */
 
     .page {
       display: none;
-
       padding: 72px 0 105px;
     }
 
-
     .page.active {
       display: block;
-
       animation: fadeUp 0.4s ease both;
     }
 
-
     .section-label {
       margin-bottom: 13px;
-
       color: var(--text-light);
-
       font-size: 11px;
-
       font-weight: 700;
-
       letter-spacing: 0.16em;
-
       text-transform: uppercase;
     }
 
-
     .page-header {
       max-width: 760px;
-
       margin-bottom: 50px;
     }
 
-
     .page-header h1 {
       margin: 0;
-
       font-size: clamp(43px, 6vw, 64px);
-
       line-height: 0.98;
-
       letter-spacing: -0.05em;
     }
 
-
     .page-header p {
       max-width: 680px;
-
       margin: 18px 0 0;
-
       color: var(--text-soft);
-
       font-size: 16px;
-
       line-height: 1.7;
     }
 
 
-
-    /* ======================================================
-       HOME PAGE
-    ====================================================== */
+    /* =============================
+       HOME
+    ============================= */
 
     .home-hero {
       min-height: calc(100vh - 78px);
 
       display: grid;
-
       grid-template-columns:
         minmax(0, 1.2fr)
         minmax(320px, 0.8fr);
 
       align-items: center;
-
       gap: 90px;
 
       padding: 55px 0;
     }
 
-
     .home-copy {
       animation: fadeUp 0.55s ease both;
     }
 
-
     .home-copy h1 {
       margin: 0;
-
       font-size: clamp(68px, 9vw, 108px);
-
       line-height: 0.88;
-
       letter-spacing: -0.065em;
     }
 
-
     .intro {
       max-width: 660px;
-
       margin: 30px 0 0;
 
       color: var(--text-soft);
 
       font-size: 19px;
-
       line-height: 1.7;
     }
 
-
     .about-me {
       max-width: 680px;
-
       margin-top: 34px;
-
       padding-top: 29px;
-
       border-top: 1px solid var(--border);
     }
 
-
     .about-me h2 {
       margin: 0 0 13px;
-
       font-size: 22px;
-
       letter-spacing: -0.025em;
     }
 
-
     .about-me p {
       margin: 0;
-
       color: var(--text-soft);
-
       font-size: 15px;
-
       line-height: 1.75;
     }
 
-
     .skills {
       display: flex;
-
       flex-wrap: wrap;
-
       gap: 8px;
-
       margin-top: 22px;
     }
-
 
     .skill {
       padding: 7px 11px;
 
       border: 1px solid var(--border);
-
       border-radius: 5px;
 
       background: rgba(255, 255, 255, 0.35);
 
       color: var(--text-soft);
-
       font-size: 12px;
     }
-
 
     .home-photo {
       animation: fadeIn 0.7s ease both;
     }
 
-
     .profile-photo {
       width: 100%;
-
+      max-height: 650px;
       aspect-ratio: 4 / 5;
 
       display: block;
-
       object-fit: cover;
 
       background: #ddd;
-
       border-radius: 4px;
 
-      box-shadow:
-        0 18px 50px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
     }
 
 
-
-    /* ======================================================
+    /* =============================
        RESUME
-    ====================================================== */
+    ============================= */
 
     .resume-wrapper {
       max-width: 950px;
-
       margin: 0 auto;
     }
 
-
     .resume-image {
       width: 100%;
-
       height: auto;
 
       display: block;
 
       background: white;
-
       border: 1px solid var(--border);
 
-      box-shadow:
-        0 15px 45px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
     }
 
 
-
-    /* ======================================================
+    /* =============================
        EXPERIENCE
-    ====================================================== */
+    ============================= */
 
     .experience-group {
       margin-top: 70px;
     }
 
-
     .experience-group:first-of-type {
       margin-top: 0;
     }
 
-
     .group-heading {
       display: flex;
-
       align-items: center;
-
       gap: 14px;
-
       margin-bottom: 24px;
     }
 
-
     .group-heading h2 {
       margin: 0;
-
       font-size: 19px;
-
       letter-spacing: -0.02em;
     }
 
-
     .group-count {
       color: var(--text-light);
-
       font-size: 12px;
     }
 
-
     .group-line {
       flex: 1;
-
       height: 1px;
-
       background: var(--border);
     }
 
-
     .experience-grid {
       display: grid;
-
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 40px 22px;
     }
 
-
     .experience-card {
       width: 100%;
-
       padding: 0;
 
       border: 0;
-
       background: none;
 
       text-align: left;
-
       cursor: pointer;
 
       transition: transform 0.25s ease;
     }
 
-
     .experience-card:hover {
       transform: translateY(-5px);
     }
 
-
     .experience-image-wrap {
       width: 100%;
-
       aspect-ratio: 4 / 3;
 
       display: flex;
-
       align-items: center;
-
       justify-content: center;
 
       overflow: hidden;
 
       background: #e5e5e1;
-
       border-radius: 4px;
     }
 
-
     .experience-image {
       width: 100%;
-
       height: 100%;
 
       display: block;
-
       object-fit: cover;
 
       transition:
@@ -548,23 +408,17 @@
         opacity 0.35s ease;
     }
 
-
     .experience-card:hover .experience-image {
       transform: scale(1.035);
-
       opacity: 0.9;
     }
 
-
     .placeholder-cover {
       width: 100%;
-
       height: 100%;
 
       display: flex;
-
       align-items: center;
-
       justify-content: center;
 
       padding: 30px;
@@ -572,59 +426,43 @@
       color: var(--text-light);
 
       text-align: center;
-
       font-size: 12px;
-
       letter-spacing: 0.09em;
-
       text-transform: uppercase;
     }
 
-
     .experience-card h3 {
       margin: 15px 0 6px;
-
       font-size: 18px;
-
       line-height: 1.3;
-
       letter-spacing: -0.015em;
     }
 
-
     .experience-card p {
       margin: 0;
-
       color: var(--text-light);
-
       font-size: 12px;
-
       line-height: 1.5;
     }
 
-
     .view-project {
       display: inline-block;
-
       margin-top: 10px;
 
       color: var(--text-soft);
-
       font-size: 12px;
 
       transition: transform 0.2s ease;
     }
-
 
     .experience-card:hover .view-project {
       transform: translateX(4px);
     }
 
 
-
-    /* ======================================================
-       PROJECT PAGE
-    ====================================================== */
+    /* =============================
+       FULL PROJECT VIEW
+    ============================= */
 
     .project-view {
       display: none;
@@ -634,25 +472,19 @@
       padding: 48px 0 105px;
     }
 
-
     .project-view.active {
       display: block;
-
       animation: fadeUp 0.4s ease both;
     }
 
-
     .back-button {
       border: 0;
-
       background: none;
 
       padding: 8px 0;
-
       margin-bottom: 42px;
 
       color: var(--text-soft);
-
       font-size: 14px;
 
       cursor: pointer;
@@ -662,20 +494,15 @@
         color 0.2s ease;
     }
 
-
     .back-button:hover {
       transform: translateX(-4px);
-
       color: var(--text);
     }
 
-
     .project-header {
       max-width: 940px;
-
       margin-bottom: 55px;
     }
-
 
     .project-type {
       margin-bottom: 14px;
@@ -683,14 +510,11 @@
       color: var(--text-light);
 
       font-size: 11px;
-
       font-weight: 700;
-
       letter-spacing: 0.15em;
 
       text-transform: uppercase;
     }
-
 
     .project-title {
       margin: 0;
@@ -698,10 +522,8 @@
       font-size: clamp(43px, 7vw, 72px);
 
       line-height: 0.98;
-
       letter-spacing: -0.05em;
     }
-
 
     .project-org {
       margin-top: 18px;
@@ -711,19 +533,46 @@
       font-size: 16px;
     }
 
+    .project-link {
+      display: none;
+
+      width: fit-content;
+
+      margin-top: 22px;
+      padding: 10px 15px;
+
+      border: 1px solid var(--border-dark);
+      border-radius: 6px;
+
+      background: var(--white);
+
+      color: var(--text);
+
+      font-size: 13px;
+      text-decoration: none;
+
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .project-link:hover {
+      transform: translateY(-2px);
+
+      border-color: var(--text);
+
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
 
     .project-body {
       max-width: 1000px;
-
       margin: 0 auto;
     }
 
-
     .project-section {
       display: grid;
-
-      grid-template-columns:
-        180px 1fr;
+      grid-template-columns: 180px 1fr;
 
       gap: 40px;
 
@@ -732,194 +581,192 @@
       border-top: 1px solid var(--border);
     }
 
-
     .project-section h2 {
       margin: 0;
-
       font-size: 15px;
-
       letter-spacing: -0.015em;
     }
 
-
     .project-section-content {
       color: #41413f;
-
       font-size: 16px;
-
       line-height: 1.8;
     }
 
-
     .project-section-content ul {
       margin: 0;
-
       padding-left: 20px;
     }
-
 
     .project-section-content li + li {
       margin-top: 9px;
     }
 
 
-
-    /* ======================================================
+    /* =============================
        PROJECT GALLERY
-    ====================================================== */
+    ============================= */
 
     .project-gallery {
       margin-top: 75px;
-
       padding-top: 44px;
-
       border-top: 1px solid var(--border);
     }
-
 
     .project-gallery-header {
       margin-bottom: 32px;
     }
 
-
     .project-gallery-header h2 {
       margin: 0;
-
       font-size: 30px;
-
       letter-spacing: -0.03em;
     }
 
-
     .project-gallery-header p {
       margin: 10px 0 0;
-
       color: var(--text-soft);
-
       font-size: 14px;
     }
 
-
     .gallery-grid {
       display: grid;
-
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
 
       gap: 42px 30px;
-
       align-items: start;
     }
 
-
     .gallery-item {
+      width: 100%;
       margin: 0;
-
       min-width: 0;
     }
 
+    /*
+      Images displayed beside another image use
+      the same visual height.
+    */
+
+    .gallery-item:not(.wide) .gallery-image-wrap {
+      height: 360px;
+    }
 
     .gallery-image-wrap {
       width: 100%;
 
       display: flex;
-
       align-items: center;
-
       justify-content: center;
 
       overflow: hidden;
 
-      background: #e9e9e5;
+      background: var(--image-bg);
 
-      border-radius: 4px;
+      border: 1px solid #e3e3df;
+      border-radius: 5px;
     }
 
-
-    .gallery-item img {
+    .gallery-item:not(.wide) img {
       width: 100%;
-
-      height: auto;
+      height: 100%;
 
       display: block;
 
       object-fit: contain;
-
-      transition: transform 0.3s ease;
     }
 
+    /*
+      Anything on its own row is centered
+      and does not become unnecessarily huge.
+    */
 
-    .gallery-item:hover img {
-      transform: scale(1.006);
+    .gallery-item.wide {
+      grid-column: 1 / -1;
+
+      width: min(100%, 900px);
+
+      justify-self: center;
     }
 
+    .gallery-item.wide .gallery-image-wrap {
+      width: 100%;
+      min-height: 220px;
+      max-height: 650px;
+
+      margin: 0 auto;
+    }
+
+    .gallery-item.wide img {
+      width: 100%;
+      height: auto;
+
+      max-height: 650px;
+
+      display: block;
+
+      object-fit: contain;
+    }
 
     .gallery-item figcaption {
-      margin-top: 11px;
+      max-width: 900px;
+
+      margin: 11px auto 0;
 
       color: var(--text-light);
 
       font-size: 12px;
-
       line-height: 1.55;
     }
 
 
-    .gallery-item.wide {
-      grid-column: 1 / -1;
-    }
-
-
-    .gallery-item.wide img {
-      width: 100%;
-
-      max-height: none;
-
-      object-fit: contain;
-    }
-
-
-
-    /* ======================================================
+    /* =============================
        DOGS
-    ====================================================== */
+    ============================= */
 
     .dog-grid {
       display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
 
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+      gap: 42px 30px;
 
-      gap: 38px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
+    .dog-card {
+      margin: 0;
+    }
+
+    .dog-photo-wrap {
+      width: 100%;
+      height: 390px;
+
+      overflow: hidden;
+
+      background: var(--image-bg);
+
+      border-radius: 5px;
+    }
 
     .dog-card img {
       width: 100%;
-
-      aspect-ratio: 4 / 3;
-
-      object-fit: cover;
+      height: 100%;
 
       display: block;
 
-      background: #ddd;
-
-      border-radius: 4px;
+      object-fit: cover;
     }
-
 
     .dog-card h2 {
       margin: 14px 0 0;
-
       font-size: 20px;
     }
 
 
-
-    /* ======================================================
+    /* =============================
        FOOTER
-    ====================================================== */
+    ============================= */
 
     footer {
       padding: 31px 0 40px;
@@ -932,41 +779,35 @@
     }
 
 
-
-    /* ======================================================
+    /* =============================
        RESPONSIVE
-    ====================================================== */
+    ============================= */
 
     @media (max-width: 900px) {
 
       .home-hero {
         grid-template-columns: 1fr;
-
         gap: 50px;
-
         padding: 65px 0;
       }
-
 
       .home-photo {
         max-width: 500px;
       }
 
-
       .experience-grid {
-        grid-template-columns:
-          repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
       }
-
 
       .project-section {
         grid-template-columns: 1fr;
-
         gap: 15px;
       }
 
+      .dog-photo-wrap {
+        height: 330px;
+      }
     }
-
 
 
     @media (max-width: 650px) {
@@ -974,39 +815,29 @@
       .site,
       .navbar {
         padding-left: 18px;
-
         padding-right: 18px;
       }
-
 
       .navbar {
         min-height: auto;
 
         padding-top: 14px;
-
         padding-bottom: 14px;
 
         flex-direction: column;
-
         align-items: flex-start;
       }
 
-
       .nav-links {
         width: 100%;
-
         overflow-x: auto;
-
         gap: 4px;
       }
 
-
       .nav-link {
         padding: 9px 12px;
-
         white-space: nowrap;
       }
-
 
       .experience-grid,
       .gallery-grid,
@@ -1014,39 +845,47 @@
         grid-template-columns: 1fr;
       }
 
-
       .gallery-item.wide {
         grid-column: auto;
       }
 
+      .gallery-item:not(.wide) .gallery-image-wrap {
+        height: auto;
+        min-height: 260px;
+      }
+
+      .gallery-item:not(.wide) img {
+        height: auto;
+        max-height: 500px;
+      }
+
+      .dog-photo-wrap {
+        height: 360px;
+      }
 
       .project-title {
         font-size: 42px;
       }
 
-
       .home-copy h1 {
         font-size: 63px;
       }
 
-
       .intro {
         font-size: 17px;
       }
-
     }
 
   </style>
-
 </head>
 
 
 <body>
 
 
-  <!-- ======================================================
+  <!-- =============================
        NAVIGATION
-  ====================================================== -->
+  ============================= -->
 
   <div class="nav-wrap">
 
@@ -1107,23 +946,19 @@
     <main id="main-pages">
 
 
-      <!-- ======================================================
+      <!-- =============================
            HOME
-      ====================================================== -->
+      ============================= -->
 
       <section
         id="home"
         class="page active"
       >
 
-
         <div class="home-hero">
 
 
-          <!-- LEFT -->
-
           <div class="home-copy">
-
 
             <div class="section-label">
               Mechanical Engineering Portfolio
@@ -1137,11 +972,9 @@
 
 
             <p class="intro">
-
               Mechanical Engineering student at the University of
               Missouri–Columbia interested in thermal engineering,
               CFD, aerodynamics, structures, and hands-on engineering.
-
             </p>
 
 
@@ -1153,53 +986,35 @@
 
 
               <p>
-
                 I enjoy solving engineering problems through a combination
                 of simulation, design, manufacturing, programming, and
                 hands-on testing. My experience includes aerospace projects,
                 CFD research, automotive manufacturing, mechanical design,
                 and technical leadership.
-
               </p>
 
 
               <div class="skills">
 
-                <span class="skill">
-                  CFD
-                </span>
+                <span class="skill">CFD</span>
 
-                <span class="skill">
-                  Thermal Engineering
-                </span>
+                <span class="skill">Thermal Engineering</span>
 
-                <span class="skill">
-                  SolidWorks
-                </span>
+                <span class="skill">SolidWorks</span>
 
-                <span class="skill">
-                  Python
-                </span>
+                <span class="skill">Python</span>
 
-                <span class="skill">
-                  MATLAB
-                </span>
+                <span class="skill">MATLAB</span>
 
-                <span class="skill">
-                  ANSYS Fluent
-                </span>
+                <span class="skill">ANSYS Fluent</span>
 
               </div>
 
-
             </div>
-
 
           </div>
 
 
-
-          <!-- RIGHT PHOTO -->
 
           <div class="home-photo">
 
@@ -1214,23 +1029,20 @@
 
         </div>
 
-
       </section>
 
 
 
-      <!-- ======================================================
+      <!-- =============================
            RESUME
-      ====================================================== -->
+      ============================= -->
 
       <section
         id="resume"
         class="page"
       >
 
-
         <div class="page-header">
-
 
           <div class="section-label">
             Resume
@@ -1243,19 +1055,14 @@
 
 
           <p>
-
             Education, professional experience, engineering projects,
             technical skills, publications, and certifications.
-
           </p>
-
 
         </div>
 
 
-
         <div class="resume-wrapper">
-
 
           <img
             class="resume-image"
@@ -1263,26 +1070,22 @@
             alt="Elvin Esguerra Resume"
           >
 
-
         </div>
-
 
       </section>
 
 
 
-      <!-- ======================================================
+      <!-- =============================
            EXPERIENCE
-      ====================================================== -->
+      ============================= -->
 
       <section
         id="experience"
         class="page"
       >
 
-
         <div class="page-header">
-
 
           <div class="section-label">
             Experience
@@ -1295,22 +1098,15 @@
 
 
           <p>
-
             Select an experience or project to explore the work,
             engineering approach, results, and supporting images.
-
           </p>
-
 
         </div>
 
 
 
-        <!-- INTERNSHIP -->
-
-
         <section class="experience-group">
-
 
           <div class="group-heading">
 
@@ -1332,16 +1128,11 @@
             id="internship-grid"
           ></div>
 
-
         </section>
 
 
 
-        <!-- RESEARCH -->
-
-
         <section class="experience-group">
-
 
           <div class="group-heading">
 
@@ -1363,16 +1154,11 @@
             id="research-grid"
           ></div>
 
-
         </section>
 
 
 
-        <!-- ENGINEERING PROJECTS -->
-
-
         <section class="experience-group">
-
 
           <div class="group-heading">
 
@@ -1394,23 +1180,20 @@
             id="project-grid"
           ></div>
 
-
         </section>
-
 
       </section>
 
 
 
-      <!-- ======================================================
+      <!-- =============================
            DOGS
-      ====================================================== -->
+      ============================= -->
 
       <section
         id="dogs"
         class="page"
       >
-
 
         <div class="page-header">
 
@@ -1422,6 +1205,10 @@
             Dogs
           </h1>
 
+          <p>
+            The four-legged members of the family.
+          </p>
+
         </div>
 
 
@@ -1430,10 +1217,14 @@
 
           <article class="dog-card">
 
-            <img
-              src="images/cosmo.jpg"
-              alt="Cosmo"
-            >
+            <div class="dog-photo-wrap">
+
+              <img
+                src="images/cosmo.png"
+                alt="Cosmo"
+              >
+
+            </div>
 
             <h2>
               Cosmo
@@ -1442,12 +1233,17 @@
           </article>
 
 
+
           <article class="dog-card">
 
-            <img
-              src="images/pluto.jpg"
-              alt="Pluto"
-            >
+            <div class="dog-photo-wrap">
+
+              <img
+                src="images/pluto.png"
+                alt="Pluto"
+              >
+
+            </div>
 
             <h2>
               Pluto
@@ -1456,12 +1252,17 @@
           </article>
 
 
+
           <article class="dog-card">
 
-            <img
-              src="images/winston.jpg"
-              alt="Winston"
-            >
+            <div class="dog-photo-wrap">
+
+              <img
+                src="images/winston.png"
+                alt="Winston"
+              >
+
+            </div>
 
             <h2>
               Winston
@@ -1470,12 +1271,17 @@
           </article>
 
 
+
           <article class="dog-card">
 
-            <img
-              src="images/rey.jpg"
-              alt="Rey"
-            >
+            <div class="dog-photo-wrap">
+
+              <img
+                src="images/rey.png"
+                alt="Rey"
+              >
+
+            </div>
 
             <h2>
               Rey
@@ -1486,7 +1292,6 @@
 
         </div>
 
-
       </section>
 
 
@@ -1494,10 +1299,9 @@
 
 
 
-    <!-- ======================================================
+    <!-- =============================
          FULL PROJECT PAGE
-    ====================================================== -->
-
+    ============================= -->
 
     <section
       id="project-view"
@@ -1516,7 +1320,6 @@
 
       <div class="project-header">
 
-
         <div
           class="project-type"
           id="project-type"
@@ -1534,6 +1337,15 @@
           id="project-org"
         ></div>
 
+
+        <a
+          class="project-link"
+          id="project-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Published Paper ↗
+        </a>
 
       </div>
 
@@ -1592,7 +1404,6 @@
           id="project-gallery-section"
         >
 
-
           <div class="project-gallery-header">
 
             <h2>
@@ -1611,21 +1422,17 @@
             id="project-gallery"
           ></div>
 
-
         </section>
 
 
       </div>
-
 
     </section>
 
 
 
     <footer>
-
       Elvin Esguerra · Mechanical Engineering Portfolio
-
     </footer>
 
 
@@ -1636,19 +1443,14 @@
   <script>
 
 
-    /* ======================================================
+    /* =============================
        EXPERIENCE DATA
-    ====================================================== */
-
+    ============================= */
 
     const experiences = [
 
 
-
-      /* ======================================================
-         GENERAL MOTORS
-      ====================================================== */
-
+      /* GENERAL MOTORS */
 
       {
 
@@ -1666,6 +1468,9 @@
 
         cover:
           "images/gm.png",
+
+        link:
+          null,
 
 
         what: [
@@ -1752,10 +1557,7 @@
 
 
 
-      /* ======================================================
-         AIAA RESEARCH
-      ====================================================== */
-
+      /* AIAA RESEARCH */
 
       {
 
@@ -1772,7 +1574,10 @@
           "AIAA Region V Student Conference · 2026",
 
         cover:
-          null,
+          "images/aiaa-cover.png",
+
+        link:
+          "https://arc.aiaa.org/doi/10.2514/6.2026-111868",
 
 
         what: [
@@ -1831,10 +1636,7 @@
 
 
 
-      /* ======================================================
-         UNDERGRAD RESEARCH
-      ====================================================== */
-
+      /* UNDERGRADUATE RESEARCH */
 
       {
 
@@ -1851,6 +1653,9 @@
           "University of Missouri Semiconductor Laboratory",
 
         cover:
+          "images/mizzou-logo.jpg",
+
+        link:
           null,
 
 
@@ -1889,10 +1694,7 @@
 
 
 
-      /* ======================================================
-         ARGONIA
-      ====================================================== */
-
+      /* ARGONIA */
 
       {
 
@@ -1909,6 +1711,9 @@
           "Mizzou Space Program · May 2026 – Present",
 
         cover:
+          null,
+
+        link:
           null,
 
 
@@ -1951,10 +1756,7 @@
 
 
 
-      /* ======================================================
-         IREC NOSE CONE CFD
-      ====================================================== */
-
+      /* IREC NOSE CONE CFD */
 
       {
 
@@ -1971,6 +1773,9 @@
           "Mizzou Space Program · April 2026 – May 2026",
 
         cover:
+          "images/nosecone-analysis-cover.png",
+
+        link:
           null,
 
 
@@ -2030,10 +1835,7 @@
 
 
 
-      /* ======================================================
-         IREC PAYLOAD
-      ====================================================== */
-
+      /* IREC PAYLOAD */
 
       {
 
@@ -2050,6 +1852,9 @@
           "Mizzou Space Program · August 2025 – May 2026",
 
         cover:
+          "images/payload-cover.png",
+
+        link:
           null,
 
 
@@ -2098,7 +1903,7 @@
               "images/irec-payload.jpg",
 
             caption:
-              "IREC payload electronics and CAD configuration.",
+              "IREC payload CAD and electronics configuration.",
 
             wide:
               false
@@ -2139,10 +1944,7 @@
 
 
 
-      /* ======================================================
-         LEVEL 1 ROCKET
-      ====================================================== */
-
+      /* LEVEL 1 */
 
       {
 
@@ -2159,6 +1961,9 @@
           "High-Power Rocketry",
 
         cover:
+          "images/level1-cover.png",
+
+        link:
           null,
 
 
@@ -2208,7 +2013,7 @@
               "Completed Level 1 high-power rocket.",
 
             wide:
-              false
+              true
 
           },
 
@@ -2248,22 +2053,18 @@
 
 
 
-    /* ======================================================
+    /* =============================
        PAGE NAVIGATION
-    ====================================================== */
-
+    ============================= */
 
     const pages =
       document.querySelectorAll(".page");
 
-
     const navButtons =
       document.querySelectorAll(".nav-link");
 
-
     const mainPages =
       document.getElementById("main-pages");
-
 
     const projectView =
       document.getElementById("project-view");
@@ -2272,11 +2073,7 @@
 
     function showPage(pageName) {
 
-
-      projectView.classList.remove(
-        "active"
-      );
-
+      projectView.classList.remove("active");
 
       mainPages.style.display =
         "block";
@@ -2315,10 +2112,7 @@
 
       button.addEventListener(
         "click",
-        () =>
-          showPage(
-            button.dataset.page
-          )
+        () => showPage(button.dataset.page)
       );
 
     });
@@ -2329,49 +2123,34 @@
       .getElementById("brand")
       .addEventListener(
         "click",
-        () =>
-          showPage("home")
+        () => showPage("home")
       );
 
 
 
-    /* ======================================================
+    /* =============================
        EXPERIENCE CARDS
-    ====================================================== */
-
+    ============================= */
 
     const internshipGrid =
-      document.getElementById(
-        "internship-grid"
-      );
-
+      document.getElementById("internship-grid");
 
     const researchGrid =
-      document.getElementById(
-        "research-grid"
-      );
-
+      document.getElementById("research-grid");
 
     const projectGrid =
-      document.getElementById(
-        "project-grid"
-      );
+      document.getElementById("project-grid");
 
 
 
     experiences.forEach(
       (experience, index) => {
 
-
         const card =
-          document.createElement(
-            "button"
-          );
-
+          document.createElement("button");
 
         card.className =
           "experience-card";
-
 
         card.type =
           "button";
@@ -2380,9 +2159,7 @@
         let coverHTML;
 
 
-
         if (experience.cover) {
-
 
           coverHTML = `
 
@@ -2394,12 +2171,9 @@
 
           `;
 
-
         }
 
-
         else {
-
 
           coverHTML = `
 
@@ -2409,9 +2183,7 @@
 
           `;
 
-
         }
-
 
 
         card.innerHTML = `
@@ -2422,16 +2194,13 @@
 
           </div>
 
-
           <h3>
             ${experience.title}
           </h3>
 
-
           <p>
             ${experience.organization}
           </p>
-
 
           <span class="view-project">
             View project →
@@ -2440,105 +2209,66 @@
         `;
 
 
-
         card.addEventListener(
           "click",
-          () =>
-            openProject(index)
+          () => openProject(index)
         );
 
 
-
         if (
-          experience.category ===
-          "internship"
+          experience.category === "internship"
         ) {
 
-
-          internshipGrid.appendChild(
-            card
-          );
-
+          internshipGrid.appendChild(card);
 
         }
-
 
         else if (
-          experience.category ===
-          "research"
+          experience.category === "research"
         ) {
 
-
-          researchGrid.appendChild(
-            card
-          );
-
+          researchGrid.appendChild(card);
 
         }
-
 
         else {
 
-
-          projectGrid.appendChild(
-            card
-          );
-
+          projectGrid.appendChild(card);
 
         }
-
 
       }
     );
 
 
 
-    /* ======================================================
-       PROJECT VIEW
-    ====================================================== */
-
+    /* =============================
+       FULL PROJECT VIEW
+    ============================= */
 
     const projectType =
-      document.getElementById(
-        "project-type"
-      );
-
+      document.getElementById("project-type");
 
     const projectTitle =
-      document.getElementById(
-        "project-title"
-      );
-
+      document.getElementById("project-title");
 
     const projectOrg =
-      document.getElementById(
-        "project-org"
-      );
+      document.getElementById("project-org");
 
+    const projectLink =
+      document.getElementById("project-link");
 
     const projectWhat =
-      document.getElementById(
-        "project-what"
-      );
-
+      document.getElementById("project-what");
 
     const projectHow =
-      document.getElementById(
-        "project-how"
-      );
-
+      document.getElementById("project-how");
 
     const projectResults =
-      document.getElementById(
-        "project-results"
-      );
-
+      document.getElementById("project-results");
 
     const projectGallery =
-      document.getElementById(
-        "project-gallery"
-      );
-
+      document.getElementById("project-gallery");
 
     const projectGallerySection =
       document.getElementById(
@@ -2549,15 +2279,13 @@
 
     function buildList(items) {
 
-
       return `
 
         <ul>
 
           ${items
             .map(
-              item =>
-                `<li>${item}</li>`
+              item => `<li>${item}</li>`
             )
             .join("")}
 
@@ -2565,13 +2293,11 @@
 
       `;
 
-
     }
 
 
 
     function openProject(index) {
-
 
       const project =
         experiences[index];
@@ -2584,36 +2310,47 @@
       projectType.textContent =
         project.type;
 
-
       projectTitle.textContent =
         project.title;
-
 
       projectOrg.textContent =
         project.organization;
 
 
-      projectWhat.innerHTML =
-        buildList(
-          project.what
+      if (project.link) {
+
+        projectLink.href =
+          project.link;
+
+        projectLink.style.display =
+          "inline-block";
+
+      }
+
+      else {
+
+        projectLink.removeAttribute(
+          "href"
         );
 
+        projectLink.style.display =
+          "none";
+
+      }
+
+
+      projectWhat.innerHTML =
+        buildList(project.what);
 
       projectHow.innerHTML =
-        buildList(
-          project.how
-        );
-
+        buildList(project.how);
 
       projectResults.innerHTML =
-        buildList(
-          project.results
-        );
+        buildList(project.results);
 
 
       projectGallery.innerHTML =
         "";
-
 
 
       if (
@@ -2621,37 +2358,26 @@
         project.gallery.length > 0
       ) {
 
-
         projectGallerySection.style.display =
           "block";
-
 
 
         project.gallery.forEach(
           image => {
 
-
             const figure =
-              document.createElement(
-                "figure"
-              );
+              document.createElement("figure");
 
 
             figure.className =
               "gallery-item";
 
 
-
             if (image.wide) {
 
-
-              figure.classList.add(
-                "wide"
-              );
-
+              figure.classList.add("wide");
 
             }
-
 
 
             figure.innerHTML = `
@@ -2665,7 +2391,6 @@
 
               </div>
 
-
               <figcaption>
                 ${image.caption}
               </figcaption>
@@ -2673,47 +2398,34 @@
             `;
 
 
-
             projectGallery.appendChild(
               figure
             );
 
-
           }
         );
 
-
       }
 
-
       else {
-
 
         projectGallerySection.style.display =
           "none";
 
-
       }
-
 
 
       navButtons.forEach(
         button =>
-          button.classList.remove(
-            "active"
-          )
+          button.classList.remove("active")
       );
-
 
 
       document
         .querySelector(
           '[data-page="experience"]'
         )
-        .classList.add(
-          "active"
-        );
-
+        .classList.add("active");
 
 
       projectView.classList.remove(
@@ -2721,17 +2433,13 @@
       );
 
 
-
       requestAnimationFrame(() => {
-
 
         projectView.classList.add(
           "active"
         );
 
-
       });
-
 
 
       window.scrollTo({
@@ -2739,15 +2447,13 @@
         behavior: "smooth"
       });
 
-
     }
 
 
 
-    /* ======================================================
-       BACK TO EXPERIENCE
-    ====================================================== */
-
+    /* =============================
+       BACK BUTTON
+    ============================= */
 
     document
       .getElementById(
@@ -2755,14 +2461,13 @@
       )
       .addEventListener(
         "click",
-        () =>
-          showPage("experience")
+        () => showPage("experience")
       );
 
 
   </script>
 
-
 </body>
 
 </html>
+```
