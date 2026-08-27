@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Elvin's Portfolio | Mechanical Engineering</title>
 
   <style>
@@ -29,37 +27,19 @@
     }
 
     body {
-      font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Helvetica,
-        Arial,
-        sans-serif;
-
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.65;
       font-weight: 400;
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p,
-    span,
-    div,
-    li,
-    a,
-    button,
-    th,
-    td {
+    h1, h2, h3, h4, h5, h6, p, span, div, li, a, button, th, td {
       color: var(--text);
+      font-weight: 400;
+    }
+
+    strong {
       font-weight: 400;
     }
 
@@ -69,6 +49,7 @@
     }
 
     a {
+      color: var(--text);
       text-decoration: none;
     }
 
@@ -84,10 +65,8 @@
       position: sticky;
       top: 0;
       z-index: 100;
-
       background: rgba(247, 247, 245, 0.97);
       backdrop-filter: blur(12px);
-
       border-bottom: 1px solid var(--border);
     }
 
@@ -95,7 +74,6 @@
       max-width: 1180px;
       margin: auto;
       padding: 20px 28px;
-
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -120,10 +98,8 @@
       border: none;
       background: none;
       cursor: pointer;
-
       font-size: 20px;
       padding: 9px 3px;
-
       transition: opacity 0.2s ease;
     }
 
@@ -156,7 +132,6 @@
         opacity: 0;
         transform: translateY(12px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
@@ -178,8 +153,8 @@
     }
 
     .section-description {
-      max-width: 700px;
-      font-size: 19px;
+      max-width: 760px;
+      font-size: 20px;
       margin-bottom: 50px;
     }
 
@@ -187,7 +162,7 @@
       width: 100%;
       border: none;
       border-top: 1px solid var(--border);
-      margin: 58px 0;
+      margin: 64px 0;
     }
 
     /* =====================================================
@@ -205,25 +180,20 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-
-      padding: 13px 20px;
-
-      border: 1px solid var(--text);
       border-radius: 9px;
-
-      background: transparent;
-      color: var(--text);
-
-      font-size: 17px;
-
+      padding: 14px 22px;
+      border: 1px solid var(--text);
       cursor: pointer;
+      color: var(--text);
+      background: transparent;
+      font-size: 18px;
       transition: 0.2s ease;
     }
 
     .hero .button {
-      min-width: 145px;
-      padding: 15px 25px;
-      font-size: 19px;
+      min-width: 154px;
+      padding: 16px 28px;
+      font-size: 20px;
     }
 
     .button-primary {
@@ -240,11 +210,9 @@
 
     .hero {
       min-height: 68vh;
-
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
       gap: 70px;
-
       align-items: center;
     }
 
@@ -256,7 +224,7 @@
     }
 
     .hero-role {
-      max-width: 670px;
+      max-width: 680px;
       font-size: 21px;
       line-height: 1.7;
     }
@@ -270,9 +238,7 @@
       width: 100%;
       max-width: 430px;
       max-height: 560px;
-
       object-fit: cover;
-
       border-radius: 12px;
     }
 
@@ -281,31 +247,23 @@
     ===================================================== */
 
     .about-section {
-      max-width: 820px;
-      margin: auto;
-      text-align: center;
-    }
-
-    .about-title {
-      font-size: clamp(34px, 4vw, 46px);
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-
-      margin-bottom: 25px;
+      max-width: 1030px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(250px, 320px) 1fr;
+      gap: 58px;
+      align-items: center;
     }
 
     .about-image-shell {
-      width: 250px;
-      height: 250px;
-
-      margin: 0 auto 27px;
-
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 4 / 5;
+      border-radius: 14px;
       overflow: hidden;
-
-      border: 1px solid var(--border);
-      border-radius: 16px;
-
       background: var(--image-bg);
+      border: 1px solid var(--border);
+      position: relative;
     }
 
     .about-image-shell img {
@@ -316,36 +274,40 @@
     }
 
     .about-image-placeholder {
+      display: none;
       width: 100%;
       height: 100%;
-
-      display: none;
       align-items: center;
       justify-content: center;
-
       padding: 22px;
-
-      font-size: 15px;
+      font-size: 16px;
       text-align: center;
     }
 
-    .about-copy {
-      max-width: 760px;
-      margin: auto;
+    .about-content {
+      min-width: 0;
+    }
 
-      font-size: 19px;
+    .about-title {
+      font-size: clamp(34px, 4vw, 46px);
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 22px;
+    }
+
+    .about-copy {
+      max-width: 680px;
+      font-size: 20px;
       line-height: 1.75;
     }
 
     .contact-row {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       flex-wrap: wrap;
-
       gap: 14px 24px;
-      margin-top: 27px;
-
-      font-size: 16px;
+      margin-top: 26px;
+      font-size: 17px;
     }
 
     .contact-row a:hover {
@@ -365,7 +327,6 @@
       font-size: clamp(42px, 6vw, 62px);
       line-height: 1.05;
       letter-spacing: -0.045em;
-
       margin-bottom: 22px;
     }
 
@@ -380,13 +341,10 @@
     }
 
     .resume-image {
-      padding: 10px;
-
       background: var(--white);
-
       border: 1px solid var(--border);
+      padding: 10px;
       border-radius: 8px;
-
       box-shadow: 0 10px 35px rgba(0, 0, 0, 0.04);
     }
 
@@ -395,13 +353,12 @@
     ===================================================== */
 
     .experience-section {
-      margin-bottom: 70px;
+      margin-bottom: 72px;
     }
 
     .experience-heading {
-      font-size: 26px;
+      font-size: 28px;
       letter-spacing: -0.02em;
-
       margin-bottom: 25px;
     }
 
@@ -412,51 +369,41 @@
     }
 
     .project-card {
-      overflow: hidden;
-
-      background: var(--white);
-
       border: 1px solid var(--border);
+      background: var(--white);
       border-radius: 10px;
-
+      overflow: hidden;
       cursor: pointer;
-
-      transition:
-        transform 0.2s ease,
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .project-card:hover {
       transform: translateY(-3px);
-
       border-color: var(--border-dark);
-
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
     }
 
     .project-card-image {
       height: 260px;
-
+      background: var(--image-bg);
       display: flex;
       align-items: center;
       justify-content: center;
-
       overflow: hidden;
-
-      background: var(--image-bg);
     }
 
     .project-card-image img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      object-position: center;
+      padding: 10px;
+      background: var(--white);
     }
 
     .project-placeholder {
+      font-size: 17px;
       padding: 30px;
-
-      font-size: 16px;
       text-align: center;
     }
 
@@ -465,19 +412,18 @@
     }
 
     .project-card h3 {
-      font-size: 23px;
+      font-size: 24px;
       line-height: 1.3;
       letter-spacing: -0.02em;
-
       margin-bottom: 7px;
     }
 
     .project-meta {
-      font-size: 16px;
+      font-size: 17px;
     }
 
     /* =====================================================
-       PROJECT DETAIL
+       PROJECT DETAIL + FLUID NAVIGATION
     ===================================================== */
 
     .project-view {
@@ -489,39 +435,28 @@
       animation: fadeUp 0.35s ease both;
     }
 
-    /* Project selector at the top */
-
     .project-switcher-wrap {
       margin-bottom: 38px;
-      padding-bottom: 8px;
-
       overflow-x: auto;
-
+      padding-bottom: 9px;
       scrollbar-width: thin;
     }
 
     .project-switcher {
       display: flex;
       gap: 9px;
-
       width: max-content;
       min-width: 100%;
     }
 
     .project-switch {
-      padding: 9px 14px;
-
-      white-space: nowrap;
-
-      background: transparent;
-
       border: 1px solid var(--border);
+      background: transparent;
       border-radius: 999px;
-
-      font-size: 15px;
-
+      padding: 10px 15px;
+      font-size: 16px;
       cursor: pointer;
-
+      white-space: nowrap;
       transition: 0.2s ease;
     }
 
@@ -532,7 +467,7 @@
     }
 
     .project-header {
-      max-width: 820px;
+      max-width: 860px;
       margin-bottom: 52px;
     }
 
@@ -540,84 +475,71 @@
       font-size: clamp(38px, 5vw, 58px);
       line-height: 1.05;
       letter-spacing: -0.045em;
-
       margin-bottom: 14px;
     }
 
     .project-header-meta {
-      font-size: 17px;
+      font-size: 18px;
     }
 
     .project-section {
       display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 60px;
-
-      padding: 42px 0;
-
+      grid-template-columns: 200px 1fr;
+      gap: 58px;
+      padding: 44px 0;
       border-top: 1px solid var(--border);
     }
 
     .project-section h2 {
-      font-size: 20px;
+      font-size: 21px;
       letter-spacing: -0.01em;
     }
 
     .project-section-content {
-      max-width: 820px;
-      font-size: 18px;
+      max-width: 860px;
+      font-size: 20px;
+      line-height: 1.72;
     }
 
     .project-section-content p {
-      margin-bottom: 17px;
+      margin-bottom: 19px;
+    }
+
+    .project-section-content p:last-child {
+      margin-bottom: 0;
     }
 
     .project-subsection {
-      margin: 30px 0;
-    }
-
-    .project-subsection:first-child {
-      margin-top: 0;
+      margin: 32px 0 0;
     }
 
     .project-subsection h4 {
-      font-size: 20px;
-      margin-bottom: 10px;
+      font-size: 22px;
+      margin-bottom: 12px;
     }
-
-    /* =====================================================
-       PROJECT PREVIOUS / NEXT
-    ===================================================== */
 
     .project-bottom-nav {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
-
-      margin-top: 46px;
+      margin-top: 48px;
       padding-top: 30px;
-
       border-top: 1px solid var(--border);
     }
 
     .project-nav-button {
-      padding: 18px 20px;
-
-      background: var(--white);
-
+      text-align: left;
+      padding: 19px 21px;
       border: 1px solid var(--border);
       border-radius: 10px;
-
-      text-align: left;
-
+      background: var(--white);
       cursor: pointer;
-
       transition: 0.2s ease;
     }
 
     .project-nav-button:hover {
-      transform: translateY(-2px);
       border-color: var(--border-dark);
+      transform: translateY(-2px);
     }
 
     .project-nav-button.next {
@@ -626,15 +548,13 @@
 
     .project-nav-small {
       display: block;
-
+      font-size: 15px;
       margin-bottom: 4px;
-
-      font-size: 14px;
     }
 
     .project-nav-title {
       display: block;
-      font-size: 17px;
+      font-size: 18px;
     }
 
     /* =====================================================
@@ -645,37 +565,29 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 30px 50px;
-
       margin: 25px 0 30px;
     }
 
     .equation-column h5 {
+      font-size: 18px;
       margin-bottom: 10px;
-      font-size: 17px;
     }
 
     .equation-row {
       display: grid;
-      grid-template-columns: 145px 1fr;
+      grid-template-columns: 155px 1fr;
       gap: 12px;
-
-      align-items: baseline;
-
-      padding: 9px 0;
-
+      padding: 10px 0;
       border-bottom: 1px solid var(--border);
+      align-items: baseline;
     }
 
     .equation-name {
-      font-size: 14px;
+      font-size: 15px;
     }
 
     .equation-value {
-      font-family:
-        "Times New Roman",
-        Times,
-        serif;
-
+      font-family: "Times New Roman", Times, serif;
       font-size: 20px;
     }
 
@@ -686,71 +598,65 @@
     .comparison-table-wrap {
       width: 100%;
       overflow-x: auto;
-
       margin: 24px 0;
     }
 
     .comparison-table {
       width: 100%;
-
       border-collapse: collapse;
-
       background: var(--white);
-
-      font-size: 16px;
+      font-size: 17px;
     }
 
     .comparison-table th,
     .comparison-table td {
       padding: 13px 15px;
-
       border: 1px solid var(--border);
-
       text-align: left;
       font-weight: 400;
     }
 
     /* =====================================================
-       GALLERY
+       PROJECT GALLERY
     ===================================================== */
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      align-items: start;
     }
 
     .gallery-item {
       min-width: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
-    .gallery-item.wide {
-      grid-column: 1 / -1;
-    }
-
-    .gallery-item img {
+    .gallery-image-frame {
       width: 100%;
-      max-height: 650px;
-
-      object-fit: contain;
-
+      height: 340px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
       background: var(--white);
-
       border: 1px solid var(--border);
       border-radius: 8px;
     }
 
-    .gallery-item.wide img {
-      max-width: 900px;
-      margin: auto;
+    .gallery-image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
     }
 
     .gallery-caption {
-      max-width: 900px;
-
-      margin: 9px auto 0;
-
-      font-size: 15px;
+      margin-top: 9px;
+      font-size: 16px;
       line-height: 1.45;
     }
 
@@ -771,30 +677,25 @@
 
     .dog-card {
       overflow: hidden;
-
       background: var(--white);
-
       border: 1px solid var(--border);
       border-radius: 10px;
     }
 
     .dog-image-wrap {
       width: 100%;
-      height: 390px;
-
+      aspect-ratio: 4 / 3;
       display: flex;
       align-items: center;
       justify-content: center;
-
-      padding: 10px;
-
       background: var(--white);
+      padding: 12px;
+      overflow: hidden;
     }
 
     .dog-image-wrap img {
       width: 100%;
       height: 100%;
-
       object-fit: contain;
       object-position: center;
     }
@@ -805,7 +706,7 @@
     }
 
     .dog-card h3 {
-      font-size: 21px;
+      font-size: 22px;
     }
 
     /* =====================================================
@@ -813,18 +714,14 @@
     ===================================================== */
 
     footer {
+      border-top: 1px solid var(--border);
       max-width: 1180px;
       margin: auto;
-
+      padding: 25px 28px 45px;
       display: flex;
       justify-content: space-between;
       gap: 20px;
       flex-wrap: wrap;
-
-      padding: 25px 28px 45px;
-
-      border-top: 1px solid var(--border);
-
       font-size: 15px;
     }
 
@@ -833,10 +730,9 @@
     ===================================================== */
 
     @media (max-width: 820px) {
-
       .nav-inner {
-        flex-direction: column;
         align-items: flex-start;
+        flex-direction: column;
         gap: 10px;
       }
 
@@ -845,7 +741,7 @@
       }
 
       .nav-link {
-        font-size: 16px;
+        font-size: 17px;
       }
 
       main {
@@ -867,8 +763,26 @@
 
       .hero .button {
         min-width: 0;
-        padding: 13px 18px;
-        font-size: 16px;
+        font-size: 17px;
+        padding: 14px 19px;
+      }
+
+      .about-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .about-image-shell {
+        max-width: 290px;
+        margin: 0 auto;
+      }
+
+      .about-content {
+        text-align: center;
+      }
+
+      .contact-row {
+        justify-content: center;
       }
 
       .card-grid {
@@ -894,16 +808,12 @@
         grid-template-columns: 1fr;
       }
 
-      .gallery-item.wide {
-        grid-column: auto;
+      .gallery-image-frame {
+        height: 320px;
       }
 
       .dog-grid {
         grid-template-columns: 1fr;
-      }
-
-      .dog-image-wrap {
-        height: 340px;
       }
 
       .project-bottom-nav {
@@ -917,1739 +827,863 @@
   </style>
 </head>
 
-
 <body>
-
-  <!-- =====================================================
-       NAVIGATION
-  ====================================================== -->
-
   <nav class="nav">
-
     <div class="nav-inner">
-
-      <div
-        class="nav-name"
-        onclick="showPage('home')"
-      >
-        Elvin's Portfolio
-      </div>
-
+      <div class="nav-name" onclick="showPage('home')">Elvin's Portfolio</div>
 
       <div class="nav-links">
-
-        <button
-          class="nav-link active"
-          data-page="home"
-          onclick="showPage('home')"
-        >
-          Home
-        </button>
-
-        <button
-          class="nav-link"
-          data-page="resume"
-          onclick="showPage('resume')"
-        >
-          Resume
-        </button>
-
-        <button
-          class="nav-link"
-          data-page="experience"
-          onclick="showPage('experience')"
-        >
-          Experience
-        </button>
-
-        <button
-          class="nav-link"
-          data-page="dogs"
-          onclick="showPage('dogs')"
-        >
-          Dogs
-        </button>
-
+        <button class="nav-link active" data-page="home" onclick="showPage('home')">Home</button>
+        <button class="nav-link" data-page="resume" onclick="showPage('resume')">Resume</button>
+        <button class="nav-link" data-page="experience" onclick="showPage('experience')">Experience</button>
+        <button class="nav-link" data-page="dogs" onclick="showPage('dogs')">Dogs</button>
       </div>
-
     </div>
-
   </nav>
 
-
   <main>
-
     <!-- =====================================================
          HOME
     ====================================================== -->
 
-    <section
-      id="home"
-      class="page active"
-    >
-
+    <section id="home" class="page active">
       <div class="hero">
-
         <div>
-
-          <div class="section-label">
-            Mechanical Engineering
-          </div>
-
-          <h1>
-            Elvin Esguerra
-          </h1>
+          <div class="section-label">Mechanical Engineering</div>
+          <h1>Elvin Esguerra</h1>
 
           <p class="hero-role">
-            Sophomore Mechanical Engineering student at Mizzou interested in
-            thermal engineering, computational methods, mechanical design,
-            aerodynamics, structures, and artificial intelligence.
+            Sophomore Mechanical Engineering student at Mizzou interested in thermal engineering,
+            computational methods, mechanical design, aerodynamics, structures, and artificial intelligence.
           </p>
 
-
           <div class="button-row">
-
-            <button
-              class="button button-primary"
-              onclick="showPage('experience')"
-            >
-              View Experience
-            </button>
-
-            <button
-              class="button button-secondary"
-              onclick="showPage('resume')"
-            >
-              View Resume
-            </button>
-
-            <button
-              class="button button-secondary"
-              onclick="showPage('dogs')"
-            >
-              Dogs
-            </button>
-
+            <button class="button button-primary" onclick="showPage('experience')">View Experience</button>
+            <button class="button button-secondary" onclick="showPage('resume')">View Resume</button>
+            <button class="button button-secondary" onclick="showPage('dogs')">Dogs</button>
           </div>
-
         </div>
-
 
         <div class="hero-image">
-
-          <img
-            src="images/home-pic.png"
-            alt="Elvin Esguerra"
-          >
-
+          <img src="images/home-pic.png" alt="Elvin Esguerra">
         </div>
-
       </div>
-
 
       <hr class="divider">
 
-
       <section class="about-section">
-
-        <h2 class="about-title">
-          About Me
-        </h2>
-
-
         <div class="about-image-shell">
-
           <img
-            src="images/about-pic.png"
-            alt="About Elvin"
-            onerror="
-              this.style.display='none';
-              this.nextElementSibling.style.display='flex';
-            "
+            src="images/about-me.jpg"
+            alt="Elvin Esguerra"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
           >
+          <div class="about-image-placeholder">Add your photo as images/about-me.jpg</div>
+        </div>
 
-          <div class="about-image-placeholder">
-            Add your photo as images/about-pic.png
+        <div class="about-content">
+          <h2 class="about-title">About Me</h2>
+
+          <p class="about-copy">
+            I enjoy learning how problems work and figuring out how to make them simpler, faster, and better.
+            That mindset is a big part of what draws me toward mechanical engineering, especially simulation,
+            design, and problem solving where I can understand how something works and then improve it.
+            Outside of academics, I enjoy playing tennis, spending time with my dogs, and my favorite food is pho.
+            Feel free to reach out with any questions — I’m always happy to connect!
+          </p>
+
+          <div class="contact-row">
+            <a href="mailto:ejhesguerra@gmail.com">ejhesguerra@gmail.com</a>
+            <a href="https://www.linkedin.com/in/elvinesguerra" target="_blank" rel="noopener">LinkedIn ↗</a>
           </div>
-
         </div>
-
-
-        <p class="about-copy">
-          I enjoy learning how problems work and figuring out how to make
-          them simpler, faster, and better. That mindset is a big part of
-          what draws me toward mechanical engineering, especially simulation,
-          thermal engineering, design, and optimization. I like work where
-          I can understand a system, test ideas, and use the results to improve
-          the design. Outside of academics, I enjoy tennis, spending time with
-          my dogs, and my favorite food is pho. Feel free to reach out with
-          any questions — I’m always happy to connect!
-        </p>
-
-
-        <div class="contact-row">
-
-          <a href="mailto:ejhesguerra@gmail.com">
-            ejhesguerra@gmail.com
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/elvinesguerra"
-            target="_blank"
-            rel="noopener"
-          >
-            LinkedIn ↗
-          </a>
-
-        </div>
-
       </section>
-
     </section>
-
 
     <!-- =====================================================
          RESUME
     ====================================================== -->
 
-    <section
-      id="resume"
-      class="page"
-    >
-
+    <section id="resume" class="page">
       <div class="resume-header">
-
-        <h1 class="resume-title">
-          Resume
-        </h1>
-
+        <h1 class="resume-title">Resume</h1>
 
         <div class="resume-actions">
-
-          <a
-            href="files/ElvinEsguerra_Fall2026_Resume.pdf"
-            download
-            class="button button-primary"
-          >
-            Download Resume
-          </a>
-
+          <a href="files/ElvinEsguerra_Fall2026_Resume.pdf" download class="button button-primary">Download Resume</a>
         </div>
-
       </div>
-
 
       <div class="resume-wrapper">
-
         <div class="resume-image">
-
-          <img
-            src="images/ElvinEsguerra-Resume.png"
-            alt="Elvin Esguerra Resume"
-          >
-
+          <img src="images/ElvinEsguerra-Resume.png" alt="Elvin Esguerra Resume">
         </div>
-
       </div>
-
     </section>
-
 
     <!-- =====================================================
          EXPERIENCE
     ====================================================== -->
 
-    <section
-      id="experience"
-      class="page"
-    >
-
+    <section id="experience" class="page">
       <div id="experience-list">
-
-        <div class="section-label">
-          Experience
-        </div>
-
-        <h1 class="section-title">
-          Engineering & Work
-        </h1>
-
+        <div class="section-label">Experience</div>
+        <h1 class="section-title">Engineering & Work</h1>
         <p class="section-description">
-          Engineering projects, research, and professional experience in
-          simulation, analysis, manufacturing, design, and testing.
+          Internship experience, simulation and analysis, and hands-on design and manufacturing work.
         </p>
 
-
         <div class="experience-section">
-
-          <h2 class="experience-heading">
-            Internship Experience
-          </h2>
-
-          <div
-            id="internship-grid"
-            class="card-grid"
-          ></div>
-
+          <h2 class="experience-heading">Internship Experience</h2>
+          <div id="internship-grid" class="card-grid"></div>
         </div>
 
-
         <div class="experience-section">
-
-          <h2 class="experience-heading">
-            Research
-          </h2>
-
-          <div
-            id="research-grid"
-            class="card-grid"
-          ></div>
-
+          <h2 class="experience-heading">Simulation & Analysis</h2>
+          <div id="simulation-grid" class="card-grid"></div>
         </div>
 
-
         <div class="experience-section">
-
-          <h2 class="experience-heading">
-            Engineering Projects
-          </h2>
-
-          <div
-            id="projects-grid"
-            class="card-grid"
-          ></div>
-
+          <h2 class="experience-heading">Design & Manufacturing</h2>
+          <div id="design-grid" class="card-grid"></div>
         </div>
-
       </div>
 
-
-      <div
-        id="project-detail"
-        class="project-view"
-      ></div>
-
+      <div id="project-detail" class="project-view"></div>
     </section>
-
 
     <!-- =====================================================
          DOGS
     ====================================================== -->
 
-    <section
-      id="dogs"
-      class="page"
-    >
-
+    <section id="dogs" class="page">
       <div class="dogs-header">
-
-        <div class="section-label">
-          Outside Engineering
-        </div>
-
-        <h1 class="section-title">
-          Dogs
-        </h1>
-
+        <div class="section-label">Outside Engineering</div>
+        <h1 class="section-title">Dogs</h1>
       </div>
-
 
       <div class="dog-grid">
-
         <div class="dog-card">
-
-          <div class="dog-image-wrap">
-            <img
-              src="images/cosmo.png"
-              alt="Cosmo"
-            >
-          </div>
-
-          <div class="dog-card-content">
-            <h3>Cosmo</h3>
-          </div>
-
+          <div class="dog-image-wrap"><img src="images/cosmo.png" alt="Cosmo"></div>
+          <div class="dog-card-content"><h3>Cosmo</h3></div>
         </div>
 
-
         <div class="dog-card">
-
-          <div class="dog-image-wrap">
-            <img
-              src="images/pluto.png"
-              alt="Pluto"
-            >
-          </div>
-
-          <div class="dog-card-content">
-            <h3>Pluto</h3>
-          </div>
-
+          <div class="dog-image-wrap"><img src="images/pluto.png" alt="Pluto"></div>
+          <div class="dog-card-content"><h3>Pluto</h3></div>
         </div>
 
-
         <div class="dog-card">
-
-          <div class="dog-image-wrap">
-            <img
-              src="images/winston.png"
-              alt="Winston"
-            >
-          </div>
-
-          <div class="dog-card-content">
-            <h3>Winston</h3>
-          </div>
-
+          <div class="dog-image-wrap"><img src="images/winston.png" alt="Winston"></div>
+          <div class="dog-card-content"><h3>Winston</h3></div>
         </div>
 
-
         <div class="dog-card">
-
-          <div class="dog-image-wrap">
-            <img
-              src="images/rey.png"
-              alt="Rey"
-            >
-          </div>
-
-          <div class="dog-card-content">
-            <h3>Rey</h3>
-          </div>
-
+          <div class="dog-image-wrap"><img src="images/rey.png" alt="Rey"></div>
+          <div class="dog-card-content"><h3>Rey</h3></div>
         </div>
-
       </div>
-
     </section>
-
   </main>
 
-
-  <!-- =====================================================
-       FOOTER
-  ====================================================== -->
-
   <footer>
-
-    <span>
-      © 2026 Elvin Esguerra
-    </span>
-
-    <span>
-      Mechanical Engineering · University of Missouri
-    </span>
-
+    <span>© 2026 Elvin Esguerra</span>
+    <span>Mechanical Engineering · University of Missouri</span>
   </footer>
 
-
   <script>
-
     const experienceData = [
-
       /* ===================================================
          GENERAL MOTORS
       ==================================================== */
-
       {
         id: "general-motors",
-
         category: "Internship Experience",
-
         title: "Manufacturing Group Leader",
-
         shortTitle: "General Motors",
-
-        subtitle:
-          "General Motors · Wentzville Assembly · Summer 2026",
-
-        cover:
-          "images/gm.png",
+        subtitle: "General Motors · Wentzville Assembly · Summer 2026",
+        cover: "images/gm.png",
 
         what: `
           <p>
-            Led 36 UAW operators across three stamping presses, managing
-            production, manpower, quality, and equipment issues. The department
-            targeted 3,700 parts per day and commonly produced around
-            5,000 parts per day.
+            Led 36 UAW operators across three stamping presses while staying on top of production,
+            manpower, quality, and equipment issues as they occurred. The department targeted about
+            3,700 parts per day and commonly produced around 5,000.
           </p>
         `,
 
         how: `
           <p>
-            When a stamped part failed quality, I stopped production and
-            contained the affected material. For one "upding" defect, I
-            confirmed the dent through surface inspection and traced it to
-            a small piece of scrap trapped inside the press before production
-            resumed.
+            A major part of the role was responding immediately when a quality or equipment problem appeared
+            and helping narrow down the root cause without losing sight of production. I assessed the issue,
+            stopped production or contained affected material when needed, checked the condition of the part
+            and press, and coordinated with the technical group best suited to the problem.
           </p>
 
           <p>
-            Larger defects could require quarantining an entire production
-            bank while parts were sorted into usable, repairable, or scrap
-            material. I worked with electricians, maintenance, controls, and
-            maintenance engineers while monitoring oil temperature, pressure,
-            robot faults, tooling, and equipment conditions.
+            One example was an “upding,” a localized dent that was difficult to identify from only one side of
+            the stamped panel. After confirming the defect by inspecting and scuffing the opposite surface, I
+            worked through the likely causes and traced it to a small piece of scrap trapped in the press tooling.
+            I removed the scrap and verified that the defect was no longer being produced.
           </p>
 
           <p>
-            Incorrect robot data entry was also causing stamped parts to stack
-            into one another and could require roughly 40 minutes to reteach
-            the robot. I created two Task Instruction Sheets documenting the
-            correct procedure and implemented the standardized process with
-            operators.
+            Larger defects, such as major splits, could require quarantining the affected production bank while
+            parts were separated into usable, repairable, or scrap material. At the same time, I worked with
+            electricians, maintenance technicians, controls engineers, and maintenance engineers on issues involving
+            tooling, robots, oil temperature, oil pressure, and electrical faults so containment and troubleshooting
+            could happen in parallel.
           </p>
 
           <p>
-            For one week, I independently supported the department while the
-            other maintenance group leaders and shift leader were unavailable,
-            managing all 36 operators while coordinating production, quality,
-            robot, and equipment issues.
+            I personally owned a recurring robot-programming improvement caused by incorrect operator data entry.
+            When the robot stacked parts incorrectly, it could require roughly 40 minutes to reteach. I created two
+            Task Instruction Sheets that documented the correct data-entry process and standardized the procedure for
+            operators so the failure would not continue repeating.
+          </p>
+
+          <p>
+            During one week when the other group leaders and shift leader were unavailable, I independently supported
+            the department and all 36 operators while coordinating production, quality, robot, and equipment issues.
           </p>
         `,
 
         results: `
           <p>
-            Supported production near 5,000 parts per day while eliminating
-            roughly 40 minutes of recurring weekly downtime, creating capacity
-            for approximately 200 additional stamped parts each week.
+            Supported production near 5,000 parts per day while responding to quality and equipment issues in real time.
+            My robot-programming standardization eliminated roughly 40 minutes of recurring weekly downtime and created
+            capacity for approximately 200 additional stamped parts each week.
           </p>
         `,
 
         gallery: [
-
-          {
-            src: "images/gm-first-day.png.PNG",
-            alt: "General Motors first day",
-            caption: "First day at General Motors."
-          },
-
-          {
-            src: "images/gm-last-day.jpg.jpg",
-            alt: "General Motors final day",
-            caption: "Final day at Wentzville Assembly."
-          },
-
-          {
-            src: "images/gm-recognition.png.PNG",
-            alt: "General Motors recognition",
-            caption: "Internship recognition.",
-            wide: true
-          }
-
+          { src: "images/gm-first-day.png.PNG", alt: "General Motors first day", caption: "First day at General Motors." },
+          { src: "images/gm-last-day.jpg.jpg", alt: "General Motors final day", caption: "Final day at Wentzville Assembly." },
+          { src: "images/gm-recognition.png.PNG", alt: "General Motors recognition", caption: "Internship recognition." }
         ]
       },
-
 
       /* ===================================================
          AIAA RESEARCH
       ==================================================== */
-
       {
         id: "aiaa-heating",
-
-        category: "Research",
-
-        title:
-          "Quantifying Convective Aerodynamic Heating During Ascent",
-
-        shortTitle:
-          "AIAA Heating",
-
-        subtitle:
-          "AIAA Region V Student Conference · 2026",
-
-        cover:
-          "images/aiaa-cover.png",
+        category: "Simulation & Analysis",
+        title: "Quantifying Convective Aerodynamic Heating During Ascent",
+        shortTitle: "AIAA Heating",
+        subtitle: "AIAA Region V Student Conference · 2026",
+        cover: "images/aiaa-cover.png",
 
         what: `
           <p>
-            I independently studied convective aerodynamic heating on a
-            high-powered student rocket and published the work through AIAA.
+            Independently developed and published my first technical research paper, quantifying convective
+            aerodynamic heating on a high-powered student rocket across five stages of ascent. This was also my
+            first end-to-end CFD study, so the project became a practical introduction to geometry development,
+            domain sizing, meshing, near-wall treatment, solver setup, convergence assessment, and verification.
           </p>
 
           <p>
-            I presented the research at the 2026 AIAA Region V Student
-            Conference to a panel of technical judges and engineering students,
-            where I explained the CFD methodology, justified my assumptions,
-            and defended the results and limitations of the study.
+            I presented the work at the 2026 AIAA Region V Student Conference to a panel of technical judges and
+            engineering students, where I explained the CFD methodology, justified my assumptions, and defended the
+            results and limitations of the study.
           </p>
 
           <div class="button-row">
-
-            <a
-              class="button button-secondary"
-              href="https://arc.aiaa.org/doi/10.2514/6.2026-111868"
-              target="_blank"
-              rel="noopener"
-            >
+            <a class="button button-secondary" href="https://arc.aiaa.org/doi/10.2514/6.2026-111868" target="_blank" rel="noopener">
               View Published Paper ↗
             </a>
-
           </div>
         `,
 
         how: `
           <p>
-            I generated the 0.587 m von Kármán nose-cone geometry and modeled
-            it as a 2D axisymmetric domain to preserve the dominant
-            stagnation-region and boundary-layer physics while reducing
-            computational cost. The domain extended 7 body lengths upstream,
-            12 downstream, and 7 nose radii radially to minimize boundary
-            interference.
+            I modeled the 0.587 m von Kármán nose cone as a 2D axisymmetric domain to preserve the dominant
+            stagnation-region and boundary-layer physics while reducing computational cost. The domain extended
+            7 body lengths upstream, 12 downstream, and 7 nose radii radially to minimize boundary interference.
           </p>
 
           <p>
-            The baseline Fluent mesh contained 72,540 cells with a
-            2.5 × 10<sup>-5</sup> m minimum element size, eight inflation
-            layers, a 1.15 growth rate, and an average y<sup>+</sup> of 4.74.
-            I concentrated refinement near the nose tip and wall where
-            velocity and thermal gradients were highest.
+            The baseline ANSYS Fluent mesh contained 72,540 cells. Near the nose and wall, I used a 2.5 × 10<sup>-5</sup> m
+            first-layer height, 8 inflation layers, a 1.15 growth rate, and refinement where the thermal and velocity
+            gradients were expected to be strongest. The resulting mesh produced an average y<sup>+</sup> of 4.74.
           </p>
 
           <p>
-            I used a pressure-based compressible solver with ideal-gas air,
-            SST k-&omega; turbulence, second-order discretization, and a
-            constant 300 K wall. Five steady-state cases represented Liftoff,
-            Early Acceleration, Max-Q, Peak Velocity, and High Altitude using
-            flight-derived Mach number, pressure, and temperature.
+            I used a pressure-based compressible solver with ideal-gas air, SST k-&omega; turbulence, second-order
+            discretization, a no-slip wall, and a constant 300 K wall temperature. Rather than model the entire ascent
+            continuously, I reduced the trajectory to five representative steady-state conditions: Liftoff, Early
+            Acceleration, Max-Q, Peak Velocity, and High Altitude using flight-derived Mach number, pressure, and temperature.
           </p>
 
           <p>
-            I compared stagnation heat flux against the Sutton–Graves
-            correlation and ran a mesh-sensitivity study using 40,172,
-            72,540, and 105,633 cells. This let me distinguish stable heating
-            trends from the highly localized stagnation value that remained
-            sensitive to near-tip refinement.
+            I compared CFD stagnation heat flux against the Sutton–Graves correlation and performed a mesh-sensitivity
+            study using 40,172, 72,540, and 105,633 cells. Body-region heating changed by roughly 11% across the study,
+            while the localized stagnation peak remained much more sensitive to near-tip refinement. I therefore used
+            the model for heating distributions, trends, and comparisons without claiming full mesh independence for the
+            absolute stagnation peak.
           </p>
         `,
 
         results: `
           <p>
-            Peak stagnation heating reached 2.46 MW/m² at Max-Q. CFD predicted
-            183–452% higher stagnation heat flux than Sutton–Graves, while
-            body-region heat flux varied only about 11% across the mesh study.
+            Peak stagnation heat flux reached 2.46 MW/m² at Max-Q. Across the five flight conditions, the stagnation
+            region experienced substantially greater heating than the downstream body, and Sutton–Graves underpredicted
+            the CFD stagnation values by approximately 183–452%.
           </p>
 
           <p>
-            The study provides student rocket teams operating in similar
-            flight regimes with a quantitative thermal reference. It can
-            support early material-selection assumptions by showing where
-            high-temperature capability is actually needed and where
-            lower-cost materials may be reasonable.
+            The study provides student rocket teams operating in similar transonic and low-supersonic flight regimes with
+            a quantitative thermal reference for preliminary material selection. It can help identify where higher-temperature
+            capability is justified and where lower-cost materials may be reasonable instead of applying the same thermal
+            assumption to the entire vehicle.
+          </p>
+
+          <p>
+            The project also gave me a stronger understanding of mesh sensitivity, near-wall resolution, and convergence,
+            which informed how I approached later aerodynamic CFD work.
           </p>
         `,
 
         gallery: [
-
-          {
-            src: "images/aiaa-presentation.jpg",
-            alt: "AIAA presentation",
-            caption:
-              "Presenting the research at the AIAA Region V Student Conference.",
-            wide: true
-          }
-
+          { src: "images/aiaa-presentation.jpg", alt: "AIAA presentation", caption: "Presenting the research at the AIAA Region V Student Conference." }
         ]
       },
 
-
       /* ===================================================
-         UNDERGRADUATE RESEARCH
+         IREC NOSE CONE
       ==================================================== */
-
       {
-        id: "undergrad-research",
-
-        category: "Research",
-
-        title: "Undergraduate Research Assistant",
-
-        shortTitle:
-          "Undergrad Research",
-
-        subtitle:
-          "University of Missouri Semiconductor Laboratory · Jan. 2026 – May 2026",
-
-        cover:
-          "images/mizzou-logo.jpg",
+        id: "irec-nosecone",
+        category: "Simulation & Analysis",
+        title: "IREC Nose Cone Aerodynamic Analysis",
+        shortTitle: "IREC Nose Cone",
+        subtitle: "Mizzou Space Program · Apr. 2026 – May 2026",
+        cover: "images/nosecone-analysis-cover.png",
 
         what: `
           <p>
-            Developed a compact three-point bending system for 60 × 60 mm
-            mechanoluminescent samples to support research relating applied
-            force to emitted light.
+            I performed the forebody aerodynamic analysis for the 2026 Mizzou Space Program Technical Report,
+            modeling the rocket's von Kármán nose cone at its Mach 2.117 Max-Q flight condition.
+          </p>
+
+          <p>
+            The analysis provided the competition vehicle with a detailed CFD-based aerodynamic model for the technical
+            report and contributed to a strong score in the report portion of the competition.
           </p>
         `,
 
         how: `
           <p>
-            Existing lab equipment was too large for the samples, so I designed
-            the complete fixture in SolidWorks using two lower supports and a
-            stepper-driven central indenter. The enclosure, supports, motor
-            mount, and indenter were 3D printed in PLA.
+            I built a 473,736-cell structured quadrilateral mesh with a Body of Influence, 20 inflation layers, a 1.1
+            growth rate, and localized refinement both upstream and downstream of the nose cone. I controlled the transition
+            between the inflation layers and the Body of Influence so cell size increased gradually away from the wall instead
+            of changing abruptly near the boundary layer.
           </p>
 
           <p>
-            I wired and programmed the Arduino control system so the user could
-            enter a cycle count and automatically run repeated displacement
-            cycles. A scale beneath the indenter was planned as a low-cost way
-            to correlate displacement with applied force.
+            Upstream refinement improved resolution of the incoming supersonic flow and shock structure near the nose, while
+            downstream refinement captured pressure recovery, boundary-layer development, and the wake leaving the forebody.
+            The near-wall mesh targeted y<sup>+</sup> ≈ 1 and achieved an average y<sup>+</sup> ≈ 1.6 using SST k-&omega;.
+          </p>
+
+          <p>
+            A nose-cone-only geometry would terminate at a flat base and create an artificial separation region directly
+            behind the forebody. I added a 12-inch aft extension to move wake formation downstream, then integrated aerodynamic
+            forces only over the actual nose-cone surface so the reported forebody drag was not dominated by the truncated-base wake.
+          </p>
+
+          <p>
+            I ran approximately 1,200 iterations while monitoring both residual reduction and drag history. I continued the
+            solution until the drag force flattened and the residuals had substantially decreased rather than relying on a
+            residual threshold alone.
+          </p>
+
+          <div class="project-subsection">
+            <h4>Analytical Check</h4>
+
+            <p>
+              I built an independent MATLAB model using a slender-body wave-drag approximation for the von Kármán geometry and
+              a compressibility-corrected turbulent skin-friction correlation. Fluent's reported drag coefficient was not used
+              to generate the analytical result.
+            </p>
+
+            <div class="equation-layout">
+              <div class="equation-column">
+                <h5>Flow & Geometry</h5>
+
+                <div class="equation-row">
+                  <div class="equation-name">Fineness ratio</div>
+                  <div class="equation-value">f = L / D</div>
+                </div>
+
+                <div class="equation-row">
+                  <div class="equation-name">Dynamic pressure</div>
+                  <div class="equation-value">q<sub>&infin;</sub> = ½ρ<sub>&infin;</sub>V<sub>&infin;</sub><sup>2</sup></div>
+                </div>
+
+                <div class="equation-row">
+                  <div class="equation-name">Reynolds number</div>
+                  <div class="equation-value">Re = ρVL / μ</div>
+                </div>
+
+                <div class="equation-row">
+                  <div class="equation-name">Wetted area</div>
+                  <div class="equation-value">S<sub>wet</sub> = 2π∫r ds</div>
+                </div>
+              </div>
+
+              <div class="equation-column">
+                <h5>Drag</h5>
+
+                <div class="equation-row">
+                  <div class="equation-name">Wave coefficient</div>
+                  <div class="equation-value">C<sub>D,w</sub> = 1 / f<sup>2</sup></div>
+                </div>
+
+                <div class="equation-row">
+                  <div class="equation-name">Wave drag</div>
+                  <div class="equation-value">D<sub>w</sub> = q<sub>&infin;</sub>A<sub>ref</sub>C<sub>D,w</sub></div>
+                </div>
+
+                <div class="equation-row">
+                  <div class="equation-name">Skin friction</div>
+                  <div class="equation-value">C<sub>f</sub> = 0.455 / [(log<sub>10</sub>Re)<sup>2.58</sup>(1 + 0.144M<sup>2</sup>)<sup>0.65</sup>]</div>
+                </div>
+
+                <div class="equation-row">
+                  <div class="equation-name">Friction drag</div>
+                  <div class="equation-value">D<sub>f</sub> = C<sub>f</sub>q<sub>&infin;</sub>S<sub>wet</sub></div>
+                </div>
+
+                <div class="equation-row">
+                  <div class="equation-name">Total drag</div>
+                  <div class="equation-value">D<sub>total</sub> = D<sub>w</sub> + D<sub>f</sub></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="comparison-table-wrap">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>Component</th>
+                    <th>MATLAB</th>
+                    <th>Fluent</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Wave / Pressure</td><td>~90 N</td><td>129.5 N</td></tr>
+                  <tr><td>Skin Friction / Viscous</td><td>~53 N</td><td>115.9 N</td></tr>
+                  <tr><td>Total</td><td>~143 N</td><td>245.5 N</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              The analytical model is intentionally lower order and does not resolve the local shock structure, detailed
+              curved-wall pressure gradients, turbulence, or boundary-layer interactions represented by the RANS solution.
+              I used it as an independent first-order benchmark for force scale and component differences rather than treating
+              it as an exact validation of the CFD result.
+            </p>
+          </div>
+        `,
+
+        results: `
+          <p>
+            Fluent predicted 245.5 N of total forebody drag at Mach 2.117 with a reported C<sub>D</sub> of 0.123,
+            including 129.5 N of pressure drag and 115.9 N of viscous drag.
+          </p>
+
+          <p>
+            The MATLAB model predicted approximately 143 N total. The largest difference occurred in the viscous component,
+            making wall-stress prediction the most important area for further investigation rather than hiding the discrepancy.
+          </p>
+        `,
+
+        gallery: [
+          { src: "images/IREC-CFD-TABLE.png", alt: "ANSYS Fluent nose cone drag results", caption: "Fluent pressure, viscous, and total drag results." }
+        ]
+      },
+
+      /* ===================================================
+         ARGONIA CUP
+      ==================================================== */
+      {
+        id: "argonia-cup",
+        category: "Simulation & Analysis",
+        title: "Argonia Cup Project Manager",
+        shortTitle: "Argonia Cup",
+        subtitle: "Mizzou Space Program · May 2026 – Present",
+        cover: null,
+
+        what: `
+          <p>
+            I am currently leading a 30+ member multidisciplinary team through the design, manufacturing, and testing of
+            our Argonia Cup competition rocket.
+          </p>
+
+          <p>
+            The vehicle targets a 7,000-ft apogee while balancing payload scoring, airstart reliability, vehicle mass,
+            and aerodynamic performance. I am also leading development of Mizzou Space Program's first active air-brake system.
+          </p>
+        `,
+
+        how: `
+          <p>
+            I modeled the competition scoring equation in MATLAB to visualize how apogee, golf-ball payload, and successful
+            airstarts affected the score, then built an Excel trade study to compare scoring gains against mass, complexity,
+            reliability, and testing risk.
+          </p>
+
+          <p>
+            I developed a Python wrapper around OpenRocket to automatically change vehicle parameters, launch simulations,
+            and collect the results. The workflow reduced a design study that would have taken roughly two weeks manually to
+            about four hours.
+          </p>
+
+          <p>
+            I then ran 250 Monte Carlo flights with variations in atmospheric and launch conditions. 99.2% of the simulations
+            met the required criteria for an airstart, giving the team a quantitative measure of staging reliability rather
+            than relying on a single nominal flight.
+          </p>
+
+          <p>
+            I am now developing a four-petal active air-brake system. The current plan is to evaluate the structure under
+            Max-Q loading before automating approximately 225 CFD cases with PyANSYS across brake deployment, velocity, density,
+            and angle of attack. Drag and pitching-moment data from those cases will be used to build a surrogate model or
+            multidimensional lookup table for flight control.
+          </p>
+
+          <p>
+            During flight, the onboard computer is intended to continuously predict apogee and reference that aerodynamic data
+            to command brake deployment toward the 7,000-ft target while limiting deployment under unfavorable angle-of-attack conditions.
           </p>
         `,
 
         results: `
           <p>
-            Completed CAD, fabrication, wiring, programming, and assembly for
-            under $40. The prototype performs programmed repeated-displacement
-            cycles and is awaiting force calibration and sample testing.
+            Reduced OpenRocket design studies from approximately two weeks to four hours and achieved a 99.2% airstart-criteria
+            rate across 250 Monte Carlo simulations. Current work focuses on structural and aerodynamic development of MSP's first
+            active air-brake system.
+          </p>
+        `,
+
+        gallery: [
+          { src: "images/score.jpg", alt: "Argonia competition score surface", caption: "Competition score versus apogee and golf-ball payload." },
+          { src: "images/golfball.jpg", alt: "Golf-ball scoring analysis", caption: "Golf-ball scoring factor and incremental gain." },
+          { src: "images/airstart.jpg", alt: "Airstart scoring analysis", caption: "Competition score versus successful airstarts." }
+        ]
+      },
+
+      /* ===================================================
+         IREC PAYLOAD
+      ==================================================== */
+      {
+        id: "irec-payload",
+        category: "Design & Manufacturing",
+        title: "IREC Payload",
+        shortTitle: "IREC Payload",
+        subtitle: "Mizzou Space Program · Aug. 2025 – May 2026",
+        cover: "images/payload-cover.png",
+
+        what: `
+          <p>
+            Helped design and fabricate a 5.75-lb modular payload containing telemetry, batteries, an Arduino, IMU,
+            Raspberry Pi 5, camera, and antenna system.
+          </p>
+
+          <p>
+            I personally designed all enclosure panels and two of the three E-bays while contributing to the overall
+            mechanical architecture and fabrication.
+          </p>
+        `,
+
+        how: `
+          <p>
+            The frame used three 0.25 × 0.50 × 17 in 303 stainless-steel rails and G10 fiberglass disks. Three rails
+            preserved electronics volume while still providing continuous structural load paths through the payload.
+          </p>
+
+          <p>
+            Electronics were restrained inside custom 3D-printed E-bays while the rails carried the primary structural
+            load. The antenna was placed at the top and surrounded primarily by fiberglass and polymer components to reduce
+            RF blockage from metal near the antenna.
+          </p>
+
+          <p>
+            I fabricated components using a bandsaw, drill press, saws, sanding equipment, calipers, and taps. Stainless
+            mounting holes were laid out, drilled, and hand-tapped before final assembly.
+          </p>
+
+          <p>
+            I also produced eight manufacturing drawings using dimensional tolerances, datum references, basic dimensions,
+            and positional GD&T for critical mounting features.
+          </p>
+        `,
+
+        results: `
+          <p>
+            Integrated the 5.75-lb payload around a 20 ft/s landing requirement while maintaining structural load paths,
+            electronics access, and RF transmission.
+          </p>
+        `,
+
+        gallery: [
+          { src: "images/irec-payload.jpg", alt: "Completed IREC payload", caption: "Completed payload assembly." },
+          { src: "images/Payload-Panels.jpg", alt: "Payload panels", caption: "Payload frame and enclosure panels." },
+          { src: "images/payload-inprogress.jpg.png", alt: "Payload fabrication", caption: "Payload during fabrication and integration." },
+          { src: "images/gdt.JPG", alt: "Bottom Module E-Bay GD&T drawing", caption: "Bottom Module E-Bay manufacturing drawing with GD&T." }
+        ]
+      },
+
+      /* ===================================================
+         UNDERGRADUATE RESEARCH
+      ==================================================== */
+      {
+        id: "undergrad-research",
+        category: "Design & Manufacturing",
+        title: "Undergraduate Research Assistant",
+        shortTitle: "Undergrad Research",
+        subtitle: "University of Missouri Semiconductor Laboratory · Jan. 2026 – May 2026",
+        cover: "images/mizzou-logo.jpg",
+
+        what: `
+          <p>
+            Developed a compact three-point bending system for 60 × 60 mm mechanoluminescent samples to support research
+            relating applied force to emitted light.
+          </p>
+        `,
+
+        how: `
+          <p>
+            Existing lab equipment was too large for the samples, so I designed the complete fixture in SolidWorks using
+            two lower supports and a stepper-driven central indenter. The fixture, electronics mount, and indenter were
+            designed for low-cost 3D printing and assembly.
+          </p>
+
+          <p>
+            I wired and programmed the Arduino control system so the user could enter a cycle count and automatically run
+            repeated displacement cycles. A scale beneath the indenter was planned as a low-cost way to correlate displacement
+            with applied force before testing the mechanoluminescent samples.
+          </p>
+        `,
+
+        results: `
+          <p>
+            Completed CAD, fabrication, wiring, programming, and assembly for under $40. The prototype performs programmed
+            repeated-displacement cycles and is awaiting force calibration and sample testing.
           </p>
         `,
 
         gallery: []
       },
 
-
-      /* ===================================================
-         ARGONIA CUP
-      ==================================================== */
-
-      {
-        id: "argonia-cup",
-
-        category: "Engineering Projects",
-
-        title: "Argonia Cup Project Manager",
-
-        shortTitle:
-          "Argonia Cup",
-
-        subtitle:
-          "Mizzou Space Program · May 2026 – Present",
-
-        cover:
-          null,
-
-        what: `
-          <p>
-            I am currently leading a 30+ member multidisciplinary team through
-            the design, manufacturing, and testing of our Argonia Cup
-            competition rocket.
-          </p>
-
-          <p>
-            The vehicle targets a 7,000-ft apogee while balancing payload
-            scoring, airstart reliability, vehicle mass, and aerodynamic
-            performance. I am also leading development of Mizzou Space
-            Program's first active air-brake system.
-          </p>
-        `,
-
-        how: `
-          <p>
-            I modeled the competition scoring equation in MATLAB, then built
-            an Excel trade study to compare scoring gains against mass,
-            complexity, reliability, and testing risk.
-          </p>
-
-          <p>
-            I developed a Python wrapper around OpenRocket to automatically
-            vary vehicle parameters, run simulations, and collect flight
-            results. The workflow reduced a design study from roughly two
-            weeks to four hours.
-          </p>
-
-          <p>
-            I then ran 250 Monte Carlo flights with varying atmospheric and
-            launch conditions. 99.2% met the required criteria for an
-            airstart, giving the team a quantitative measure of staging
-            reliability.
-          </p>
-
-          <p>
-            I am now developing a four-petal active air-brake system. After
-            structural analysis using Max-Q loading, I plan to automate
-            225 CFD cases with PyANSYS across brake deployment, velocity,
-            density, and angle of attack.
-          </p>
-
-          <p>
-            The resulting drag and pitching-moment data will feed a surrogate
-            model or lookup table used by the onboard computer. During flight,
-            the system will continuously predict apogee and determine brake
-            deployment while limiting activation at unfavorable angles of
-            attack.
-          </p>
-        `,
-
-        results: `
-          <p>
-            Reduced OpenRocket design studies from approximately two weeks
-            to four hours and achieved a 99.2% airstart-criteria rate across
-            250 Monte Carlo simulations. Current work focuses on structural
-            and aerodynamic development of MSP's first active air-brake system.
-          </p>
-        `,
-
-        gallery: [
-
-          {
-            src: "images/score.jpg",
-            alt: "Argonia competition score surface",
-            caption:
-              "Competition score versus apogee and golf-ball payload.",
-            wide: true
-          },
-
-          {
-            src: "images/golfball.jpg",
-            alt: "Golf-ball scoring analysis",
-            caption:
-              "Golf-ball scoring factor and incremental gain."
-          },
-
-          {
-            src: "images/airstart.jpg",
-            alt: "Airstart scoring analysis",
-            caption:
-              "Competition score versus successful airstarts."
-          }
-
-        ]
-      },
-
-
-      /* ===================================================
-         IREC NOSE CONE
-      ==================================================== */
-
-      {
-        id: "irec-nosecone",
-
-        category: "Engineering Projects",
-
-        title: "IREC Nose Cone Aerodynamic Analysis",
-
-        shortTitle:
-          "IREC Nose Cone",
-
-        subtitle:
-          "Mizzou Space Program · Apr. 2026 – May 2026",
-
-        cover:
-          "images/nosecone-analysis-cover.png",
-
-        what: `
-          <p>
-            I performed the forebody aerodynamic analysis for the 2026
-            Mizzou Space Program Technical Report, modeling the rocket's
-            von Kármán nose cone at its Max-Q flight condition.
-          </p>
-
-          <p>
-            The work supplied the technical report with a CFD-based
-            aerodynamic analysis and contributed to a strong technical-report
-            score for the competition vehicle.
-          </p>
-        `,
-
-        how: `
-          <p>
-            I built a 473,736-cell structured quadrilateral mesh with a
-            Body of Influence, 20 inflation layers, a 1.1 growth rate, and
-            localized refinement both upstream and downstream of the nose
-            cone. I controlled the transition from the inflation layers into
-            the Body of Influence so cell size increased gradually instead
-            of changing abruptly near the boundary layer.
-          </p>
-
-          <p>
-            Upstream refinement resolved the incoming supersonic flow and
-            bow-shock region, while downstream refinement captured pressure
-            recovery, boundary-layer development, and the wake leaving the
-            forebody. The near-wall mesh targeted y<sup>+</sup> ≈ 1 and
-            achieved an average y<sup>+</sup> ≈ 1.6 using SST k-&omega;.
-          </p>
-
-          <p>
-            A nose-cone-only geometry would end at a flat base and create
-            separation directly behind the forebody. I added a 12-inch aft
-            extension to move the wake farther downstream, then integrated
-            aerodynamic forces only over the actual nose-cone surface so
-            the forebody result was not dominated by an artificial
-            truncated-base wake.
-          </p>
-
-          <p>
-            I ran approximately 1,200 iterations while monitoring both
-            residual reduction and drag history. The solution was continued
-            until the drag force flattened and the residuals had
-            substantially decreased.
-          </p>
-
-
-          <div class="project-subsection">
-
-            <h4>
-              Analytical Check
-            </h4>
-
-            <p>
-              I built an independent MATLAB model using von Kármán wave-drag
-              theory and a compressible turbulent skin-friction correlation.
-              Fluent's reported drag coefficient was not used in the
-              analytical calculation.
-            </p>
-
-
-            <div class="equation-layout">
-
-              <div class="equation-column">
-
-                <h5>
-                  Flow
-                </h5>
-
-
-                <div class="equation-row">
-
-                  <div class="equation-name">
-                    Fineness ratio
-                  </div>
-
-                  <div class="equation-value">
-                    f = L / D
-                  </div>
-
-                </div>
-
-
-                <div class="equation-row">
-
-                  <div class="equation-name">
-                    Dynamic pressure
-                  </div>
-
-                  <div class="equation-value">
-                    q<sub>&infin;</sub>
-                    =
-                    ½ρ<sub>&infin;</sub>
-                    V<sub>&infin;</sub><sup>2</sup>
-                  </div>
-
-                </div>
-
-
-                <div class="equation-row">
-
-                  <div class="equation-name">
-                    Reynolds number
-                  </div>
-
-                  <div class="equation-value">
-                    Re = ρVL / μ
-                  </div>
-
-                </div>
-
-              </div>
-
-
-              <div class="equation-column">
-
-                <h5>
-                  Drag
-                </h5>
-
-
-                <div class="equation-row">
-
-                  <div class="equation-name">
-                    Wave coefficient
-                  </div>
-
-                  <div class="equation-value">
-                    C<sub>D,w</sub>
-                    =
-                    1 / f<sup>2</sup>
-                  </div>
-
-                </div>
-
-
-                <div class="equation-row">
-
-                  <div class="equation-name">
-                    Wave drag
-                  </div>
-
-                  <div class="equation-value">
-                    D<sub>w</sub>
-                    =
-                    qA<sub>ref</sub>C<sub>D,w</sub>
-                  </div>
-
-                </div>
-
-
-                <div class="equation-row">
-
-                  <div class="equation-name">
-                    Skin friction
-                  </div>
-
-                  <div class="equation-value">
-                    C<sub>f</sub>
-                    =
-                    0.455 /
-                    [(log<sub>10</sub>Re)<sup>2.58</sup>
-                    (1 + 0.144M<sup>2</sup>)<sup>0.65</sup>]
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <div class="comparison-table-wrap">
-
-              <table class="comparison-table">
-
-                <thead>
-
-                  <tr>
-                    <th>Component</th>
-                    <th>MATLAB</th>
-                    <th>Fluent</th>
-                  </tr>
-
-                </thead>
-
-                <tbody>
-
-                  <tr>
-                    <td>Wave / Pressure</td>
-                    <td>~90 N</td>
-                    <td>129.5 N</td>
-                  </tr>
-
-                  <tr>
-                    <td>Skin Friction / Viscous</td>
-                    <td>~53 N</td>
-                    <td>115.9 N</td>
-                  </tr>
-
-                  <tr>
-                    <td>Total</td>
-                    <td>~143 N</td>
-                    <td>245.5 N</td>
-                  </tr>
-
-                </tbody>
-
-              </table>
-
-            </div>
-
-
-            <p>
-              The analytical model is intentionally lower order and does not
-              resolve the local shock structure, curved-wall pressure
-              gradients, turbulence, or shock-boundary-layer interaction
-              captured by RANS CFD. I used it as an independent check on the
-              expected force scale rather than forcing the two models to agree.
-            </p>
-
-          </div>
-        `,
-
-        results: `
-          <p>
-            Fluent predicted 245.5 N of total forebody drag at Mach 2.117
-            with a reported C<sub>D</sub> of 0.123, including 129.5 N of
-            pressure drag and 115.9 N of viscous drag.
-          </p>
-
-          <p>
-            The MATLAB model predicted approximately 143 N total. The largest
-            difference occurred in the viscous component, identifying
-            wall-stress prediction as the part of the solution most worth
-            investigating further.
-          </p>
-        `,
-
-        gallery: [
-
-          {
-            src: "images/IREC-CFD-TABLE.png",
-            alt: "ANSYS Fluent nose cone drag results",
-            caption:
-              "Fluent pressure, viscous, and total drag results.",
-            wide: true
-          }
-
-        ]
-      },
-
-
-      /* ===================================================
-         IREC PAYLOAD
-      ==================================================== */
-
-      {
-        id: "irec-payload",
-
-        category: "Engineering Projects",
-
-        title: "IREC Payload",
-
-        shortTitle:
-          "IREC Payload",
-
-        subtitle:
-          "Mizzou Space Program · Aug. 2025 – May 2026",
-
-        cover:
-          "images/payload-cover.png",
-
-        what: `
-          <p>
-            Helped design and fabricate a 5.75-lb modular payload containing
-            telemetry, batteries, an Arduino, IMU, Raspberry Pi 5, camera,
-            and antenna system.
-          </p>
-
-          <p>
-            I personally designed all enclosure panels and two of the three
-            E-bays while contributing to the overall mechanical architecture
-            and fabrication.
-          </p>
-        `,
-
-        how: `
-          <p>
-            The frame used three 0.25 × 0.50 × 17 in 303 stainless-steel
-            rails and G10 fiberglass disks. Three rails preserved electronics
-            volume while still providing continuous structural load paths
-            through the payload.
-          </p>
-
-          <p>
-            Electronics were restrained inside custom 3D-printed E-bays
-            while the rails carried the primary structural load. The antenna
-            was placed at the top and surrounded primarily by fiberglass
-            and polymer components to reduce RF blockage from metal.
-          </p>
-
-          <p>
-            I fabricated components using a bandsaw, drill press, saws,
-            sanding equipment, calipers, and taps. Stainless mounting holes
-            were laid out, drilled, and hand-tapped before final assembly.
-          </p>
-
-          <p>
-            I also produced eight manufacturing drawings using dimensional
-            tolerances, datum references, basic dimensions, and positional
-            GD&T for critical mounting features.
-          </p>
-        `,
-
-        results: `
-          <p>
-            Integrated the 5.75-lb payload around a 20 ft/s landing requirement
-            while maintaining structural load paths, electronics access,
-            and RF transmission.
-          </p>
-        `,
-
-        gallery: [
-
-          {
-            src: "images/irec-payload.jpg",
-            alt: "Completed IREC payload",
-            caption:
-              "Completed payload assembly."
-          },
-
-          {
-            src: "images/Payload-Panels.jpg",
-            alt: "Payload panels",
-            caption:
-              "Payload frame and enclosure panels."
-          },
-
-          {
-            src: "images/payload-inprogress.jpg.png",
-            alt: "Payload fabrication",
-            caption:
-              "Payload during fabrication and integration."
-          },
-
-          {
-            src: "images/gdt.JPG",
-            alt: "Bottom Module E-Bay GD&T drawing",
-            caption:
-              "Bottom Module E-Bay manufacturing drawing with GD&T.",
-            wide: true
-          }
-
-        ]
-      },
-
-
       /* ===================================================
          LEVEL 1 ROCKET
       ==================================================== */
-
       {
         id: "level-1-rocket",
-
-        category: "Engineering Projects",
-
+        category: "Design & Manufacturing",
         title: "Level 1 High-Power Rocket",
-
-        shortTitle:
-          "Level 1 Rocket",
-
-        subtitle:
-          "Personal Engineering Project",
-
-        cover:
-          "images/level1-cover.png",
+        shortTitle: "Level 1 Rocket",
+        subtitle: "Personal Engineering Project",
+        cover: "images/level1-cover.png",
 
         what: `
           <p>
-            Designed and fabricated a Level 1 high-power rocket around an
-            H195NT-10 motor, combining OpenRocket simulation, stability
-            analysis, fabrication, and recovery-system design.
+            Designed and fabricated a Level 1 high-power rocket around an H195NT-10 motor, combining OpenRocket simulation,
+            stability analysis, hands-on fabrication, and recovery-system design.
           </p>
         `,
 
         how: `
           <p>
-            OpenRocket predicted a 2,751-ft apogee, 828 ft/s maximum velocity,
-            and 1,031 ft/s² maximum acceleration. I added nose ballast to
-            move the center of gravity forward and reach a 1.28-caliber
-            stability margin.
+            OpenRocket predicted a 2,751-ft apogee, 828 ft/s maximum velocity, and 1,031 ft/s² maximum acceleration. I added
+            nose ballast to move the center of gravity forward and reach a 1.28-caliber stability margin.
           </p>
 
           <p>
-            I fabricated and fitted the wooden fins using a table saw,
-            bandsaw, drill press, sanding machine, and hand sanding.
-            I cut the fin slots into the cardboard airframe, repeatedly
-            test-fit the geometry, then bonded the fins with epoxy and
-            added fillets.
+            I fabricated and fitted the wooden fins using a table saw, bandsaw, drill press, sanding machine, and hand sanding.
+            I cut the fin slots into the cardboard airframe, repeatedly test-fit the geometry, then bonded the fins with epoxy
+            and added fillets.
           </p>
 
           <p>
-            I drilled and installed the launch lugs, assembled the motor
-            and recovery hardware, and selected a single-deployment parachute
-            in OpenRocket to target roughly a 20 ft/s descent rate.
+            I drilled and installed the launch lugs, assembled the motor and recovery hardware, and selected a single-deployment
+            parachute in OpenRocket to target roughly a 20 ft/s descent rate.
           </p>
         `,
 
         results: `
           <p>
-            The completed vehicle is awaiting its certification flight due
-            to university flight restrictions. Predicted performance is
-            2,751 ft apogee, 828 ft/s maximum velocity, and 1.28 calibers
-            of stability.
+            The completed vehicle is awaiting its certification flight due to university flight restrictions. Predicted
+            performance is 2,751 ft apogee, 828 ft/s maximum velocity, and 1.28 calibers of stability.
           </p>
         `,
 
         gallery: [
-
-          {
-            src: "images/minion-rocket.jpg",
-            alt: "Completed Level 1 rocket",
-            caption:
-              "Completed Level 1 rocket."
-          },
-
-          {
-            src: "images/OpenRocket-Rocket.png",
-            alt: "OpenRocket vehicle model",
-            caption:
-              "OpenRocket vehicle configuration."
-          },
-
-          {
-            src: "images/altitude-vs-velocity.jpg",
-            alt: "Predicted Level 1 performance",
-            caption:
-              "Predicted altitude and velocity.",
-            wide: true
-          }
-
+          { src: "images/minion-rocket.jpg", alt: "Completed Level 1 rocket", caption: "Completed Level 1 rocket." },
+          { src: "images/OpenRocket-Rocket.png", alt: "OpenRocket vehicle model", caption: "OpenRocket vehicle configuration." },
+          { src: "images/altitude-vs-velocity.jpg", alt: "Predicted Level 1 performance", caption: "Predicted altitude and velocity." }
         ]
       }
-
     ];
 
-
-    /* =====================================================
-       MAIN PAGE NAVIGATION
-    ===================================================== */
-
     function showPage(pageId) {
+      document.querySelectorAll(".page").forEach(page => page.classList.remove("active"));
+      document.getElementById(pageId).classList.add("active");
 
-      document
-        .querySelectorAll(".page")
-        .forEach(page => {
-          page.classList.remove("active");
-        });
-
-
-      document
-        .getElementById(pageId)
-        .classList.add("active");
-
-
-      document
-        .querySelectorAll(".nav-link")
-        .forEach(link => {
-          link.classList.remove("active");
-        });
-
-
-      const activeLink =
-        document.querySelector(
-          `.nav-link[data-page="${pageId}"]`
-        );
-
-
-      if (activeLink) {
-        activeLink.classList.add("active");
-      }
-
+      document.querySelectorAll(".nav-link").forEach(link => link.classList.remove("active"));
+      const activeLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
+      if (activeLink) activeLink.classList.add("active");
 
       if (pageId === "experience") {
-
-        document
-          .getElementById("experience-list")
-          .style.display = "block";
-
-
-        document
-          .getElementById("project-detail")
-          .classList.remove("active");
-
+        document.getElementById("experience-list").style.display = "block";
+        document.getElementById("project-detail").classList.remove("active");
       }
 
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-
-    /* =====================================================
-       CREATE EXPERIENCE CARD
-    ===================================================== */
-
     function createProjectCard(project) {
+      const card = document.createElement("article");
+      card.className = "project-card";
+      card.onclick = () => openProject(project.id);
 
-      const card =
-        document.createElement("article");
-
-
-      card.className =
-        "project-card";
-
-
-      card.onclick =
-        () => openProject(project.id);
-
-
-      const imageHTML =
-        project.cover
-
-          ? `
-            <img
-              src="${project.cover}"
-              alt="${project.title}"
-            >
-          `
-
-          : `
-            <div class="project-placeholder">
-              View Project
-            </div>
-          `;
-
+      const imageHTML = project.cover
+        ? `<img src="${project.cover}" alt="${project.title}">`
+        : `<div class="project-placeholder">View Project</div>`;
 
       card.innerHTML = `
-
-        <div class="project-card-image">
-
-          ${imageHTML}
-
-        </div>
-
-
+        <div class="project-card-image">${imageHTML}</div>
         <div class="project-card-content">
-
-          <h3>
-            ${project.title}
-          </h3>
-
-          <div class="project-meta">
-            ${project.subtitle}
-          </div>
-
+          <h3>${project.title}</h3>
+          <div class="project-meta">${project.subtitle}</div>
         </div>
       `;
-
 
       return card;
     }
 
-
-    /* =====================================================
-       RENDER EXPERIENCE CARDS
-    ===================================================== */
-
     function renderExperience() {
+      const internshipGrid = document.getElementById("internship-grid");
+      const simulationGrid = document.getElementById("simulation-grid");
+      const designGrid = document.getElementById("design-grid");
 
-      const internshipGrid =
-        document.getElementById("internship-grid");
-
-
-      const researchGrid =
-        document.getElementById("research-grid");
-
-
-      const projectsGrid =
-        document.getElementById("projects-grid");
-
+      internshipGrid.innerHTML = "";
+      simulationGrid.innerHTML = "";
+      designGrid.innerHTML = "";
 
       experienceData.forEach(project => {
+        const card = createProjectCard(project);
 
-        const card =
-          createProjectCard(project);
-
-
-        if (
-          project.category ===
-          "Internship Experience"
-        ) {
-
+        if (project.category === "Internship Experience") {
           internshipGrid.appendChild(card);
-
+        } else if (project.category === "Simulation & Analysis") {
+          simulationGrid.appendChild(card);
+        } else if (project.category === "Design & Manufacturing") {
+          designGrid.appendChild(card);
         }
-
-        else if (
-          project.category ===
-          "Research"
-        ) {
-
-          researchGrid.appendChild(card);
-
-        }
-
-        else {
-
-          projectsGrid.appendChild(card);
-
-        }
-
       });
-
     }
-
-
-    /* =====================================================
-       PROJECT SWITCHER
-    ===================================================== */
 
     function buildProjectSwitcher(activeId) {
-
       return `
-
         <div class="project-switcher-wrap">
-
           <div class="project-switcher">
-
-            ${experienceData
-              .map(project => `
-
-                <button
-                  class="
-                    project-switch
-                    ${project.id === activeId ? "active" : ""}
-                  "
-                  onclick="openProject('${project.id}')"
-                >
-                  ${project.shortTitle || project.title}
-                </button>
-
-              `)
-              .join("")}
-
+            ${experienceData.map(project => `
+              <button
+                class="project-switch ${project.id === activeId ? "active" : ""}"
+                onclick="openProject('${project.id}')"
+              >
+                ${project.shortTitle || project.title}
+              </button>
+            `).join("")}
           </div>
-
         </div>
       `;
-
     }
-
-
-    /* =====================================================
-       PREVIOUS / NEXT PROJECT
-    ===================================================== */
 
     function buildBottomNavigation(projectId) {
-
-      const index =
-        experienceData.findIndex(
-          item => item.id === projectId
-        );
-
-
-      const previous =
-        experienceData[
-          (
-            index - 1 +
-            experienceData.length
-          ) %
-          experienceData.length
-        ];
-
-
-      const next =
-        experienceData[
-          (
-            index + 1
-          ) %
-          experienceData.length
-        ];
-
+      const index = experienceData.findIndex(item => item.id === projectId);
+      const previous = experienceData[(index - 1 + experienceData.length) % experienceData.length];
+      const next = experienceData[(index + 1) % experienceData.length];
 
       return `
-
         <div class="project-bottom-nav">
-
-          <button
-            class="project-nav-button"
-            onclick="openProject('${previous.id}')"
-          >
-
-            <span class="project-nav-small">
-              ← Previous
-            </span>
-
-            <span class="project-nav-title">
-              ${previous.shortTitle || previous.title}
-            </span>
-
+          <button class="project-nav-button" onclick="openProject('${previous.id}')">
+            <span class="project-nav-small">← Previous</span>
+            <span class="project-nav-title">${previous.shortTitle || previous.title}</span>
           </button>
 
-
-          <button
-            class="project-nav-button next"
-            onclick="openProject('${next.id}')"
-          >
-
-            <span class="project-nav-small">
-              Next →
-            </span>
-
-            <span class="project-nav-title">
-              ${next.shortTitle || next.title}
-            </span>
-
+          <button class="project-nav-button next" onclick="openProject('${next.id}')">
+            <span class="project-nav-small">Next →</span>
+            <span class="project-nav-title">${next.shortTitle || next.title}</span>
           </button>
-
         </div>
       `;
-
     }
 
-
-    /* =====================================================
-       OPEN PROJECT
-    ===================================================== */
-
     function openProject(projectId) {
+      const project = experienceData.find(item => item.id === projectId);
+      if (!project) return;
 
-      const project =
-        experienceData.find(
-          item => item.id === projectId
-        );
+      const experienceList = document.getElementById("experience-list");
+      const detail = document.getElementById("project-detail");
 
+      experienceList.style.display = "none";
 
-      if (!project) {
-        return;
-      }
-
-
-      const experienceList =
-        document.getElementById(
-          "experience-list"
-        );
-
-
-      const detail =
-        document.getElementById(
-          "project-detail"
-        );
-
-
-      experienceList.style.display =
-        "none";
-
-
-      const galleryHTML =
-        project.gallery &&
-        project.gallery.length > 0
-
-          ? `
-
-            <div class="gallery">
-
-              ${project.gallery
-                .map(item => `
-
-                  <div class="
-                    gallery-item
-                    ${item.wide ? "wide" : ""}
-                  ">
-
-                    <img
-                      src="${item.src}"
-                      alt="${item.alt}"
-                    >
-
-                    ${
-                      item.caption
-
-                        ? `
-                          <div class="gallery-caption">
-                            ${item.caption}
-                          </div>
-                        `
-
-                        : ""
-                    }
-
-                  </div>
-
-                `)
-                .join("")}
-
-            </div>
-          `
-
-          : `
-            <p>
-              Additional project images coming soon.
-            </p>
-          `;
-
+      const galleryHTML = project.gallery && project.gallery.length > 0
+        ? `
+          <div class="gallery">
+            ${project.gallery.map(item => `
+              <div class="gallery-item">
+                <div class="gallery-image-frame">
+                  <img src="${item.src}" alt="${item.alt}">
+                </div>
+                ${item.caption ? `<div class="gallery-caption">${item.caption}</div>` : ""}
+              </div>
+            `).join("")}
+          </div>
+        `
+        : `<p>Additional project images coming soon.</p>`;
 
       detail.innerHTML = `
-
         ${buildProjectSwitcher(project.id)}
 
-
         <div class="project-header">
-
-          <div class="section-label">
-            ${project.category}
-          </div>
-
-          <h1>
-            ${project.title}
-          </h1>
-
-          <div class="project-header-meta">
-            ${project.subtitle}
-          </div>
-
+          <div class="section-label">${project.category}</div>
+          <h1>${project.title}</h1>
+          <div class="project-header-meta">${project.subtitle}</div>
         </div>
 
-
         <section class="project-section">
-
-          <h2>
-            What I Did
-          </h2>
-
-          <div class="project-section-content">
-            ${project.what}
-          </div>
-
+          <h2>What I Did</h2>
+          <div class="project-section-content">${project.what}</div>
         </section>
 
-
         <section class="project-section">
-
-          <h2>
-            My Approach
-          </h2>
-
-          <div class="project-section-content">
-            ${project.how}
-          </div>
-
+          <h2>My Approach</h2>
+          <div class="project-section-content">${project.how}</div>
         </section>
 
-
         <section class="project-section">
-
-          <h2>
-            Results
-          </h2>
-
-          <div class="project-section-content">
-            ${project.results}
-          </div>
-
+          <h2>Results</h2>
+          <div class="project-section-content">${project.results}</div>
         </section>
 
-
         <section class="project-section">
-
-          <h2>
-            Project Gallery
-          </h2>
-
-          <div class="project-section-content">
-            ${galleryHTML}
-          </div>
-
+          <h2>Project Gallery</h2>
+          <div class="project-section-content">${galleryHTML}</div>
         </section>
-
 
         ${buildBottomNavigation(project.id)}
       `;
 
-
-      detail.classList.add(
-        "active"
-      );
-
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-
+      detail.classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-
-    /* =====================================================
-       INITIALIZE
-    ===================================================== */
-
     renderExperience();
-
   </script>
-
 </body>
-
 </html>
