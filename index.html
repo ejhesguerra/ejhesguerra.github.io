@@ -256,14 +256,14 @@
     }
 
     .about-image-shell {
-      width: 100%;
-      max-width: 320px;
-      aspect-ratio: 4 / 5;
-      border-radius: 14px;
+      width: min(100%, 300px);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
       overflow: hidden;
       background: var(--image-bg);
       border: 1px solid var(--border);
       position: relative;
+      justify-self: center;
     }
 
     .about-image-shell img {
@@ -558,37 +558,78 @@
     }
 
     /* =====================================================
-       EQUATIONS
+       GOVERNING EQUATIONS
     ===================================================== */
 
     .equation-layout {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 30px 50px;
-      margin: 25px 0 30px;
+      max-width: 780px;
+      margin: 30px 0 34px;
+    }
+
+    .equation-column {
+      margin-bottom: 30px;
+    }
+
+    .equation-column:last-child {
+      margin-bottom: 0;
     }
 
     .equation-column h5 {
-      font-size: 18px;
-      margin-bottom: 10px;
+      font-size: 20px;
+      margin-bottom: 4px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-dark);
     }
 
     .equation-row {
       display: grid;
-      grid-template-columns: 155px 1fr;
-      gap: 12px;
-      padding: 10px 0;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 28px;
+      padding: 17px 0;
       border-bottom: 1px solid var(--border);
-      align-items: baseline;
+      align-items: center;
     }
 
     .equation-name {
-      font-size: 15px;
+      font-size: 16px;
+      line-height: 1.4;
     }
 
     .equation-value {
+      min-width: 0;
+      overflow-x: auto;
+      padding: 3px 0 6px;
       font-family: "Times New Roman", Times, serif;
-      font-size: 20px;
+      font-size: 22px;
+      line-height: 1.55;
+      white-space: nowrap;
+      scrollbar-width: thin;
+    }
+
+    .equation-fraction {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .fraction {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      line-height: 1.25;
+    }
+
+    .fraction-top {
+      width: 100%;
+      padding: 0 8px 3px;
+      border-bottom: 1px solid var(--text);
+      text-align: center;
+    }
+
+    .fraction-bottom {
+      padding: 3px 8px 0;
+      text-align: center;
     }
 
     /* =====================================================
@@ -622,9 +663,13 @@
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 24px;
       align-items: start;
+    }
+
+    .gallery.gallery-single {
+      grid-template-columns: 1fr;
     }
 
     .gallery-item {
@@ -634,17 +679,29 @@
       height: 100%;
     }
 
+    .gallery:not(.gallery-single) .gallery-item:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      width: min(100%, 560px);
+      justify-self: center;
+    }
+
     .gallery-image-frame {
       width: 100%;
-      height: 340px;
-      padding: 10px;
+      height: 390px;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
       background: var(--white);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 10px;
+      cursor: zoom-in;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .gallery-image-frame:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-dark);
     }
 
     .gallery-image-frame img {
@@ -655,9 +712,143 @@
     }
 
     .gallery-caption {
-      margin-top: 9px;
+      margin-top: 10px;
       font-size: 16px;
       line-height: 1.45;
+      text-align: center;
+    }
+
+    /* =====================================================
+       IMAGE LIGHTBOX
+    ===================================================== */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(0, 0, 0, 0.86);
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-panel {
+      position: relative;
+      width: min(1180px, 96vw);
+      max-height: 94vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -5px;
+      right: 0;
+      z-index: 3;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.45);
+      color: #fff;
+      font-size: 25px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .lightbox-stage {
+      width: 100%;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 58px minmax(0, 1fr) 58px;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .lightbox-image-wrap {
+      min-width: 0;
+      height: min(72vh, 760px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .lightbox-arrow {
+      width: 52px;
+      height: 52px;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.38);
+      color: #fff;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .lightbox-arrow:disabled {
+      opacity: 0.25;
+      cursor: default;
+    }
+
+    .lightbox-meta {
+      width: min(900px, 100%);
+      text-align: center;
+    }
+
+    .lightbox-caption {
+      color: #fff;
+      font-size: 18px;
+      line-height: 1.45;
+    }
+
+    .lightbox-count {
+      margin-top: 3px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+    }
+
+    .lightbox-thumbs {
+      width: min(900px, 100%);
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 4px 2px 8px;
+      scrollbar-width: thin;
+    }
+
+    .lightbox-thumb {
+      flex: 0 0 92px;
+      height: 68px;
+      padding: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.06);
+      cursor: pointer;
+      opacity: 0.6;
+    }
+
+    .lightbox-thumb.active {
+      opacity: 1;
+      border-color: #fff;
+    }
+
+    .lightbox-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     /* =====================================================
@@ -773,7 +964,8 @@
       }
 
       .about-image-shell {
-        max-width: 290px;
+        width: 240px;
+        max-width: 240px;
         margin: 0 auto;
       }
 
@@ -794,22 +986,52 @@
         gap: 18px;
       }
 
-      .equation-layout {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
       .equation-row {
         grid-template-columns: 1fr;
-        gap: 2px;
+        gap: 7px;
+        padding: 15px 0;
       }
 
-      .gallery {
+      .equation-value {
+        font-size: 20px;
+      }
+
+      .gallery,
+      .gallery.gallery-single {
         grid-template-columns: 1fr;
+      }
+
+      .gallery:not(.gallery-single) .gallery-item:last-child:nth-child(odd) {
+        grid-column: auto;
+        width: 100%;
       }
 
       .gallery-image-frame {
-        height: 320px;
+        height: 360px;
+      }
+
+      .lightbox {
+        padding: 12px;
+      }
+
+      .lightbox-stage {
+        grid-template-columns: 42px minmax(0, 1fr) 42px;
+        gap: 7px;
+      }
+
+      .lightbox-image-wrap {
+        height: 68vh;
+      }
+
+      .lightbox-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+      }
+
+      .lightbox-close {
+        width: 40px;
+        height: 40px;
       }
 
       .dog-grid {
@@ -985,6 +1207,29 @@
     </section>
   </main>
 
+  <div id="image-lightbox" class="lightbox" aria-hidden="true" onclick="handleLightboxBackdrop(event)">
+    <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Project image viewer">
+      <button class="lightbox-close" type="button" aria-label="Close image viewer" onclick="closeLightbox()">×</button>
+
+      <div class="lightbox-stage">
+        <button id="lightbox-prev" class="lightbox-arrow" type="button" aria-label="Previous image" onclick="changeLightboxImage(-1)">‹</button>
+
+        <div class="lightbox-image-wrap">
+          <img id="lightbox-image" class="lightbox-image" src="" alt="">
+        </div>
+
+        <button id="lightbox-next" class="lightbox-arrow" type="button" aria-label="Next image" onclick="changeLightboxImage(1)">›</button>
+      </div>
+
+      <div class="lightbox-meta">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+        <div id="lightbox-count" class="lightbox-count"></div>
+      </div>
+
+      <div id="lightbox-thumbs" class="lightbox-thumbs" aria-label="Project image thumbnails"></div>
+    </div>
+  </div>
+
   <footer>
     <span>© 2026 Elvin Esguerra</span>
     <span>Mechanical Engineering · University of Missouri</span>
@@ -1057,7 +1302,7 @@
 
         gallery: [
           { src: "images/gm-first-day.png.PNG", alt: "General Motors first day", caption: "First day at General Motors." },
-          { src: "images/gm-last-day.jpg.jpg", alt: "General Motors final day", caption: "Final day at Wentzville Assembly." },
+          { src: "images/gm-last-day.jpg.jpg", alt: "General Motors final day", caption: "Final day at General Motors." },
           { src: "images/gm-recognition.png.PNG", alt: "General Motors recognition", caption: "Internship recognition." }
         ]
       },
@@ -1198,7 +1443,7 @@
           </p>
 
           <div class="project-subsection">
-            <h4>Analytical Check</h4>
+            <h4>Governing Equations</h4>
 
             <p>
               I built an independent MATLAB model using a slender-body wave-drag approximation for the von Kármán geometry and
@@ -1246,7 +1491,13 @@
 
                 <div class="equation-row">
                   <div class="equation-name">Skin friction</div>
-                  <div class="equation-value">C<sub>f</sub> = 0.455 / [(log<sub>10</sub>Re)<sup>2.58</sup>(1 + 0.144M<sup>2</sup>)<sup>0.65</sup>]</div>
+                  <div class="equation-value equation-fraction">
+                    <span>C<sub>f</sub> =</span>
+                    <span class="fraction">
+                      <span class="fraction-top">0.455</span>
+                      <span class="fraction-bottom">(log<sub>10</sub>Re)<sup>2.58</sup>(1 + 0.144M<sup>2</sup>)<sup>0.65</sup></span>
+                    </span>
+                  </div>
                 </div>
 
                 <div class="equation-row">
@@ -1623,6 +1874,99 @@
       `;
     }
 
+    let activeLightboxProject = null;
+    let activeLightboxIndex = 0;
+
+    function openLightbox(projectId, imageIndex) {
+      const project = experienceData.find(item => item.id === projectId);
+      if (!project || !project.gallery || project.gallery.length === 0) return;
+
+      activeLightboxProject = project;
+      activeLightboxIndex = imageIndex;
+
+      const lightbox = document.getElementById("image-lightbox");
+      lightbox.classList.add("active");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+
+      renderLightbox();
+    }
+
+    function renderLightbox() {
+      if (!activeLightboxProject) return;
+
+      const gallery = activeLightboxProject.gallery;
+      const item = gallery[activeLightboxIndex];
+
+      const image = document.getElementById("lightbox-image");
+      const caption = document.getElementById("lightbox-caption");
+      const count = document.getElementById("lightbox-count");
+      const thumbs = document.getElementById("lightbox-thumbs");
+
+      image.src = item.src;
+      image.alt = item.alt || "Project image";
+      caption.textContent = item.caption || item.alt || "";
+      count.textContent = `${activeLightboxIndex + 1} / ${gallery.length}`;
+
+      thumbs.innerHTML = gallery.map((thumb, index) => `
+        <button
+          type="button"
+          class="lightbox-thumb ${index === activeLightboxIndex ? "active" : ""}"
+          aria-label="View image ${index + 1}"
+          onclick="setLightboxImage(${index})"
+        >
+          <img src="${thumb.src}" alt="">
+        </button>
+      `).join("");
+
+      const activeThumb = thumbs.querySelector(".lightbox-thumb.active");
+      if (activeThumb) {
+        activeThumb.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      }
+
+      const hasMultiple = gallery.length > 1;
+      document.getElementById("lightbox-prev").style.visibility = hasMultiple ? "visible" : "hidden";
+      document.getElementById("lightbox-next").style.visibility = hasMultiple ? "visible" : "hidden";
+      thumbs.style.display = hasMultiple ? "flex" : "none";
+    }
+
+    function setLightboxImage(index) {
+      if (!activeLightboxProject) return;
+      activeLightboxIndex = index;
+      renderLightbox();
+    }
+
+    function changeLightboxImage(direction) {
+      if (!activeLightboxProject || activeLightboxProject.gallery.length < 2) return;
+
+      const total = activeLightboxProject.gallery.length;
+      activeLightboxIndex = (activeLightboxIndex + direction + total) % total;
+      renderLightbox();
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById("image-lightbox");
+      lightbox.classList.remove("active");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      activeLightboxProject = null;
+    }
+
+    function handleLightboxBackdrop(event) {
+      if (event.target.id === "image-lightbox") {
+        closeLightbox();
+      }
+    }
+
+    document.addEventListener("keydown", event => {
+      const lightbox = document.getElementById("image-lightbox");
+      if (!lightbox.classList.contains("active")) return;
+
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowLeft") changeLightboxImage(-1);
+      if (event.key === "ArrowRight") changeLightboxImage(1);
+    });
+
     function openProject(projectId) {
       const project = experienceData.find(item => item.id === projectId);
       if (!project) return;
@@ -1634,10 +1978,17 @@
 
       const galleryHTML = project.gallery && project.gallery.length > 0
         ? `
-          <div class="gallery">
-            ${project.gallery.map(item => `
+          <div class="gallery ${project.gallery.length === 1 ? "gallery-single" : ""}">
+            ${project.gallery.map((item, index) => `
               <div class="gallery-item">
-                <div class="gallery-image-frame">
+                <div
+                  class="gallery-image-frame"
+                  role="button"
+                  tabindex="0"
+                  aria-label="Open ${item.alt}"
+                  onclick="openLightbox('${project.id}', ${index})"
+                  onkeydown="if(event.key === 'Enter' || event.key === ' '){ event.preventDefault(); openLightbox('${project.id}', ${index}); }"
+                >
                   <img src="${item.src}" alt="${item.alt}">
                 </div>
                 ${item.caption ? `<div class="gallery-caption">${item.caption}</div>` : ""}
