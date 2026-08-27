@@ -12,8 +12,6 @@
       --bg: #f7f7f5;
       --white: #ffffff;
       --text: #171717;
-      --text-soft: #60605d;
-      --text-light: #898984;
       --border: #d9d9d4;
       --border-dark: #b6b6b0;
       --image-bg: #ecece8;
@@ -103,7 +101,7 @@
       background: none;
       cursor: pointer;
 
-      color: var(--text-soft);
+      color: var(--text);
       font-size: 14px;
       padding: 4px 0;
 
@@ -112,7 +110,7 @@
 
     .nav-link:hover,
     .nav-link.active {
-      color: var(--text);
+      opacity: 0.6;
     }
 
     /* =====================================================
@@ -147,7 +145,7 @@
     }
 
     .section-label {
-      color: var(--text-light);
+      color: var(--text);
       font-size: 13px;
       font-weight: 600;
       text-transform: uppercase;
@@ -164,7 +162,7 @@
 
     .section-description {
       max-width: 700px;
-      color: var(--text-soft);
+      color: var(--text);
       font-size: 17px;
       margin-bottom: 50px;
     }
@@ -246,7 +244,7 @@
     .hero-role {
       max-width: 670px;
       font-size: 19px;
-      color: var(--text-soft);
+      color: var(--text);
       line-height: 1.7;
     }
 
@@ -271,7 +269,7 @@
 
     .about-copy {
       max-width: 760px;
-      color: var(--text-soft);
+      color: var(--text);
       font-size: 17px;
     }
 
@@ -282,11 +280,10 @@
       margin-top: 28px;
 
       font-size: 14px;
-      color: var(--text-soft);
+      color: var(--text);
     }
 
     .contact-row a:hover {
-      color: var(--text);
       text-decoration: underline;
     }
 
@@ -371,7 +368,7 @@
     }
 
     .project-placeholder {
-      color: var(--text-light);
+      color: var(--text);
       font-size: 14px;
       padding: 30px;
       text-align: center;
@@ -389,7 +386,7 @@
     }
 
     .project-meta {
-      color: var(--text-light);
+      color: var(--text);
       font-size: 14px;
     }
 
@@ -409,14 +406,14 @@
     .back-button {
       border: none;
       background: none;
-      color: var(--text-soft);
+      color: var(--text);
       font-size: 14px;
       cursor: pointer;
       margin-bottom: 40px;
     }
 
     .back-button:hover {
-      color: var(--text);
+      opacity: 0.6;
     }
 
     .project-header {
@@ -432,7 +429,7 @@
     }
 
     .project-header-meta {
-      color: var(--text-light);
+      color: var(--text);
       font-size: 15px;
     }
 
@@ -452,23 +449,19 @@
 
     .project-section-content {
       max-width: 820px;
-      color: var(--text-soft);
+      color: var(--text);
     }
 
     .project-section-content p {
       margin-bottom: 16px;
     }
 
-    .project-section-content ul {
-      margin: 5px 0 18px 20px;
-    }
-
-    .project-section-content li {
-      margin-bottom: 8px;
+    .project-section-content strong {
+      font-weight: 400;
     }
 
     .project-subsection {
-      margin: 34px 0;
+      margin: 32px 0;
     }
 
     .project-subsection:first-child {
@@ -479,6 +472,43 @@
       color: var(--text);
       font-size: 18px;
       margin-bottom: 10px;
+    }
+
+    /* =====================================================
+       EQUATIONS
+    ===================================================== */
+
+    .equation-group {
+      margin: 24px 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .equation {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 12px 16px;
+
+      font-family:
+        "Times New Roman",
+        Times,
+        serif;
+
+      font-size: 18px;
+      color: var(--text);
+    }
+
+    .equation-label {
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      font-size: 12px;
+      margin-bottom: 3px;
     }
 
     /* =====================================================
@@ -503,11 +533,23 @@
       padding: 13px 15px;
       border: 1px solid var(--border);
       text-align: left;
+      color: var(--text);
     }
 
     .comparison-table th {
-      color: var(--text);
       font-weight: 600;
+    }
+
+    .comparison-table strong {
+      font-weight: 400;
+    }
+
+    /* =====================================================
+       RESULTS
+    ===================================================== */
+
+    .results-copy p {
+      margin-bottom: 12px;
     }
 
     /* =====================================================
@@ -547,9 +589,13 @@
       max-width: 900px;
       margin: 10px auto 0;
 
-      color: var(--text-light);
+      color: var(--text);
       font-size: 13px;
-      line-height: 1.55;
+      line-height: 1.5;
+    }
+
+    .gallery-caption strong {
+      font-weight: 400;
     }
 
     /* =====================================================
@@ -599,7 +645,7 @@
       gap: 20px;
       flex-wrap: wrap;
 
-      color: var(--text-light);
+      color: var(--text);
       font-size: 13px;
     }
 
@@ -682,35 +728,19 @@
 
       <div class="nav-links">
 
-        <button
-          class="nav-link active"
-          data-page="home"
-          onclick="showPage('home')"
-        >
+        <button class="nav-link active" data-page="home" onclick="showPage('home')">
           Home
         </button>
 
-        <button
-          class="nav-link"
-          data-page="resume"
-          onclick="showPage('resume')"
-        >
+        <button class="nav-link" data-page="resume" onclick="showPage('resume')">
           Resume
         </button>
 
-        <button
-          class="nav-link"
-          data-page="experience"
-          onclick="showPage('experience')"
-        >
+        <button class="nav-link" data-page="experience" onclick="showPage('experience')">
           Experience
         </button>
 
-        <button
-          class="nav-link"
-          data-page="dogs"
-          onclick="showPage('dogs')"
-        >
+        <button class="nav-link" data-page="dogs" onclick="showPage('dogs')">
           Dogs
         </button>
 
@@ -723,9 +753,7 @@
 
   <main>
 
-    <!-- =====================================================
-         HOME
-    ====================================================== -->
+    <!-- HOME -->
 
     <section id="home" class="page active">
 
@@ -767,7 +795,7 @@
               class="button button-secondary"
               onclick="showPage('dogs')"
             >
-              Meet My Dogs
+              Dogs
             </button>
 
           </div>
@@ -834,9 +862,7 @@
     </section>
 
 
-    <!-- =====================================================
-         RESUME
-    ====================================================== -->
+    <!-- RESUME -->
 
     <section id="resume" class="page">
 
@@ -882,9 +908,7 @@
     </section>
 
 
-    <!-- =====================================================
-         EXPERIENCE
-    ====================================================== -->
+    <!-- EXPERIENCE -->
 
     <section id="experience" class="page">
 
@@ -939,17 +963,12 @@
       </div>
 
 
-      <div
-        id="project-detail"
-        class="project-view"
-      ></div>
+      <div id="project-detail" class="project-view"></div>
 
     </section>
 
 
-    <!-- =====================================================
-         DOGS
-    ====================================================== -->
+    <!-- DOGS -->
 
     <section id="dogs" class="page">
 
@@ -958,70 +977,37 @@
       </div>
 
       <h1 class="section-title">
-        Meet My Dogs
+        Dogs
       </h1>
-
-      <p class="section-description">
-        The four members of the household who have absolutely no interest
-        in CFD convergence.
-      </p>
-
 
       <div class="dog-grid">
 
         <div class="dog-card">
-
-          <img
-            src="images/cosmo.png"
-            alt="Cosmo"
-          >
-
+          <img src="images/cosmo.png" alt="Cosmo">
           <div class="dog-card-content">
             <h3>Cosmo</h3>
           </div>
-
         </div>
 
-
         <div class="dog-card">
-
-          <img
-            src="images/pluto.png"
-            alt="Pluto"
-          >
-
+          <img src="images/pluto.png" alt="Pluto">
           <div class="dog-card-content">
             <h3>Pluto</h3>
           </div>
-
         </div>
 
-
         <div class="dog-card">
-
-          <img
-            src="images/winston.png"
-            alt="Winston"
-          >
-
+          <img src="images/winston.png" alt="Winston">
           <div class="dog-card-content">
             <h3>Winston</h3>
           </div>
-
         </div>
 
-
         <div class="dog-card">
-
-          <img
-            src="images/rey.png"
-            alt="Rey"
-          >
-
+          <img src="images/rey.png" alt="Rey">
           <div class="dog-card-content">
             <h3>Rey</h3>
           </div>
-
         </div>
 
       </div>
@@ -1065,75 +1051,57 @@
 
         what: `
           <p>
-            Led daily production for
-            <strong>36 UAW operators across three stamping presses</strong>
-            at General Motors' Wentzville Assembly facility.
+            Led daily production for 36 UAW operators across three stamping
+            presses at General Motors' Wentzville Assembly facility.
           </p>
 
           <p>
-            I helped manage production, quality, equipment issues,
-            manpower, and communication across shifts.
+            My role included production, quality, manpower, equipment issues,
+            and communication between shifts and departments.
           </p>
         `,
 
         how: `
-
           <div class="project-subsection">
 
             <h4>Quality & Root Cause</h4>
 
             <p>
-              When a stamped part failed a quality check, I helped lead the
-              response to find the root cause and get production back within
-              specification as quickly as possible.
-            </p>
-
-            <p>
-              Issues included
-              <strong>slugs, die contamination, cushion shut-height variation,
-              excessive robot force, and equipment or electrical faults</strong>.
+              Whenever a stamped part failed a quality check, I worked with
+              the team to identify the root cause and restore production
+              within specification as quickly as possible. Issues included
+              slugs, die contamination, cushion shut-height variation,
+              excessive robot force, and electrical or equipment faults.
             </p>
 
           </div>
-
 
           <div class="project-subsection">
 
-            <h4>Cross-Functional Problem Solving</h4>
+            <h4>Cross-Functional Support</h4>
 
             <p>
-              I worked directly with
-              <strong>electricians, maintenance, maintenance engineers,
-              and controls engineers</strong>
-              to troubleshoot equipment, robot, and process issues.
-            </p>
-
-            <p>
-              I also communicated with other departments when part-quality
-              problems affected downstream operations and coordinated
-              corrective actions to restore production quickly.
+              I worked with electricians, maintenance, maintenance engineers,
+              and controls engineers to troubleshoot presses, robots, and other
+              equipment. I also communicated with downstream departments when
+              part-quality issues affected their operations and coordinated
+              corrective actions.
             </p>
 
           </div>
-
 
           <div class="project-subsection">
 
             <h4>Daily Operations</h4>
 
             <p>
-              Along with quality issues, I managed equipment concerns and
-              <strong>manpower for 36 UAW operators across three stamping presses</strong>.
-            </p>
-
-            <p>
-              I maintained shift handoffs so the next team knew what problems
-              were open, what had already been tried, and what still needed
-              to be done.
+              I managed manpower for 36 UAW operators, tracked equipment and
+              quality issues, and maintained detailed shift handoffs so the
+              next team knew what had happened, what had already been tried,
+              and what still needed to be addressed.
             </p>
 
           </div>
-
 
           <div class="project-subsection">
 
@@ -1142,92 +1110,60 @@
             <p>
               For one week of the internship, I independently supported the
               department while the other maintenance group leaders and shift
-              leader were out.
-            </p>
-
-            <p>
-              I handled the
-              <strong>36 UAW operators</strong>,
-              coordinated equipment and quality issues, and led troubleshooting
-              when problems involved electrical systems or the stamping robots.
-            </p>
-
-            <p>
-              I also communicated with other departments about part-quality
-              concerns and coordinated the response needed to keep production moving.
+              leader were out. I handled manpower, coordinated quality issues,
+              worked with other departments, and spearheaded troubleshooting
+              involving electrical systems and stamping robots.
             </p>
 
           </div>
-
 
           <div class="project-subsection">
 
             <h4>Process Improvement</h4>
 
             <p>
-              I identified a recurring robot-programming issue that caused
-              roughly <strong>40 minutes of downtime each week</strong>.
-            </p>
-
-            <p>
-              I created standardized work that gave operators a repeatable
-              process for handling the programming steps without waiting
-              for additional support.
+              I developed standardized work for a recurring robot-programming
+              issue that had been causing roughly 40 minutes of downtime each
+              week. The new process allowed operators to handle the issue
+              without waiting for additional support.
             </p>
 
           </div>
-
         `,
 
         results: `
-          <ul>
+          <div class="results-copy">
+            <p>
+              Led 36 UAW operators across three stamping presses while
+              supporting production of more than 3,700 parts per day.
+            </p>
 
-            <li>
-              Led <strong>36 UAW operators across 3 stamping presses</strong>.
-            </li>
-
-            <li>
-              Supported production exceeding
-              <strong>3,700 parts per day</strong>.
-            </li>
-
-            <li>
-              Eliminated approximately
-              <strong>40 minutes of recurring weekly downtime</strong>.
-            </li>
-
-            <li>
-              Enabled approximately
-              <strong>200 additional parts per week</strong>
-              through standardized work.
-            </li>
-
-            <li>
-              Coordinated quality and equipment issues across production,
-              controls, maintenance, engineering, and skilled trades.
-            </li>
-
-          </ul>
+            <p>
+              Standardized robot-programming procedures eliminated about
+              40 minutes of recurring weekly downtime and enabled roughly
+              200 additional parts per week.
+            </p>
+          </div>
         `,
 
         gallery: [
 
           {
             src: "images/gm-first-day.png.PNG",
-            alt: "First day at General Motors",
+            alt: "General Motors first day",
             caption: "First day at General Motors."
           },
 
           {
             src: "images/gm-last-day.jpg.jpg",
-            alt: "Last day at General Motors",
+            alt: "General Motors last day",
             caption: "Final day at Wentzville Assembly."
           },
 
           {
             src: "images/gm-recognition.png.PNG",
             alt: "General Motors recognition",
-            caption: "Recognition received during the internship.",
+            caption: "Internship recognition.",
             wide: true
           }
 
@@ -1253,14 +1189,13 @@
 
         what: `
           <p>
-            Studied aerodynamic heating during rocket ascent using
-            ANSYS Fluent and analytical heat-transfer models.
+            Studied aerodynamic heating during rocket ascent using ANSYS Fluent
+            and analytical heat-transfer models.
           </p>
 
           <p>
-            The work was
-            <strong>published and presented at the 2026 AIAA Region V
-            Student Conference</strong>.
+            The work was published and presented at the 2026 AIAA Region V
+            Student Conference.
           </p>
 
           <div class="button-row">
@@ -1278,78 +1213,57 @@
         `,
 
         how: `
-
           <div class="project-subsection">
 
             <h4>CFD Model</h4>
 
             <p>
-              I built an approximately
-              <strong>72,000-cell axisymmetric ANSYS Fluent model</strong>
-              and analyzed five flight conditions during ascent.
-            </p>
-
-            <p>
-              Flight-derived velocity and atmospheric conditions were used
-              as the CFD boundary conditions.
+              I built a 72,000-cell axisymmetric ANSYS Fluent model and
+              analyzed five flight conditions during ascent using
+              flight-derived atmospheric and velocity inputs.
             </p>
 
           </div>
-
 
           <div class="project-subsection">
 
             <h4>Heat-Flux Analysis</h4>
 
             <p>
-              I extracted stagnation-region convective heat flux and
-              performed mesh-sensitivity checks before comparing the
-              CFD predictions with the
-              <strong>Sutton–Graves correlation</strong>.
+              I extracted stagnation-region heat flux, performed
+              mesh-sensitivity checks, and compared the CFD results with
+              Sutton–Graves analytical estimates.
             </p>
 
           </div>
-
 
           <div class="project-subsection">
 
-            <h4>Research Presentation</h4>
+            <h4>Publication</h4>
 
             <p>
-              I documented the methodology, results, and limitations in
-              a technical paper and presented the work at the AIAA
-              Region V Student Conference.
+              I documented the methodology, results, and limitations in a
+              technical paper and presented the work at the AIAA Region V
+              Student Conference.
             </p>
 
           </div>
-
         `,
 
         results: `
-          <ul>
+          <div class="results-copy">
 
-            <li>
-              Predicted a peak heat flux of approximately
-              <strong>2.46 MW/m² at Max-Q</strong>.
-            </li>
+            <p>
+              The CFD model predicted a peak stagnation-region heat flux of
+              approximately 2.46 MW/m² at Max-Q.
+            </p>
 
-            <li>
-              CFD predictions were
-              <strong>183%–452% higher</strong>
-              than Sutton–Graves estimates across the analyzed conditions.
-            </li>
+            <p>
+              CFD predictions were 183%–452% higher than Sutton–Graves
+              estimates across the analyzed conditions.
+            </p>
 
-            <li>
-              Generated thermal data that could support
-              nose-tip material selection.
-            </li>
-
-            <li>
-              <strong>Published and presented</strong>
-              the research at AIAA Region V.
-            </li>
-
-          </ul>
+          </div>
         `,
 
         gallery: [
@@ -1357,8 +1271,7 @@
           {
             src: "images/aiaa-presentation.jpg",
             alt: "AIAA presentation",
-            caption:
-              "Presenting the aerodynamic-heating study at the AIAA Region V Student Conference.",
+            caption: "AIAA Region V research presentation.",
             wide: true
           }
 
@@ -1390,41 +1303,23 @@
 
         how: `
           <p>
-            I designed a
-            <strong>three-point bending system in SolidWorks</strong>
-            using custom 3D-printed parts and a stepper-motor loading system.
-          </p>
-
-          <p>
+            I designed a three-point bending system in SolidWorks using
+            custom 3D-printed parts and a stepper-motor loading system.
             I also wired and programmed an Arduino controller to automate
-            the loading sequence and integrate the mechanical and electronic
-            parts of the system.
-          </p>
-
-          <p>
-            The design focused on keeping the prototype simple,
-            repeatable, and inexpensive.
+            the loading sequence.
           </p>
         `,
 
         results: `
-          <ul>
+          <div class="results-copy">
 
-            <li>
-              Designed the complete testing system for
-              <strong>under $40</strong>.
-            </li>
+            <p>
+              Designed the complete testing system for under $40 while
+              integrating CAD, 3D printing, electronics, Arduino programming,
+              and stepper-motor control.
+            </p>
 
-            <li>
-              Integrated SolidWorks, 3D printing,
-              stepper motors, electronics, and Arduino programming.
-            </li>
-
-            <li>
-              Built a repeatable loading system for laboratory testing.
-            </li>
-
-          </ul>
+          </div>
         `,
 
         gallery: []
@@ -1448,54 +1343,29 @@
 
         what: `
           <p>
-            I currently lead a
-            <strong>30+ member team</strong>
-            designing, building, and testing our Argonia Cup competition rocket.
+            I currently lead a 30+ member team designing, building, and
+            testing our Argonia Cup competition rocket.
           </p>
 
           <p>
-            Our design work focuses on a
-            <strong>7,000-ft target altitude</strong>,
-            payload scoring, airstart reliability, and overall vehicle performance.
+            The project focuses on a 7,000-ft target altitude, payload scoring,
+            airstart reliability, and overall vehicle performance.
           </p>
         `,
 
         how: `
-
           <div class="project-subsection">
 
-            <h4>Scoring Analysis</h4>
+            <h4>Scoring & Trade Study</h4>
 
             <p>
-              I built a MATLAB model to visualize how
-              <strong>altitude, golf-ball count, and successful airstarts</strong>
-              affect the competition score.
-            </p>
-
-            <p>
-              I also looked at how much additional scoring benefit came from
-              adding more payload or additional airstarts.
+              I built a MATLAB scoring model to visualize how altitude,
+              golf-ball count, and successful airstarts affect competition
+              score. I then created an Excel calculator to compare scoring
+              gains against mass, complexity, reliability, and testing effort.
             </p>
 
           </div>
-
-
-          <div class="project-subsection">
-
-            <h4>Design Trade Study</h4>
-
-            <p>
-              I created a separate Excel calculator to compare scoring gains
-              against <strong>mass, complexity, reliability, and testing effort</strong>.
-            </p>
-
-            <p>
-              We use it to decide which scoring strategies are actually
-              worth designing into the rocket.
-            </p>
-
-          </div>
-
 
           <div class="project-subsection">
 
@@ -1503,106 +1373,59 @@
 
             <p>
               I developed a Python wrapper for OpenRocket to automate
-              simulation sweeps and compare vehicle configurations.
-            </p>
-
-            <p>
-              The workflow reduced simulation studies from roughly
-              <strong>2 weeks of manual work to about 4 hours</strong>.
+              simulation sweeps and compare vehicle configurations, reducing
+              studies from roughly two weeks of manual work to about four hours.
             </p>
 
           </div>
-
 
           <div class="project-subsection">
 
             <h4>Monte Carlo Analysis</h4>
 
             <p>
-              I automated <strong>250 flight simulations</strong>
-              to evaluate the design under changing launch and
-              atmospheric conditions.
-            </p>
-
-            <p>
-              <strong>99.2% of simulated flights met the required
-              criteria for an airstart.</strong>
+              I automated 250 flight simulations to evaluate the design under
+              changing launch and atmospheric conditions.
             </p>
 
           </div>
-
         `,
 
         results: `
-          <ul>
+          <div class="results-copy">
 
-            <li>
-              Lead a <strong>30+ member multidisciplinary team</strong>
-              through design, manufacturing, and testing.
-            </li>
+            <p>
+              The automated OpenRocket workflow reduced simulation studies from
+              about two weeks to four hours.
+            </p>
 
-            <li>
-              Built MATLAB scoring models to compare altitude,
-              payload, and airstart strategies.
-            </li>
+            <p>
+              Across 250 Monte Carlo simulations, 99.2% of flights met the
+              required criteria for an airstart.
+            </p>
 
-            <li>
-              Created an Excel trade-study calculator to balance
-              scoring benefit against mass, complexity, and reliability.
-            </li>
-
-            <li>
-              Reduced OpenRocket simulation studies from
-              <strong>2 weeks to 4 hours</strong>.
-            </li>
-
-            <li>
-              Ran <strong>250 Monte Carlo simulations</strong>;
-              <strong>99.2%</strong> met the required criteria for an airstart.
-            </li>
-
-          </ul>
+          </div>
         `,
 
         gallery: [
 
           {
             src: "images/score.jpg",
-
-            alt:
-              "Argonia Cup MATLAB score surface",
-
-            caption: `
-              <strong>Score Surface</strong> —
-              MATLAB model showing how competition score changes with
-              altitude and golf-ball count.
-            `,
-
+            alt: "Argonia score surface",
+            caption: "MATLAB competition score surface.",
             wide: true
           },
 
           {
             src: "images/golfball.jpg",
-
-            alt:
-              "Golf-ball scoring analysis",
-
-            caption: `
-              <strong>Golf-Ball Scoring</strong> —
-              Scoring benefit and diminishing return from additional payload.
-            `
+            alt: "Golf-ball scoring analysis",
+            caption: "Golf-ball scoring factor and diminishing return."
           },
 
           {
             src: "images/airstart.jpg",
-
-            alt:
-              "Airstart scoring analysis",
-
-            caption: `
-              <strong>Airstart Scoring</strong> —
-              Scoring benefit from additional successful airstarts.
-            `
+            alt: "Airstart scoring analysis",
+            caption: "Score benefit from successful airstarts."
           }
 
         ]
@@ -1628,48 +1451,30 @@
         what: `
           <p>
             Analyzed supersonic drag on a von Kármán nose cone at the rocket's
-            <strong>Max-Q flight condition</strong>.
+            Max-Q flight condition.
           </p>
 
           <p>
-            ANSYS Fluent predicted approximately
-            <strong>245 N of total drag</strong>
-            with a reported
-            <strong>C<sub>D</sub> = 0.123</strong>.
-          </p>
-
-          <p>
-            The force was split into
-            <strong>129.5 N pressure</strong>
-            and
-            <strong>115.9 N viscous</strong>.
+            ANSYS Fluent predicted approximately 245 N of total drag with a
+            reported C<sub>D</sub> = 0.123. The force was split into
+            129.5 N pressure and 115.9 N viscous force.
           </p>
         `,
 
         how: `
-
           <div class="project-subsection">
 
             <h4>CFD Setup</h4>
 
             <p>
-              I simulated
-              <strong>Mach 2.12 compressible flow</strong>
-              using flight conditions from OpenRocket.
+              I simulated Mach 2.12 compressible flow using flight conditions
+              from OpenRocket. The model used a 474k-cell structured mesh with
+              near-wall inflation and local refinement.
             </p>
 
             <p>
-              The model used a
-              <strong>474k-cell structured mesh</strong>
-              with near-wall inflation and local refinement.
-            </p>
-
-            <p>
-              Average wall resolution was
-              <strong>y<sup>+</sup> ≈ 1.6</strong>
-              using the
-              <strong>SST k-&omega;</strong>
-              turbulence model.
+              Average wall resolution was y<sup>+</sup> ≈ 1.6 using the
+              SST k-&omega; turbulence model.
             </p>
 
           </div>
@@ -1685,19 +1490,58 @@
             </p>
 
             <p>
-              The model estimated
-              <strong>wave drag</strong>
-              using von Kármán theory and
-              <strong>skin-friction drag</strong>
-              using a compressible turbulent-flow correlation.
+              The model estimated wave drag using von Kármán theory and
+              skin-friction drag using a compressible turbulent-flow correlation.
             </p>
+
+            <div class="equation-group">
+
+              <div class="equation">
+                <div class="equation-label">Dynamic pressure</div>
+                q = ½ρV²
+              </div>
+
+              <div class="equation">
+                <div class="equation-label">Reynolds number</div>
+                Re = ρVL / μ
+              </div>
+
+              <div class="equation">
+                <div class="equation-label">Von Kármán wave drag</div>
+                C<sub>D,wave</sub> = 1 / f²
+              </div>
+
+              <div class="equation">
+                <div class="equation-label">Wave-drag force</div>
+                D<sub>wave</sub> = qA C<sub>D,wave</sub>
+              </div>
+
+              <div class="equation">
+                <div class="equation-label">Compressible turbulent skin friction</div>
+                C<sub>f</sub> =
+                0.455 /
+                [(log<sub>10</sub>Re)<sup>2.58</sup>
+                (1 + 0.144M²)<sup>0.65</sup>]
+              </div>
+
+              <div class="equation">
+                <div class="equation-label">Skin-friction drag</div>
+                D<sub>f</sub> = C<sub>f</sub> q S<sub>wet</sub>
+              </div>
+
+              <div class="equation">
+                <div class="equation-label">Analytical total</div>
+                D<sub>total</sub> =
+                D<sub>wave</sub> + D<sub>f</sub>
+              </div>
+
+            </div>
 
             <p>
-              I defined the governing equations, inputs, and assumptions,
-              checked the calculations by hand, and used AI as a coding aid
-              for the MATLAB implementation.
+              I defined the equations, inputs, and assumptions, checked the
+              calculations by hand, and used AI as a coding aid for the MATLAB
+              implementation.
             </p>
-
 
             <div class="comparison-table-wrap">
 
@@ -1728,9 +1572,9 @@
                   </tr>
 
                   <tr>
-                    <td><strong>Total</strong></td>
-                    <td><strong>~143 N</strong></td>
-                    <td><strong>245.5 N</strong></td>
+                    <td>Total</td>
+                    <td>~143 N</td>
+                    <td>245.5 N</td>
                   </tr>
 
                 </tbody>
@@ -1739,65 +1583,38 @@
 
             </div>
 
-
             <p>
-              The MATLAB model was intentionally simpler than CFD.
-              I used it to check the overall force scale and see which
-              part of the result differed the most.
-            </p>
-
-            <p>
-              The largest difference was in the
-              <strong>viscous force</strong>,
-              making it the main area for further investigation.
+              The analytical model was intentionally simpler than CFD and was
+              used to check the overall force scale. The largest difference
+              occurred in the viscous force, which became the main area for
+              further investigation.
             </p>
 
           </div>
-
         `,
 
         results: `
-          <ul>
+          <div class="results-copy">
 
-            <li>
-              Simulated <strong>Mach 2.12 supersonic flow</strong>
-              at Max-Q.
-            </li>
+            <p>
+              Fluent predicted 245 N of total drag at Mach 2.12 with a reported
+              drag coefficient of 0.123.
+            </p>
 
-            <li>
-              Built a <strong>474k-cell structured mesh</strong>
-              with y<sup>+</sup> ≈ 1.6.
-            </li>
+            <p>
+              The MATLAB model provided an independent analytical comparison
+              of the pressure and viscous drag components.
+            </p>
 
-            <li>
-              Predicted
-              <strong>245 N of total drag</strong>
-              with a Fluent-reported
-              <strong>C<sub>D</sub> = 0.123</strong>.
-            </li>
-
-            <li>
-              Separated the result into
-              <strong>129.5 N pressure</strong>
-              and
-              <strong>115.9 N viscous force</strong>.
-            </li>
-
-            <li>
-              Built an independent MATLAB model to compare
-              analytical wave and skin-friction drag against CFD.
-            </li>
-
-          </ul>
+          </div>
         `,
 
         gallery: [
 
           {
             src: "images/IREC-CFD-TABLE.png",
-            alt: "ANSYS Fluent nose cone drag results",
-            caption:
-              "ANSYS Fluent pressure, viscous, and total force results.",
+            alt: "ANSYS Fluent drag results",
+            caption: "ANSYS Fluent drag-force breakdown.",
             wide: true
           }
 
@@ -1823,102 +1640,68 @@
 
         what: `
           <p>
-            Designed and built a
-            <strong>5.75-lb avionics and telemetry payload</strong>
-            for a competition rocket.
+            Designed and built a 5.75-lb avionics and telemetry payload for a
+            competition rocket.
           </p>
 
           <p>
-            The payload packaged batteries, microcontrollers,
-            sensors, telemetry hardware, and a camera into a compact
-            internal structure.
+            The payload packaged batteries, microcontrollers, sensors,
+            telemetry hardware, and a camera into a compact internal structure.
           </p>
         `,
 
         how: `
-
           <div class="project-subsection">
 
             <h4>Mechanical Design</h4>
 
             <p>
-              I designed the payload around fiberglass disks,
-              aluminum structure, and custom 3D-printed mounts and panels.
-            </p>
-
-            <p>
-              Components were arranged to create clear load paths and
-              protect the electronics during landing.
+              I designed the payload around fiberglass disks, stainless-steel
+              bar stock, and custom 3D-printed mounts and panels. Components
+              were arranged to create clear load paths and protect the
+              electronics during landing.
             </p>
 
           </div>
-
 
           <div class="project-subsection">
 
             <h4>Electronics Packaging</h4>
 
             <p>
-              Batteries, microcontrollers, sensors, and a camera
-              were packaged inside an approximately
-              <strong>3.85-inch diameter</strong>.
-            </p>
-
-            <p>
-              Custom mounts kept components secured while maintaining
-              access for wiring, assembly, and testing.
+              Batteries, microcontrollers, sensors, telemetry hardware, and a
+              camera were packaged within the available rocket diameter while
+              maintaining access for wiring, assembly, and testing.
             </p>
 
           </div>
-
 
           <div class="project-subsection">
 
             <h4>Manufacturing Drawings</h4>
 
             <p>
-              I created
-              <strong>8 manufacturing drawings using GD&T</strong>
-              for disks, mounts, and panels used during fabrication
-              and assembly.
-            </p>
-
-            <p>
-              The drawings defined part dimensions, mounting locations,
-              datum references, and positional tolerances for critical
-              assembly features.
+              I created eight manufacturing drawings for disks, mounts, and
+              panels. The drawings included dimensions, datum references,
+              basic dimensions, and positional tolerances for assembly features.
             </p>
 
           </div>
-
         `,
 
         results: `
-          <ul>
+          <div class="results-copy">
 
-            <li>
-              Integrated a complete
-              <strong>5.75-lb payload</strong>
-              within the available rocket envelope.
-            </li>
+            <p>
+              Integrated the 5.75-lb payload within the available rocket
+              envelope and designed the structure around a 20 ft/s landing impact.
+            </p>
 
-            <li>
-              Designed the structure around a
-              <strong>20 ft/s landing impact</strong>.
-            </li>
+            <p>
+              Produced eight manufacturing drawings for fabrication and assembly.
+            </p>
 
-            <li>
-              Packaged electronics within a
-              <strong>3.85-inch diameter</strong>.
-            </li>
-
-            <li>
-              Produced
-              <strong>8 GD&T manufacturing drawings</strong>
-              for fabrication and assembly.
-            </li>
-
-          </ul>
+          </div>
         `,
 
         gallery: [
@@ -1926,29 +1709,25 @@
           {
             src: "images/irec-payload.jpg",
             alt: "IREC payload",
-            caption: "Completed payload assembly."
+            caption: "Completed IREC payload assembly."
           },
 
           {
             src: "images/Payload-Panels.jpg",
-            alt: "Payload panel design",
+            alt: "Payload panels",
             caption: "Payload frame and enclosure panels."
           },
 
           {
             src: "images/payload-inprogress.jpg.png",
-            alt: "Payload assembly in progress",
+            alt: "Payload assembly",
             caption: "Payload during fabrication and integration."
           },
 
           {
-            src: "images/gd%26t.jpg",
-            alt: "GD&T manufacturing drawing for bottom module E-bay",
-            caption: `
-              <strong>GD&T Manufacturing Drawing</strong> —
-              Bottom Module E-Bay drawing defining the four-hole mounting
-              pattern with datum references and positional tolerance.
-            `,
+            src: "images/gdt.jpg",
+            alt: "Bottom Module E-Bay drawing",
+            caption: "Bottom Module E-Bay GD&T drawing.",
             wide: true
           }
 
@@ -1974,47 +1753,29 @@
 
         what: `
           <p>
-            Designed and built a high-power rocket to apply
-            flight simulation, aerodynamic stability, fabrication,
-            and recovery-system design.
+            Designed and built a high-power rocket using flight simulation,
+            aerodynamic stability analysis, fabrication, and recovery-system design.
           </p>
         `,
 
         how: `
           <p>
-            I used OpenRocket to evaluate
-            <strong>center of gravity, center of pressure, stability,
-            altitude, velocity, and acceleration</strong>
-            before building the vehicle.
-          </p>
-
-          <p>
-            The simulation guided the airframe dimensions,
-            fin design, motor selection, and recovery setup.
-          </p>
-
-          <p>
-            I then translated the digital design into a physical
-            rocket and completed the airframe and recovery assembly.
+            I used OpenRocket to evaluate center of gravity, center of pressure,
+            stability, altitude, velocity, and acceleration before fabrication.
+            The simulation guided the airframe, fin design, motor selection,
+            and recovery setup.
           </p>
         `,
 
         results: `
-          <ul>
+          <div class="results-copy">
 
-            <li>
-              Built the rocket from a complete OpenRocket model.
-            </li>
+            <p>
+              Completed the rocket from a full OpenRocket design and used
+              simulation results to guide the physical build.
+            </p>
 
-            <li>
-              Evaluated stability and flight performance before fabrication.
-            </li>
-
-            <li>
-              Connected simulation results directly to a physical build.
-            </li>
-
-          </ul>
+          </div>
         `,
 
         gallery: [
@@ -2022,19 +1783,19 @@
           {
             src: "images/minion-rocket.jpg",
             alt: "Level 1 rocket",
-            caption: "Completed high-power rocket."
+            caption: "Completed Level 1 rocket."
           },
 
           {
             src: "images/OpenRocket-Rocket.png",
-            alt: "OpenRocket simulation model",
+            alt: "OpenRocket model",
             caption: "OpenRocket vehicle model."
           },
 
           {
             src: "images/altitude-vs-velocity.jpg",
-            alt: "Altitude and velocity analysis",
-            caption: "Predicted flight performance from OpenRocket.",
+            alt: "OpenRocket flight performance",
+            caption: "Predicted altitude and velocity.",
             wide: true
           }
 
@@ -2046,7 +1807,7 @@
 
     /* =====================================================
        PAGE NAVIGATION
-    ====================================================== */
+    ===================================================== */
 
     function showPage(pageId) {
 
@@ -2056,11 +1817,9 @@
           page.classList.remove("active");
         });
 
-
       document
         .getElementById(pageId)
         .classList.add("active");
-
 
       document
         .querySelectorAll(".nav-link")
@@ -2068,17 +1827,14 @@
           link.classList.remove("active");
         });
 
-
       const activeLink =
         document.querySelector(
           `.nav-link[data-page="${pageId}"]`
         );
 
-
       if (activeLink) {
         activeLink.classList.add("active");
       }
-
 
       if (pageId === "experience") {
 
@@ -2092,7 +1848,6 @@
 
       }
 
-
       window.scrollTo({
         top: 0,
         behavior: "smooth"
@@ -2103,7 +1858,7 @@
 
     /* =====================================================
        CREATE CARDS
-    ====================================================== */
+    ===================================================== */
 
     function createProjectCard(project) {
 
@@ -2158,7 +1913,7 @@
 
     /* =====================================================
        EXPERIENCE LIST
-    ====================================================== */
+    ===================================================== */
 
     function renderExperience() {
 
@@ -2209,7 +1964,7 @@
 
     /* =====================================================
        OPEN PROJECT
-    ====================================================== */
+    ===================================================== */
 
     function openProject(projectId) {
 
@@ -2371,7 +2126,7 @@
 
     /* =====================================================
        BACK
-    ====================================================== */
+    ===================================================== */
 
     function backToExperience() {
 
