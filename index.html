@@ -1250,18 +1250,17 @@
 
         what: `
           <p>
-            Led 36 UAW operators across three stamping presses while staying on top of production,
-            manpower, quality, and equipment issues as they occurred. The department targeted about
-            3,700 parts per day and commonly produced around 5,000.
+            Led 36 UAW operators across three stamping presses while monitoring production, manpower, part quality,
+            and equipment conditions in real time. The department targeted about 3,700 parts per day and commonly
+            produced around 5,000.
           </p>
         `,
 
         how: `
           <p>
-            A major part of the role was responding immediately when a quality or equipment problem appeared
-            and helping narrow down the root cause without losing sight of production. I assessed the issue,
-            stopped production or contained affected material when needed, checked the condition of the part
-            and press, and coordinated with the technical group best suited to the problem.
+            I was expected to respond immediately when a quality or equipment issue appeared. I assessed the defect
+            or fault, contained questionable material when needed, checked the condition of the part and press, and
+            worked through likely causes to isolate the failure mode before coordinating the appropriate technical team.
           </p>
 
           <p>
@@ -1282,8 +1281,7 @@
           <p>
             I personally owned a recurring robot-programming improvement caused by incorrect operator data entry.
             When the robot stacked parts incorrectly, it could require roughly 40 minutes to reteach. I created two
-            Task Instruction Sheets that documented the correct data-entry process and standardized the procedure for
-            operators so the failure would not continue repeating.
+            Task Instruction Sheets that standardized the data-entry procedure and removed the recurring failure mode.
           </p>
 
           <p>
@@ -1320,10 +1318,10 @@
 
         what: `
           <p>
-            Independently developed and published my first technical research paper, quantifying convective
-            aerodynamic heating on a high-powered student rocket across five stages of ascent. This was also my
-            first end-to-end CFD study, so the project became a practical introduction to geometry development,
-            domain sizing, meshing, near-wall treatment, solver setup, convergence assessment, and verification.
+            Independently developed and published my first technical research paper, quantifying convective aerodynamic
+            heating on a high-powered student rocket across five stages of ascent. It was also my first complete CFD
+            workflow, requiring me to learn geometry preparation, domain sizing, meshing, near-wall treatment, solver
+            setup, convergence assessment, analytical comparison, and interpretation of numerical limitations.
           </p>
 
           <p>
@@ -1360,11 +1358,10 @@
           </p>
 
           <p>
-            I compared CFD stagnation heat flux against the Sutton–Graves correlation and performed a mesh-sensitivity
-            study using 40,172, 72,540, and 105,633 cells. Body-region heating changed by roughly 11% across the study,
-            while the localized stagnation peak remained much more sensitive to near-tip refinement. I therefore used
-            the model for heating distributions, trends, and comparisons without claiming full mesh independence for the
-            absolute stagnation peak.
+            I benchmarked stagnation heat flux against the Sutton–Graves correlation and performed a 3-grid mesh-sensitivity
+            study using 40,172, 72,540, and 105,633 cells. Body-region heating varied by roughly 11%, while the localized
+            stagnation peak remained much more sensitive to near-tip refinement. I used that result to separate reliable
+            heating trends from a peak value that had not reached full mesh independence.
           </p>
         `,
 
@@ -1383,8 +1380,8 @@
           </p>
 
           <p>
-            The project also gave me a stronger understanding of mesh sensitivity, near-wall resolution, and convergence,
-            which informed how I approached later aerodynamic CFD work.
+            The project also established the mesh-sensitivity, near-wall, and convergence practices that I carried into
+            later aerodynamic CFD work.
           </p>
         `,
 
@@ -1418,10 +1415,12 @@
 
         how: `
           <p>
-            I built a 473,736-cell structured quadrilateral mesh with a Body of Influence, 20 inflation layers, a 1.1
-            growth rate, and localized refinement both upstream and downstream of the nose cone. I controlled the transition
-            between the inflation layers and the Body of Influence so cell size increased gradually away from the wall instead
-            of changing abruptly near the boundary layer.
+            I solved compressible ideal-gas flow in ANSYS Fluent at the OpenRocket-derived Max-Q condition using the
+            SST k-&omega; turbulence model. The mesh contained 473,736 structured quadrilateral cells with a Body of
+            Influence, 20 inflation layers, a 1.1 growth rate, and localized refinement both upstream and downstream.
+
+            I controlled the transition between the inflation layers and Body of Influence so cell size increased gradually
+            away from the wall instead of changing abruptly near the boundary layer.
           </p>
 
           <p>
@@ -1446,9 +1445,9 @@
             <h4>Governing Equations</h4>
 
             <p>
-              I built an independent MATLAB model using a slender-body wave-drag approximation for the von Kármán geometry and
-              a compressibility-corrected turbulent skin-friction correlation. Fluent's reported drag coefficient was not used
-              to generate the analytical result.
+              I built an independent MATLAB reality check using a slender-body wave-drag approximation for the von Kármán
+              geometry and a compressibility-corrected turbulent skin-friction correlation. The model was developed from
+              the governing equations and flight conditions rather than using Fluent's reported drag coefficient.
             </p>
 
             <div class="equation-layout">
@@ -1532,8 +1531,8 @@
             <p>
               The analytical model is intentionally lower order and does not resolve the local shock structure, detailed
               curved-wall pressure gradients, turbulence, or boundary-layer interactions represented by the RANS solution.
-              I used it as an independent first-order benchmark for force scale and component differences rather than treating
-              it as an exact validation of the CFD result.
+              I used it as an independent first-order reality check on force scale and component behavior rather than as an
+              exact validation of the CFD result.
             </p>
           </div>
         `,
@@ -1586,9 +1585,9 @@
           </p>
 
           <p>
-            I developed a Python wrapper around OpenRocket to automatically change vehicle parameters, launch simulations,
-            and collect the results. The workflow reduced a design study that would have taken roughly two weeks manually to
-            about four hours.
+            I developed a Python wrapper around OpenRocket to parameterize vehicle geometry, automatically launch simulations,
+            and collect the resulting flight data. The workflow reduced a design study that would have taken roughly two weeks
+            manually to about four hours.
           </p>
 
           <p>
@@ -1643,15 +1642,15 @@
           </p>
 
           <p>
-            I personally designed all enclosure panels and two of the three E-bays while contributing to the overall
-            mechanical architecture and fabrication.
+            I personally designed all enclosure panels and two of the three E-bays while contributing to the mechanical
+            architecture, component packaging, and fabrication.
           </p>
         `,
 
         how: `
           <p>
-            The frame used three 0.25 × 0.50 × 17 in 303 stainless-steel rails and G10 fiberglass disks. Three rails
-            preserved electronics volume while still providing continuous structural load paths through the payload.
+            The frame used three 0.25 × 0.50 × 17 in 303 stainless-steel rails and G10 fiberglass disks. The rails provided
+            the primary structural load path while preserving internal volume for the electronics and modular E-bays.
           </p>
 
           <p>
@@ -1666,8 +1665,8 @@
           </p>
 
           <p>
-            I also produced eight manufacturing drawings using dimensional tolerances, datum references, basic dimensions,
-            and positional GD&T for critical mounting features.
+            I produced eight manufacturing drawings using datum references, basic dimensions, dimensional tolerances,
+            and positional GD&T to control critical mounting features through fabrication and assembly.
           </p>
         `,
 
@@ -1712,9 +1711,9 @@
           </p>
 
           <p>
-            I wired and programmed the Arduino control system so the user could enter a cycle count and automatically run
-            repeated displacement cycles. A scale beneath the indenter was planned as a low-cost way to correlate displacement
-            with applied force before testing the mechanoluminescent samples.
+            I wired and programmed the Arduino controller to command stepper-motor displacement and automate user-defined
+            loading cycles. A scale beneath the indenter was planned as a low-cost force-calibration method before testing
+            the mechanoluminescent samples.
           </p>
         `,
 
