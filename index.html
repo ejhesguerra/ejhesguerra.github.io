@@ -256,14 +256,14 @@
     }
 
     .about-image-shell {
-      width: min(100%, 300px);
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 4 / 5;
+      border-radius: 14px;
       overflow: hidden;
       background: var(--image-bg);
       border: 1px solid var(--border);
       position: relative;
-      justify-self: center;
     }
 
     .about-image-shell img {
@@ -558,78 +558,37 @@
     }
 
     /* =====================================================
-       GOVERNING EQUATIONS
+       EQUATIONS
     ===================================================== */
 
     .equation-layout {
-      max-width: 780px;
-      margin: 30px 0 34px;
-    }
-
-    .equation-column {
-      margin-bottom: 30px;
-    }
-
-    .equation-column:last-child {
-      margin-bottom: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 30px 50px;
+      margin: 25px 0 30px;
     }
 
     .equation-column h5 {
-      font-size: 20px;
-      margin-bottom: 4px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--border-dark);
+      font-size: 18px;
+      margin-bottom: 10px;
     }
 
     .equation-row {
       display: grid;
-      grid-template-columns: 180px minmax(0, 1fr);
-      gap: 28px;
-      padding: 17px 0;
+      grid-template-columns: 155px 1fr;
+      gap: 12px;
+      padding: 10px 0;
       border-bottom: 1px solid var(--border);
-      align-items: center;
+      align-items: baseline;
     }
 
     .equation-name {
-      font-size: 16px;
-      line-height: 1.4;
+      font-size: 15px;
     }
 
     .equation-value {
-      min-width: 0;
-      overflow-x: auto;
-      padding: 3px 0 6px;
       font-family: "Times New Roman", Times, serif;
-      font-size: 22px;
-      line-height: 1.55;
-      white-space: nowrap;
-      scrollbar-width: thin;
-    }
-
-    .equation-fraction {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .fraction {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      vertical-align: middle;
-      line-height: 1.25;
-    }
-
-    .fraction-top {
-      width: 100%;
-      padding: 0 8px 3px;
-      border-bottom: 1px solid var(--text);
-      text-align: center;
-    }
-
-    .fraction-bottom {
-      padding: 3px 8px 0;
-      text-align: center;
+      font-size: 20px;
     }
 
     /* =====================================================
@@ -663,13 +622,9 @@
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 24px;
       align-items: start;
-    }
-
-    .gallery.gallery-single {
-      grid-template-columns: 1fr;
     }
 
     .gallery-item {
@@ -679,29 +634,17 @@
       height: 100%;
     }
 
-    .gallery:not(.gallery-single) .gallery-item:last-child:nth-child(odd) {
-      grid-column: 1 / -1;
-      width: min(100%, 560px);
-      justify-self: center;
-    }
-
     .gallery-image-frame {
       width: 100%;
-      height: 390px;
+      height: 340px;
+      padding: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
       background: var(--white);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      cursor: zoom-in;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-
-    .gallery-image-frame:hover {
-      transform: translateY(-2px);
-      border-color: var(--border-dark);
+      border-radius: 8px;
     }
 
     .gallery-image-frame img {
@@ -712,143 +655,9 @@
     }
 
     .gallery-caption {
-      margin-top: 10px;
+      margin-top: 9px;
       font-size: 16px;
       line-height: 1.45;
-      text-align: center;
-    }
-
-    /* =====================================================
-       IMAGE LIGHTBOX
-    ===================================================== */
-
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: rgba(0, 0, 0, 0.86);
-    }
-
-    .lightbox.active {
-      display: flex;
-    }
-
-    .lightbox-panel {
-      position: relative;
-      width: min(1180px, 96vw);
-      max-height: 94vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: -5px;
-      right: 0;
-      z-index: 3;
-      width: 44px;
-      height: 44px;
-      border: 1px solid rgba(255, 255, 255, 0.55);
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.45);
-      color: #fff;
-      font-size: 25px;
-      line-height: 1;
-      cursor: pointer;
-    }
-
-    .lightbox-stage {
-      width: 100%;
-      min-height: 0;
-      display: grid;
-      grid-template-columns: 58px minmax(0, 1fr) 58px;
-      gap: 14px;
-      align-items: center;
-    }
-
-    .lightbox-image-wrap {
-      min-width: 0;
-      height: min(72vh, 760px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .lightbox-image {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-
-    .lightbox-arrow {
-      width: 52px;
-      height: 52px;
-      border: 1px solid rgba(255, 255, 255, 0.55);
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.38);
-      color: #fff;
-      font-size: 28px;
-      cursor: pointer;
-    }
-
-    .lightbox-arrow:disabled {
-      opacity: 0.25;
-      cursor: default;
-    }
-
-    .lightbox-meta {
-      width: min(900px, 100%);
-      text-align: center;
-    }
-
-    .lightbox-caption {
-      color: #fff;
-      font-size: 18px;
-      line-height: 1.45;
-    }
-
-    .lightbox-count {
-      margin-top: 3px;
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 14px;
-    }
-
-    .lightbox-thumbs {
-      width: min(900px, 100%);
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      padding: 4px 2px 8px;
-      scrollbar-width: thin;
-    }
-
-    .lightbox-thumb {
-      flex: 0 0 92px;
-      height: 68px;
-      padding: 3px;
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      border-radius: 7px;
-      background: rgba(255, 255, 255, 0.06);
-      cursor: pointer;
-      opacity: 0.6;
-    }
-
-    .lightbox-thumb.active {
-      opacity: 1;
-      border-color: #fff;
-    }
-
-    .lightbox-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
     }
 
     /* =====================================================
@@ -964,8 +773,7 @@
       }
 
       .about-image-shell {
-        width: 240px;
-        max-width: 240px;
+        max-width: 290px;
         margin: 0 auto;
       }
 
@@ -986,52 +794,22 @@
         gap: 18px;
       }
 
+      .equation-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
       .equation-row {
         grid-template-columns: 1fr;
-        gap: 7px;
-        padding: 15px 0;
+        gap: 2px;
       }
 
-      .equation-value {
-        font-size: 20px;
-      }
-
-      .gallery,
-      .gallery.gallery-single {
+      .gallery {
         grid-template-columns: 1fr;
-      }
-
-      .gallery:not(.gallery-single) .gallery-item:last-child:nth-child(odd) {
-        grid-column: auto;
-        width: 100%;
       }
 
       .gallery-image-frame {
-        height: 360px;
-      }
-
-      .lightbox {
-        padding: 12px;
-      }
-
-      .lightbox-stage {
-        grid-template-columns: 42px minmax(0, 1fr) 42px;
-        gap: 7px;
-      }
-
-      .lightbox-image-wrap {
-        height: 68vh;
-      }
-
-      .lightbox-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 22px;
-      }
-
-      .lightbox-close {
-        width: 40px;
-        height: 40px;
+        height: 320px;
       }
 
       .dog-grid {
@@ -1207,29 +985,6 @@
     </section>
   </main>
 
-  <div id="image-lightbox" class="lightbox" aria-hidden="true" onclick="handleLightboxBackdrop(event)">
-    <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Project image viewer">
-      <button class="lightbox-close" type="button" aria-label="Close image viewer" onclick="closeLightbox()">×</button>
-
-      <div class="lightbox-stage">
-        <button id="lightbox-prev" class="lightbox-arrow" type="button" aria-label="Previous image" onclick="changeLightboxImage(-1)">‹</button>
-
-        <div class="lightbox-image-wrap">
-          <img id="lightbox-image" class="lightbox-image" src="" alt="">
-        </div>
-
-        <button id="lightbox-next" class="lightbox-arrow" type="button" aria-label="Next image" onclick="changeLightboxImage(1)">›</button>
-      </div>
-
-      <div class="lightbox-meta">
-        <div id="lightbox-caption" class="lightbox-caption"></div>
-        <div id="lightbox-count" class="lightbox-count"></div>
-      </div>
-
-      <div id="lightbox-thumbs" class="lightbox-thumbs" aria-label="Project image thumbnails"></div>
-    </div>
-  </div>
-
   <footer>
     <span>© 2026 Elvin Esguerra</span>
     <span>Mechanical Engineering · University of Missouri</span>
@@ -1250,17 +1005,18 @@
 
         what: `
           <p>
-            Led 36 UAW operators across three stamping presses while monitoring production, manpower, part quality,
-            and equipment conditions in real time. The department targeted about 3,700 parts per day and commonly
-            produced around 5,000.
+            Led 36 UAW operators across three stamping presses while staying on top of production,
+            manpower, quality, and equipment issues as they occurred. The department targeted about
+            3,700 parts per day and commonly produced around 5,000.
           </p>
         `,
 
         how: `
           <p>
-            I was expected to respond immediately when a quality or equipment issue appeared. I assessed the defect
-            or fault, contained questionable material when needed, checked the condition of the part and press, and
-            worked through likely causes to isolate the failure mode before coordinating the appropriate technical team.
+            A major part of the role was responding immediately when a quality or equipment problem appeared
+            and helping narrow down the root cause without losing sight of production. I assessed the issue,
+            stopped production or contained affected material when needed, checked the condition of the part
+            and press, and coordinated with the technical group best suited to the problem.
           </p>
 
           <p>
@@ -1281,7 +1037,8 @@
           <p>
             I personally owned a recurring robot-programming improvement caused by incorrect operator data entry.
             When the robot stacked parts incorrectly, it could require roughly 40 minutes to reteach. I created two
-            Task Instruction Sheets that standardized the data-entry procedure and removed the recurring failure mode.
+            Task Instruction Sheets that documented the correct data-entry process and standardized the procedure for
+            operators so the failure would not continue repeating.
           </p>
 
           <p>
@@ -1300,7 +1057,7 @@
 
         gallery: [
           { src: "images/gm-first-day.png.PNG", alt: "General Motors first day", caption: "First day at General Motors." },
-          { src: "images/gm-last-day.jpg.jpg", alt: "General Motors final day", caption: "Final day at General Motors." },
+          { src: "images/gm-last-day.jpg.jpg", alt: "General Motors final day", caption: "Final day at Wentzville Assembly." },
           { src: "images/gm-recognition.png.PNG", alt: "General Motors recognition", caption: "Internship recognition." }
         ]
       },
@@ -1318,10 +1075,10 @@
 
         what: `
           <p>
-            Independently developed and published my first technical research paper, quantifying convective aerodynamic
-            heating on a high-powered student rocket across five stages of ascent. It was also my first complete CFD
-            workflow, requiring me to learn geometry preparation, domain sizing, meshing, near-wall treatment, solver
-            setup, convergence assessment, analytical comparison, and interpretation of numerical limitations.
+            Independently developed and published my first technical research paper, quantifying convective
+            aerodynamic heating on a high-powered student rocket across five stages of ascent. This was also my
+            first end-to-end CFD study, so the project became a practical introduction to geometry development,
+            domain sizing, meshing, near-wall treatment, solver setup, convergence assessment, and verification.
           </p>
 
           <p>
@@ -1358,10 +1115,11 @@
           </p>
 
           <p>
-            I benchmarked stagnation heat flux against the Sutton–Graves correlation and performed a 3-grid mesh-sensitivity
-            study using 40,172, 72,540, and 105,633 cells. Body-region heating varied by roughly 11%, while the localized
-            stagnation peak remained much more sensitive to near-tip refinement. I used that result to separate reliable
-            heating trends from a peak value that had not reached full mesh independence.
+            I compared CFD stagnation heat flux against the Sutton–Graves correlation and performed a mesh-sensitivity
+            study using 40,172, 72,540, and 105,633 cells. Body-region heating changed by roughly 11% across the study,
+            while the localized stagnation peak remained much more sensitive to near-tip refinement. I therefore used
+            the model for heating distributions, trends, and comparisons without claiming full mesh independence for the
+            absolute stagnation peak.
           </p>
         `,
 
@@ -1380,8 +1138,8 @@
           </p>
 
           <p>
-            The project also established the mesh-sensitivity, near-wall, and convergence practices that I carried into
-            later aerodynamic CFD work.
+            The project also gave me a stronger understanding of mesh sensitivity, near-wall resolution, and convergence,
+            which informed how I approached later aerodynamic CFD work.
           </p>
         `,
 
@@ -1415,12 +1173,10 @@
 
         how: `
           <p>
-            I solved compressible ideal-gas flow in ANSYS Fluent at the OpenRocket-derived Max-Q condition using the
-            SST k-&omega; turbulence model. The mesh contained 473,736 structured quadrilateral cells with a Body of
-            Influence, 20 inflation layers, a 1.1 growth rate, and localized refinement both upstream and downstream.
-
-            I controlled the transition between the inflation layers and Body of Influence so cell size increased gradually
-            away from the wall instead of changing abruptly near the boundary layer.
+            I built a 473,736-cell structured quadrilateral mesh with a Body of Influence, 20 inflation layers, a 1.1
+            growth rate, and localized refinement both upstream and downstream of the nose cone. I controlled the transition
+            between the inflation layers and the Body of Influence so cell size increased gradually away from the wall instead
+            of changing abruptly near the boundary layer.
           </p>
 
           <p>
@@ -1442,12 +1198,12 @@
           </p>
 
           <div class="project-subsection">
-            <h4>Governing Equations</h4>
+            <h4>Analytical Check</h4>
 
             <p>
-              I built an independent MATLAB reality check using a slender-body wave-drag approximation for the von Kármán
-              geometry and a compressibility-corrected turbulent skin-friction correlation. The model was developed from
-              the governing equations and flight conditions rather than using Fluent's reported drag coefficient.
+              I built an independent MATLAB model using a slender-body wave-drag approximation for the von Kármán geometry and
+              a compressibility-corrected turbulent skin-friction correlation. Fluent's reported drag coefficient was not used
+              to generate the analytical result.
             </p>
 
             <div class="equation-layout">
@@ -1490,13 +1246,7 @@
 
                 <div class="equation-row">
                   <div class="equation-name">Skin friction</div>
-                  <div class="equation-value equation-fraction">
-                    <span>C<sub>f</sub> =</span>
-                    <span class="fraction">
-                      <span class="fraction-top">0.455</span>
-                      <span class="fraction-bottom">(log<sub>10</sub>Re)<sup>2.58</sup>(1 + 0.144M<sup>2</sup>)<sup>0.65</sup></span>
-                    </span>
-                  </div>
+                  <div class="equation-value">C<sub>f</sub> = 0.455 / [(log<sub>10</sub>Re)<sup>2.58</sup>(1 + 0.144M<sup>2</sup>)<sup>0.65</sup>]</div>
                 </div>
 
                 <div class="equation-row">
@@ -1531,8 +1281,8 @@
             <p>
               The analytical model is intentionally lower order and does not resolve the local shock structure, detailed
               curved-wall pressure gradients, turbulence, or boundary-layer interactions represented by the RANS solution.
-              I used it as an independent first-order reality check on force scale and component behavior rather than as an
-              exact validation of the CFD result.
+              I used it as an independent first-order benchmark for force scale and component differences rather than treating
+              it as an exact validation of the CFD result.
             </p>
           </div>
         `,
@@ -1585,9 +1335,9 @@
           </p>
 
           <p>
-            I developed a Python wrapper around OpenRocket to parameterize vehicle geometry, automatically launch simulations,
-            and collect the resulting flight data. The workflow reduced a design study that would have taken roughly two weeks
-            manually to about four hours.
+            I developed a Python wrapper around OpenRocket to automatically change vehicle parameters, launch simulations,
+            and collect the results. The workflow reduced a design study that would have taken roughly two weeks manually to
+            about four hours.
           </p>
 
           <p>
@@ -1642,15 +1392,15 @@
           </p>
 
           <p>
-            I personally designed all enclosure panels and two of the three E-bays while contributing to the mechanical
-            architecture, component packaging, and fabrication.
+            I personally designed all enclosure panels and two of the three E-bays while contributing to the overall
+            mechanical architecture and fabrication.
           </p>
         `,
 
         how: `
           <p>
-            The frame used three 0.25 × 0.50 × 17 in 303 stainless-steel rails and G10 fiberglass disks. The rails provided
-            the primary structural load path while preserving internal volume for the electronics and modular E-bays.
+            The frame used three 0.25 × 0.50 × 17 in 303 stainless-steel rails and G10 fiberglass disks. Three rails
+            preserved electronics volume while still providing continuous structural load paths through the payload.
           </p>
 
           <p>
@@ -1665,8 +1415,8 @@
           </p>
 
           <p>
-            I produced eight manufacturing drawings using datum references, basic dimensions, dimensional tolerances,
-            and positional GD&T to control critical mounting features through fabrication and assembly.
+            I also produced eight manufacturing drawings using dimensional tolerances, datum references, basic dimensions,
+            and positional GD&T for critical mounting features.
           </p>
         `,
 
@@ -1711,9 +1461,9 @@
           </p>
 
           <p>
-            I wired and programmed the Arduino controller to command stepper-motor displacement and automate user-defined
-            loading cycles. A scale beneath the indenter was planned as a low-cost force-calibration method before testing
-            the mechanoluminescent samples.
+            I wired and programmed the Arduino control system so the user could enter a cycle count and automatically run
+            repeated displacement cycles. A scale beneath the indenter was planned as a low-cost way to correlate displacement
+            with applied force before testing the mechanoluminescent samples.
           </p>
         `,
 
@@ -1873,99 +1623,6 @@
       `;
     }
 
-    let activeLightboxProject = null;
-    let activeLightboxIndex = 0;
-
-    function openLightbox(projectId, imageIndex) {
-      const project = experienceData.find(item => item.id === projectId);
-      if (!project || !project.gallery || project.gallery.length === 0) return;
-
-      activeLightboxProject = project;
-      activeLightboxIndex = imageIndex;
-
-      const lightbox = document.getElementById("image-lightbox");
-      lightbox.classList.add("active");
-      lightbox.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-
-      renderLightbox();
-    }
-
-    function renderLightbox() {
-      if (!activeLightboxProject) return;
-
-      const gallery = activeLightboxProject.gallery;
-      const item = gallery[activeLightboxIndex];
-
-      const image = document.getElementById("lightbox-image");
-      const caption = document.getElementById("lightbox-caption");
-      const count = document.getElementById("lightbox-count");
-      const thumbs = document.getElementById("lightbox-thumbs");
-
-      image.src = item.src;
-      image.alt = item.alt || "Project image";
-      caption.textContent = item.caption || item.alt || "";
-      count.textContent = `${activeLightboxIndex + 1} / ${gallery.length}`;
-
-      thumbs.innerHTML = gallery.map((thumb, index) => `
-        <button
-          type="button"
-          class="lightbox-thumb ${index === activeLightboxIndex ? "active" : ""}"
-          aria-label="View image ${index + 1}"
-          onclick="setLightboxImage(${index})"
-        >
-          <img src="${thumb.src}" alt="">
-        </button>
-      `).join("");
-
-      const activeThumb = thumbs.querySelector(".lightbox-thumb.active");
-      if (activeThumb) {
-        activeThumb.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
-      }
-
-      const hasMultiple = gallery.length > 1;
-      document.getElementById("lightbox-prev").style.visibility = hasMultiple ? "visible" : "hidden";
-      document.getElementById("lightbox-next").style.visibility = hasMultiple ? "visible" : "hidden";
-      thumbs.style.display = hasMultiple ? "flex" : "none";
-    }
-
-    function setLightboxImage(index) {
-      if (!activeLightboxProject) return;
-      activeLightboxIndex = index;
-      renderLightbox();
-    }
-
-    function changeLightboxImage(direction) {
-      if (!activeLightboxProject || activeLightboxProject.gallery.length < 2) return;
-
-      const total = activeLightboxProject.gallery.length;
-      activeLightboxIndex = (activeLightboxIndex + direction + total) % total;
-      renderLightbox();
-    }
-
-    function closeLightbox() {
-      const lightbox = document.getElementById("image-lightbox");
-      lightbox.classList.remove("active");
-      lightbox.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-      activeLightboxProject = null;
-    }
-
-    function handleLightboxBackdrop(event) {
-      if (event.target.id === "image-lightbox") {
-        closeLightbox();
-      }
-    }
-
-    document.addEventListener("keydown", event => {
-      const lightbox = document.getElementById("image-lightbox");
-      if (!lightbox.classList.contains("active")) return;
-
-      if (event.key === "Escape") closeLightbox();
-      if (event.key === "ArrowLeft") changeLightboxImage(-1);
-      if (event.key === "ArrowRight") changeLightboxImage(1);
-    });
-
     function openProject(projectId) {
       const project = experienceData.find(item => item.id === projectId);
       if (!project) return;
@@ -1977,17 +1634,10 @@
 
       const galleryHTML = project.gallery && project.gallery.length > 0
         ? `
-          <div class="gallery ${project.gallery.length === 1 ? "gallery-single" : ""}">
-            ${project.gallery.map((item, index) => `
+          <div class="gallery">
+            ${project.gallery.map(item => `
               <div class="gallery-item">
-                <div
-                  class="gallery-image-frame"
-                  role="button"
-                  tabindex="0"
-                  aria-label="Open ${item.alt}"
-                  onclick="openLightbox('${project.id}', ${index})"
-                  onkeydown="if(event.key === 'Enter' || event.key === ' '){ event.preventDefault(); openLightbox('${project.id}', ${index}); }"
-                >
+                <div class="gallery-image-frame">
                   <img src="${item.src}" alt="${item.alt}">
                 </div>
                 ${item.caption ? `<div class="gallery-caption">${item.caption}</div>` : ""}
