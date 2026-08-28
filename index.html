@@ -1706,8 +1706,8 @@
         how: `
           <p>
             Existing lab equipment was too large for the samples, so I designed the complete fixture in SolidWorks using
-            two lower supports and a stepper-driven central indenter. The fixture, electronics mount, and indenter were
-            designed for low-cost 3D printing and assembly.
+            two lower supports and a stepper-driven central indenter. I later revised the indenter geometry to increase
+            stiffness and reduce flex under load while keeping the system low-cost and easy to 3D print.
           </p>
 
           <p>
@@ -1724,7 +1724,18 @@
           </p>
         `,
 
-        gallery: []
+        gallery: [
+          {
+            src: "images/cad-printer.png",
+            alt: "SolidWorks CAD assembly of the three-point bending system",
+            caption: "SolidWorks assembly of the automated three-point bending system."
+          },
+          {
+            src: "images/manufactured-printer.png",
+            alt: "Completed three-point bending prototype",
+            caption: "Completed prototype after fabrication, wiring, and assembly."
+          }
+        ]
       },
 
       /* ===================================================
