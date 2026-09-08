@@ -517,6 +517,86 @@
       margin-bottom: 0;
     }
 
+    .project-section-body {
+      min-width: 0;
+    }
+
+    .project-section-body.with-media {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+      gap: 34px;
+      align-items: start;
+    }
+
+    .project-bullets {
+      margin: 0;
+      padding-left: 1.15em;
+    }
+
+    .project-bullets li {
+      margin-bottom: 11px;
+      padding-left: 3px;
+    }
+
+    .project-bullets li:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-bullets strong {
+      font-weight: 600;
+    }
+
+    .project-inline-media {
+      display: grid;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .project-inline-media.multi {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .project-inline-media.multi .project-inline-item:first-child:nth-last-child(3) {
+      grid-column: 1 / -1;
+    }
+
+    .project-inline-item {
+      min-width: 0;
+    }
+
+    .project-inline-image-frame {
+      width: 100%;
+      height: 235px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      cursor: zoom-in;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .project-inline-image-frame:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-dark);
+    }
+
+    .project-inline-image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .project-inline-caption {
+      margin-top: 7px;
+      font-size: 14px;
+      line-height: 1.4;
+      text-align: center;
+    }
+
     .project-subsection {
       margin: 32px 0 0;
     }
@@ -994,6 +1074,15 @@
         gap: 18px;
       }
 
+      .project-section-body.with-media {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .project-inline-image-frame {
+        height: 300px;
+      }
+
       .equation-row {
         grid-template-columns: 1fr;
         gap: 7px;
@@ -1274,53 +1363,32 @@
         cover: "images/gm.png",
 
         what: `
-
           <p>
-            Led 36 UAW operators across three stamping presses while monitoring production, manpower, quality,
-            and equipment conditions in real time against a 3,700-part/day target.
+            Led 36 UAW operators across three stamping presses while managing production, manpower, quality,
+            and equipment issues against a 3,700-part/day target.
           </p>
         `,
 
         how: `
-
-          <p>
-            I was expected to respond immediately to quality or equipment issues. I assessed the defect or fault,
-            contained questionable material when needed, checked the part and press condition, isolated likely failure
-            modes, and coordinated the technical team best suited to the issue.
-          </p>
-
-          <p>
-            One example was an “upding,” a localized dent that was difficult to identify from one side of the panel.
-            After confirming it by inspecting and scuffing the opposite surface, I traced the defect to a small piece
-            of scrap trapped in the tooling, removed it, and verified the defect was no longer being produced.
-          </p>
-
-          <p>
-            Larger defects, such as major splits, required quarantining the affected production bank while parts were
-            sorted into usable, repairable, or scrap material. In parallel, I worked with electricians, maintenance,
-            controls, and maintenance engineers on tooling, robot, oil-pressure, oil-temperature, and electrical faults.
-          </p>
-
-          <p>
-            I owned a recurring robot-programming improvement caused by incorrect operator data entry. A bad entry could
-            make the robot stack parts incorrectly and require roughly 40 minutes to reteach. I created two Task Instruction
-            Sheets that standardized the data-entry process and removed the recurring failure mode.
-          </p>
-
-          <p>
-            During one week without the other group leaders or shift leader, I supported all 36 operators while coordinating
-            production, quality, robot, and equipment issues.
-          </p>
+          <ul class="project-bullets">
+            <li>Performed root-cause analysis on stamping defects, press faults, and robot issues while coordinating controls, maintenance, and electricians.</li>
+            <li>Traced a recurring panel defect to scrap trapped in the tooling, removed the source, and verified the defect was eliminated.</li>
+            <li>Created two standardized robot-programming work instructions to prevent incorrect operator data entry and repeat reteaching.</li>
+            <li>Supported the full 36-operator area for one week without the other group leaders or shift leader.</li>
+          </ul>
         `,
 
         results: `
-
           <p>
-            Supported production above the 3,700-part/day target while responding to quality and equipment issues in real time.
-            My robot-programming standardization eliminated roughly 40 minutes of recurring weekly downtime and added capacity
-            for 200 additional parts per week.
+            Eliminated 40 minutes of recurring weekly downtime and added capacity for 200 parts per week while supporting production above target.
           </p>
         `,
+
+        sectionImages: {
+          what: [0],
+          how: [2],
+          results: [1]
+        },
 
         gallery: [
           { src: "images/gm-first-day.png.PNG", alt: "General Motors first day", caption: "First day at General Motors." },
@@ -1328,7 +1396,6 @@
           { src: "images/gm-recognition.png.PNG", alt: "General Motors recognition", caption: "Internship recognition." }
         ]
       },
-
       /* ===================================================
          ARGONIA CUP
       ==================================================== */
@@ -1341,57 +1408,40 @@
         cover: "images/argoniarocket.jpg",
 
         what: `
-
           <p>
             I lead a 30+ member multidisciplinary team through the design, manufacturing, and testing of our Argonia Cup rocket.
-            The vehicle targets 7,000 ft while carrying 16 golf balls and using three airstarts. I chose this configuration after
-            MATLAB score trades showed it gave us the best realistic scoring potential. I am also developing MSP's first active air-brake system.
+            The vehicle targets 7,000 ft with 16 golf balls and three airstarts—a configuration I selected from MATLAB scoring trades
+            as the highest realistic scoring option for our team.
           </p>
         `,
 
         how: `
-
-          <p>
-            I modeled the competition scoring equation in MATLAB and built a Python wrapper around OpenRocket to automate design changes,
-            run simulations, and collect flight data. This reduced a two-week manual design study to four hours.
-          </p>
-
-          <p>
-            I ran 250 Monte Carlo flights with changing weather and launch conditions, with 99.2% meeting the airstart criteria.
-            The next version will run 1,000 flights while varying wind, atmosphere, and as-built mass to track apogee, score,
-            airstart eligibility, and the usable air-brake deployment window after motor burnout.
-          </p>
-
-          <p>
-            For the air-brakes, I am using PyANSYS to automate 75 CFD cases across Mach number, brake deployment, and environmental conditions.
-            The main cases use a 90° periodic quarter-domain at 0° AoA to reduce computational cost. Five additional AoA cases will use
-            expanded geometry to capture changes in drag, side force, and pitching moment. The CFD results will build an aerodynamic lookup
-            table for the flight controller.
-          </p>
-
-          <p>
-            During coast, barometer and IMU data will estimate the rocket's state while the controller predicts apogee and commands the
-            four-petal air-brakes. Deployment will be limited when the rocket is outside the allowed attitude or AoA range.
-          </p>
+          <ul class="project-bullets">
+            <li><strong>OpenRocket automation:</strong> Built a Python wrapper to change vehicle parameters, run design sweeps, and collect flight data, cutting a two-week manual study to four hours.</li>
+            <li><strong>Monte Carlo:</strong> Ran 250 flights with weather and launch variation; 99.2% met airstart criteria. The next 1,000-run study will vary wind, atmosphere, and as-built mass to track apogee, score, ignition success, and the post-burn air-brake window.</li>
+            <li><strong>Air-brake CFD:</strong> Using PyANSYS to automate 75 cases across Mach number, deployment, and environmental conditions. The 0° AoA cases use a 90° periodic quarter-domain; five nonzero-AoA cases use a larger domain to capture drag, side force, and pitching moment.</li>
+            <li><strong>Closed-loop control:</strong> CFD will populate a drag/moment lookup table. During coast, barometer and IMU data will estimate vehicle state while the controller predicts apogee and commands the four-petal air-brakes within attitude/AoA limits.</li>
+          </ul>
         `,
 
         results: `
-
           <p>
-            Selected the 7,000-ft, 16-golf-ball, three-airstart configuration, reduced OpenRocket design studies from two weeks to four hours,
-            and achieved a 99.2% airstart-criteria rate across 250 Monte Carlo flights. Current work focuses on CFD, air-brake design,
-            and closed-loop apogee control.
+            Selected the 7,000-ft / 16-ball / three-airstart configuration, reduced design sweeps to four hours, and achieved a 99.2% airstart-criteria rate across 250 Monte Carlo flights.
           </p>
         `,
 
+        sectionImages: {
+          what: [0],
+          how: [1, 2, 3]
+        },
+
         gallery: [
-          { src: "images/argoniarocket.jpg", alt: "Argonia Cup OpenRocket vehicle design", caption: "Current Argonia Cup vehicle configuration modeled in OpenRocket." },
-          { src: "images/score.jpg", alt: "Argonia competition score surface", caption: "Competition score versus apogee and golf-ball payload." },
-          { src: "images/golfball.jpg", alt: "Golf-ball scoring analysis", caption: "Golf-ball scoring factor and incremental gain." },
-          { src: "images/airstart.jpg", alt: "Airstart scoring analysis", caption: "Competition score versus successful airstarts." }
+          { src: "images/argoniarocket.jpg", alt: "Argonia Cup OpenRocket vehicle design", caption: "Current Argonia Cup vehicle configuration in OpenRocket." },
+          { src: "images/score.jpg", alt: "Argonia competition score surface", caption: "Score trade study versus apogee and golf-ball payload." },
+          { src: "images/golfball.jpg", alt: "Golf-ball scoring analysis", caption: "Golf-ball scoring trade." },
+          { src: "images/airstart.jpg", alt: "Airstart scoring analysis", caption: "Airstart scoring trade." }
         ]
       },
-
       /* ===================================================
          IREC NOSE CONE
       ==================================================== */
@@ -1404,168 +1454,35 @@
         cover: "images/nosecone-analysis-cover.png",
 
         what: `
-
           <p>
-            I performed the forebody aerodynamic analysis for the 2026 Mizzou Space Program Technical Report,
-            modeling the rocket's von Kármán nose cone at Mach 2.117 Max-Q.
-          </p>
-
-          <p>
-            The analysis supported the competition technical report and contributed to a strong report score.
+            Performed the forebody aerodynamic analysis for the 2026 Mizzou Space Program Technical Report at the OpenRocket-derived Mach 2.117 Max-Q condition.
           </p>
         `,
 
         how: `
-
-          <p>
-            I solved compressible ideal-gas flow in ANSYS Fluent at the OpenRocket-derived Max-Q condition using SST
-            k-&omega;. The mesh contained 473,736 structured quadrilateral cells, a Body of Influence, 20 inflation layers,
-            a 1.1 growth rate, and localized upstream/downstream refinement. I smoothed the inflation-to-BOI transition to
-            avoid abrupt cell-size changes near the boundary layer.
-          </p>
-
-          <p>
-            Upstream refinement resolved the incoming supersonic flow and nose shock; downstream refinement captured pressure
-            recovery, boundary-layer development, and wake behavior. The near-wall mesh targeted y<sup>+</sup> ≈ 1 and
-            achieved an average y<sup>+</sup> ≈ 1.6.
-          </p>
-
-          <p>
-            A nose-cone-only model would end at a flat base and create artificial separation directly behind the forebody.
-            I added a 12-inch aft extension to move the wake downstream, then integrated forces only over the nose-cone surface
-            so the reported drag represented the forebody rather than the truncated-base wake.
-          </p>
-
-          <p>
-            I ran 1,200 iterations while monitoring residuals and drag history, continuing until drag flattened
-            and residuals had substantially decreased instead of relying on a residual threshold alone.
-          </p>
-
-<div class="project-subsection">
-            <h4>Governing Equations</h4>
-
-            <p>
-              I built an independent MATLAB reality check from the governing equations using a slender-body von Kármán
-              wave-drag approximation and a compressibility-corrected turbulent skin-friction correlation. Fluent's reported
-              drag coefficient was not used as an input.
-            </p>
-
-            <div class="equation-layout">
-              <div class="equation-column">
-                <h5>Flow & Geometry</h5>
-
-                <div class="equation-row">
-                  <div class="equation-name">Fineness ratio</div>
-                  <div class="equation-value">f = L / D</div>
-                </div>
-
-                <div class="equation-row">
-                  <div class="equation-name">Dynamic pressure</div>
-                  <div class="equation-value">q<sub>&infin;</sub> = ½ρ<sub>&infin;</sub>V<sub>&infin;</sub><sup>2</sup></div>
-                </div>
-
-                <div class="equation-row">
-                  <div class="equation-name">Reynolds number</div>
-                  <div class="equation-value">Re = ρVL / μ</div>
-                </div>
-
-                <div class="equation-row">
-                  <div class="equation-name">Wetted area</div>
-                  <div class="equation-value">S<sub>wet</sub> = 2π∫r ds</div>
-                </div>
-              </div>
-
-              <div class="equation-column">
-                <h5>Drag</h5>
-
-                <div class="equation-row">
-                  <div class="equation-name">Wave coefficient</div>
-                  <div class="equation-value">C<sub>D,w</sub> = 1 / f<sup>2</sup></div>
-                </div>
-
-                <div class="equation-row">
-                  <div class="equation-name">Wave drag</div>
-                  <div class="equation-value">D<sub>w</sub> = q<sub>&infin;</sub>A<sub>ref</sub>C<sub>D,w</sub></div>
-                </div>
-
-                <div class="equation-row">
-                  <div class="equation-name">Skin friction</div>
-                  <div class="equation-value equation-fraction">
-                    <span>C<sub>f</sub> =</span>
-                    <span class="fraction">
-                      <span class="fraction-top">0.455</span>
-                      <span class="fraction-bottom">(log<sub>10</sub>Re)<sup>2.58</sup>(1 + 0.144M<sup>2</sup>)<sup>0.65</sup></span>
-                    </span>
-                  </div>
-                </div>
-
-                <div class="equation-row">
-                  <div class="equation-name">Friction drag</div>
-                  <div class="equation-value">D<sub>f</sub> = C<sub>f</sub>q<sub>&infin;</sub>S<sub>wet</sub></div>
-                </div>
-
-                <div class="equation-row">
-                  <div class="equation-name">Total drag</div>
-                  <div class="equation-value">D<sub>total</sub> = D<sub>w</sub> + D<sub>f</sub></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="comparison-table-wrap">
-              <table class="comparison-table">
-                <thead>
-                  <tr>
-                    <th>Component</th>
-                    <th>MATLAB</th>
-                    <th>Fluent</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td>Wave / Pressure</td><td>~90 N</td><td>129.5 N</td></tr>
-                  <tr><td>Skin Friction / Viscous</td><td>~53 N</td><td>115.9 N</td></tr>
-                  <tr><td>Total</td><td>~143 N</td><td>245.5 N</td></tr>
-                </tbody>
-              </table>
-            </div>
-
-            <p>
-              The analytical model does not resolve local shock structure, curved-wall pressure gradients, turbulence,
-              or detailed boundary-layer interactions captured by RANS CFD. I used it as a first-order reality check on
-              force scale and component behavior, not as exact validation.
-            </p>
-          </div>
-        `,
-
-        results: `
-
-          <p>
-            Fluent predicted 245.5 N of forebody drag at Mach 2.117 with a reported C<sub>D</sub> of 0.123:
-            129.5 N pressure drag and 115.9 N viscous drag.
-          </p>
-
-          <p>
-            MATLAB predicted 143 N total; the largest difference was in the viscous component, identifying
-            wall-stress prediction as the main area for further investigation.
-          </p>
+          <ul class="project-bullets">
+            <li>Modeled compressible ideal-gas flow in ANSYS Fluent with SST k-&omega; using a 473,736-cell structured quadrilateral mesh.</li>
+            <li>Used 20 inflation layers, 1.1 growth rate, localized refinement, and achieved average y<sup>+</sup> = 1.6.</li>
+            <li>Added a 12-in aft extension to move artificial base separation downstream, then integrated forces only over the nose-cone surface.</li>
+            <li>Ran 1,200 iterations and checked both residuals and drag history for convergence.</li>
+            <li>Built an independent MATLAB force estimate from wave drag and compressibility-corrected turbulent skin friction as a first-order reality check.</li>
+          </ul>
         `,
 
         results: `
           <p>
-            Fluent predicted 245.5 N of total forebody drag at Mach 2.117 with a reported C<sub>D</sub> of 0.123,
-            including 129.5 N of pressure drag and 115.9 N of viscous drag.
-          </p>
-
-          <p>
-            The MATLAB model predicted 143 N total. The largest difference occurred in the viscous component,
-            making wall-stress prediction the most important area for further investigation rather than hiding the discrepancy.
+            Fluent predicted 245.5 N of forebody drag with C<sub>D</sub> = 0.123: 129.5 N pressure drag and 115.9 N viscous drag. MATLAB predicted 143 N total, identifying wall-stress modeling as the main discrepancy.
           </p>
         `,
+
+        sectionImages: {
+          results: [0]
+        },
 
         gallery: [
           { src: "images/IREC-CFD-TABLE.png", alt: "ANSYS Fluent nose cone drag results", caption: "Fluent pressure, viscous, and total drag results." }
         ]
       },
-
       /* ===================================================
          AIAA RESEARCH
       ==================================================== */
@@ -1578,77 +1495,37 @@
         cover: "images/aiaa-cover.png",
 
         what: `
-
           <p>
-            Independently developed and published my first technical paper, quantifying convective aerodynamic heating
-            on a high-powered student rocket across five ascent conditions. It was also my first complete CFD study,
-            covering geometry, domain sizing, meshing, near-wall treatment, solver setup, convergence, and verification.
+            Independently developed, published, and presented my first CFD study on convective aerodynamic heating of a high-powered rocket across five ascent conditions.
           </p>
-
-          <p>
-            I presented the work at the 2026 AIAA Region V Student Conference to technical judges and engineering students,
-            where I explained the methodology, justified assumptions, and defended the results and limitations.
-          </p>
-
           <div class="button-row">
-            <a class="button button-secondary" href="https://arc.aiaa.org/doi/10.2514/6.2026-111868" target="_blank" rel="noopener">
-              View Published Paper ↗
-            </a>
+            <a class="button button-secondary" href="https://arc.aiaa.org/doi/10.2514/6.2026-111868" target="_blank" rel="noopener">View Published Paper ↗</a>
           </div>
         `,
 
         how: `
-
-          <p>
-            I modeled the 0.587 m von Kármán nose cone as a 2D axisymmetric domain to retain the dominant stagnation and
-            boundary-layer physics at lower computational cost. The domain extended 7 body lengths upstream, 12 downstream,
-            and 7 nose radii radially to reduce boundary interference.
-          </p>
-
-          <p>
-            The 72,540-cell baseline mesh used a 2.5 × 10<sup>-5</sup> m first-layer height, 8 inflation layers, a 1.15
-            growth rate, and localized nose/wall refinement where thermal and velocity gradients were steepest. Average
-            y<sup>+</sup> was 4.74.
-          </p>
-
-          <p>
-            I used a pressure-based compressible solver with ideal-gas air, SST k-&omega;, second-order discretization,
-            a no-slip wall, and a constant 300 K wall. I reduced the trajectory to five representative steady-state cases:
-            Liftoff, Early Acceleration, Max-Q, Peak Velocity, and High Altitude, using flight-derived Mach number, pressure,
-            and temperature.
-          </p>
-
-          <p>
-            I benchmarked stagnation heat flux against Sutton–Graves and ran a 3-grid mesh-sensitivity study at 40,172,
-            72,540, and 105,633 cells. Body-region heating varied by roughly 11%, while the stagnation peak remained sensitive
-            to near-tip refinement. I therefore treated the model as reliable for heating trends and distributions, not as
-            a fully mesh-independent peak prediction.
-          </p>
+          <ul class="project-bullets">
+            <li>Modeled a 0.587 m von Kármán nose cone with a 2D axisymmetric ANSYS Fluent domain and SST k-&omega;.</li>
+            <li>Used a 72,540-cell baseline mesh, 2.5 × 10<sup>-5</sup> m first-layer height, 8 inflation layers, 1.15 growth rate, and average y<sup>+</sup> = 4.74.</li>
+            <li>Simulated Liftoff, Early Acceleration, Max-Q, Peak Velocity, and High Altitude using flight-derived Mach, pressure, and temperature.</li>
+            <li>Benchmarked against Sutton–Graves and completed a three-grid sensitivity study at 40,172, 72,540, and 105,633 cells.</li>
+          </ul>
         `,
 
         results: `
-
           <p>
-            Peak stagnation heat flux reached 2.46 MW/m² at Max-Q. Sutton–Graves underpredicted the CFD stagnation values
-            by 183–452%, while heating remained strongly localized near the nose tip.
-          </p>
-
-          <p>
-            The results give student rocket teams in similar transonic and low-supersonic regimes a thermal reference for
-            preliminary material selection, helping identify where high-temperature materials are justified and where
-            lower-cost materials may be reasonable.
-          </p>
-
-          <p>
-            The mesh-sensitivity and near-wall lessons from this study informed my later aerodynamic CFD workflow.
+            Peak stagnation heat flux reached 2.46 MW/m² at Max-Q. Sutton–Graves underpredicted the CFD stagnation values by 183–452%, while the mesh study showed the stagnation peak remained sensitive to near-tip refinement.
           </p>
         `,
+
+        sectionImages: {
+          what: [0]
+        },
 
         gallery: [
           { src: "images/aiaa-presentation.jpg", alt: "AIAA presentation", caption: "Presenting the research at the AIAA Region V Student Conference." }
         ]
       },
-
       /* ===================================================
          IREC PAYLOAD
       ==================================================== */
@@ -1661,52 +1538,39 @@
         cover: "images/payload-cover.png",
 
         what: `
-
           <p>
-            Designed and fabricated major mechanical components for a 5.75-lb modular payload housing telemetry, power,
-            sensing, imaging, and antenna systems. I owned all enclosure panels and two of four E-bays while supporting
-            structural architecture, component packaging, and integration.
+            Designed and fabricated major mechanical components for a 5.75-lb modular payload, including all enclosure panels and two of four electronics bays.
           </p>
         `,
 
         how: `
-
-          <p>
-            The frame used three 0.25 × 0.50 × 17 in 303 stainless-steel rails and G10 fiberglass disks. The rails carried
-            the primary structural load while preserving volume for electronics and modular E-bays.
-          </p>
-
-          <p>
-            Electronics were mounted in custom 3D-printed E-bays. I placed the antenna at the top with fiberglass and polymer
-            components nearby to reduce RF blockage from metal.
-          </p>
-
-          <p>
-            I fabricated components with a bandsaw, drill press, sanding equipment, calipers, and taps. Stainless mounting
-            holes were laid out, drilled, and hand-tapped.
-          </p>
-
-          <p>
-            I produced eight manufacturing drawings using datum references, basic dimensions, tolerances, and positional GD&T.
-          </p>
+          <ul class="project-bullets">
+            <li>Built the primary load path around three 303 stainless-steel rails and G10 fiberglass disks while preserving electronics volume.</li>
+            <li>Designed custom 3D-printed E-bays and placed the antenna near fiberglass/polymer components to reduce RF blockage.</li>
+            <li>Fabricated parts with a bandsaw, drill press, sanding equipment, calipers, and hand-tapped stainless mounting holes.</li>
+            <li>Produced eight manufacturing drawings using datums, basic dimensions, tolerances, and positional GD&T.</li>
+          </ul>
         `,
 
         results: `
-
           <p>
-            Completed a modular payload designed around a 20 ft/s landing requirement while maintaining structural load paths,
-            electronics access, and RF transmission.
+            Completed a modular payload designed around a 20 ft/s landing requirement while maintaining load paths, electronics access, and RF transmission.
           </p>
         `,
+
+        sectionImages: {
+          what: [0],
+          how: [1, 3],
+          results: [2]
+        },
 
         gallery: [
           { src: "images/irec-payload.jpg", alt: "Completed IREC payload", caption: "Completed payload assembly." },
           { src: "images/Payload-Panels.jpg", alt: "Payload panels", caption: "Payload frame and enclosure panels." },
           { src: "images/payload-inprogress.jpg.png", alt: "Payload fabrication", caption: "Payload during fabrication and integration." },
-          { src: "images/gdt.JPG", alt: "Bottom Module E-Bay GD&T drawing", caption: "Bottom Module E-Bay manufacturing drawing with GD&T." }
+          { src: "images/gdt.JPG", alt: "Bottom Module E-Bay GD&T drawing", caption: "E-Bay manufacturing drawing with positional GD&T." }
         ]
       },
-
       /* ===================================================
          UNDERGRADUATE RESEARCH
       ==================================================== */
@@ -1719,49 +1583,35 @@
         cover: "images/mizzou-logo.jpg",
 
         what: `
-
           <p>
-            Developed a compact three-point bending system for 60 × 60 mm mechanoluminescent samples to relate applied force
-            to emitted light.
+            Developed a compact three-point bending system for 60 × 60 mm mechanoluminescent samples to relate applied force to emitted light.
           </p>
         `,
 
         how: `
-
-          <p>
-            Existing lab equipment was too large for the samples, so I designed the fixture in SolidWorks with two lower
-            supports and a stepper-driven central indenter. I later stiffened the indenter geometry to reduce flex under load
-            while keeping it inexpensive and printable.
-          </p>
-
-          <p>
-            I wired and programmed the Arduino controller to command stepper displacement and automate user-defined loading
-            cycles. A scale beneath the indenter was planned as a low-cost force-calibration method before sample testing.
-          </p>
+          <ul class="project-bullets">
+            <li>Designed the fixture in SolidWorks with two lower supports and a stepper-driven central indenter, then stiffened the indenter to reduce flex.</li>
+            <li>3D printed the components and wired/programmed an Arduino to automate user-defined displacement cycles.</li>
+            <li>Planned a scale-based force calibration method before sample testing.</li>
+          </ul>
         `,
 
         results: `
-
           <p>
-            Completed CAD, fabrication, wiring, programming, and assembly for under $40. The prototype runs programmed
-            displacement cycles and awaits force calibration and sample testing.
+            Completed CAD, fabrication, wiring, programming, and assembly for under $40. The prototype runs programmed displacement cycles and awaits force calibration.
           </p>
         `,
 
+        sectionImages: {
+          how: [0],
+          results: [1]
+        },
+
         gallery: [
-          {
-            src: "images/cad-printer.png",
-            alt: "SolidWorks CAD assembly of the three-point bending system",
-            caption: "SolidWorks assembly of the automated three-point bending system."
-          },
-          {
-            src: "images/manufactured-printer.png",
-            alt: "Completed three-point bending prototype",
-            caption: "Completed prototype after fabrication, wiring, and assembly."
-          }
+          { src: "images/cad-printer.png", alt: "SolidWorks CAD assembly of the three-point bending system", caption: "SolidWorks assembly of the three-point bending system." },
+          { src: "images/manufactured-printer.png", alt: "Completed three-point bending prototype", caption: "Completed prototype after fabrication, wiring, and assembly." }
         ]
       },
-
       /* ===================================================
          LEVEL 1 ROCKET
       ==================================================== */
@@ -1774,38 +1624,30 @@
         cover: "images/level1-cover.png",
 
         what: `
-
           <p>
-            Designed and fabricated a Level 1 high-power rocket around an H195NT-10 motor using OpenRocket simulation,
-            stability analysis, fabrication, and recovery-system design.
+            Designed and fabricated a Level 1 high-power rocket around an H195NT-10 motor using OpenRocket, stability analysis, fabrication, and recovery-system design.
           </p>
         `,
 
         how: `
-
-          <p>
-            OpenRocket predicted a 2,751-ft apogee, 828 ft/s maximum velocity, and 1,031 ft/s² maximum acceleration. I added
-            nose ballast to move the CG forward and reach a 1.28-caliber stability margin.
-          </p>
-
-          <p>
-            I fabricated and fitted the wooden fins with a table saw, bandsaw, drill press, and sanding equipment, cut the
-            fin slots, test-fit the geometry, then bonded the fins with epoxy and added fillets.
-          </p>
-
-          <p>
-            I installed the launch lugs, assembled the motor and recovery hardware, and selected a single-deployment parachute
-            in OpenRocket to target roughly a 20 ft/s descent rate.
-          </p>
+          <ul class="project-bullets">
+            <li>OpenRocket predicted 2,751 ft apogee, 828 ft/s maximum velocity, and 1,031 ft/s² maximum acceleration.</li>
+            <li>Added nose ballast to move the CG forward and reach a 1.28-caliber stability margin.</li>
+            <li>Fabricated and fitted the wooden fins, cut fin slots, bonded the fins with epoxy, and added fillets.</li>
+            <li>Selected a single-deployment recovery system targeting a 20 ft/s descent rate.</li>
+          </ul>
         `,
 
         results: `
-
           <p>
-            The completed vehicle awaits its certification flight due to university flight restrictions. Predicted performance:
-            2,751 ft apogee, 828 ft/s maximum velocity, and 1.28 calibers of stability.
+            The completed vehicle awaits its certification flight. Predicted performance is 2,751 ft apogee, 828 ft/s maximum velocity, and 1.28 calibers of stability.
           </p>
         `,
+
+        sectionImages: {
+          what: [0],
+          how: [1, 2]
+        },
 
         gallery: [
           { src: "images/minion-rocket.jpg", alt: "Completed Level 1 rocket", caption: "Completed Level 1 rocket." },
@@ -1813,6 +1655,7 @@
           { src: "images/altitude-vs-velocity.jpg", alt: "Predicted Level 1 performance", caption: "Predicted altitude and velocity." }
         ]
       }
+
     ];
 
     function showPage(pageId) {
@@ -2003,22 +1846,22 @@
       if (event.key === "ArrowRight") changeLightboxImage(1);
     });
 
-    function openProject(projectId) {
-      const project = experienceData.find(item => item.id === projectId);
-      if (!project) return;
+    function buildSectionMedia(project, sectionKey) {
+      if (!project.gallery || !project.sectionImages || !project.sectionImages[sectionKey]) return "";
 
-      const experienceList = document.getElementById("experience-list");
-      const detail = document.getElementById("project-detail");
+      const indexes = project.sectionImages[sectionKey]
+        .filter(index => project.gallery[index]);
 
-      experienceList.style.display = "none";
+      if (indexes.length === 0) return "";
 
-      const galleryHTML = project.gallery && project.gallery.length > 0
-        ? `
-          <div class="gallery ${project.gallery.length === 1 ? "gallery-single" : ""}">
-            ${project.gallery.map((item, index) => `
-              <div class="gallery-item">
+      return `
+        <div class="project-inline-media ${indexes.length > 1 ? "multi" : ""}">
+          ${indexes.map(index => {
+            const item = project.gallery[index];
+            return `
+              <div class="project-inline-item">
                 <div
-                  class="gallery-image-frame"
+                  class="project-inline-image-frame"
                   role="button"
                   tabindex="0"
                   aria-label="Open ${item.alt}"
@@ -2027,12 +1870,35 @@
                 >
                   <img src="${item.src}" alt="${item.alt}">
                 </div>
-                ${item.caption ? `<div class="gallery-caption">${item.caption}</div>` : ""}
+                ${item.caption ? `<div class="project-inline-caption">${item.caption}</div>` : ""}
               </div>
-            `).join("")}
+            `;
+          }).join("")}
+        </div>
+      `;
+    }
+
+    function buildProjectSection(project, title, key, content) {
+      const media = buildSectionMedia(project, key);
+      return `
+        <section class="project-section">
+          <h2>${title}</h2>
+          <div class="project-section-body ${media ? "with-media" : ""}">
+            <div class="project-section-content">${content}</div>
+            ${media}
           </div>
-        `
-        : `<p>Additional project images coming soon.</p>`;
+        </section>
+      `;
+    }
+
+    function openProject(projectId) {
+      const project = experienceData.find(item => item.id === projectId);
+      if (!project) return;
+
+      const experienceList = document.getElementById("experience-list");
+      const detail = document.getElementById("project-detail");
+
+      experienceList.style.display = "none";
 
       detail.innerHTML = `
         ${buildProjectSwitcher(project.id)}
@@ -2043,25 +1909,9 @@
           <div class="project-header-meta">${project.subtitle}</div>
         </div>
 
-        <section class="project-section">
-          <h2>What I Did</h2>
-          <div class="project-section-content">${project.what}</div>
-        </section>
-
-        <section class="project-section">
-          <h2>My Approach</h2>
-          <div class="project-section-content">${project.how}</div>
-        </section>
-
-        <section class="project-section">
-          <h2>Results</h2>
-          <div class="project-section-content">${project.results}</div>
-        </section>
-
-        <section class="project-section">
-          <h2>Project Gallery</h2>
-          <div class="project-section-content">${galleryHTML}</div>
-        </section>
+        ${buildProjectSection(project, "What I Did", "what", project.what)}
+        ${buildProjectSection(project, "My Approach", "how", project.how)}
+        ${buildProjectSection(project, "Results", "results", project.results)}
 
         ${buildBottomNavigation(project.id)}
       `;
