@@ -301,6 +301,14 @@
       line-height: 1.75;
     }
 
+    .about-copy p {
+      margin-bottom: 18px;
+    }
+
+    .about-copy p:last-child {
+      margin-bottom: 0;
+    }
+
     .contact-row {
       display: flex;
       justify-content: flex-start;
@@ -1106,13 +1114,30 @@
         <div class="about-content">
           <h2 class="about-title">About Me</h2>
 
-          <p class="about-copy">
-            I enjoy learning how problems work and figuring out how to make them simpler, faster, and better.
-            That mindset is a big part of what draws me toward mechanical engineering, especially simulation,
-            design, and problem solving where I can understand how something works and then improve it.
-            Outside of academics, I enjoy playing tennis, spending time with my dogs, and my favorite food is pho.
-            Feel free to reach out with any questions — I’m always happy to connect!
-          </p>
+          <div class="about-copy">
+            <p>
+              Hi, my name is Elvin, and I’m a Mechanical Engineering student at the University of Missouri with
+              interests in thermofluids, aerodynamics, simulation and analysis, and mechanical design.
+            </p>
+
+            <p>
+              I currently serve as Project Manager for the Mizzou Space Program (MSP), leading the design,
+              manufacturing, and testing of our Argonia Cup rocket. We are competing against 30+ teams in a
+              challenge centered on reaching a target apogee of either 7,000 or 14,000 ft while carrying
+              golf-ball payloads and successfully executing airstarts.
+            </p>
+
+            <p>
+              During the summer of 2026, I worked at General Motors supporting high-volume manufacturing, where
+              I led production teams, performed root-cause analysis on equipment and process failures, and
+              developed improvements to reduce downtime.
+            </p>
+
+            <p>
+              What draws me to mechanical engineering is understanding how a system behaves, analyzing its
+              performance, and using that insight to optimize and improve the design.
+            </p>
+          </div>
 
           <div class="contact-row">
             <a href="mailto:ejhesguerra@gmail.com">ejhesguerra@gmail.com</a>
@@ -1570,7 +1595,7 @@
         title: "Argonia Cup Project Manager",
         shortTitle: "Argonia Cup",
         subtitle: "Mizzou Space Program · May 2026 – Present",
-        cover: null,
+        cover: "images/argoniarocket.jpg",
 
         what: `
 
@@ -1622,6 +1647,7 @@
         `,
 
         gallery: [
+          { src: "images/argoniarocket.jpg", alt: "Argonia Cup OpenRocket vehicle design", caption: "Current Argonia Cup vehicle configuration modeled in OpenRocket." },
           { src: "images/score.jpg", alt: "Argonia competition score surface", caption: "Competition score versus apogee and golf-ball payload." },
           { src: "images/golfball.jpg", alt: "Golf-ball scoring analysis", caption: "Golf-ball scoring factor and incremental gain." },
           { src: "images/airstart.jpg", alt: "Airstart scoring analysis", caption: "Competition score versus successful airstarts." }
