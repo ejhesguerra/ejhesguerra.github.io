@@ -1318,7 +1318,7 @@
           <p>
             Supported production above the 3,700-part/day target while responding to quality and equipment issues in real time.
             My robot-programming standardization eliminated roughly 40 minutes of recurring weekly downtime and added capacity
-            for approximately 200 parts per week.
+            for 200 additional parts per week.
           </p>
         `,
 
@@ -1330,85 +1330,65 @@
       },
 
       /* ===================================================
-         AIAA RESEARCH
+         ARGONIA CUP
       ==================================================== */
       {
-        id: "aiaa-heating",
+        id: "argonia-cup",
         category: "Simulation & Analysis",
-        title: "Quantifying Convective Aerodynamic Heating During Ascent",
-        shortTitle: "AIAA Heating",
-        subtitle: "AIAA Region V Student Conference · 2026",
-        cover: "images/aiaa-cover.png",
+        title: "Argonia Cup Project Manager",
+        shortTitle: "Argonia Cup",
+        subtitle: "Mizzou Space Program · May 2026 – Present",
+        cover: "images/argoniarocket.jpg",
 
         what: `
 
           <p>
-            Independently developed and published my first technical paper, quantifying convective aerodynamic heating
-            on a high-powered student rocket across five ascent conditions. It was also my first complete CFD study,
-            covering geometry, domain sizing, meshing, near-wall treatment, solver setup, convergence, and verification.
+            I lead a 30+ member multidisciplinary team through the design, manufacturing, and testing of our Argonia Cup rocket.
+            The vehicle targets 7,000 ft while carrying 16 golf balls and using three airstarts. I chose this configuration after
+            MATLAB score trades showed it gave us the best realistic scoring potential. I am also developing MSP's first active air-brake system.
           </p>
-
-          <p>
-            I presented the work at the 2026 AIAA Region V Student Conference to technical judges and engineering students,
-            where I explained the methodology, justified assumptions, and defended the results and limitations.
-          </p>
-
-          <div class="button-row">
-            <a class="button button-secondary" href="https://arc.aiaa.org/doi/10.2514/6.2026-111868" target="_blank" rel="noopener">
-              View Published Paper ↗
-            </a>
-          </div>
         `,
 
         how: `
 
           <p>
-            I modeled the 0.587 m von Kármán nose cone as a 2D axisymmetric domain to retain the dominant stagnation and
-            boundary-layer physics at lower computational cost. The domain extended 7 body lengths upstream, 12 downstream,
-            and 7 nose radii radially to reduce boundary interference.
+            I modeled the competition scoring equation in MATLAB and built a Python wrapper around OpenRocket to automate design changes,
+            run simulations, and collect flight data. This reduced a two-week manual design study to four hours.
           </p>
 
           <p>
-            The 72,540-cell baseline mesh used a 2.5 × 10<sup>-5</sup> m first-layer height, 8 inflation layers, a 1.15
-            growth rate, and localized nose/wall refinement where thermal and velocity gradients were steepest. Average
-            y<sup>+</sup> was 4.74.
+            I ran 250 Monte Carlo flights with changing weather and launch conditions, with 99.2% meeting the airstart criteria.
+            The next version will run 1,000 flights while varying wind, atmosphere, and as-built mass to track apogee, score,
+            airstart eligibility, and the usable air-brake deployment window after motor burnout.
           </p>
 
           <p>
-            I used a pressure-based compressible solver with ideal-gas air, SST k-&omega;, second-order discretization,
-            a no-slip wall, and a constant 300 K wall. I reduced the trajectory to five representative steady-state cases:
-            Liftoff, Early Acceleration, Max-Q, Peak Velocity, and High Altitude, using flight-derived Mach number, pressure,
-            and temperature.
+            For the air-brakes, I am using PyANSYS to automate 75 CFD cases across Mach number, brake deployment, and environmental conditions.
+            The main cases use a 90° periodic quarter-domain at 0° AoA to reduce computational cost. Five additional AoA cases will use
+            expanded geometry to capture changes in drag, side force, and pitching moment. The CFD results will build an aerodynamic lookup
+            table for the flight controller.
           </p>
 
           <p>
-            I benchmarked stagnation heat flux against Sutton–Graves and ran a 3-grid mesh-sensitivity study at 40,172,
-            72,540, and 105,633 cells. Body-region heating varied by roughly 11%, while the stagnation peak remained sensitive
-            to near-tip refinement. I therefore treated the model as reliable for heating trends and distributions, not as
-            a fully mesh-independent peak prediction.
+            During coast, barometer and IMU data will estimate the rocket's state while the controller predicts apogee and commands the
+            four-petal air-brakes. Deployment will be limited when the rocket is outside the allowed attitude or AoA range.
           </p>
         `,
 
         results: `
 
           <p>
-            Peak stagnation heat flux reached 2.46 MW/m² at Max-Q. Sutton–Graves underpredicted the CFD stagnation values
-            by approximately 183–452%, while heating remained strongly localized near the nose tip.
-          </p>
-
-          <p>
-            The results give student rocket teams in similar transonic and low-supersonic regimes a thermal reference for
-            preliminary material selection, helping identify where high-temperature materials are justified and where
-            lower-cost materials may be reasonable.
-          </p>
-
-          <p>
-            The mesh-sensitivity and near-wall lessons from this study informed my later aerodynamic CFD workflow.
+            Selected the 7,000-ft, 16-golf-ball, three-airstart configuration, reduced OpenRocket design studies from two weeks to four hours,
+            and achieved a 99.2% airstart-criteria rate across 250 Monte Carlo flights. Current work focuses on CFD, air-brake design,
+            and closed-loop apogee control.
           </p>
         `,
 
         gallery: [
-          { src: "images/aiaa-presentation.jpg", alt: "AIAA presentation", caption: "Presenting the research at the AIAA Region V Student Conference." }
+          { src: "images/argoniarocket.jpg", alt: "Argonia Cup OpenRocket vehicle design", caption: "Current Argonia Cup vehicle configuration modeled in OpenRocket." },
+          { src: "images/score.jpg", alt: "Argonia competition score surface", caption: "Competition score versus apogee and golf-ball payload." },
+          { src: "images/golfball.jpg", alt: "Golf-ball scoring analysis", caption: "Golf-ball scoring factor and incremental gain." },
+          { src: "images/airstart.jpg", alt: "Airstart scoring analysis", caption: "Competition score versus successful airstarts." }
         ]
       },
 
@@ -1457,7 +1437,7 @@
           </p>
 
           <p>
-            I ran approximately 1,200 iterations while monitoring residuals and drag history, continuing until drag flattened
+            I ran 1,200 iterations while monitoring residuals and drag history, continuing until drag flattened
             and residuals had substantially decreased instead of relying on a residual threshold alone.
           </p>
 
@@ -1564,7 +1544,7 @@
           </p>
 
           <p>
-            MATLAB predicted approximately 143 N total; the largest difference was in the viscous component, identifying
+            MATLAB predicted 143 N total; the largest difference was in the viscous component, identifying
             wall-stress prediction as the main area for further investigation.
           </p>
         `,
@@ -1576,7 +1556,7 @@
           </p>
 
           <p>
-            The MATLAB model predicted approximately 143 N total. The largest difference occurred in the viscous component,
+            The MATLAB model predicted 143 N total. The largest difference occurred in the viscous component,
             making wall-stress prediction the most important area for further investigation rather than hiding the discrepancy.
           </p>
         `,
@@ -1587,70 +1567,85 @@
       },
 
       /* ===================================================
-         ARGONIA CUP
+         AIAA RESEARCH
       ==================================================== */
       {
-        id: "argonia-cup",
+        id: "aiaa-heating",
         category: "Simulation & Analysis",
-        title: "Argonia Cup Project Manager",
-        shortTitle: "Argonia Cup",
-        subtitle: "Mizzou Space Program · May 2026 – Present",
-        cover: "images/argoniarocket.jpg",
+        title: "Quantifying Convective Aerodynamic Heating During Ascent",
+        shortTitle: "AIAA Heating",
+        subtitle: "AIAA Region V Student Conference · 2026",
+        cover: "images/aiaa-cover.png",
 
         what: `
 
           <p>
-            I lead a 30+ member multidisciplinary team through design, manufacturing, and testing of our Argonia Cup rocket.
+            Independently developed and published my first technical paper, quantifying convective aerodynamic heating
+            on a high-powered student rocket across five ascent conditions. It was also my first complete CFD study,
+            covering geometry, domain sizing, meshing, near-wall treatment, solver setup, convergence, and verification.
           </p>
 
           <p>
-            The vehicle targets a 7,000-ft apogee while balancing payload score, airstart reliability, mass, and aerodynamic
-            performance. I also lead development of Mizzou Space Program's first active air-brake system.
+            I presented the work at the 2026 AIAA Region V Student Conference to technical judges and engineering students,
+            where I explained the methodology, justified assumptions, and defended the results and limitations.
           </p>
+
+          <div class="button-row">
+            <a class="button button-secondary" href="https://arc.aiaa.org/doi/10.2514/6.2026-111868" target="_blank" rel="noopener">
+              View Published Paper ↗
+            </a>
+          </div>
         `,
 
         how: `
 
           <p>
-            I modeled the scoring equation in MATLAB to see how apogee, golf-ball payload, and successful airstarts changed
-            the score, then built an Excel trade study against mass, complexity, reliability, and testing risk.
+            I modeled the 0.587 m von Kármán nose cone as a 2D axisymmetric domain to retain the dominant stagnation and
+            boundary-layer physics at lower computational cost. The domain extended 7 body lengths upstream, 12 downstream,
+            and 7 nose radii radially to reduce boundary interference.
           </p>
 
           <p>
-            I developed a Python wrapper around OpenRocket to parameterize vehicle geometry, run simulations, and collect
-            flight data. The workflow reduced a design sweep from roughly two weeks of manual work to about four hours.
+            The 72,540-cell baseline mesh used a 2.5 × 10<sup>-5</sup> m first-layer height, 8 inflation layers, a 1.15
+            growth rate, and localized nose/wall refinement where thermal and velocity gradients were steepest. Average
+            y<sup>+</sup> was 4.74.
           </p>
 
           <p>
-            I ran 250 Monte Carlo flights across atmospheric and launch variations; 99.2% met the required airstart criteria,
-            giving the team a reliability estimate instead of relying on one nominal trajectory.
+            I used a pressure-based compressible solver with ideal-gas air, SST k-&omega;, second-order discretization,
+            a no-slip wall, and a constant 300 K wall. I reduced the trajectory to five representative steady-state cases:
+            Liftoff, Early Acceleration, Max-Q, Peak Velocity, and High Altitude, using flight-derived Mach number, pressure,
+            and temperature.
           </p>
 
           <p>
-            I am developing a four-petal active air-brake system. The plan is to evaluate Max-Q structural loading, then automate
-            about 225 PyANSYS CFD cases across deployment, velocity, density, and angle of attack. Drag and pitching-moment data
-            will feed a surrogate model or multidimensional lookup table.
-          </p>
-
-          <p>
-            During flight, the computer will continuously predict apogee and use that aerodynamic model to command brake
-            deployment toward 7,000 ft while inhibiting deployment at unfavorable angles of attack.
+            I benchmarked stagnation heat flux against Sutton–Graves and ran a 3-grid mesh-sensitivity study at 40,172,
+            72,540, and 105,633 cells. Body-region heating varied by roughly 11%, while the stagnation peak remained sensitive
+            to near-tip refinement. I therefore treated the model as reliable for heating trends and distributions, not as
+            a fully mesh-independent peak prediction.
           </p>
         `,
 
         results: `
 
           <p>
-            Reduced OpenRocket design sweeps from roughly two weeks to four hours and achieved a 99.2% airstart-criteria rate
-            across 250 Monte Carlo simulations. Current work focuses on structural and aerodynamic development of the air-brake system.
+            Peak stagnation heat flux reached 2.46 MW/m² at Max-Q. Sutton–Graves underpredicted the CFD stagnation values
+            by 183–452%, while heating remained strongly localized near the nose tip.
+          </p>
+
+          <p>
+            The results give student rocket teams in similar transonic and low-supersonic regimes a thermal reference for
+            preliminary material selection, helping identify where high-temperature materials are justified and where
+            lower-cost materials may be reasonable.
+          </p>
+
+          <p>
+            The mesh-sensitivity and near-wall lessons from this study informed my later aerodynamic CFD workflow.
           </p>
         `,
 
         gallery: [
-          { src: "images/argoniarocket.jpg", alt: "Argonia Cup OpenRocket vehicle design", caption: "Current Argonia Cup vehicle configuration modeled in OpenRocket." },
-          { src: "images/score.jpg", alt: "Argonia competition score surface", caption: "Competition score versus apogee and golf-ball payload." },
-          { src: "images/golfball.jpg", alt: "Golf-ball scoring analysis", caption: "Golf-ball scoring factor and incremental gain." },
-          { src: "images/airstart.jpg", alt: "Airstart scoring analysis", caption: "Competition score versus successful airstarts." }
+          { src: "images/aiaa-presentation.jpg", alt: "AIAA presentation", caption: "Presenting the research at the AIAA Region V Student Conference." }
         ]
       },
 
@@ -1660,7 +1655,7 @@
       {
         id: "irec-payload",
         category: "Design & Manufacturing",
-        title: "IREC Payload",
+        title: "IREC Payload Mechanical Design & Integration",
         shortTitle: "IREC Payload",
         subtitle: "Mizzou Space Program · Aug. 2025 – May 2026",
         cover: "images/payload-cover.png",
@@ -1668,13 +1663,9 @@
         what: `
 
           <p>
-            Helped design and fabricate a 5.75-lb modular payload containing telemetry, batteries, an Arduino, IMU,
-            Raspberry Pi 5, camera, and antenna system.
-          </p>
-
-          <p>
-            I designed all enclosure panels and two of four E-bays, and contributed to the mechanical architecture,
-            component packaging, and fabrication.
+            Designed and fabricated major mechanical components for a 5.75-lb modular payload housing telemetry, power,
+            sensing, imaging, and antenna systems. I owned all enclosure panels and two of four E-bays while supporting
+            structural architecture, component packaging, and integration.
           </p>
         `,
 
@@ -1703,7 +1694,7 @@
         results: `
 
           <p>
-            Integrated the 5.75-lb payload around a 20 ft/s landing requirement while maintaining load paths,
+            Completed a modular payload designed around a 20 ft/s landing requirement while maintaining structural load paths,
             electronics access, and RF transmission.
           </p>
         `,
