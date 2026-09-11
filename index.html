@@ -647,20 +647,22 @@
     ===================================================== */
 
     .case-study-section {
-      padding: 48px 0;
+      padding: 40px 0;
       border-top: 1px solid var(--border);
     }
 
     .case-study-section-header {
-      max-width: 860px;
-      margin-bottom: 30px;
+      max-width: 100%;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-dark);
     }
 
     .case-study-section-header h2 {
       font-size: clamp(27px, 3vw, 36px);
       line-height: 1.12;
       letter-spacing: -0.025em;
-      margin-bottom: 8px;
+      margin-bottom: 0;
     }
 
     .case-study-section-header p {
@@ -672,9 +674,9 @@
     .case-study-block {
       display: grid;
       grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
-      gap: 48px;
+      gap: 40px;
       align-items: start;
-      padding: 30px 0;
+      padding: 22px 0;
     }
 
     .case-study-block + .case-study-block {
@@ -686,15 +688,15 @@
     }
 
     .case-study-copy h3 {
-      font-size: 24px;
+      font-size: 22px;
       line-height: 1.2;
       letter-spacing: -0.015em;
-      margin-bottom: 12px;
+      margin-bottom: 9px;
     }
 
     .case-study-copy {
-      font-size: 19px;
-      line-height: 1.72;
+      font-size: 18px;
+      line-height: 1.66;
     }
 
     .case-study-copy p {
@@ -721,6 +723,25 @@
 
     .case-study-media.three-up .case-study-media-item:first-child {
       grid-column: 1 / -1;
+    }
+
+    .case-study-media.scrollable {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      scroll-snap-type: inline mandatory;
+      padding: 2px 2px 12px;
+      scrollbar-width: thin;
+    }
+
+    .case-study-media.scrollable .case-study-media-item {
+      flex: 0 0 min(78%, 360px);
+      scroll-snap-align: start;
+    }
+
+    .case-study-media.scrollable .case-study-media-frame {
+      min-height: 215px;
     }
 
     .case-study-media-frame {
@@ -770,6 +791,14 @@
       .case-study-media.two-up,
       .case-study-media.three-up {
         grid-template-columns: 1fr;
+      }
+
+      .case-study-media.scrollable {
+        display: flex;
+      }
+
+      .case-study-media.scrollable .case-study-media-item {
+        flex-basis: 88%;
       }
 
       .case-study-media.three-up .case-study-media-item:first-child {
@@ -1542,14 +1571,14 @@
         caseStudySections: [
           {
             title: "Completed Analysis",
-            intro: "Work already completed and used to define the current vehicle configuration",
             blocks: [
               {
                 title: "Score Optimization",
                 content: `
                   <p>I modeled the competition scoring equation in MATLAB and compared target apogee, golf-ball payload, and successful airstarts. The trade study drove the 7,000-ft, 16-ball, three-airstart configuration.</p>
                 `,
-                images: [1, 2, 3]
+                images: [1, 2, 3],
+                imageLayout: "scrollable"
               },
               {
                 title: "OpenRocket Automation",
@@ -1568,7 +1597,6 @@
           },
           {
             title: "In Progress",
-            intro: "Current design, manufacturing, aerodynamic, and controls work leading into flight testing",
             blocks: [
               {
                 title: "Rocket Manufacturing & Integration",
@@ -2177,12 +2205,18 @@
       `;
     }
 
-    function buildCaseStudyMedia(project, indexes = []) {
+    function buildCaseStudyMedia(project, indexes = [], layout = "") {
       if (!project.gallery || !indexes || indexes.length === 0) return "";
       const validIndexes = indexes.filter(index => project.gallery[index]);
       if (validIndexes.length === 0) return "";
 
-      const mediaClass = validIndexes.length === 2 ? "two-up" : validIndexes.length >= 3 ? "three-up" : "";
+      const mediaClass = layout === "scrollable"
+        ? "scrollable"
+        : validIndexes.length === 2
+          ? "two-up"
+          : validIndexes.length >= 3
+            ? "three-up"
+            : "";
       return `
         <div class="case-study-media ${mediaClass}">
           ${validIndexes.map(index => {
@@ -2217,7 +2251,7 @@
             ${section.intro ? `<p>${section.intro}</p>` : ""}
           </div>
           ${section.blocks.map(block => {
-            const media = buildCaseStudyMedia(project, block.images);
+            const media = buildCaseStudyMedia(project, block.images, block.imageLayout);
             return `
               <div class="case-study-block ${media ? "" : "no-media"}">
                 <div class="case-study-copy">
