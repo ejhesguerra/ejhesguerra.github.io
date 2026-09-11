@@ -643,6 +643,141 @@
     }
 
     /* =====================================================
+       CASE-STUDY PROJECT LAYOUT
+    ===================================================== */
+
+    .case-study-section {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .case-study-section-header {
+      max-width: 860px;
+      margin-bottom: 30px;
+    }
+
+    .case-study-section-header h2 {
+      font-size: clamp(27px, 3vw, 36px);
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+    }
+
+    .case-study-section-header p {
+      font-size: 17px;
+      line-height: 1.6;
+      opacity: 0.68;
+    }
+
+    .case-study-block {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+      gap: 48px;
+      align-items: start;
+      padding: 30px 0;
+    }
+
+    .case-study-block + .case-study-block {
+      border-top: 1px solid var(--border);
+    }
+
+    .case-study-block.no-media {
+      grid-template-columns: minmax(0, 860px);
+    }
+
+    .case-study-copy h3 {
+      font-size: 24px;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      margin-bottom: 12px;
+    }
+
+    .case-study-copy {
+      font-size: 19px;
+      line-height: 1.72;
+    }
+
+    .case-study-copy p {
+      margin-bottom: 16px;
+    }
+
+    .case-study-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    .case-study-media {
+      display: grid;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .case-study-media.two-up {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .case-study-media.three-up {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .case-study-media.three-up .case-study-media-item:first-child {
+      grid-column: 1 / -1;
+    }
+
+    .case-study-media-frame {
+      width: 100%;
+      min-height: 230px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      cursor: zoom-in;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .case-study-media-frame:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-dark);
+    }
+
+    .case-study-media-frame img {
+      width: 100%;
+      height: auto;
+      max-height: 420px;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .project-inline-caption,
+    .case-study-caption,
+    .gallery-caption {
+      margin-top: 7px;
+      font-size: 13px;
+      line-height: 1.4;
+      text-align: center;
+      opacity: 0.62;
+    }
+
+    @media (max-width: 820px) {
+      .case-study-block,
+      .case-study-block.no-media {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .case-study-media.two-up,
+      .case-study-media.three-up {
+        grid-template-columns: 1fr;
+      }
+
+      .case-study-media.three-up .case-study-media-item:first-child {
+        grid-column: auto;
+      }
+    }
+
+    /* =====================================================
        GOVERNING EQUATIONS
     ===================================================== */
 
@@ -1382,9 +1517,9 @@
         },
 
         gallery: [
-          { src: "images/gm-first-day.png.PNG", alt: "General Motors first day", caption: "First day at General Motors." },
-          { src: "images/gm-last-day.jpg.jpg", alt: "General Motors final day", caption: "Final day at General Motors." },
-          { src: "images/gm-recognition.png.PNG", alt: "General Motors recognition", caption: "Internship recognition." }
+          { src: "images/gm-first-day.png.PNG", alt: "General Motors first day", caption: "First day at General Motors" },
+          { src: "images/gm-last-day.jpg.jpg", alt: "General Motors final day", caption: "Final day at General Motors" },
+          { src: "images/gm-recognition.png.PNG", alt: "General Motors recognition", caption: "Internship recognition" }
         ]
       },
       /* ===================================================
@@ -1404,32 +1539,80 @@
           </p>
         `,
 
-        how: `
-          <ul class="project-bullets">
-            <li>Score optimization — I modeled the competition scoring equation in MATLAB and compared target apogee, golf-ball payload, and successful airstarts. The trade study drove the 7,000-ft, 16-ball, three-airstart design.</li>
-            <li>OpenRocket automation — I built a Python wrapper to parameterize the vehicle, run design sweeps, and collect flight outputs automatically. A study that would have taken two weeks manually was reduced to four hours.</li>
-            <li>Monte Carlo — I ran 250 flights with atmospheric and launch variation; 99.2% met the airstart criteria. The next 1,000-run study will vary wind, atmosphere, and as-built mass while tracking apogee, score, ignition success, and the usable post-burn air-brake window.</li>
-            <li>Air-brake CFD — I am using PyANSYS to automate 75 cases across Mach number, brake deployment, and environmental conditions. The 0° AoA cases use a 90° periodic quarter-domain to reduce computational cost, while five nonzero-AoA cases use a larger domain because the symmetry assumption no longer applies.</li>
-            <li>Closed-loop control — CFD will provide drag and pitching-moment data for an aerodynamic lookup table. During coast, barometer and IMU measurements will estimate vehicle state, predict apogee, and command the four-petal air-brakes while enforcing attitude and AoA limits.</li>
-          </ul>
-        `,
-
-        results: `
-          <p>
-            The current design is based on score optimization rather than a single nominal flight: 7,000 ft, 16 golf balls, three airstarts, automated design sweeps, and a 99.2% airstart-criteria rate across the first 250 Monte Carlo flights.
-          </p>
-        `,
-
-        sectionImages: {
-          what: [0],
-          how: [1, 2, 3]
-        },
+        caseStudySections: [
+          {
+            title: "Completed Analysis",
+            intro: "Work already completed and used to define the current vehicle configuration",
+            blocks: [
+              {
+                title: "Score Optimization",
+                content: `
+                  <p>I modeled the competition scoring equation in MATLAB and compared target apogee, golf-ball payload, and successful airstarts. The trade study drove the 7,000-ft, 16-ball, three-airstart configuration.</p>
+                `,
+                images: [1, 2, 3]
+              },
+              {
+                title: "OpenRocket Automation",
+                content: `
+                  <p>I built a Python wrapper around OpenRocket to parameterize the vehicle, run design sweeps, and collect flight outputs automatically. A study that would have taken two weeks manually was reduced to four hours.</p>
+                `,
+                images: [0]
+              },
+              {
+                title: "Monte Carlo",
+                content: `
+                  <p>I ran 250 flights with atmospheric and launch variation, and 99.2% met the airstart criteria. The next 1,000-run study will add wind, atmospheric variation, and as-built mass uncertainty while tracking apogee, score, ignition success, and the usable post-burn air-brake window.</p>
+                `
+              }
+            ]
+          },
+          {
+            title: "In Progress",
+            intro: "Current design, manufacturing, aerodynamic, and controls work leading into flight testing",
+            blocks: [
+              {
+                title: "Rocket Manufacturing & Integration",
+                content: `
+                  <p>The team is moving the optimized vehicle from simulation into hardware. I am leading the manufacturing and integration effort across the airframe, propulsion, payload, electronics, recovery, and airstart systems while keeping the as-built configuration aligned with the analyzed design.</p>
+                `
+              },
+              {
+                title: "Active Airbrakes",
+                content: `
+                  <p>I am developing a four-petal active air-brake system for closed-loop apogee control. The mechanical design is being developed around packaging, deployment authority, stability, structural loading, and the requirement to keep the brake wake from reducing fin effectiveness.</p>
+                `
+              },
+              {
+                title: "Air-Brake CFD",
+                content: `
+                  <p>I am using PyANSYS to automate 75 CFD cases across Mach number, brake deployment, and environmental conditions. The 0° angle-of-attack cases use a 90° periodic quarter-domain to reduce computational cost, while nonzero-angle cases use a larger domain because the periodic symmetry assumption no longer applies.</p>
+                `
+              },
+              {
+                title: "Air-Brake Control Development",
+                content: `
+                  <p>The CFD results will populate aerodynamic drag and pitching-moment data used by the flight controller. During coast, barometer and IMU measurements will estimate the vehicle state, predict apogee, and command brake deployment while enforcing attitude and angle-of-attack limits.</p>
+                `
+              }
+            ]
+          },
+          {
+            title: "Current Status",
+            blocks: [
+              {
+                content: `
+                  <p>The current design is centered on a 7,000-ft target, 16 golf balls, and three airstarts. Score optimization and automated trajectory studies are complete, the first 250 Monte Carlo flights produced a 99.2% airstart-criteria rate, and the project is now progressing through manufacturing, air-brake development, CFD, and controls work.</p>
+                `
+              }
+            ]
+          }
+        ],
 
         gallery: [
-          { src: "images/argoniarocket.jpg", alt: "Argonia Cup OpenRocket vehicle design", caption: "Current Argonia Cup vehicle configuration in OpenRocket." },
-          { src: "images/score.jpg", alt: "Argonia competition score surface", caption: "Score trade study versus apogee and golf-ball payload." },
-          { src: "images/golfball.jpg", alt: "Golf-ball scoring analysis", caption: "Golf-ball scoring trade." },
-          { src: "images/airstart.jpg", alt: "Airstart scoring analysis", caption: "Airstart scoring trade." }
+          { src: "images/argoniarocket.jpg", alt: "Argonia Cup OpenRocket vehicle design", caption: "Current Argonia Cup vehicle configuration in OpenRocket" },
+          { src: "images/score.jpg", alt: "Argonia competition score surface", caption: "Competition score trade versus apogee and golf-ball payload" },
+          { src: "images/golfball.jpg", alt: "Golf-ball scoring analysis", caption: "Golf-ball payload scoring trade" },
+          { src: "images/airstart.jpg", alt: "Airstart scoring analysis", caption: "Airstart scoring trade" }
         ]
       },
       /* ===================================================
@@ -1562,8 +1745,8 @@
         },
 
         gallery: [
-          { src: "images/nosecone-analysis-cover.png", alt: "IREC nose cone CFD model", caption: "IREC nose-cone aerodynamic analysis." },
-          { src: "images/IREC-CFD-TABLE.png", alt: "ANSYS Fluent nose cone drag results", caption: "Fluent pressure, viscous, and total drag results." }
+          { src: "images/nosecone-analysis-cover.png", alt: "IREC nose cone CFD model", caption: "IREC nose-cone aerodynamic analysis" },
+          { src: "images/IREC-CFD-TABLE.png", alt: "ANSYS Fluent nose cone drag results", caption: "Fluent pressure, viscous, and total drag results" }
         ]
       },
       /* ===================================================
@@ -1606,7 +1789,7 @@
         },
 
         gallery: [
-          { src: "images/aiaa-presentation.jpg", alt: "AIAA presentation", caption: "Presenting the research at the AIAA Region V Student Conference." }
+          { src: "images/aiaa-presentation.jpg", alt: "AIAA presentation", caption: "Presenting the research at the AIAA Region V Student Conference" }
         ]
       },
       /* ===================================================
@@ -1649,10 +1832,10 @@
         },
 
         gallery: [
-          { src: "images/irec-payload.jpg", alt: "Completed IREC payload", caption: "Completed payload assembly." },
-          { src: "images/Payload-Panels.jpg", alt: "Payload panels", caption: "Payload frame and enclosure panels." },
-          { src: "images/payload-inprogress.jpg.png", alt: "Payload fabrication", caption: "Payload during fabrication and integration." },
-          { src: "images/gdt.JPG", alt: "Bottom Module E-Bay GD&T drawing", caption: "E-Bay manufacturing drawing with positional GD&T." }
+          { src: "images/irec-payload.jpg", alt: "Completed IREC payload", caption: "Completed payload assembly" },
+          { src: "images/Payload-Panels.jpg", alt: "Payload panels", caption: "Payload frame and enclosure panels" },
+          { src: "images/payload-inprogress.jpg.png", alt: "Payload fabrication", caption: "Payload during fabrication and integration" },
+          { src: "images/gdt.JPG", alt: "Bottom Module E-Bay GD&T drawing", caption: "E-Bay manufacturing drawing with positional GD&T" }
         ]
       },
       /* ===================================================
@@ -1693,8 +1876,8 @@
         },
 
         gallery: [
-          { src: "images/cad-printer.png", alt: "SolidWorks CAD assembly of the three-point bending system", caption: "SolidWorks assembly of the three-point bending system." },
-          { src: "images/manufactured-printer.png", alt: "Completed three-point bending prototype", caption: "Completed prototype after fabrication, wiring, and assembly." }
+          { src: "images/cad-printer.png", alt: "SolidWorks CAD assembly of the three-point bending system", caption: "SolidWorks assembly of the three-point bending system" },
+          { src: "images/manufactured-printer.png", alt: "Completed three-point bending prototype", caption: "Completed prototype after fabrication, wiring, and assembly" }
         ]
       },
       /* ===================================================
@@ -1735,9 +1918,9 @@
         },
 
         gallery: [
-          { src: "images/minion-rocket.jpg", alt: "Completed Level 1 rocket", caption: "Completed Level 1 rocket." },
-          { src: "images/OpenRocket-Rocket.png", alt: "OpenRocket vehicle model", caption: "OpenRocket vehicle configuration." },
-          { src: "images/altitude-vs-velocity.jpg", alt: "Predicted Level 1 performance", caption: "Predicted altitude and velocity." }
+          { src: "images/minion-rocket.jpg", alt: "Completed Level 1 rocket", caption: "Completed Level 1 rocket" },
+          { src: "images/OpenRocket-Rocket.png", alt: "OpenRocket vehicle model", caption: "OpenRocket vehicle configuration" },
+          { src: "images/altitude-vs-velocity.jpg", alt: "Predicted Level 1 performance", caption: "Predicted altitude and velocity" }
         ]
       }
 
@@ -1931,12 +2114,30 @@
       if (event.key === "ArrowRight") changeLightboxImage(1);
     });
 
+    function formatCaption(caption) {
+      return (caption || "").trim().replace(/[.!?]+$/, "");
+    }
+
+    function handleProjectImageError(img) {
+      const item = img.closest(".project-inline-item, .case-study-media-item");
+      if (item) item.remove();
+
+      document.querySelectorAll(".project-inline-media, .case-study-media").forEach(media => {
+        if (!media.querySelector("img")) {
+          const block = media.closest(".project-section-body, .case-study-block");
+          media.remove();
+          if (block) {
+            block.classList.remove("with-media");
+            block.classList.add("no-media");
+          }
+        }
+      });
+    }
+
     function buildSectionMedia(project, sectionKey) {
       if (!project.gallery || !project.sectionImages || !project.sectionImages[sectionKey]) return "";
 
-      const indexes = project.sectionImages[sectionKey]
-        .filter(index => project.gallery[index]);
-
+      const indexes = project.sectionImages[sectionKey].filter(index => project.gallery[index]);
       if (indexes.length === 0) return "";
 
       return `
@@ -1953,9 +2154,9 @@
                   onclick="openLightbox('${project.id}', ${index})"
                   onkeydown="if(event.key === 'Enter' || event.key === ' '){ event.preventDefault(); openLightbox('${project.id}', ${index}); }"
                 >
-                  <img src="${item.src}" alt="${item.alt}">
+                  <img src="${item.src}" alt="${item.alt}" onerror="handleProjectImageError(this)">
                 </div>
-                ${item.caption ? `<div class="project-inline-caption">${item.caption}</div>` : ""}
+                ${item.caption ? `<div class="project-inline-caption">${formatCaption(item.caption)}</div>` : ""}
               </div>
             `;
           }).join("")}
@@ -1976,6 +2177,61 @@
       `;
     }
 
+    function buildCaseStudyMedia(project, indexes = []) {
+      if (!project.gallery || !indexes || indexes.length === 0) return "";
+      const validIndexes = indexes.filter(index => project.gallery[index]);
+      if (validIndexes.length === 0) return "";
+
+      const mediaClass = validIndexes.length === 2 ? "two-up" : validIndexes.length >= 3 ? "three-up" : "";
+      return `
+        <div class="case-study-media ${mediaClass}">
+          ${validIndexes.map(index => {
+            const item = project.gallery[index];
+            return `
+              <div class="case-study-media-item">
+                <div
+                  class="case-study-media-frame"
+                  role="button"
+                  tabindex="0"
+                  aria-label="Open ${item.alt}"
+                  onclick="openLightbox('${project.id}', ${index})"
+                  onkeydown="if(event.key === 'Enter' || event.key === ' '){ event.preventDefault(); openLightbox('${project.id}', ${index}); }"
+                >
+                  <img src="${item.src}" alt="${item.alt}" onerror="handleProjectImageError(this)">
+                </div>
+                ${item.caption ? `<div class="case-study-caption">${formatCaption(item.caption)}</div>` : ""}
+              </div>
+            `;
+          }).join("")}
+        </div>
+      `;
+    }
+
+    function buildCaseStudySections(project) {
+      if (!project.caseStudySections) return "";
+
+      return project.caseStudySections.map(section => `
+        <section class="case-study-section">
+          <div class="case-study-section-header">
+            <h2>${section.title}</h2>
+            ${section.intro ? `<p>${section.intro}</p>` : ""}
+          </div>
+          ${section.blocks.map(block => {
+            const media = buildCaseStudyMedia(project, block.images);
+            return `
+              <div class="case-study-block ${media ? "" : "no-media"}">
+                <div class="case-study-copy">
+                  ${block.title ? `<h3>${block.title}</h3>` : ""}
+                  ${block.content}
+                </div>
+                ${media}
+              </div>
+            `;
+          }).join("")}
+        </section>
+      `).join("");
+    }
+
     function openProject(projectId) {
       const project = experienceData.find(item => item.id === projectId);
       if (!project) return;
@@ -1994,9 +2250,11 @@
           <div class="project-header-meta">${project.subtitle}</div>
         </div>
 
-        ${buildProjectSection(project, "What I Did", "what", project.what)}
-        ${buildProjectSection(project, "Technical Approach", "how", project.how)}
-        ${buildProjectSection(project, "Results", "results", project.results)}
+        ${buildProjectSection(project, "Overview", "what", project.what)}
+        ${project.caseStudySections
+          ? buildCaseStudySections(project)
+          : `${buildProjectSection(project, "Technical Work", "how", project.how)}
+             ${buildProjectSection(project, "Results", "results", project.results)}`}
 
         ${buildBottomNavigation(project.id)}
       `;
