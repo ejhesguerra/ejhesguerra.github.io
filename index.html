@@ -806,6 +806,62 @@
       }
     }
 
+
+    /* =====================================================
+       CONSISTENT PROJECT IMAGE FIT + CENTERING
+    ===================================================== */
+
+    .project-card-image,
+    .project-inline-image-frame,
+    .case-study-media-frame,
+    .gallery-image-frame {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .project-card-image img,
+    .project-inline-image-frame img,
+    .case-study-media-frame img,
+    .gallery-image-frame img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      margin: auto;
+      padding: 12px;
+      object-fit: contain;
+      object-position: center center;
+    }
+
+    .case-study-media-frame {
+      height: clamp(260px, 32vw, 420px);
+      min-height: 0;
+    }
+
+    .case-study-media.scrollable .case-study-media-frame {
+      height: 300px;
+      min-height: 0;
+    }
+
+    .lightbox-image-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      margin: auto;
+      object-fit: contain;
+      object-position: center center;
+    }
+
     /* =====================================================
        GOVERNING EQUATIONS
     ===================================================== */
@@ -1527,7 +1583,7 @@
         how: `
           <ul class="project-bullets">
             <li>Responded to stamping defects, press faults, and robot issues by containing affected material, checking the process condition, and coordinating controls, maintenance, electricians, and production support.</li>
-            <li>Used root-cause analysis to trace a recurring panel defect to scrap trapped in the tooling, removed the source, and verified good parts before returning the process to normal production.</li>
+            <li>Conducted root-cause analysis to investigate recurring panel defects, identifying issues including trapped scrap, scrap and dirt buildup, incorrect robot destacker force settings, and faulty tooling.</li>
             <li>Created two standardized robot-programming work instructions after incorrect operator data entry repeatedly caused bad stacking and required the robot to be retaught.</li>
             <li>Supported the full 36-operator area for one week without the other group leaders or shift leader, handling production, quality, and equipment problems across all three presses.</li>
           </ul>
@@ -1769,12 +1825,14 @@
 
         sectionImages: {
           what: [0],
+          how: [2],
           results: [1]
         },
 
         gallery: [
           { src: "images/nosecone-analysis-cover.png", alt: "IREC nose cone CFD model", caption: "IREC nose-cone aerodynamic analysis" },
-          { src: "images/IREC-CFD-TABLE.png", alt: "ANSYS Fluent nose cone drag results", caption: "Fluent pressure, viscous, and total drag results" }
+          { src: "images/IREC-CFD-TABLE.png", alt: "ANSYS Fluent nose cone drag results", caption: "Fluent pressure, viscous, and total drag results" },
+          { src: "images/IREC_Domain.jpg", alt: "IREC nose cone CFD computational domain", caption: "Computational domain used for the IREC nose-cone CFD model" }
         ]
       },
       /* ===================================================
