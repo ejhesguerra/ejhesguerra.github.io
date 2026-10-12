@@ -1621,15 +1621,10 @@
 
         what: `
           <p>
-            I lead a multidisciplinary team of 30+ members in the design, manufacturing, and testing of a
-            92-inch high-power rocket for the 2027 Argonia Cup. Our vehicle targets a 7,900-ft apogee,
-            selected through MATLAB-based competition score optimization, and incorporates clustered
-            propulsion, planned in-flight motor airstarts, and an active airbrake system.
-          </p>
-          <p>
-            This project brings three first-time engineering efforts to Mizzou Space Program: attempting
-            in-flight motor airstarts, developing active aerodynamic braking, and manufacturing a
-            fiberglass composite airframe transition at a scale the program has not previously attempted.
+            As project manager for MSP's 2027 Argonia Cup entry, I oversee a team of 30+ members
+            developing a 92-inch high-power rocket. The vehicle is designed to carry a golf-ball
+            payload and use in-flight motor airstarts and active airbrakes, with a target apogee
+            of 7,900 ft.
           </p>
         `,
 
@@ -1638,60 +1633,58 @@
             title: "Engineering Contributions",
             blocks: [
               {
-                title: "Competition Optimization & Flight Simulation",
+                title: "Score Optimization & Flight Simulation",
                 content: `
-                  <p>I developed a MATLAB scoring model to evaluate the relationship between apogee,
-                  golf-ball payload, and airstart performance, establishing our current 7,900-ft target.
-                  I also built a Python-based OpenRocket automation workflow for trajectory analysis
-                  and design iterations. Next, I plan to conduct Monte Carlo simulations to quantify
-                  flight-performance sensitivity to wind, atmospheric conditions, launch variation,
-                  and vehicle mass uncertainty.</p>
+                  <p>I built a MATLAB model to compare competition scores across apogee,
+                  payload, and airstart configurations, which informed our altitude target.
+                  I also developed a Python workflow to automate OpenRocket simulations.
+                  My next step is Monte Carlo analysis to assess sensitivity to wind,
+                  atmospheric conditions, launch variation, and mass uncertainty.</p>
                 `,
                 images: [1, 2, 3],
                 imageLayout: "scrollable"
               },
               {
-                title: "Fiberglass Composite Manufacturing",
+                title: "Fiberglass Composite Transition",
                 content: `
-                  <p>I am leading MSP's first attempt to manufacture a fiberglass composite transition
-                  of this magnitude, connecting two different airframe diameters. I am developing the
-                  fabrication process using a segmented 3D-printed mandrel, surface finishing,
-                  mold release, and fiberglass composite layup.</p>
+                  <p>I am developing MSP's first fiberglass airframe transition at this scale.
+                  The manufacturing approach uses a segmented 3D-printed mandrel, surface
+                  finishing, mold release, and a fiberglass layup to join airframe sections
+                  of different diameters.</p>
                 `,
                 images: [0]
               },
               {
                 title: "Active Airbrakes & CFD",
                 content: `
-                  <p>I am taking over a senior capstone team's active airbrake design and adapting it
-                  specifically for our rocket. I plan to use ANSYS Fluent CFD to evaluate drag generation
-                  and aerodynamic effects at different deployment positions. I also plan to integrate
-                  an encoder for position feedback to improve deployment accuracy, repeatability,
-                  and system robustness. This would be MSP's first implementation of active airbrakes.</p>
+                  <p>I am taking over a senior capstone airbrake design and adapting it to
+                  our vehicle for MSP's first attempt at active aerodynamic braking.
+                  I plan to use ANSYS Fluent to evaluate drag and aerodynamic effects
+                  across deployment positions, and add encoder-based position feedback
+                  for more accurate, repeatable, and robust actuation.</p>
                 `
               },
               {
-                title: "Project Leadership & Airstart Integration",
+                title: "Project Leadership & Engineering Oversight",
                 content: `
-                  <p>I lead 30+ members across propulsion, aerodynamics, structures, avionics,
-                  recovery, and manufacturing. I coordinate subsystem integration, technical
-                  decisions, schedules, and testing, including the development of MSP's first
-                  planned in-flight motor airstart system.</p>
+                  <p>As Project Manager, I lead a team of 30+ members, delegate engineering
+                  responsibilities, and oversee the rocket's technical development. All major
+                  design decisions go through my review and approval to ensure subsystem
+                  compatibility, technical feasibility, and alignment with mission objectives.
+                  I also coordinate manufacturing, integration, and testing activities while
+                  managing project milestones.</p>
                 `
               }
             ]
           },
           {
-            title: "Current Project Status",
+            title: "Design Snapshot",
             blocks: [
               {
                 content: `
-                  <p>The current rocket is approximately 92 inches long. OpenRocket predicts an
-                  8,156-ft apogee for the present configuration, compared with our MATLAB-derived
-                  competition target of 7,900 ft. Our current work focuses on composite transition
-                  manufacturing, adapting and validating the airbrake system, integrating airstart
-                  capability, and preparing Monte Carlo flight analysis. These first-time systems
-                  are still in development and have not yet been flight-demonstrated.</p>
+                  <p>Our current OpenRocket configuration predicts an 8,156-ft apogee.
+                  The composite transition, airstarts, and airbrakes remain in development
+                  and have not yet been flight-demonstrated.</p>
                 `
               }
             ]
