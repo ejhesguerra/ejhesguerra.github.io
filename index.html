@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1608,7 +1609,7 @@
         ]
       },
       /* ===================================================
-         ARGONIA CUP
+          ARGONIA CUP
       ==================================================== */
       {
         id: "argonia-cup",
@@ -1620,72 +1621,77 @@
 
         what: `
           <p>
-            I lead a 30+ member multidisciplinary team through the design, manufacturing, and testing of our Argonia Cup rocket. The vehicle targets a 7,000-ft apogee while carrying 16 golf balls and completing three airstarts. I selected this configuration after MATLAB scoring trades showed it gave our team the best realistic scoring potential without adding unnecessary mass or complexity.
+            I lead a multidisciplinary team of 30+ members in the design, manufacturing, and testing of a
+            92-inch high-power rocket for the 2027 Argonia Cup. Our vehicle targets a 7,900-ft apogee,
+            selected through MATLAB-based competition score optimization, and incorporates clustered
+            propulsion, planned in-flight motor airstarts, and an active airbrake system.
+          </p>
+          <p>
+            This project brings three first-time engineering efforts to Mizzou Space Program: attempting
+            in-flight motor airstarts, developing active aerodynamic braking, and manufacturing a
+            fiberglass composite airframe transition at a scale the program has not previously attempted.
           </p>
         `,
 
         caseStudySections: [
           {
-            title: "Completed Analysis",
+            title: "Engineering Contributions",
             blocks: [
               {
-                title: "Score Optimization",
+                title: "Competition Optimization & Flight Simulation",
                 content: `
-                  <p>I modeled the competition scoring equation in MATLAB and compared target apogee, golf-ball payload, and successful airstarts. The trade study drove the 7,000-ft, 16-ball, three-airstart configuration.</p>
+                  <p>I developed a MATLAB scoring model to evaluate the relationship between apogee,
+                  golf-ball payload, and airstart performance, establishing our current 7,900-ft target.
+                  I also built a Python-based OpenRocket automation workflow for trajectory analysis
+                  and design iterations. Next, I plan to conduct Monte Carlo simulations to quantify
+                  flight-performance sensitivity to wind, atmospheric conditions, launch variation,
+                  and vehicle mass uncertainty.</p>
                 `,
                 images: [1, 2, 3],
                 imageLayout: "scrollable"
               },
               {
-                title: "OpenRocket Automation",
+                title: "Fiberglass Composite Manufacturing",
                 content: `
-                  <p>I built a Python wrapper around OpenRocket to parameterize the vehicle, run design sweeps, and collect flight outputs automatically. A study that would have taken two weeks manually was reduced to four hours.</p>
+                  <p>I am leading MSP's first attempt to manufacture a fiberglass composite transition
+                  of this magnitude, connecting two different airframe diameters. I am developing the
+                  fabrication process using a segmented 3D-printed mandrel, surface finishing,
+                  mold release, and fiberglass composite layup.</p>
                 `,
                 images: [0]
               },
               {
-                title: "Monte Carlo",
+                title: "Active Airbrakes & CFD",
                 content: `
-                  <p>I ran 250 flights with atmospheric and launch variation, and 99.2% met the airstart criteria. The next 1,000-run study will add wind, atmospheric variation, and as-built mass uncertainty while tracking apogee, score, ignition success, and the usable post-burn air-brake window.</p>
+                  <p>I am taking over a senior capstone team's active airbrake design and adapting it
+                  specifically for our rocket. I plan to use ANSYS Fluent CFD to evaluate drag generation
+                  and aerodynamic effects at different deployment positions. I also plan to integrate
+                  an encoder for position feedback to improve deployment accuracy, repeatability,
+                  and system robustness. This would be MSP's first implementation of active airbrakes.</p>
+                `
+              },
+              {
+                title: "Project Leadership & Airstart Integration",
+                content: `
+                  <p>I lead 30+ members across propulsion, aerodynamics, structures, avionics,
+                  recovery, and manufacturing. I coordinate subsystem integration, technical
+                  decisions, schedules, and testing, including the development of MSP's first
+                  planned in-flight motor airstart system.</p>
                 `
               }
             ]
           },
           {
-            title: "In Progress",
-            blocks: [
-              {
-                title: "Rocket Manufacturing & Integration",
-                content: `
-                  <p>The team is moving the optimized vehicle from simulation into hardware. I am leading the manufacturing and integration effort across the airframe, propulsion, payload, electronics, recovery, and airstart systems while keeping the as-built configuration aligned with the analyzed design.</p>
-                `
-              },
-              {
-                title: "Active Airbrakes",
-                content: `
-                  <p>I am developing a four-petal active air-brake system for closed-loop apogee control. The mechanical design is being developed around packaging, deployment authority, stability, structural loading, and the requirement to keep the brake wake from reducing fin effectiveness.</p>
-                `
-              },
-              {
-                title: "Air-Brake CFD",
-                content: `
-                  <p>I am using PyANSYS to automate 75 CFD cases across Mach number, brake deployment, and environmental conditions. The 0° angle-of-attack cases use a 90° periodic quarter-domain to reduce computational cost, while nonzero-angle cases use a larger domain because the periodic symmetry assumption no longer applies.</p>
-                `
-              },
-              {
-                title: "Air-Brake Control Development",
-                content: `
-                  <p>The CFD results will populate aerodynamic drag and pitching-moment data used by the flight controller. During coast, barometer and IMU measurements will estimate the vehicle state, predict apogee, and command brake deployment while enforcing attitude and angle-of-attack limits.</p>
-                `
-              }
-            ]
-          },
-          {
-            title: "Current Status",
+            title: "Current Project Status",
             blocks: [
               {
                 content: `
-                  <p>The current design is centered on a 7,000-ft target, 16 golf balls, and three airstarts. Score optimization and automated trajectory studies are complete, the first 250 Monte Carlo flights produced a 99.2% airstart-criteria rate, and the project is now progressing through manufacturing, air-brake development, CFD, and controls work.</p>
+                  <p>The current rocket is approximately 92 inches long. OpenRocket predicts an
+                  8,156-ft apogee for the present configuration, compared with our MATLAB-derived
+                  competition target of 7,900 ft. Our current work focuses on composite transition
+                  manufacturing, adapting and validating the airbrake system, integrating airstart
+                  capability, and preparing Monte Carlo flight analysis. These first-time systems
+                  are still in development and have not yet been flight-demonstrated.</p>
                 `
               }
             ]
@@ -2359,3 +2365,6 @@
   </script>
 </body>
 </html>
+
+169K
+⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮
