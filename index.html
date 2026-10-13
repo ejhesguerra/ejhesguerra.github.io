@@ -1724,6 +1724,32 @@
         ]
       },
       /* ===================================================
+         IREC TRANSIENT TWO-PHASE FLOW CFD
+      ==================================================== */
+      {
+        id: "irec-two-phase-flow",
+        category: "Simulation & Analysis",
+        title: "IREC | Transient Two-Phase Flow Analysis",
+        shortTitle: "IREC Two-Phase CFD",
+        subtitle: "Mizzou Space Program · Ongoing",
+        cover: null,
+
+        what: `
+          <p>I am responsible for the CFD analysis of our IREC rocket payload, developing a numerical baseline to compare against experimental flight sensor data. The payload consists of independent flow paths containing Newtonian (water), shear-thinning (ketchup-like), and shear-thickening (oobleck-like) fluids. Each fluid travels from a sealed reservoir through a valve and an initially air-filled channel into a vented collection tank.</p>
+        `,
+
+        how: `
+          <p>My work includes preparing the geometry, generating the mesh, defining fluid properties and boundary conditions, and applying the rocket's changing acceleration profile. I plan to use a transient, pressure-based solver in ANSYS Fluent with the Volume of Fluid (VOF) method to track the liquid–air interface and analyze pressure changes, velocity, and mass flow rate throughout flight.</p>
+          <p>The biggest challenge will be modeling the initial valve opening, where liquid begins displacing air and creates a rapidly changing two-phase flow. Accurately tracking the liquid–air interface while accounting for non-Newtonian viscosity and changing G-loads will require careful mesh refinement, time-step selection, and numerical stability checks.</p>
+        `,
+
+        results: `
+          <p>This analysis is ongoing. I plan to establish a water–air baseline before introducing the other fluids and comparing CFD predictions against experimental flight data.</p>
+        `,
+
+        gallery: []
+      },
+      /* ===================================================
          IREC NOSE CONE
       ==================================================== */
       {
@@ -2383,8 +2409,3 @@
   </script>
 </body>
 </html>
-
-169K
-
-
-⋮⋮⋮⋮
